@@ -1,7 +1,7 @@
 class CreateCourseStudentProfiles < ActiveRecord::Migration
   def self.up
     create_table :course_student_profiles do |t|
-      t.string :sexo
+      t.string :sex
       t.integer :age_from
       t.integer :age_to
       t.integer :schooling_id

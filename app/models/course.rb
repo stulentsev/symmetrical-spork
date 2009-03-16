@@ -1,3 +1,3 @@
 class Course < ActiveRecord::Base
-    belongs_to :student_profile, :class_name => 'CourseStudentProfile'
+  belongs_to :student_profile, :class_name => 'CourseStudentProfile'
 end
