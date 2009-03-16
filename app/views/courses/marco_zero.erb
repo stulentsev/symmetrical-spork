@@ -1,6 +1,12 @@
-<%#
-# To change this template, choose Tools | Templates
-# and open the template in the editor.
-%>
 
-<%= "marzo_zero" %>
+<h2><%= "marzo_zero" %></h2>
+
+  <%  form_for 'test', nil, :url => {:action => :create}, :html => {:class => 'tabular'} do |f1| %>
+		<%= error_messages_for 'course' %>
+		<% fields_for('course', @course) do |f| %>
+	  <p>Periodo de <%= f.text_field :period_from, :size => 10 %> <%= calendar_for('course_period_from') %> a <%= f.text_field :period_to, :size => 10 %> <%= calendar_for('course_period_to') %></p>
+	  <p>Objectivos <%= f.text_area :objectives %></p>
+	  <p>Resultados <%= f.text_area :results %></p>
+
+	  <% end %>
+  <% end %>
