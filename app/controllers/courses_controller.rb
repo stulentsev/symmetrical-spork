@@ -41,6 +41,10 @@ class CoursesController < ApplicationController
   # POST /courses.xml
   def create
     @course = Course.new(params[:course])
+    profile = CourseStudentProfile.create(params[:student_profile])
+    @course.student_profile = profile
+
+    @course.save
 
     respond_to do |format|
       if @course.save
