@@ -14,7 +14,7 @@ class ProjectTeamMembersController < ApplicationController
   # GET /project_team_members/1.xml
   def show
     @project_team_member = ProjectTeamMember.new
-    @members = Course.find(params[:id]).team_members
+    @members = Course.find(params[:course_id]).team_members
 
     respond_to do |format|
       format.html # show.html.erb
@@ -34,7 +34,7 @@ class ProjectTeamMembersController < ApplicationController
   end
 
   # GET /project_team_members/1/edit
-  def edit
+  def ajax_edit
     @project_team_member = ProjectTeamMember.find(params[:id])
   end
 
@@ -49,16 +49,7 @@ class ProjectTeamMembersController < ApplicationController
   def update
     @project_team_member = ProjectTeamMember.find(params[:id])
 
-    respond_to do |format|
-      if @project_team_member.update_attributes(params[:project_team_member])
-        flash[:notice] = 'ProjectTeamMember was successfully updated.'
-        format.html { redirect_to(@project_team_member) }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @project_team_member.errors, :status => :unprocessable_entity }
-      end
-    end
+    @project_team_member.update_attributes(params[:project_team_member])
   end
 
   # DELETE /project_team_members/1

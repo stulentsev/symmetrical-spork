@@ -1,0 +1,1 @@
+page.replace_html 'create_edit_form', :partial => 'team_member_new', :locals => {:course_id => params[:course_id]}

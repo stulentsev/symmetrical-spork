@@ -4,9 +4,12 @@
     <td><%= m.function %></td>
     <td><%= m.competencies %></td>
     <td><%= 'view curriculum' %></td>
-    <td>[editar]
+    <td>
+        <%=  link_to_remote "Editar",
+           :url => {:action => :ajax_edit, :id => m.id, :course_id => params[:course_id] },
+           :update => { :success => "success", :failure => "error" } %>
        <%=  link_to_remote "Excluir",
-          :url => {:_method=> :delete, :action => :destroy, :id => m.id },
+          :url => {:_method=> :delete, :action => :destroy, :id => m.id, :course_id => params[:course_id] },
           :update => { :success => "success", :failure => "error" } %>
         </td>
 </tr>
