@@ -1,19 +1,19 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  period_from: 2009-03-16
-  period_to: 2009-03-16
+  period_from: 2009-03-17
+  period_to: 2009-03-17
   objectives: MyText
   results: MyText
-  teachers_selection_process: MyText
+  professors_selection_process: MyText
   students_selection_process: MyText
   communities: MyText
 
 two:
-  period_from: 2009-03-16
-  period_to: 2009-03-16
+  period_from: 2009-03-17
+  period_to: 2009-03-17
   objectives: MyText
   results: MyText
-  teachers_selection_process: MyText
+  professors_selection_process: MyText
   students_selection_process: MyText
   communities: MyText

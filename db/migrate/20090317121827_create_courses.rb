@@ -5,10 +5,9 @@ class CreateCourses < ActiveRecord::Migration
       t.date :period_to
       t.text :objectives
       t.text :results
-      t.text :teachers_selection_process
+      t.text :professors_selection_process
       t.text :students_selection_process
       t.text :communities
-      t.integer :student_profile_id
 
       t.timestamps
     end
