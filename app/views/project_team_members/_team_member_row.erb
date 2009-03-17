@@ -1,8 +1,12 @@
 <% m = team_member_row %>
-<tr>
+<tr id='team_member_row_<%= m.id %>'>
     <td><%= m.name %></td>
     <td><%= m.function %></td>
     <td><%= m.competencies %></td>
     <td><%= 'view curriculum' %></td>
-    <td>[editar]  [excluir]</td>
+    <td>[editar]
+       <%=  link_to_remote "Excluir",
+          :url => {:_method=> :delete, :action => :destroy, :id => m.id },
+          :update => { :success => "success", :failure => "error" } %>
+        </td>
 </tr>

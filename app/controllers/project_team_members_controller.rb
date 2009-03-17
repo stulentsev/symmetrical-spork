@@ -14,6 +14,7 @@ class ProjectTeamMembersController < ApplicationController
   # GET /project_team_members/1.xml
   def show
     @project_team_member = ProjectTeamMember.new
+    @members = Course.find(params[:id]).team_members
 
     respond_to do |format|
       format.html # show.html.erb
@@ -65,11 +66,6 @@ class ProjectTeamMembersController < ApplicationController
   def destroy
     @project_team_member = ProjectTeamMember.find(params[:id])
     @project_team_member.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(project_team_members_url) }
-      format.xml  { head :ok }
-    end
   end
 
   def show_for_course
