@@ -1,0 +1,28 @@
+<p>
+  <b>Sex:</b>
+  <%=h @course_student_profile.sex %>
+</p>
+
+<p>
+  <b>Age from:</b>
+  <%=h @course_student_profile.age_from %>
+</p>
+
+<p>
+  <b>Age to:</b>
+  <%=h @course_student_profile.age_to %>
+</p>
+
+<p>
+  <b>Schooling:</b>
+  <%=h @course_student_profile.schooling_id %>
+</p>
+
+<p>
+  <b>Observations:</b>
+  <%=h @course_student_profile.observations %>
+</p>
+
+
+<%= link_to 'Edit', edit_course_student_profile_path(@course_student_profile) %> |
+<%= link_to 'Back', course_student_profiles_path %>

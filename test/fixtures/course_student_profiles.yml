@@ -1,14 +1,14 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  sexo: MyString
+  sex: MyString
   age_from: 1
   age_to: 1
   schooling_id: 1
   observations: MyText
 
 two:
-  sexo: MyString
+  sex: MyString
   age_from: 1
   age_to: 1
   schooling_id: 1

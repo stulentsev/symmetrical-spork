@@ -32,6 +32,16 @@
     <%= f.text_area :communities %>
   </p>
   <p>
+      <% fields_for :student_profile, @course.student_profile do |sp| %>
+          <p>
+          <%= sp.label :sex %> <br />
+
+          <%= select_tag :student_profile_sex options_for_select([['Masculine', 'M'], ['Feminine', 'F']]) %>
+        </p>
+
+      <% end %>
+  </p>
+  <p>
     <%= f.submit "Create" %>
   </p>
 <% end %>
