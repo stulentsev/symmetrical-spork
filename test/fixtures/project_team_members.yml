@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  function: MyString
+  competencies: MyText
+  curriculum_summary: MyText
+  email: MyString
+
+two:
+  name: MyString
+  function: MyString
+  competencies: MyText
+  curriculum_summary: MyText
+  email: MyString

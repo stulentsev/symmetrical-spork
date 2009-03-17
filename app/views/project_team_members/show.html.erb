@@ -1,0 +1,28 @@
+<p>
+  <b>Name:</b>
+  <%=h @project_team_member.name %>
+</p>
+
+<p>
+  <b>Function:</b>
+  <%=h @project_team_member.function %>
+</p>
+
+<p>
+  <b>Competencies:</b>
+  <%=h @project_team_member.competencies %>
+</p>
+
+<p>
+  <b>Curriculum summary:</b>
+  <%=h @project_team_member.curriculum_summary %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%=h @project_team_member.email %>
+</p>
+
+
+<%= link_to 'Edit', edit_project_team_member_path(@project_team_member) %> |
+<%= link_to 'Back', project_team_members_path %>
