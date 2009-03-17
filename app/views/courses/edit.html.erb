@@ -31,6 +31,29 @@
     <%= f.label :communities %><br />
     <%= f.text_area :communities %>
   </p>
+    <p>
+        <% fields_for :student_profile, @course.student_profile do |sp| %>
+        <p>
+            <%= sp.label :sex %><br/>
+            <%= sp.select :sex, [['Masculine', 'M'], ['Feminine', 'F']] %>
+        </p>
+        <p>
+            <%= sp.label :age_from %>
+            <%= sp.text_field :age_from, :size => 2 %> &nbsp;
+            <%= sp.label :age_to %> &nbsp;
+            <%= sp.text_field :age_to, :size => 2 %>
+        </p>
+        <p>
+            <%= sp.label :schooling_id %><br/>
+            <%= sp.select :schooling_id, Schooling.find(:all).map {|s| [s.name, s.id]} %>
+        </p>
+        <p>
+            <%= sp.label :observations %><br/>
+            <%= sp.text_area :observations %>
+        </p>
+        <% end %>
+
+    </p>
   <p>
     <%= f.submit "Update" %>
   </p>

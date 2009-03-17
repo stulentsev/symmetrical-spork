@@ -64,7 +64,7 @@ class CoursesController < ApplicationController
     @course = Course.find(params[:id])
 
     respond_to do |format|
-      if @course.update_attributes(params[:course])
+      if @course.update_attributes(params[:course]) && @course.student_profile.update_attributes(params[:student_profile])
         flash[:notice] = 'Course was successfully updated.'
         format.html { redirect_to(@course) }
         format.xml  { head :ok }
