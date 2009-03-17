@@ -1,0 +1,45 @@
+<% remote_form_for @project_team_member do |f| %>
+
+    <%= f.error_messages %>
+
+    <%= hidden_field_tag 'project_team_member[course_id]', course_id %>
+    <p>
+    <table>
+        <tr>
+            <td>
+                <%= f.label :name %>
+                <br/>
+                <%= f.text_field :name %>
+            </td>
+            <td>
+                <%= f.label :function %>
+                <br/>
+                <%= f.text_field :function %>
+            </td>
+        </tr>
+    </table>
+    </p>
+    <p>
+    <table>
+        <tr>
+            <td>
+                <%= f.label :competencies %>
+                <br/>
+                <%= f.text_area :competencies %>
+            </td>
+            <td>
+                <%= f.label :curriculum_summary %>
+                <br/>
+                <%= f.text_area :curriculum_summary %>
+            </td>
+        </tr>
+    </table>
+    </p>
+    <p>
+        <%= f.label :email %><br/>
+        <%= f.text_field :email %>
+    </p>
+    <p>
+        <%= f.submit "Create" %>
+    </p>
+<% end %>

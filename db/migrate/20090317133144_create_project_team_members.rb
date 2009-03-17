@@ -6,6 +6,7 @@ class CreateProjectTeamMembers < ActiveRecord::Migration
       t.text :competencies
       t.text :curriculum_summary
       t.string :email
+      t.integer :course_id
 
       t.timestamps
     end

@@ -1,0 +1,17 @@
+<div>
+    <%= render :partial => 'team_member_new', :locals => {:course_id => params[:id]} %>
+</div>
+
+<div>
+    <table id="project_team_members_table">
+        <tr>
+            <th><%= :name %></th>
+            <th><%= (:function) %></th>
+            <th><%= (:description) %></th>
+            <th><%= (:curriculum) %></th>
+            <th><%= (:actions) %></th>
+        </tr>
+        <%= render :partial => 'team_member_row', :collection => @members %>
+    </table>
+
+</div>

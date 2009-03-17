@@ -25,6 +25,7 @@ class CoursesController < ApplicationController
   # GET /courses/new.xml
   def new
     @course = Course.new
+    @project_team_member = ProjectTeamMember.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,6 +36,7 @@ class CoursesController < ApplicationController
   # GET /courses/1/edit
   def edit
     @course = Course.find(params[:id])
+    @project_team_member = ProjectTeamMember.new
   end
 
   # POST /courses
@@ -86,4 +88,5 @@ class CoursesController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
 end

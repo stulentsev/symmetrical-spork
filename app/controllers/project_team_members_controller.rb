@@ -13,7 +13,7 @@ class ProjectTeamMembersController < ApplicationController
   # GET /project_team_members/1
   # GET /project_team_members/1.xml
   def show
-    @project_team_member = ProjectTeamMember.find(params[:id])
+    @project_team_member = ProjectTeamMember.new
 
     respond_to do |format|
       format.html # show.html.erb
@@ -40,18 +40,7 @@ class ProjectTeamMembersController < ApplicationController
   # POST /project_team_members
   # POST /project_team_members.xml
   def create
-    @project_team_member = ProjectTeamMember.new(params[:project_team_member])
-
-    respond_to do |format|
-      if @project_team_member.save
-        flash[:notice] = 'ProjectTeamMember was successfully created.'
-        format.html { redirect_to(@project_team_member) }
-        format.xml  { render :xml => @project_team_member, :status => :created, :location => @project_team_member }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @project_team_member.errors, :status => :unprocessable_entity }
-      end
-    end
+    @project_team_member = ProjectTeamMember.create(params[:project_team_member])
   end
 
   # PUT /project_team_members/1
@@ -81,5 +70,10 @@ class ProjectTeamMembersController < ApplicationController
       format.html { redirect_to(project_team_members_url) }
       format.xml  { head :ok }
     end
+  end
+
+  def show_for_course
+    @project_team_member = ProjectTeamMember.new
+    @members = Course.find(params[:course_id]).team_members
   end
 end

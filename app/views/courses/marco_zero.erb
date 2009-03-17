@@ -31,6 +31,11 @@
 	  </p>
 	<% end %>
 
+        <p>
+            <%= render :controller => :project_team_members, :action => :show_for_course, :course_id => @course.id %>
+
+        </p>
+
 
 	<p><%= submit_tag 'Go' %> </p>
   <% end %>
