@@ -32,27 +32,7 @@
         <%= f.text_area :communities %>
     </p>
     <p>
-        <% fields_for :student_profile, @course.student_profile do |sp| %>
-        <p>
-            <%= sp.label :sex %><br/>
-            <%= select_tag 'student_profile[sex]', options_for_select([['Masculine', 'M'], ['Feminine', 'F']]) %>
-        </p>
-        <p>
-            <%= sp.label :age_from %>
-            <%= sp.text_field :age_from, :size => 2 %> &nbsp;
-            <%= sp.label :age_to %> &nbsp;
-            <%= sp.text_field :age_to, :size => 2 %>
-        </p>
-        <p>
-            <%= sp.label :schooling_id %><br/>
-            <%= select_tag 'student_profile[schooling_id]', options_for_select(Schooling.find(:all).
-                    map {|s| [s.name, s.id]}) %>
-        </p>
-        <p>
-            <%= sp.label :observations %><br/>
-            <%= sp.text_area :observations %>
-        </p>
-        <% end %>
+        <%= render :partial => 'student_profile', :locals => {:profile => @course.student_profile} %>
     </p>
     <p>
         <%= f.submit "Create" %>
