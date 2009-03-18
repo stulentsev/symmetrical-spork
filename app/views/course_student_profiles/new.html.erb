@@ -1,0 +1,31 @@
+<h1>New course_student_profile</h1>
+
+<% form_for(@course_student_profile) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :sex %><br />
+    <%= f.text_field :sex %>
+  </p>
+  <p>
+    <%= f.label :age_from %><br />
+    <%= f.text_field :age_from, :size => 2 %>
+  </p>
+  <p>
+    <%= f.label :age_to %><br />
+    <%= f.text_field :age_to, :size => 2 %>
+  </p>
+  <p>
+    <%= f.label :schooling_id %><br />
+    <%= f.text_field :schooling_id %>
+  </p>
+  <p>
+    <%= f.label :observations %><br />
+    <%= f.text_area :observations %>
+  </p>
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', course_student_profiles_path %>

@@ -1,0 +1,37 @@
+
+<h2><%= "marzo_zero" %></h2>
+
+<%  form_for :course, :html => {:class => 'tabular'} do |f1| %>
+  <%= error_messages_for 'course' %>
+  <% fields_for('course', @course) do |f| %>
+	<p>Periodo de <%= f.text_field :period_from, :size => 10 %> <%= calendar_for('course_period_from') %> a <%= f.text_field :period_to, :size => 10 %> <%= calendar_for('course_period_to') %></p>
+	<p>Objectivos <%= f.text_area :objectives %></p>
+	<p>Resultados <%= f.text_area :results %></p>
+	<p>Processo seletivo educadores <%= f.text_area :teachers_selection_process %></p>
+	<p>Processo seletivo educandons <%= f.text_area :students_selection_process %></p>
+	<p>Comunidades <%= f.text_area :communities %></p>
+
+	<% fields_for :student_profile do |profile_form| %>
+	  <p>
+		<%= profile_form.label :sex, 'Sexo' %>
+		<%= select_tag 'student_profile[sex]', options_for_select([['Masculine', 'M'], ['Feminine', 'F']]) %>
+
+	  </p>
+	  <p>
+		<%= 'Idade entre ' %><%= profile_form.text_field :age_from, :size => 2 %>
+		<%= ' a ' %><%= profile_form.text_field :age_to, :size => 2 %>
+	  </p>
+		<%= profile_form.label :schooling, 'Escolaridade' %>
+		<%= select_tag 'student_profile[schooling_id]', options_for_select(Schooling.find(:all).map{|s| [s.name, s.id]}) %>
+	  <p>
+		<div>
+		  <%= profile_form.label :observations, 'Observacoes:' %>
+		  <%= profile_form.text_area :observations %>
+		</div>
+	  </p>
+	<% end %>
+
+
+	<p><%= submit_tag 'Go' %> </p>
+  <% end %>
+<% end %>

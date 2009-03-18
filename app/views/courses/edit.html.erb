@@ -1,0 +1,43 @@
+<h1>Editing course</h1>
+
+<% form_for(@course) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :period_from %><br />
+    <%= f.date_select :period_from %>
+  </p>
+  <p>
+    <%= f.label :period_to %><br />
+    <%= f.date_select :period_to %>
+  </p>
+  <p>
+    <%= f.label :objectives %><br />
+    <%= f.text_area :objectives %>
+  </p>
+  <p>
+    <%= f.label :results %><br />
+    <%= f.text_area :results %>
+  </p>
+  <p>
+    <%= f.label :professors_selection_process %><br />
+    <%= f.text_area :professors_selection_process %>
+  </p>
+  <p>
+    <%= f.label :students_selection_process %><br />
+    <%= f.text_area :students_selection_process %>
+  </p>
+  <p>
+    <%= f.label :communities %><br />
+    <%= f.text_area :communities %>
+  </p>
+    <p>
+        <%= render :partial => 'student_profile', :locals => {:profile => @course.student_profile} %>
+    </p>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @course %> |
+<%= link_to 'Back', courses_path %>

@@ -1,0 +1,32 @@
+<h1>Listing courses</h1>
+
+<table>
+  <tr>
+    <th>Period from</th>
+    <th>Period to</th>
+    <th>Objectives</th>
+    <th>Results</th>
+    <th>Professors selection process</th>
+    <th>Students selection process</th>
+    <th>Communities</th>
+  </tr>
+
+<% for course in @courses %>
+  <tr>
+    <td><%=h course.period_from %></td>
+    <td><%=h course.period_to %></td>
+    <td><%=h course.objectives %></td>
+    <td><%=h course.results %></td>
+    <td><%=h course.professors_selection_process %></td>
+    <td><%=h course.students_selection_process %></td>
+    <td><%=h course.communities %></td>
+    <td><%= link_to 'Show', course %></td>
+    <td><%= link_to 'Edit', edit_course_path(course) %></td>
+    <td><%= link_to 'Destroy', course, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New course', new_course_path %>

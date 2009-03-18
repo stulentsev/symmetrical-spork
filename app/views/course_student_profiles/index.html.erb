@@ -1,0 +1,28 @@
+<h1>Listing course_student_profiles</h1>
+
+<table>
+  <tr>
+    <th>Sex</th>
+    <th>Age from</th>
+    <th>Age to</th>
+    <th>Schooling</th>
+    <th>Observations</th>
+  </tr>
+
+<% for course_student_profile in @course_student_profiles %>
+  <tr>
+    <td><%=h course_student_profile.sex %></td>
+    <td><%=h course_student_profile.age_from %></td>
+    <td><%=h course_student_profile.age_to %></td>
+    <td><%=h course_student_profile.schooling_id %></td>
+    <td><%=h course_student_profile.observations %></td>
+    <td><%= link_to 'Show', course_student_profile %></td>
+    <td><%= link_to 'Edit', edit_course_student_profile_path(course_student_profile) %></td>
+    <td><%= link_to 'Destroy', course_student_profile, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New course_student_profile', new_course_student_profile_path %>
