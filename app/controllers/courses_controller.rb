@@ -36,7 +36,7 @@ class CoursesController < ApplicationController
   # GET /courses/1/edit
   def edit
     @course = Course.find(params[:id])
-    @project_team_member = ProjectTeamMember.new
+    @project_team_member = ProjectTeamMember.new(:course_id => @course.id)
   end
 
   # POST /courses

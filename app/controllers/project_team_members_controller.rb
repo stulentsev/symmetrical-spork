@@ -1,5 +1,4 @@
 class ProjectTeamMembersController < ApplicationController
-  before_filter :protect_from_forgery => false, :only => [:create]
   # GET /project_team_members
   # GET /project_team_members.xml
   def index
@@ -49,7 +48,6 @@ class ProjectTeamMembersController < ApplicationController
   # PUT /project_team_members/1.xml
   def update
     @project_team_member = ProjectTeamMember.find(params[:id])
-
     @project_team_member.update_attributes(params[:project_team_member])
   end
 

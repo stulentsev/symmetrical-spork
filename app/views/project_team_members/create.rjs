@@ -1,2 +1,6 @@
-page.insert_html :bottom, 'project_team_members_table', :partial => 'team_member_row', :locals => {:team_member_row => @project_team_member}
-page.replace_html 'create_edit_form', :partial => 'team_member_new'
+page.insert_html :bottom, 'project_team_members_table',
+                 :partial => 'team_member_row',
+                 :locals => {:team_member_row => @project_team_member}
+page.replace_html 'create_edit_form',
+                  :partial => 'team_member_new',
+                  :locals => {:project_team_member => @project_team_member}
