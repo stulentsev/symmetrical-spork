@@ -1,3 +1,5 @@
 page.replace "team_member_row_#{params[:id]}", :partial => 'team_member_row',
              :locals => {:team_member_row => @project_team_member,
                          :course_id => @project_team_member.course_id}
+@project_team_member = ProjectTeamMember.new(:course_id => @project_team_member.course_id)
+page.replace_html 'create_edit_form', :partial => 'team_member_new'

@@ -5,11 +5,7 @@
     <td><%= m.competencies %></td>
     <td><%= 'view curriculum' %></td>
     <td>
-        <%=  link_to_remote "Editar",
-           :url => {:controller => :project_team_members, :action => :ajax_edit, :id => m.id, :course_id => params[:course_id] },
-           :update => { :success => "success", :failure => "error" } %>
-       <%=  link_to_remote "Excluir",
-          :url => {:controller => :project_team_members, :_method=> :delete, :action => :destroy, :id => m.id, :course_id => params[:course_id] },
-          :update => { :success => "success", :failure => "error" } %>
-        </td>
+        <%= link_to_remote "Editar", :url => edit_project_team_member_path(m.id), :method => :get %>
+        <%= link_to_remote "Excluir", :url => project_team_member_path(m.id), :method => :delete %>
+    </td>
 </tr>

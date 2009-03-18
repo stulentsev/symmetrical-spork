@@ -1,4 +1,5 @@
 class ProjectTeamMembersController < ApplicationController
+  before_filter :protect_from_forgery => false, :only => [:create]
   # GET /project_team_members
   # GET /project_team_members.xml
   def index
@@ -25,7 +26,7 @@ class ProjectTeamMembersController < ApplicationController
   # GET /project_team_members/new
   # GET /project_team_members/new.xml
   def new
-    @project_team_member = ProjectTeamMember.new
+    @project_team_member = ProjectTeamMember.new(:course_id => params[:course_id])
 
     respond_to do |format|
       format.html # new.html.erb
@@ -34,7 +35,7 @@ class ProjectTeamMembersController < ApplicationController
   end
 
   # GET /project_team_members/1/edit
-  def ajax_edit
+  def edit
     @project_team_member = ProjectTeamMember.find(params[:id])
   end
 
