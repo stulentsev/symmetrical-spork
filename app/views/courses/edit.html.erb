@@ -35,12 +35,12 @@
         <%= render :partial => 'student_profile', :locals => {:profile => @course.student_profile} %>
     </p>
     <p>
-        <%= render :controller => :project_team_members, :action => :show_for_course, :course_id => @course.id %>
-
+        <%= render :partial => 'project_team_members/show_for_course' , :locals => {:course => @course} %>
     </p>
     <p>
         <%= f.submit "Update" %>
     </p>
+
 <% end %>
 
 <%= link_to 'Show', @course %> |

@@ -58,9 +58,4 @@ class ProjectTeamMembersController < ApplicationController
     @project_team_member = ProjectTeamMember.find(params[:id])
     @project_team_member.destroy
   end
-
-  def show_for_course
-    @project_team_member = ProjectTeamMember.new
-    @members = Course.find(params[:course_id]).team_members
-  end
 end
