@@ -1,8 +1,10 @@
 <h2>Planejamento</h2>
 
-<%= render :partial => 'activities/activity_new',
-           :locals => {:activity => activity,
-                       :course_id => course.id} %>
+<div id='activity_create_edit_form'>
+    <%= render :partial => 'activities/activity_new',
+               :locals => {:activity => activity,
+                           :course_id => course.id} %>
+</div>
 
 <%= render :partial => 'activities/list_grouped',
            :locals => {:activities => course.activities,

@@ -1,3 +1,6 @@
 page.insert_html :bottom, "by_language_#{@activity.language.id}_list",
             :partial => 'activities/by_language_list_item',
             :locals => {:by_language_list_item => @activity}
+page.replace_html 'activity_create_edit_form',
+                  :partial => 'activities/activity_new',
+                  :locals => {:activity => Activity.new(:course_id => @activity.course_id)}

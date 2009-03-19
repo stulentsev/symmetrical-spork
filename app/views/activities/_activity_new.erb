@@ -1,5 +1,5 @@
 
-<% fields_for @activity do |f| %>
+<% fields_for activity do |f| %>
     <%= f.error_messages %>
 
     <%= f.hidden_field :course_id %>
@@ -38,6 +38,6 @@
         </table>
     </p>
     <p>
-        <%= remote_submit_for_object @activity, 'Salvar' %>
+        <%= remote_submit_for_object activity, 'Salvar' %>
     </p>
 <% end %>
