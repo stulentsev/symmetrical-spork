@@ -1,3 +1,9 @@
 page.visual_effect :fade,
-                   "by_language_#{@activity.language.id}_list_item_#{@activity.id}", 
+                   "by_language_#{@activity.language.id}_list_item_#{@activity.id}",
                    :duration=>1
+if @activity.language.activities.length == 0
+  page.visual_effect :fade,
+                     "by_language_#{@activity.language.id}_div",
+                     :duration=>1
+
+end
