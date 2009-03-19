@@ -1,0 +1,28 @@
+<h1>Listing activities</h1>
+
+<table>
+  <tr>
+    <th>Period from</th>
+    <th>Period to</th>
+    <th>Propositions</th>
+    <th>Methodology</th>
+    <th>Language</th>
+  </tr>
+
+<% for activity in @activities %>
+  <tr>
+    <td><%=h activity.period_from %></td>
+    <td><%=h activity.period_to %></td>
+    <td><%=h activity.propositions %></td>
+    <td><%=h activity.methodology %></td>
+    <td><%=h activity.language_id %></td>
+    <td><%= link_to 'Show', activity %></td>
+    <td><%= link_to 'Edit', edit_activity_path(activity) %></td>
+    <td><%= link_to 'Destroy', activity, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New activity', new_activity_path %>

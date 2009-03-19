@@ -1,0 +1,28 @@
+<p>
+  <b>Period from:</b>
+  <%=h @activity.period_from %>
+</p>
+
+<p>
+  <b>Period to:</b>
+  <%=h @activity.period_to %>
+</p>
+
+<p>
+  <b>Propositions:</b>
+  <%=h @activity.propositions %>
+</p>
+
+<p>
+  <b>Methodology:</b>
+  <%=h @activity.methodology %>
+</p>
+
+<p>
+  <b>Language:</b>
+  <%=h @activity.language_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_activity_path(@activity) %> |
+<%= link_to 'Back', activities_path %>
