@@ -5,7 +5,7 @@
     <td><%= m.competencies %></td>
     <td><%= 'view curriculum' %></td>
     <td>
-        <%= link_to_remote "Editar", :url => edit_project_team_member_path(m.id), :method => :get %>
-        <%= link_to_remote "Excluir", :url => project_team_member_path(m.id), :method => :delete %>
+        <%= link_to_remote image_tag('edit.png', :class => 'cmd'), :url => edit_project_team_member_path(m.id), :method => :get %>
+        <%= link_to_remote image_tag('delete.png', :class => 'cmd'), :url => project_team_member_path(m.id), :method => :delete %>
     </td>
 </tr>
