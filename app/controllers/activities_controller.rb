@@ -24,12 +24,8 @@ class ActivitiesController < ApplicationController
   # GET /activities/new
   # GET /activities/new.xml
   def new
+    @saved_activity = session[:saved_activity]
     @activity = Activity.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @activity }
-    end
   end
 
   # GET /activities/1/edit
@@ -41,7 +37,10 @@ class ActivitiesController < ApplicationController
   # POST /activities.xml
   def create
     @activity = Activity.new(params[:activity])
-    throw Exception.new 'Failed to create activity' unless @activity.save
+    if @activity.valid? && @activity.save
+      session[:saved_activity] = @activity
+      redirect_to :action => :new
+    end
   end
 
   # PUT /activities/1

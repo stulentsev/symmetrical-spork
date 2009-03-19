@@ -1,0 +1,19 @@
+if @saved_activity
+    list_div_id = "by_language_#{@saved_activity.language.id}_list"
+    page << "if ($('#{list_div_id}')) {"
+        page.insert_html :bottom, list_div_id,
+                    :partial => 'activities/by_language_list_item',
+                    :locals => {:by_language_list_item => @saved_activity}
+    page << '} else {'
+        page.insert_html :bottom, 'planejamento_language_activities_groups',
+                    :partial => 'activities/list_grouped',
+                    :locals => {:language => @saved_activity.language}
+    page << '}'
+end
+
+# clear the form
+page.replace_html 'activity_create_edit_form',
+                  :partial => 'activities/activity_new',
+                  :locals => {:activity => Activity.new(:course_id => @activity.course_id)}
+
+
