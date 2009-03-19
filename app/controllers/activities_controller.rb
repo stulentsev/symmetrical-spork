@@ -25,7 +25,7 @@ class ActivitiesController < ApplicationController
   # GET /activities/new.xml
   def new
     @saved_activity = session[:saved_activity]
-    @activity = Activity.new
+    @activity = Activity.new(:course_id => @saved_activity.course_id)
   end
 
   # GET /activities/1/edit
