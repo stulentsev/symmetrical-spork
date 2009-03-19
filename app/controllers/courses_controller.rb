@@ -37,6 +37,7 @@ class CoursesController < ApplicationController
   def edit
     @course = Course.find(params[:id])
     @project_team_member = ProjectTeamMember.new(:course_id => @course.id)
+    @activity = Activity.new(:course_id => @course.id)
   end
 
   # POST /courses
@@ -66,7 +67,8 @@ class CoursesController < ApplicationController
     @course = Course.find(params[:id])
 
     respond_to do |format|
-      if @course.update_attributes(params[:course]) && @course.student_profile.update_attributes(params[:student_profile])
+      if @course.update_attributes(params[:course]) &&
+              @course.student_profile.update_attributes(params[:student_profile])
         flash[:notice] = 'Course was successfully updated.'
         format.html { redirect_to(@course) }
         format.xml  { head :ok }

@@ -1,0 +1,43 @@
+
+<% fields_for @activity do |f| %>
+    <%= f.error_messages %>
+
+    <%= f.hidden_field :course_id %>
+    <p>
+        <%= f.label :language_id %><br/>
+        <%= f.select :language_id, Language.find(:all).map {|lang| [lang.name, lang.id]} %>
+    </p>
+    <p>
+        <table>
+            <tr>
+                <td>
+                    <%= f.label :period_from %><br/>
+                    <%= f.date_select :period_from %>
+                </td>
+                <td>
+                    <%= f.label :period_to %><br/>
+                    <%= f.date_select :period_to %>
+                </td>
+            </tr>
+        </table>
+    </p>
+    <p>
+    </p>
+    <p>
+        <table>
+            <tr>
+                <td>
+                    <%= f.label :propositions %><br/>
+                    <%= f.text_area :propositions %>
+                </td>
+                <td>
+                    <%= f.label :methodology %><br/>
+                    <%= f.text_area :methodology %>
+                </td>
+            </tr>
+        </table>
+    </p>
+    <p>
+        <%= remote_submit_for_object @activity, 'Salvar' %>
+    </p>
+<% end %>

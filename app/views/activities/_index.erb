@@ -1,0 +1,9 @@
+<h1>Planejamento</h1>
+
+<%= render :partial => 'activities/activity_new',
+           :locals => {:activity => activity,
+                       :course_id => course.id} %>
+
+<%= render :partial => 'activities/list_grouped',
+           :locals => {:activities => course.activities,
+                       :course_id => course.id} %>

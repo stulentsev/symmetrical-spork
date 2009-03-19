@@ -1,0 +1,3 @@
+page.insert_html :bottom, "by_language_#{@activity.language.id}_list",
+            :partial => 'activities/by_language_list_item',
+            :locals => {:by_language_list_item => @activity}

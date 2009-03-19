@@ -6,6 +6,7 @@ class CreateActivities < ActiveRecord::Migration
       t.text :propositions
       t.text :methodology
       t.integer :language_id
+      t.integer :course_id
 
       t.timestamps
     end

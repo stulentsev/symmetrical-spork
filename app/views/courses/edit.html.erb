@@ -40,6 +40,11 @@
                                :project_team_member => @project_team_member} %>
     </p>
     <p>
+        <%= render :partial => 'activities/index' ,
+                   :locals => {:course => @course,
+                               :activity => @activity} %>
+    </p>
+    <p>
         <%= f.submit "Update" %>
     </p>
 

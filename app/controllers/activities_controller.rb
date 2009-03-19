@@ -41,17 +41,7 @@ class ActivitiesController < ApplicationController
   # POST /activities.xml
   def create
     @activity = Activity.new(params[:activity])
-
-    respond_to do |format|
-      if @activity.save
-        flash[:notice] = 'Activity was successfully created.'
-        format.html { redirect_to(@activity) }
-        format.xml  { render :xml => @activity, :status => :created, :location => @activity }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @activity.errors, :status => :unprocessable_entity }
-      end
-    end
+    throw Exception.new 'Failed to create activity' unless @activity.save
   end
 
   # PUT /activities/1
