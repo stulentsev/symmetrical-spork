@@ -2,4 +2,9 @@
     <td><%= h by_language_list_item.propositions %></td>
     <td><%= by_language_list_item.period_from %> - <%= by_language_list_item.period_to %></td>
     <td><%= h by_language_list_item.methodology %></td>
+    <td>
+        <%= link_to_remote image_tag('delete.png', :class => "cmd"),
+                           :url => activity_path(by_language_list_item.id),
+                           :method => :delete %>
+    </td>
 </tr>

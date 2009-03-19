@@ -1,0 +1,3 @@
+page.visual_effect :fade,
+                   "by_language_#{@activity.language.id}_list_item_#{@activity.id}", 
+                   :duration=>1
