@@ -6,6 +6,10 @@
                            :course_id => course.id} %>
 </div>
 
-<%= render :partial => 'activities/list_grouped',
-           :locals => {:activities => course.activities,
-                       :course_id => course.id} %>
+<div id='planejamento_language_activities_groups'>
+    <% course.activities.group_by(&:language).each do |lang, activities| %>
+
+        <%= render :partial => 'activities/list_grouped',
+                   :locals => {:language => lang} %>
+    <% end %>
+</div>

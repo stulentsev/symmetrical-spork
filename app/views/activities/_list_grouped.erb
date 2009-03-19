@@ -1,15 +1,13 @@
-<% activities.group_by(&:language).each do |lang, activities| %>
-<h2><%= lang.name %></h2>
-    <div>
-        <table id='by_language_<%= lang.id %>_list'>
-            <tr>
-                <th>Atividades</th>
-                <th>Periodo</th>
-                <th>Propostas</th>
-                <th>O que fazer?</th>
-            </tr>
-            <%= render :partial => 'activities/by_language_list_item',
-                       :collection => activities %>
-        </table>
-    </div>
-<% end %>
+<h2><%= language.name %></h2>
+<div>
+    <table id='by_language_<%= language.id %>_list'>
+        <tr>
+            <th>Atividades</th>
+            <th>Periodo</th>
+            <th>Propostas</th>
+            <th>O que fazer?</th>
+        </tr>
+        <%= render :partial => 'activities/by_language_list_item',
+                   :collection => language.activities %>
+    </table>
+</div>
