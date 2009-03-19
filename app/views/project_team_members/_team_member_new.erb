@@ -1,7 +1,7 @@
-<% fields_for @project_team_member do |f| %>
+<% fields_for project_team_member do |f| %>
 
     <%= f.error_messages %>
-
+    <%= f.hidden_field :course_id %>
     <p>
     <table>
         <tr>
@@ -39,6 +39,6 @@
         <%= f.text_field :email %>
     </p>
     <p>
-        <%= remote_submit_for_team_member @project_team_member %>
+        <%= remote_submit_for_team_member project_team_member %>
     </p>
 <% end %>

@@ -25,7 +25,7 @@ class CoursesController < ApplicationController
   # GET /courses/new.xml
   def new
     @course = Course.new
-    @project_team_member = ProjectTeamMember.new
+    @project_team_member = ProjectTeamMember.new(:course_id => @course.id)
 
     respond_to do |format|
       format.html # new.html.erb

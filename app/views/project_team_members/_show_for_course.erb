@@ -1,5 +1,6 @@
 <div id='create_edit_form'>
-    <%= render :partial => 'project_team_members/team_member_new' %>
+    <%= render :partial => 'project_team_members/team_member_new',
+               :locals => {:project_team_member => project_team_member} %>
 </div>
 
 <div>

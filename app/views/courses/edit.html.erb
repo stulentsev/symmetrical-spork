@@ -35,7 +35,9 @@
         <%= render :partial => 'student_profile', :locals => {:profile => @course.student_profile} %>
     </p>
     <p>
-        <%= render :partial => 'project_team_members/show_for_course' , :locals => {:course => @course} %>
+        <%= render :partial => 'project_team_members/show_for_course' ,
+                   :locals => {:course => @course,
+                               :project_team_member => @project_team_member} %>
     </p>
     <p>
         <%= f.submit "Update" %>
