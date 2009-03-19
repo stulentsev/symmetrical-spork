@@ -4,12 +4,18 @@
     <%= f.error_messages %>
 
     <p>
-        <%= f.label :period_from %><br/>
-        <%= f.date_select :period_from %>
-    </p>
-    <p>
-        <%= f.label :period_to %><br/>
-        <%= f.date_select :period_to %>
+        <table>
+            <tr>
+                <td>
+                    <%= f.label :period_from %><br/>
+                    <%= @course.period_from %>
+                </td>
+                <td>
+                    <%= f.label :period_to %><br/>
+                    <%= @course.period_to %>
+                </td>
+            </tr>
+        </table>
     </p>
     <p>
         <%= f.label :objectives %><br/>
