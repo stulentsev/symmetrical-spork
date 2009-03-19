@@ -19,10 +19,10 @@ private
 
   def overlaps_other_activities?
     return self.language.activities.select do |a|
-      a.period_from < self.period_from && a.period_to > self.period_from && a.period_to < self.period_to ||
-              a.period_to > self.period_to && a.period_from > self.period_from && a.period_from < self.period_to ||
-              a.period_from > self.period_from && a.period_to < self.period_to ||
-              a.period_from < self.period_from && a.period_to > self.period_to
+      a.period_from <= self.period_from && a.period_to >= self.period_from && a.period_to <= self.period_to ||
+              a.period_to >= self.period_to && a.period_from >= self.period_from && a.period_from <= self.period_to ||
+              a.period_from >= self.period_from && a.period_to <= self.period_to ||
+              a.period_from <= self.period_from && a.period_to >= self.period_to
     end.length > 0
   end
 end
