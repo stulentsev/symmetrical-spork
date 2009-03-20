@@ -42,6 +42,15 @@ class ProjectTeamMembersController < ApplicationController
   # POST /project_team_members.xml
   def create
     @project_team_member = ProjectTeamMember.create(params[:project_team_member])
+
+    user = User.new(:login => @project_team_member.email)
+    user.assign_random_password
+    user.save
+
+    @project_team_member.user = user
+    @project_team_member.save
+
+    UserMailer.deliver_new_password_notification(@project_team_member)
   end
 
   # PUT /project_team_members/1
