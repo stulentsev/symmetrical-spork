@@ -43,9 +43,12 @@ class ProjectTeamMembersController < ApplicationController
   def create
     @project_team_member = ProjectTeamMember.create(params[:project_team_member])
 
-    user = User.new(:login => @project_team_member.email)
-    user.assign_random_password
-    user.save
+    user = User.find_by_login @project_team_member.email
+    unless user
+      user ||= User.new(:login => @project_team_member.email)
+      user.assign_random_password
+      user.save
+    end
 
     @project_team_member.user = user
     @project_team_member.save
