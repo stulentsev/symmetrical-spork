@@ -53,10 +53,5 @@ class PartnersController < ApplicationController
   def destroy
     @partner = Partner.find(params[:id])
     @partner.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(partner_url) }
-      format.xml  { head :ok }
-    end
   end
 end

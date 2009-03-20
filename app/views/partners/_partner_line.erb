@@ -1,4 +1,9 @@
-<tr>
+<tr id='partner_line_<%= partner_line.id %>'>
     <td><%= h partner_line.name %></td>
     <td><%= (h partner_line.purpose) %></td>
+    <td>
+        <%= link_to_remote image_tag('delete.png', :class => 'cmd'),
+                           :url => partner_path(partner_line),
+                           :method => :delete %>
+    </td>
 </tr>

@@ -1,0 +1,3 @@
+page.visual_effect :fade,
+                   "partner_line_#{@partner.id}",
+                   :duration => 1
