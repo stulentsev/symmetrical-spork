@@ -1,0 +1,3 @@
+page.replace_html 'partner_create_edit_form',
+                  :partial => 'partners/partner_new',
+                  :locals => {:partner => @partner}

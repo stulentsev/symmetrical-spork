@@ -37,17 +37,7 @@ class PartnersController < ApplicationController
 
   def update
     @partner = Partner.find(params[:id])
-
-    respond_to do |format|
-      if @partner.update_attributes(params[:partner])
-        flash[:notice] = 'Partner was successfully updated.'
-        format.html { redirect_to(@partner) }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @partner.errors, :status => :unprocessable_entity }
-      end
-    end
+    @partner.update_attributes(params[:partner])
   end
 
   def destroy

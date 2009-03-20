@@ -13,7 +13,8 @@ module CoursesHelper
     if obj.new_record?
       url = {:controller => controller_name, :action => 'create', :_method => :post}
     else
-      url = project_team_member_path(obj)
+      url = {:controller => controller_name, :action => 'update', :_method => :put}
+#      url = project_team_member_path(obj)
     end
     submit_to_remote controller_name.singularize, label, :url => url
   end

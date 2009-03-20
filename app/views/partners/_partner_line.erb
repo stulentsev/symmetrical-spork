@@ -2,6 +2,9 @@
     <td><%= h partner_line.name %></td>
     <td><%= (h partner_line.purpose) %></td>
     <td>
+        <%= link_to_remote image_tag('edit.png', :class => 'cmd'),
+                           :url => edit_partner_path(partner_line),
+                           :method => :get %>
         <%= link_to_remote image_tag('delete.png', :class => 'cmd'),
                            :url => partner_path(partner_line),
                            :method => :delete %>
