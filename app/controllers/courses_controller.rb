@@ -38,6 +38,7 @@ class CoursesController < ApplicationController
     @course = Course.find(params[:id])
     @project_team_member = ProjectTeamMember.new(:course_id => @course.id)
     @activity = Activity.new(:course_id => @course.id)
+    @partner = Partner.new(:course_id => @course.id)
   end
 
   # POST /courses

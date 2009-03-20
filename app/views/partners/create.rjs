@@ -1,0 +1,8 @@
+page.insert_html :bottom,
+                 'partners_list',
+                 :partial => 'partners/partner_line',
+                 :locals => {:partner_line => @partner}
+
+page.replace_html 'partner_create_edit_form',
+                  :partial => 'partners/partner_new',
+                  :locals => {:partner => Partner.new(:course_id => @partner.course_id)}

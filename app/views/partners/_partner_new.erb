@@ -1,0 +1,17 @@
+
+<% fields_for partner do |f| %>
+  <%= f.error_messages %>
+
+  <%= f.hidden_field :course_id %>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :purpose %><br />
+    <%= f.text_area :purpose %>
+  </p>
+  <p>
+    <%= remote_submit_for_object partner, 'Salvar' %>
+  </p>
+<% end %>

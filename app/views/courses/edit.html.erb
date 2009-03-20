@@ -51,6 +51,11 @@
                                :activity => @activity} %>
     </p>
     <p>
+        <%= render :partial => 'partners/index' ,
+                   :locals => {:course => @course,
+                               :partner => @partner} %>
+    </p>
+    <p>
         <%= f.submit "Update" %>
     </p>
 
