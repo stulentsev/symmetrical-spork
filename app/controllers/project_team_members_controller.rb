@@ -53,7 +53,7 @@ class ProjectTeamMembersController < ApplicationController
     @project_team_member.user = user
     @project_team_member.save
 
-    UserMailer.deliver_new_password_notification(@project_team_member)
+    UserMailer.deliver_new_password_notification(@project_team_member) if @project_team_member.user.password
   end
 
   # PUT /project_team_members/1
