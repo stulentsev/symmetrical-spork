@@ -9,7 +9,10 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :course_student_profiles
 
-  map.resources :courses
+  map.resources :courses, :has_one => :first_week_methodology,
+  :member => {:language_choice => :get}
+
+  #map.resources :fisrt_week_methodologies
 
   map.resource :account, :controller => "users"
   map.resources :users

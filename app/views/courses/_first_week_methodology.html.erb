@@ -1,0 +1,39 @@
+
+<% remote_form_for(:first_week_methodology, @course.first_week_methodology,
+:url => course_first_week_methodology_path(@course),
+:html => {:method => 'put'}
+ ) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </p>
+  <p>
+    <%= f.label :date_from %><br />
+    <%= f.date_select :date_from %>
+  </p>
+  <p>
+    <%= f.label :date_to %><br />
+    <%= f.date_select :date_to %>
+  </p>
+  <p>
+    <%= f.label :estrategy %><br />
+    <%= f.text_area :estrategy %>
+  </p>
+  <p>
+    <%= f.label :aspects %><br />
+    <%= f.text_area :aspects %>
+  </p>
+  <p>
+    <%= f.label :difficulties %><br />
+    <%= f.text_area :difficulties %>
+  </p>
+  <p>
+    <%= f.label :sugestion %><br />
+    <%= f.text_area :sugestion %>
+  </p>
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>

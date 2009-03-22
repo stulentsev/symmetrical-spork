@@ -4,4 +4,8 @@ class Course < ActiveRecord::Base
   has_many :activities
   has_many :partners
   has_one :first_week_methodology
+
+  def after_initialize
+    self.first_week_methodology ||= FirstWeekMethodology.new()
+  end
 end
