@@ -1,6 +1,6 @@
-<h2>Metodologia na semana da acolhida</h2>
-<% remote_form_for(:first_week_methodology, @course.first_week_methodology,
-:url => course_first_week_methodology_path(@course),
+<h2>Metodologia para rodízio</h2>
+<% remote_form_for(:rotate_methodology, @course.rotate_methodology,
+:url => course_rotate_methodology_path(@course),
 :html => {:method => 'put'}
  ) do |f| %>
   <%= f.error_messages %>
