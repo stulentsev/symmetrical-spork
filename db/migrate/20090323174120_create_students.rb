@@ -11,6 +11,7 @@ class CreateStudents < ActiveRecord::Migration
       t.text :why_oi_kabum
       t.text :observed_characteristics
       t.integer :user_id
+      t.integer :course_id
 
       t.timestamps
     end
