@@ -1,39 +1,49 @@
-<h2>Metodologia para rodízio</h2>
 <% remote_form_for(:rotate_methodology, @course.rotate_methodology,
 :url => course_rotate_methodology_path(@course),
 :html => {:method => 'put'}
  ) do |f| %>
-  <%= f.error_messages %>
-
-  <p>
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </p>
-  <p>
-    <%= f.label :date_from %><br />
-    <%= f.date_select :date_from %>
-  </p>
-  <p>
-    <%= f.label :date_to %><br />
-    <%= f.date_select :date_to %>
-  </p>
-  <p>
-    <%= f.label :estrategy %><br />
-    <%= f.text_area :estrategy %>
-  </p>
-  <p>
-    <%= f.label :aspects %><br />
-    <%= f.text_area :aspects %>
-  </p>
-  <p>
-    <%= f.label :difficulties %><br />
-    <%= f.text_area :difficulties %>
-  </p>
-  <p>
-    <%= f.label :sugestion %><br />
-    <%= f.text_area :sugestion %>
-  </p>
-  <p>
-    <%= f.submit "Create" %>
-  </p>
+<li>
+  <h2 class="aberto"><a href="#">Período de Rodízio</a></h2>
+  <p class="status">status: <span class="em-branco"><strong>em branco</strong></span></p>
+  <p class="topo"><a href="#">topo</a></p>
+  <ol><!-- INICIO CONTEUDO NUMERADO-->
+    <li>
+      <h4><label for="obj1">Descreva a metodologia utilizada para o rodízio pelas linguagens:</label></h4>
+      <p><%= f.text_area :description, :cols => 100, :rows =>  15 %></p>
+      <p class="right"><%= f.submit "Salvar" %></p>
+      <hr />
+    </li>
+    <li>
+      <h4><label for="obj4">Período:</label></h4>
+      <div class="max2">
+        <p class="col1">Início em: <%= f.date_select :date_from -%> a <%= f.date_select :date_to -%></p>
+        <p class="right col2"><%= f.submit "Salvar" %></p>
+        <hr />
+      </div>
+    </li>
+    <li>
+      <h4><label for="obj1">Estratégia Utilizada:</label></h4>
+      <p><%= f.text_area :estrategy, :cols => 100, :rows =>  15 %></p>
+      <p class="right"><%= f.submit "Salvar" %></p>
+      <hr />
+    </li>
+    <li>
+			<h4><label for="obj1">Aspectos Facilitadores:</label></h4>
+			<p><%= f.text_area :aspects, :cols => 100, :rows =>  15 %></p>
+			<p class="right"><%= f.submit "Salvar" %></p>
+			<hr />
+		</li>
+		<li>
+			<h4><label for="obj1">Dificuldades Apresentadas:</label></h4>
+			<p><%= f.text_area :difficulties, :cols => 100, :rows =>  15 %></p>
+			<p class="right"><%= f.submit "Salvar" %></p>
+			<hr />
+		</li>
+		<li>
+		  <h4><label for="obj1">Sugestões de Mudança:</label></h4>
+		  <p><%= f.text_area :sugestion, :cols => 100, :rows =>  15 %></p>
+		  <p class="right"><%= f.submit "Salvar" %></p>
+    </li>
+  </ol>
+</li>
 <% end %>
