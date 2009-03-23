@@ -12,8 +12,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :course_student_profiles
 
   map.resources :courses,
-  :has_one => [:first_week_methodology, :rotate_methodology],
-  :member => {:language_choice => :get}
+                :has_one => [:first_week_methodology, :rotate_methodology],
+                :member => {:language_choice => :get}
 
   #map.resources :fisrt_week_methodologies
 
