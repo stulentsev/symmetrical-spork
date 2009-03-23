@@ -1,0 +1,48 @@
+<p>
+  <b>Name:</b>
+  <%=h @student.name %>
+</p>
+
+<p>
+  <b>Age:</b>
+  <%=h @student.age %>
+</p>
+
+<p>
+  <b>Application number:</b>
+  <%=h @student.application_number %>
+</p>
+
+<p>
+  <b>Photo file:</b>
+  <%=h @student.photo_file %>
+</p>
+
+<p>
+  <b>Schooling:</b>
+  <%=h @student.schooling_id %>
+</p>
+
+<p>
+  <b>Language:</b>
+  <%=h @student.language_id %>
+</p>
+
+<p>
+  <b>Technical expertise degree:</b>
+  <%=h @student.technical_expertise_degree %>
+</p>
+
+<p>
+  <b>Why oi kabum:</b>
+  <%=h @student.why_oi_kabum %>
+</p>
+
+<p>
+  <b>Observed characteristics:</b>
+  <%=h @student.observed_characteristics %>
+</p>
+
+
+<%= link_to 'Edit', edit_student_path(@student) %> |
+<%= link_to 'Back', students_path %>

@@ -1,0 +1,36 @@
+<h1>Listing students</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Age</th>
+    <th>Application number</th>
+    <th>Photo file</th>
+    <th>Schooling</th>
+    <th>Language</th>
+    <th>Technical expertise degree</th>
+    <th>Why oi kabum</th>
+    <th>Observed characteristics</th>
+  </tr>
+
+<% for student in @students %>
+  <tr>
+    <td><%=h student.name %></td>
+    <td><%=h student.age %></td>
+    <td><%=h student.application_number %></td>
+    <td><%=h student.photo_file %></td>
+    <td><%=h student.schooling_id %></td>
+    <td><%=h student.language_id %></td>
+    <td><%=h student.technical_expertise_degree %></td>
+    <td><%=h student.why_oi_kabum %></td>
+    <td><%=h student.observed_characteristics %></td>
+    <td><%= link_to 'Show', student %></td>
+    <td><%= link_to 'Edit', edit_student_path(student) %></td>
+    <td><%= link_to 'Destroy', student, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New student', new_student_path %>

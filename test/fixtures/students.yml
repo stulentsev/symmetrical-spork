@@ -1,0 +1,23 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  age: 1
+  application_number: MyString
+  photo_file: MyString
+  schooling_id: 1
+  language_id: 1
+  technical_expertise_degree: MyText
+  why_oi_kabum: MyText
+  observed_characteristics: MyText
+
+two:
+  name: MyString
+  age: 1
+  application_number: MyString
+  photo_file: MyString
+  schooling_id: 1
+  language_id: 1
+  technical_expertise_degree: MyText
+  why_oi_kabum: MyText
+  observed_characteristics: MyText
