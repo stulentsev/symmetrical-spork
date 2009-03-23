@@ -1,17 +1,18 @@
-
-<% fields_for partner do |f| %>
-  <%= f.error_messages %>
-
-  <%= f.hidden_field :course_id %>
-  <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :purpose %><br />
-    <%= f.text_area :purpose %>
-  </p>
-  <p>
-    <%= remote_submit_for_object partner, 'Salvar' %>
-  </p>
-<% end %>
+<div class="form">
+	<% fields_for partner do |f| %>
+	<%= f.hidden_field :course_id %>
+		<ol>
+			<li>
+				<h4><label for="obj7">Parcerias Estabelecidas:</label><%= f.text_field :name %></h4>
+				<hr />
+			</li>
+			<li>
+				<h4><label for="obj8">Finalidade da Parceria:</label></h4>
+				<p>
+					<%= f.text_area :purpose, :rows => 15, :cols => 100 %>
+				</p>
+			</li>
+		</ol>
+		<p class="submit"><%= remote_submit_for_object partner, 'Salvar' %></p>
+	<%end%>
+</div>

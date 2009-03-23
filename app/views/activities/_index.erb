@@ -1,15 +1,13 @@
-<h2>Planejamento</h2>
-
 <div id='activity_create_edit_form'>
     <%= render :partial => 'activities/activity_new',
                :locals => {:activity => activity,
                            :course_id => course.id} %>
 </div>
-
 <div id='planejamento_language_activities_groups'>
-    <% course.activities.group_by(&:language).each do |lang, activities| %>
-
-        <%= render :partial => 'activities/list_grouped',
-                   :locals => {:language => lang} %>
-    <% end %>
+<ul class="table">
+<% course.activities.group_by(&:language).each do |lang, activities| %>
+    <%= render :partial => 'activities/list_grouped',
+                        :locals => {:language => lang} %>
+<% end %>
+</ul>
 </div>

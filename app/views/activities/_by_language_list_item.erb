@@ -1,10 +1,8 @@
 <tr id='by_language_<%= by_language_list_item.language.id %>_list_item_<%= by_language_list_item.id %>'>
-    <td><%= h by_language_list_item.propositions %></td>
-    <td><%= by_language_list_item.period_from %> - <%= by_language_list_item.period_to %></td>
-    <td><%= h by_language_list_item.methodology %></td>
-    <td>
-        <%= link_to_remote image_tag('delete.png', :class => "cmd"),
+	<td><span class="principal">Nome da Atividade==PERGUNTAR==</span></td>
+	<td><%= h by_language_list_item.methodology %> <a href="#" class="botao-inline">[expandir]</a></td>
+	<td><%= by_language_list_item.period_from %> a <%= by_language_list_item.period_to %></td>
+	<td><%= link_to_remote image_tag('delete.png', :class => "cmd"),
                            :url => activity_path(by_language_list_item.id),
-                           :method => :delete %>
-    </td>
+                           :method => :delete %></td>
 </tr>
