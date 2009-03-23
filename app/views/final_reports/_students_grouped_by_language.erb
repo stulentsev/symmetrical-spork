@@ -1,1 +1,8 @@
-<%= 'students grouped by language' %>
+<% @course.students.group_by(&:language).each do |lang, students| %>
+    <div>
+        <h3><%= lang.name %></h3>
+        <ul class='thumbs'>
+            <%= render :partial => 'student_line', :collection => students %>
+        </ul>
+    </div>
+<% end %>
