@@ -5,11 +5,11 @@ class CreateSchoolings < ActiveRecord::Migration
 
       t.timestamps
     end
-    
-    Schooling.create(:name => 'Fundamental incompleto')
-    Schooling.create(:name => 'Fundamental completo')
-    Schooling.create(:name => 'Ensino medio incompleto')
-    Schooling.create(:name => 'Ensino medio completo')
+
+    Schooling.create(:name => 'Fundamental Incompleto')
+    Schooling.create(:name => 'Fundamental Completo')
+    Schooling.create(:name => 'Médio Incompleto')
+    Schooling.create(:name => 'Médio Completo')
   end
 
   def self.down

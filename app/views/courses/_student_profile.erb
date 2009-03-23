@@ -1,20 +1,27 @@
 <% fields_for :student_profile, profile do |sp| %>
-<p>
-    <%= sp.label :sex %><br/>
-    <%= sp.select :sex, [['Masculine', 'M'], ['Feminine', 'F']] %>
-</p>
-<p>
-    <%= sp.label :age_from %>
-    <%= sp.text_field :age_from, :size => 2 %> &nbsp;
-    <%= sp.label :age_to %> &nbsp;
-    <%= sp.text_field :age_to, :size => 2 %>
-</p>
-<p>
-    <%= sp.label :schooling_id %><br/>
-    <%= sp.select :schooling_id, Schooling.find(:all).map {|s| [s.name, s.id]} %>
-</p>
-<p>
-    <%= sp.label :observations %><br/>
-    <%= sp.text_area :observations %>
-</p>
+<ol>
+	<li>
+		<div class="max2">
+			<h4 class="col1"><label for="obj7">Sexo:</label>
+				<%= sp.select :sex, [['Masculino', 'M'], ['Feminino', 'F'], ['Ambos', 'A']] %>
+			</h4>
+			<h4 class="col2">
+				<label for="obj7">Idades entre:</label>
+					<%= sp.text_field :age_from, :size => 2 %> e
+					<%= sp.text_field :age_to, :size => 2 %> anos.
+			</h4>
+		</div>
+			<h4><label for="obj7">Escolaridade:</label>
+			  <%= sp.select :schooling_id, Schooling.find(:all).map {|s| [s.name, s.id]}, { :include_blank => true } %>
+			</h4>
+		<hr />
+	</li>
+	<li>
+		<h4><label for="obj8">Observações:</label></h4>
+		<p>
+			<%= sp.text_area :observations, :rows => 15, :cols => 100 %>
+		</p>
+	</li>
+</ol>
+<p class="submit"><%= sp.submit "Salvar" %></p>
 <% end %>

@@ -1,12 +1,10 @@
 <tr id='partner_line_<%= partner_line.id %>'>
-    <td><%= h partner_line.name %></td>
-    <td><%= (h partner_line.purpose) %></td>
-    <td>
-        <%= link_to_remote image_tag('edit.png', :class => 'cmd'),
+	<td><span class="principal"><%= h partner_line.name %></span></td>
+	<td><%= (h partner_line.purpose) %> <a href="#" class="botao-inline">[expandir]</a></td>
+	<td class="no-print"><%= link_to_remote '[editar]', :class => 'botao-inline',
                            :url => edit_partner_path(partner_line),
-                           :method => :get %>
-        <%= link_to_remote image_tag('delete.png', :class => 'cmd'),
+                           :method => :get %><br/>
+        <%= link_to_remote '[deletar]', :class => 'botao-inline',
                            :url => partner_path(partner_line),
-                           :method => :delete %>
-    </td>
+                           :method => :delete %></td>
 </tr>
