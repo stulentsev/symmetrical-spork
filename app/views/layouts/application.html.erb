@@ -4,14 +4,115 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-  <title><%= controller.controller_name %>: <%= controller.action_name %></title>
-  <%= stylesheet_link_tag 'scaffold' %>
-  <%= stylesheet_link_tag 'application' %>
+  <title>OI KABUM! Extranet/ Marco Zero</title>
+  <meta name="description" content="OI KABUM!" />
+  <meta name="keywords" content="OI KABUM!" />
+
+  <%= stylesheet_link_tag 'all' %>
   <%= javascript_include_tag :defaults %>
 </head>
-<body>
+<body class="interna">
 
-<h1>Oi Kabum!</h1>
+<div id="principal">
+  <div class="fixed-wrap overlay">
+    <div class="fixed">
+      <div id="barra"></div>
+
+      <h1 id="logo"><a href="#"><%= image_tag('oi_kabum_extranet.png', :size => '148x124', :alt => "OI KABUM! Extranet")%></a></h1>
+
+      <div id="user">
+        <p><%= current_user.login %> <span class="separa">|</span><%= link_to "efetuar log-off", user_session_path, :method => :delete %></p>
+      </div>
+    </div>
+  </div>
+
+
+  <h1 class="no-display">Marco Zero</h1>
+  <div id="corpo">
+    <div class="aviso-wrap"><!-- AVISO -->
+      <div class="aviso">
+        <p><strong>Importante: Deadline para preenchimento<br /> de Marco Zero até o dia XX/XX/2009</strong></p>
+        <p><small>caso já tenha preenchido, finalize o processo no <a href="#">botão correspondente</a>.</small></p>
+      </div>
+    </div>
+    <%= yield  %>
+  </div>
+
+
+
+
+
+
+
+
+  <hr class="no-display" />
+
+
+  <div class="fixed-wrap">
+    <div class="fixed">
+      <div id="header"></div>
+
+      <div id="menu">
+        <h5 class="no-display">Menu Principal</h5>
+        <ul>
+          <li <%= 'class="selected"' if params[:action] == 'edit' %> ><%= link_to "Marco Zero", edit_course_path(1) %></li>
+          <li <%= 'class="selected"' if params[:action] == 'language_choice' %> ><%= link_to "Escolha das Linguagens", language_choice_course_path(1) %></li>
+          <li><a href="c_relatorio_01.html">Relatórios de Conteúdo</a></li>
+          <li><a href="d_relatorio_f.html">Relatório Final</a></li>
+          <li><a href="e_relatorio_edu.html">Relatório Educadores</a></li>
+        </ul>
+      </div>
+
+      <div id="lateral">
+        <h5 class="fundo">Navegação Rápida</h5>
+        <ul>
+          <li class="preenchido"><a href="#">Período</a></li>
+          <li class="em-branco"><a href="#">Descritivos</a></li>
+          <li class="em-branco"><a href="#">Perfil Geral dos Jovens</a></li>
+          <li class="em-branco"><a href="#">Equipe do Projeto</a></li>
+          <li class="em-branco"><a href="#">Planejamento</a></li>
+          <li class="em-branco"><a href="#">Parceiros Envolvidos</a></li>
+          <li class="em-branco"><a href="#">Observações Finais</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div id="footer">
+    <div class="col max">
+      <h5>Coordenadores</h5>
+      <ul>
+        <li><a href="a_marcozero.html"><strong>Marco Zero</strong></a></li>
+        <li><a href="b_linguagem.html"><strong>Escolha das Linguagens</strong></a></li>
+        <li><a href="c_relatorio_01.html"><strong>Relatórios de Conteúdo</strong></a></li>
+      </ul>
+    </div>
+    <div class="col max no-title">
+      <ul>
+        <li><a href="d_relatorio_f.html"><strong>Relatório Final</strong></a></li>
+        <li><a href="e_relatorio_edu.html"><strong>Relatório Educadores</strong></a></li>
+      </ul>
+    </div>
+    <div class="col max">
+      <h5>Contato Oi Futuro</h5>
+      <ul>
+        <li><strong>Edson Cardoso Nunes</strong></li>
+        <li><a href="#">edson@oifuturo.gov.br</a></li>
+        <li>21 9000-0000 (ramal 001)</li>
+      </ul>
+    </div>
+    <div class="col min">
+      <h5>Ações</h5>
+      <ul>
+        <li><a href="#"><strong>Imprimir página</strong></a></li>
+        <li><a href="#"><strong>Voltar ao topo</strong></a></li>
+        <li><a href="#"><strong>Efetuar log-off</strong></a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
 <%= pluralize User.logged_in.count, "user" %> currently logged in<br />
  <br />
 <br />
@@ -25,9 +126,17 @@
   <%= link_to "Logout", user_session_path, :method => :delete, :confirm => "Are you sure you want to logout?" %>
 <% end %>
 
+<div id='messages'>
+</div>
+
+<% tabnav :coordinator do %>
 <p style="color: green"><%= flash[:notice] %></p>
 
-<%= yield  %>
+<%#= yield  %>
+<% end %>
+
+
+
 
 </body>
 </html>

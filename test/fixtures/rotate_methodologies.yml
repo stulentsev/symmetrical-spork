@@ -1,0 +1,21 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  description: MyText
+  date_from: 2009-03-22
+  date_to: 2009-03-22
+  estrategy: MyText
+  aspects: MyText
+  difficulties: MyText
+  sugestion: MyText
+  course: 
+
+two:
+  description: MyText
+  date_from: 2009-03-22
+  date_to: 2009-03-22
+  estrategy: MyText
+  aspects: MyText
+  difficulties: MyText
+  sugestion: MyText
+  course: 

@@ -1,0 +1,4 @@
+page.replace_html 'messages', 'Escolha das linguagens atualizado.'
+page.visual_effect(:highlight, "messages")
+page['first_week_methodology_description'].focus()
+page << "$('messages').focus()"

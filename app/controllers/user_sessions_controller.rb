@@ -4,6 +4,8 @@ class UserSessionsController < ApplicationController
 
   def new
     @user_session = UserSession.new
+
+    render :layout => 'login'
   end
 
   def create
@@ -12,7 +14,7 @@ class UserSessionsController < ApplicationController
       flash[:notice] = "Login successful!"
       redirect_back_or_default account_url
     else
-      render :action => :new
+      render :action => :new, :layout => "login"
     end
   end
 

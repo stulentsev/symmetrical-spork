@@ -92,4 +92,9 @@ class CoursesController < ApplicationController
     end
   end
 
+  def language_choice
+    @course =Course.find(params[:id])
+    #@first_week_methodology = FirstWeekMethodology.find_or_create_by_course_id(params[:id])
+  end
+
 end

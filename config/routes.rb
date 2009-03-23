@@ -9,7 +9,11 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :course_student_profiles
 
-  map.resources :courses
+  map.resources :courses,
+  :has_one => [:first_week_methodology, :rotate_methodology],
+  :member => {:language_choice => :get}
+
+  #map.resources :fisrt_week_methodologies
 
   map.resource :account, :controller => "users"
   map.resources :users
@@ -28,7 +32,7 @@ ActionController::Routing::Routes.draw do |map|
   # This route can be invoked with purchase_url(:id => product.id)
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
-  #   map.resources :products
+  #   map.resources :produfirst_weekcts
 
   # Sample resource route with options:
   #   map.resources :products, :member => { :short => :get, :toggle => :post }, :collection => { :sold => :get }
