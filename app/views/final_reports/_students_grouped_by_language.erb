@@ -1,8 +1,20 @@
+<%= javascript_tag("
+    function show_students(target)
+    {
+        $$('.student_group_div').each(function (e) {e.hide();});
+
+        var el = $(target).next('div');
+        el.appear();
+    }
+") %>
+
 <% @course.students.group_by(&:language).each do |lang, students| %>
     <div>
-        <h3><%= lang.name %></h3>
-        <ul class='thumbs'>
-            <%= render :partial => 'student_line', :collection => students %>
-        </ul>
+        <h3 style='cursor: pointer' onclick='show_students(this)'><%= lang.name %></h3>
+        <div class="student_group_div" style="display: none">
+            <ul class='thumbs'>
+                <%= render :partial => 'student_line', :collection => students %>
+            </ul>
+        </div>
     </div>
 <% end %>
