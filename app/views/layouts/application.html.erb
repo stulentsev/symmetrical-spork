@@ -58,7 +58,7 @@
           <li <%= 'class="selected"' if params[:action] == 'edit' %> ><%= link_to "Marco Zero", edit_course_path(1) %></li>
           <li <%= 'class="selected"' if params[:action] == 'language_choice' %> ><%= link_to "Escolha das Linguagens", language_choice_course_path(1) %></li>
           <li><a href="c_relatorio_01.html">Relatórios de Conteúdo</a></li>
-          <li><a href="d_relatorio_f.html">Relatório Final</a></li>
+          <li><%= link_to "Relatório Final", edit_course_final_report_path(1) %>"</li>
           <li><a href="e_relatorio_edu.html">Relatório Educadores</a></li>
         </ul>
       </div>

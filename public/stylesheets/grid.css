@@ -855,12 +855,12 @@ http://www.arterial.tv
 
 	textarea {
 		width: 668px;
-		border: 1px solid #EEEAE5;
+		border: 1px solid black;
 		padding: 4px;
 	}
 
 	input {
-		border: 1px solid #EEEAE5;
+		border: 1px solid black;
 		padding: 4px;
 	}
 

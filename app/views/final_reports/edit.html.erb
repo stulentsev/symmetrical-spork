@@ -1,0 +1,60 @@
+<div id='course_final_report_div'>
+    <%= render :partial => 'students_grouped_by_language' %>
+
+    <% remote_form_for @course, :url => {:controller => :final_reports, :action => :update} do |f| %>
+        <p>
+            <%= f.label :how_many_finished %>
+            <%= f.text_field :how_many_finished, :size => 3 %>
+        </p>
+
+        <p>
+            <%= f.label :how_many_are_employed %>
+            <%= f.text_field :how_many_are_employed, :size => 3 %>
+        </p>
+
+        <p>
+            <%= f.label :resource_application %><br/>
+            <%= f.text_area :resource_application %>
+        </p>
+
+        <p>
+            <%= f.label :how_many_will_act %>
+            <%= f.text_field :how_many_will_act, :size => 3 %>
+        </p>
+
+        <p>
+            <%= f.label :how_many_continue_studying %>
+            <%= f.text_field :how_many_continue_studying, :size => 3 %>
+        </p>
+
+        <p>
+            <%= f.label :reflections_on_evolution_of_objectives %><br/>
+            <%= f.text_area :reflections_on_evolution_of_objectives %>
+        </p>
+
+        <p>
+            <%= f.label :results_expected_not_achieved %><br/>
+            <%= f.text_area :results_expected_not_achieved %>
+        </p>
+
+        <p>
+            <%= f.label :results_not_expected_achieved %><br/>
+            <%= f.text_area :results_not_expected_achieved %>
+        </p>
+
+        <p>
+            <%= f.label :internship_experience_report %><br/>
+            <%= f.text_area :internship_experience_report %>
+        </p>
+
+        <p>
+            <%= f.label :conclusions %><br/>
+            <%= f.text_area :conclusions %>
+        </p>
+
+        <p>
+            <%= f.submit 'Finalizar relatorio' %>
+        </p>
+
+    <% end %>
+</div>

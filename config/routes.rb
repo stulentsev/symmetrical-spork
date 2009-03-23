@@ -15,6 +15,9 @@ ActionController::Routing::Routes.draw do |map|
                 :has_one => [:first_week_methodology, :rotate_methodology],
                 :member => {:language_choice => :get}
 
+  map.resources :courses,
+                :has_one => [:final_report]
+
   #map.resources :fisrt_week_methodologies
 
   map.resource :account, :controller => "users"

@@ -1,0 +1,1 @@
+page.replace_html 'course_final_report_div', '<h2>Final report filled!</h2>'
