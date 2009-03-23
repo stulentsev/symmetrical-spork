@@ -1,21 +1,21 @@
-<h2>Equipe do projeto</h2>
-<h3>Novo membro</h3>
 <div id='project_team_member_create_edit_form'>
-    <%= render :partial => 'project_team_members/team_member_new',
-               :locals => {:project_team_member => project_team_member} %>
+<%= render :partial => 'project_team_members/team_member_new',
+                    :locals => {:project_team_member => project_team_member} %>
 </div>
-
-<h3>Membros existentes</h3>
-<div>
-    <table id="project_team_members_table">
+<ul class="table">
+  <li>
+    <table id="project_team_members_table" summary="">
+      <thead>
         <tr>
-            <th><%= (:name) %></th>
-            <th><%= (:function) %></th>
-            <th><%= (:description) %></th>
-            <th><%= (:curriculum) %></th>
-            <th><%= (:actions) %></th>
+          <td class="w150">Nome</td>
+          <td>Descrição</td>
+          <td class="w75 no-print">Currículo</td>
+          <td class="w75 no-print">Ações</td>
         </tr>
+      </thead>
+      <tbody>
         <%= render :partial => 'project_team_members/team_member_row', :collection => course.team_members %>
+      </tbody>
     </table>
-
-</div>
+  </li>
+</ul>

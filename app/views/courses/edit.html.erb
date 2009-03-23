@@ -1,65 +1,117 @@
-<h1>Editing course</h1>
-
 <% form_for(@course) do |f| %>
-    <%= f.error_messages %>
+<ul><!-- TODO CONTEUDO ENTRA NESSA UL -->
+  <li>
+    <h2 class="aberto"><a href="#">Período da Turma</a></h2>
+    <p class="topo"><a href="#">topo</a></p>
+    <ol>
+      <li>
+        <h4>Período de <%= @course.period_from.month %> de <%= @course.period_from.year %>  a <%= @course.period_to.month %>  de <%= @course.period_to.year %> </h4>
+      </li>
+    </ol>
+  </li>
+  <li>
+    <h2 class="aberto"><a href="#">Descritivos</a></h2>
+    <p class="status">status: <span class="em-branco"><strong>em branco</strong></span></p>
+    <p class="topo"><a href="#">topo</a></p>
+    <ol><!-- INICIO CONTEUDO NUMERADO-->
+      <li>
+        <h4><label for="obj1">Quais são os objetivos a serem alcançados neste período?</label></h4>
+        <p><%= f.text_area :objectives, :rows => 15, :cols => 100 %></p>
+        <p class="right"><%= f.submit "Salvar" %></p>
+        <hr />
+      </li>
+      <li>
+        <h4><label for="obj1">Quais são os resultados esperados?</label></h4>
+        <p><%= f.text_area :results, :rows => 15, :cols => 100 %></p>
+        <p class="right"><%= f.submit "Salvar" %></p>
+        <hr />
+      </li>
 
-    <p>
-        <table>
-            <tr>
-                <td>
-                    <%= f.label :period_from %><br/>
-                    <%= @course.period_from %>
-                </td>
-                <td>
-                    <%= f.label :period_to %><br/>
-                    <%= @course.period_to %>
-                </td>
-            </tr>
-        </table>
-    </p>
-    <p>
-        <%= f.label :objectives %><br/>
-        <%= f.text_area :objectives %>
-    </p>
-    <p>
-        <%= f.label :results %><br/>
-        <%= f.text_area :results %>
-    </p>
-    <p>
-        <%= f.label :professors_selection_process %><br/>
-        <%= f.text_area :professors_selection_process %>
-    </p>
-    <p>
-        <%= f.label :students_selection_process %><br/>
-        <%= f.text_area :students_selection_process %>
-    </p>
-    <p>
-        <%= f.label :communities %><br/>
-        <%= f.text_area :communities %>
-    </p>
-    <p>
-        <%= render :partial => 'student_profile', :locals => {:profile => @course.student_profile} %>
-    </p>
-    <p>
-        <%= render :partial => 'project_team_members/show_for_course' ,
-                   :locals => {:course => @course,
-                               :project_team_member => @project_team_member} %>
-    </p>
-    <p>
-        <%= render :partial => 'activities/index' ,
-                   :locals => {:course => @course,
-                               :activity => @activity} %>
-    </p>
-    <p>
-        <%= render :partial => 'partners/index' ,
+      <li>
+        <h4><label for="obj1">Descreva como foi o processo seletivo:</label></h4>
+        <p><%= f.text_area :professors_selection_process, :rows => 15, :cols => 100 %></p>
+        <p class="right"><%= f.submit "Salvar" %></p>
+        <hr />
+      </li>
+      <li>
+        <h4><label for="obj1">Descreva quais comunidades e o perfil das que foram atendidas nesta edição do programa:</label></h4>
+        <p><%= f.text_area :communities, :rows => 15, :cols => 100 %></p>
+        <p class="right"><%= f.submit "Salvar" %></p>
+        <hr />
+      </li>
+      <li>
+        <h4><label for="obj1">Descreva o perfil geral dos jovens selecionados:</label></h4>
+        <p><%= f.text_area :students_selection_process, :rows => 15, :cols => 100 %></p>
+        <p class="right"><%= f.submit "Salvar" %></p>
+      </li>
+    </ol>
+  </li>
+  <li>
+    <h2 class="aberto"><a href="#">Perfil Geral dos Jovens</a></h2>
+    <p class="status">status: <span class="em-branco"><strong>em branco</strong></span></p>
+    <p class="topo"><a href="#">topo</a></p>
+    <div class="form">
+      <%= render :partial => 'student_profile', :locals => {:profile => @course.student_profile} %>
+    </div>
+  </li>
+  <li>
+    <h2 class="aberto"><a href="#">Equipe do Projeto</a> <a href="#" class="botao-inline">[adicionar]</a></h2>
+    <p class="status">status: <span class="em-branco"><strong>em branco</strong></span></p>
+    <p class="topo"><a href="#">topo</a></p>
+    <%= render :partial => 'project_team_members/show_for_course',
+                        :locals => {:course => @course,
+                        :project_team_member => @project_team_member} %>
+  </li>
+  <li>
+    <h2 class="aberto"><a href="#">Planejamento</a> <a href="#" class="botao-inline">[adicionar]</a></h2>
+    <p class="status">status: <span class="em-branco"><strong>em branco</strong></span></p>
+    <p class="topo"><a href="#">topo</a></p>
+    <%= render :partial => 'activities/index' ,
+                        :locals => {:course => @course,
+                        :activity => @activity} %>
+  </li>
+  <li>
+		<h2 class="aberto"><a href="#">Parceiros Envolvidos</a> <a href="#" class="botao-inline">[adicionar]</a></h2>
+		<p class="status">status: <span class="em-branco"><strong>em branco</strong></span></p>
+		<p class="topo"><a href="#">topo</a></p>
+		<%= render :partial => 'partners/index' ,
                    :locals => {:course => @course,
                                :partner => @partner} %>
-    </p>
-    <p>
-        <%= f.submit "Update" %>
-    </p>
+	</li>
 
-<% end %>
 
-<%= link_to 'Show', @course %> |
-<%= link_to 'Back', courses_path %>
+
+
+
+
+
+
+
+
+	<li>
+					<h2 class="aberto"><a href="#">Observações Finais==TODO==</a></h2>
+					<p class="status">status: <span class="em-branco"><strong>em branco</strong></span></p>
+					<p class="topo"><a href="#">topo</a></p>
+					<ol>
+						<li>
+							<form action="index.html">
+								<h4><label for="obj9">Comentários da Coordenação:==TODO== <small>(não é obrigatório)</small></label></h4>
+								<p><textarea rows="15" cols="100" id="obj9">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi. Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Nullam mollis. Ut justo. Suspendisse potenti.</textarea></p>
+								<p class="right"><input type="submit" value="Salvar" /></p>
+							</form>
+							<hr />
+						</li>
+						<li>
+							<h4>Comentários do Oi Futuro:==TODO==</h4>
+							<div class="comentario">
+								<p>{Área preenchida pelo gestor}</p>
+							</div>
+						</li>
+					</ol>
+				</li>
+
+</ul>
+<div id="finalizar">
+  <a href="#">Finalizar Relatório</a>
+</div>
+<%end%>

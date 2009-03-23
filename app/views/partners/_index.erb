@@ -1,18 +1,23 @@
-<h2>Parceiros envolvidos</h2>
-
 <div id='partner_create_edit_form'>
     <%= render :partial => 'partners/partner_new',
                :locals => {:partner => partner} %>
 </div>
 
 <div id='partners_list_div'>
-    <table id='partners_list'>
-        <tr>
-            <th>Nome do parceiro</th>
-            <th>Finalidade</th>
-            <th>O que fazer?</th>
-        </tr>
-        <%= render :partial => 'partners/partner_line',
-                   :collection => course.partners %>
-    </table>
-</div>
+<ul class="table">
+	<li>
+		<table summary="{Nome do Parceiro}" id='partners_list'>
+			<thead>
+				<tr>
+					<td class="w150">Nome do Parceiro</td>
+					<td>Descrição</td>
+					<td class="w75 no-print">Ações</td>
+				</tr>
+			</thead>
+			<tbody>
+			<%= render :partial => 'partners/partner_line',
+         :collection => course.partners %>
+      </tbody>
+		</table>
+	</li>
+</ul>

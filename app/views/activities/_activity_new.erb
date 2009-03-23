@@ -1,43 +1,32 @@
-
+<div class="form">
 <% fields_for activity do |f| %>
-    <%= f.error_messages %>
-
-    <%= f.hidden_field :course_id %>
-    <p>
-        <%= f.label :language_id %><br/>
-        <%= f.select :language_id, Language.find(:all).map {|lang| [lang.name, lang.id]} %>
-    </p>
-    <p>
-        <table>
-            <tr>
-                <td>
-                    <%= f.label :period_from %><br/>
-                    <%= f.date_select :period_from %>
-                </td>
-                <td>
-                    <%= f.label :period_to %><br/>
-                    <%= f.date_select :period_to %>
-                </td>
-            </tr>
-        </table>
-    </p>
-    <p>
-    </p>
-    <p>
-        <table>
-            <tr>
-                <td>
-                    <%= f.label :propositions %><br/>
-                    <%= f.text_area :propositions %>
-                </td>
-                <td>
-                    <%= f.label :methodology %><br/>
-                    <%= f.text_area :methodology %>
-                </td>
-            </tr>
-        </table>
-    </p>
-    <p>
-        <%= remote_submit_for_object activity, 'Salvar' %>
-    </p>
-<% end %>
+<%= f.hidden_field :course_id %>
+	<ol>
+		<li>
+			<div class="max2">
+				<h4 class="col1"><label for="obj4">Linguagem:</label>
+					<%= f.select :language_id, Language.find(:all).map {|lang| [lang.name, lang.id]} %>
+				</h4>
+				<h4 class="col2"><label for="obj4">Período:</label>
+				<%= f.date_select :period_from %> a <%= f.date_select :period_to %>
+				</h4>
+			</div>
+			<hr />
+		</li>
+		<li>
+			<h4><label for="obj5">Atividades Propostas:</label></h4>
+			<p>
+				<%= f.text_area :propositions, :rows => 15, :cols => 100 %>
+			</p>
+			<hr />
+		</li>
+		<li>
+			<h4><label for="obj6">Metodologia:</label></h4>
+			<p>
+				<%= f.text_area :methodology, :rows => 15, :cols => 100 %>
+			</p>
+		</li>
+	</ol>
+	<p class="submit"><%= remote_submit_for_object activity, 'Salvar' %></p>
+<%end%>
+</div>

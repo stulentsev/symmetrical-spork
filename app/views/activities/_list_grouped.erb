@@ -1,13 +1,22 @@
 <div id='by_language_<%= language.id %>_div'>
-    <h2><%= language.name %></h2>
-    <table id='by_language_<%= language.id %>_list'>
-        <tr>
-            <th>Atividades</th>
-            <th>Periodo</th>
-            <th>Propostas</th>
-            <th>O que fazer?</th>
-        </tr>
-        <%= render :partial => 'activities/by_language_list_item',
+<li><h3 class="aberto"><a href="#"><%= language.name %></a></h3>
+	<ul>
+		<li>
+			<table summary="<%= language.name %>" id='by_language_<%= language.id %>_list'>
+				<thead>
+					<tr>
+						<td class="w200">Atividades Propostas</td>
+						<td>Metodologia</td>
+						<td class="w75">Período</td>
+						<td class="w75 no-print">Ações</td>
+					</tr>
+				</thead>
+				<tbody>
+				<%= render :partial => 'activities/by_language_list_item',
                    :collection => language.activities %>
-    </table>
+        </tbody>
+				</table>
+		</li>
+	</ul>
+</li>
 </div>
