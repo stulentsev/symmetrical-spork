@@ -2,17 +2,16 @@
     <li class="col1">
         <h2>Detalhes de Preenchimento</h2>
         <ul id="dash-status">
-            <% current_user.reports_with_deadlines.each do |rwd| %>
-                <li class='<%= get_css_class_by_report_status(rwd.status) %>'>
-                    <% link_text = "#{rwd.name}<small>#{get_label_by_report_status rwd.status}</small>" %>
-                    <%= if rwd.status != 0
+            <% current_user.reports_with_deadlines.each do |rwd|
+                    link_text = "#{rwd.name}<small>#{get_label_by_report_status rwd.status}</small>"
+                    html = if rwd.status != 0
                         link_to link_text,
                                 eval(rwd.report.link)
                     else
-                        content_tag :span, link_text
-                    end %>
-                </li>
-
+                        link_text
+                    end
+                -%>
+                <%= "<li class='#{get_css_class_by_report_status(rwd.status)}'>#{html}</li>" %>
             <% end %>
         </ul>
     </li>
