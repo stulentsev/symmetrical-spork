@@ -1,1 +1,14 @@
+
 <h1><%= 'Dashboard'%> </h1>
+<h2>Current user: <%= current_user.login %></h2>
+<h3>Reports</h3>
+<div>
+    <ul>
+        <% current_user.reports_with_deadlines.each do |rwd| %>
+            <li><%= image_tag 'true.png' %>&nbsp; &nbsp;
+                <% url_str = 'edit_course_url(params[:id])' %>
+                <%= link_to rwd.name, eval(url_str) %></li>
+        <% end %>
+    </ul>
+
+</div>

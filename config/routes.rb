@@ -16,6 +16,9 @@ ActionController::Routing::Routes.draw do |map|
                 :member => {:language_choice => :get}
 
   map.resources :courses,
+                :member => [:dashboard]
+
+  map.resources :courses,
                 :has_one => [:final_report]
 
   #map.resources :fisrt_week_methodologies
