@@ -5,7 +5,9 @@ class CreateReportsWithDeadlines < ActiveRecord::Migration
       t.integer :course_id
       t.integer :user_id
       t.date    :deadline
-      t.integer :status # 0 - uknown, 1 - open, 2 - finalized (no more editing)
+      t.integer :status # 0 - awaiting manager, 1 - ongoing,
+                        # 2 - completed, 3 - blank
+                        # 4 - incomplete
       t.string  :name # optional
 
       t.timestamps
