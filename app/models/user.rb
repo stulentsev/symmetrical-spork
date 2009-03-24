@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
   acts_as_authentic
+  belongs_to :user_type
+  has_many :reports_with_deadlines
 
   def assign_random_password
     pwd = random_password
