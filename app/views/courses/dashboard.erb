@@ -13,10 +13,9 @@
                     'true.png'
                 else
                     'false.png'
-                end
-                   url_str = 'edit_course_url(params[:id])' %>
+                end %>
                 <%= image_tag icon_file %>&nbsp; &nbsp;
-                <%= link_to rwd.name, eval(url_str) %>
+                <%= link_to rwd.name, eval(rwd.report.link) %>
             </li>
 
         <% end %>
