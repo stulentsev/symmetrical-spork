@@ -5,9 +5,20 @@
 <div>
     <ul>
         <% current_user.reports_with_deadlines.each do |rwd| %>
-            <li><%= image_tag 'true.png' %>&nbsp; &nbsp;
-                <% url_str = 'edit_course_url(params[:id])' %>
-                <%= link_to rwd.name, eval(url_str) %></li>
+            <li>
+                <% icon_file = case rwd.status
+                when 1
+                    'admin.png'
+                when 2
+                    'true.png'
+                else
+                    'false.png'
+                end
+                   url_str = 'edit_course_url(params[:id])' %>
+                <%= image_tag icon_file %>&nbsp; &nbsp;
+                <%= link_to rwd.name, eval(url_str) %>
+            </li>
+
         <% end %>
     </ul>
 
