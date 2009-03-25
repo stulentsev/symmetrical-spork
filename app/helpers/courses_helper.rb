@@ -8,8 +8,7 @@ module CoursesHelper
     submit_to_remote 'project_team_member', 'Salvar', :url => url
   end
 
-  def remote_submit_for_object obj, label
-    controller_name = obj.class.name.tableize
+  def remote_submit_for_object obj, label, controller_name = obj.class.name.tableize
     if obj.new_record?
       url = {:controller => controller_name, :action => 'create', :_method => :post}
     else
