@@ -8,52 +8,52 @@
 
     <% form_for @course, :url => {:controller => :final_reports, :action => :update} do |f| %>
         <p>
-            <%= f.label :how_many_finished %>
+            <%= bold_label f, :how_many_finished %>
             <%= numeric_edit_in_place @course, :how_many_finished %>
         </p>
 
         <p>
-            <%= f.label :how_many_are_employed %>
+            <%= bold_label f, :how_many_are_employed %>
             <%= numeric_edit_in_place @course, :how_many_are_employed %>
         </p>
 
         <p>
-            <%= f.label :resource_application %><br/>
+            <%= bold_label f, :resource_application %><br/>
             <%= textarea_edit_in_place @course, :resource_application %>
         </p>
 
         <p>
-            <%= f.label :how_many_will_act %>
+            <%= bold_label f, :how_many_will_act %>
             <%= numeric_edit_in_place @course, :how_many_will_act%>
         </p>
 
         <p>
-            <%= f.label :how_many_continue_studying %>
+            <%= bold_label f, :how_many_continue_studying %>
             <%= numeric_edit_in_place @course, :how_many_continue_studying, :size => 3 %>
         </p>
 
         <p>
-            <%= f.label :reflections_on_evolution_of_objectives %><br/>
+            <%= bold_label f, :reflections_on_evolution_of_objectives %><br/>
             <%= textarea_edit_in_place @course, :reflections_on_evolution_of_objectives %>
         </p>
 
         <p>
-            <%= f.label :results_expected_not_achieved %><br/>
+            <%= bold_label f, :results_expected_not_achieved %><br/>
             <%= textarea_edit_in_place @course, :results_expected_not_achieved %>
         </p>
 
         <p>
-            <%= f.label :results_not_expected_achieved %><br/>
+            <%= bold_label f, :results_not_expected_achieved %><br/>
             <%= textarea_edit_in_place @course, :results_not_expected_achieved %>
         </p>
 
         <p>
-            <%= f.label :internship_experience_report %><br/>
+            <%= bold_label f, :internship_experience_report %><br/>
             <%= textarea_edit_in_place @course, :internship_experience_report %>
         </p>
 
         <p>
-            <%= f.label :conclusions %><br/>
+            <%= bold_label f, :conclusions %><br/>
             <%= textarea_edit_in_place @course, :conclusions %>
         </p>
 

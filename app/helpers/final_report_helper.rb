@@ -12,4 +12,8 @@ module FinalReportHelper
 
     edit_in_place(resource, field, options)
   end
+
+  def bold_label form, field
+    "<h4>#{form.label field}</h4>"
+  end
 end
