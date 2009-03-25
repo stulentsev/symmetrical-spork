@@ -6,7 +6,7 @@
                     link_text = "#{rwd.name}<small>#{get_label_by_report_status rwd.status}</small>"
                     html = if rwd.status != 0
                         link_to link_text,
-                                eval(rwd.report.link)
+                                eval(rwd.report.link || '')
                     else
                         link_text
                     end

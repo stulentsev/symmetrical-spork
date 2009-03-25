@@ -7,7 +7,8 @@ class CreateUserTypes < ActiveRecord::Migration
     end
 
     UserType.create(:name => 'Coordenador')
-    UserType.create(:name => 'Educador')
+    UserType.create(:name => 'Educador de Linguagem')
+    UserType.create(:name => 'Educador Transversal')
     UserType.create(:name => 'Educando')
     UserType.create(:name => 'Gestor')
   end
