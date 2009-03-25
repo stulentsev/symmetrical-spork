@@ -17,4 +17,32 @@ module ApplicationHelper
       end
     end
   end
+
+  def fast_navigation
+    zero_mark = [
+    'Período',
+    'Descritivos',
+    'Perfil Geral dos Jovens',
+    'Equipe do Projeto',
+    'Planejamento',
+    'Parceiros Envolvidos',
+    'Observações Finais' ]
+
+    language_choice = [
+    'Semana da Acolhida',
+    'Período de Rodízio',
+    'Perfil dos Jovens',
+    'Observações Finais' ]
+
+    if params[:action] == 'edit'
+      navigation = zero_mark
+    else
+       navigation = language_choice
+    end
+
+    navigation.inject("") do |memo, item|
+      memo << content_tag(:li, content_tag(:a, item, :href => '#'), :class => 'em-branco') + " \n"
+    end
+
+  end
 end

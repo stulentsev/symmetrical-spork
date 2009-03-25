@@ -25,7 +25,7 @@
     <div class="fixed">
       <div id="barra"></div>
 
-      <h1 id="logo"><a href="#"><%= image_tag('oi_kabum_extranet.png', :size => '148x124', :alt => "OI KABUM! Extranet")%></a></h1>
+      <h1 id="logo"><a href="<%= dashboard_course_url(1) %>"><%= image_tag('oi_kabum_extranet.png', :size => '148x124', :alt => "OI KABUM! Extranet")%></a></h1>
 
       <div id="user">
         <p><%= current_user.login %> <span class="separa">|</span><%= link_to "efetuar log-off", user_session_path, :method => :delete %></p>
@@ -73,13 +73,7 @@
       <div id="lateral">
         <h5 class="fundo">Navegação Rápida</h5>
         <ul>
-          <li class="preenchido"><a href="#">Período</a></li>
-          <li class="em-branco"><a href="#">Descritivos</a></li>
-          <li class="em-branco"><a href="#">Perfil Geral dos Jovens</a></li>
-          <li class="em-branco"><a href="#">Equipe do Projeto</a></li>
-          <li class="em-branco"><a href="#">Planejamento</a></li>
-          <li class="em-branco"><a href="#">Parceiros Envolvidos</a></li>
-          <li class="em-branco"><a href="#">Observações Finais</a></li>
+          <%=fast_navigation%>
         </ul>
       </div>
     </div>
