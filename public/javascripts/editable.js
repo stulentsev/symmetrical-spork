@@ -1,0 +1,1 @@
+../../vendor/plugins/better-edit-in-place/src/editable.js
