@@ -18,7 +18,7 @@ module FinalReportHelper
   end
 
   def final_report_item form, resource, field, options = {}
-    item_func = options[:type] == :textarea ? method(:textarea_edit_in_place) : method(:numeric_edit_in_place)
+    item_func = options.delete(:type) == :textarea ? method(:textarea_edit_in_place) : method(:numeric_edit_in_place)
 
     "
       <li>
