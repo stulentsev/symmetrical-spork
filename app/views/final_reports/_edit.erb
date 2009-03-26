@@ -1,7 +1,11 @@
 <% if @final_report.status == 2 %>
     <h2>Report is finalized. Thanks for cooperation.</h2>
 <% else %>
-
+    <%= javascript_tag "
+      document.observe('dom:loaded', function(event) {
+          Editable.setupAll();
+      });" %>
+<% end %>
     <%= javascript_tag "window._token = '#{form_authenticity_token}'" %>
 
     <%= render :partial => 'students_grouped_by_language' %>
@@ -58,8 +62,9 @@
         </p>
 
         <p>
-            <%= remote_submit_for_object @course, 'Finalizar relatorio', 'final_reports' %>
+            <%= remote_submit_for_object @course,
+                                         'Finalizar relatorio',
+                                         'final_reports' if @final_report.is_editable %>
         </p>
 
     <% end %>
-<% end %>
