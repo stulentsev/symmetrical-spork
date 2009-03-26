@@ -25,12 +25,8 @@ class ProjectTeamMembersController < ApplicationController
   # GET /project_team_members/new
   # GET /project_team_members/new.xml
   def new
-    @project_team_member = ProjectTeamMember.new(:course_id => params[:course_id])
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @project_team_member }
-    end
+    @saved_project_team_member = session[:saved_project_team_member]
+    @project_team_member = ProjectTeamMember.new(:course_id => @saved_project_team_member.course_id)
   end
 
   # GET /project_team_members/1/edit
@@ -41,7 +37,25 @@ class ProjectTeamMembersController < ApplicationController
   # POST /project_team_members
   # POST /project_team_members.xml
   def create
-    @project_team_member = ProjectTeamMember.create(params[:project_team_member])
+    @project_team_member = ProjectTeamMember.new(params[:project_team_member])
+
+    if @project_team_member.valid? && @project_team_member.save
+      user = User.find_by_login @project_team_member.email
+      unless user
+        user ||= User.new(:login => @project_team_member.email,
+                          :user_type_id => 2 # Educadores
+                         )
+        user.assign_random_password
+        user.save
+      end
+
+      @project_team_member.user = user
+      @project_team_member.save
+
+      UserMailer.deliver_new_password_notification(@project_team_member) if @project_team_member.user.password
+      session[:saved_project_team_member] = @project_team_member
+      redirect_to :action => :new
+    end
   end
 
   # PUT /project_team_members/1

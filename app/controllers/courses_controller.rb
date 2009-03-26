@@ -69,10 +69,12 @@ class CoursesController < ApplicationController
 
     respond_to do |format|
       if @course.update_attributes(params[:course]) &&
-              @course.student_profile.update_attributes(params[:student_profile])
+              (!params[:student_profile] ||
+              @course.student_profile.update_attributes(params[:student_profile]))
         flash[:notice] = 'Course was successfully updated.'
         format.html { redirect_to(@course) }
         format.xml  { head :ok }
+        format.json { render :json => @course }
       else
         format.html { render :action => "edit" }
         format.xml  { render :xml => @course.errors, :status => :unprocessable_entity }
@@ -93,8 +95,12 @@ class CoursesController < ApplicationController
   end
 
   def language_choice
-    @course =Course.find(params[:id])
+    @course = Course.find(params[:id])
     #@first_week_methodology = FirstWeekMethodology.find_or_create_by_course_id(params[:id])
+  end
+
+  def dashboard
+    @course = Course.find_by_id(params[:id])
   end
 
 end

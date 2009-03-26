@@ -1,0 +1,48 @@
+<h1>Editing student</h1>
+
+<% form_for(@student) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :age %><br />
+    <%= f.text_field :age %>
+  </p>
+  <p>
+    <%= f.label :application_number %><br />
+    <%= f.text_field :application_number %>
+  </p>
+  <p>
+    <%= f.label :photo_file %><br />
+    <%= f.text_field :photo_file %>
+  </p>
+  <p>
+    <%= f.label :schooling_id %><br />
+    <%= f.text_field :schooling_id %>
+  </p>
+  <p>
+    <%= f.label :language_id %><br />
+    <%= f.text_field :language_id %>
+  </p>
+  <p>
+    <%= f.label :technical_expertise_degree %><br />
+    <%= f.text_area :technical_expertise_degree %>
+  </p>
+  <p>
+    <%= f.label :why_oi_kabum %><br />
+    <%= f.text_area :why_oi_kabum %>
+  </p>
+  <p>
+    <%= f.label :observed_characteristics %><br />
+    <%= f.text_area :observed_characteristics %>
+  </p>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @student %> |
+<%= link_to 'Back', students_path %>

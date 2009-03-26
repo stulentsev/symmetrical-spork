@@ -1,0 +1,9 @@
+.editable {
+
+}
+
+.editable_empty {
+    text-decoration: underline;
+    color: blue;
+    cursor: pointer;
+}

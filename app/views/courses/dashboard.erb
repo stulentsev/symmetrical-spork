@@ -1,0 +1,40 @@
+<ul id="dash" class="max2">
+    <li class="col1">
+        <h2>Detalhes de Preenchimento</h2>
+        <ul id="dash-status">
+            <% current_user.reports_with_deadlines.each do |rwd|
+                    link_text = "#{rwd.name}<small>#{get_label_by_report_status rwd.status}</small>"
+                    html = if rwd.status != 0
+                        link_to link_text,
+                                eval(rwd.report.link || '')
+                    else
+                        link_text
+                    end
+                -%>
+                <%= "<li class='#{get_css_class_by_report_status(rwd.status)}'>#{html}</li>" %>
+            <% end %>
+        </ul>
+    </li>
+    <li class="col2">
+        <h2>Comentários do Oi Futuro</h2>
+        <ul id="dash-comentarios">
+            <li>
+                <h4>09/02/2009 <span class="separa">|</span> Marco Zero:</h4>
+
+                <p>Lorem ipsum dolor sit amet. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel,
+                    dapibus id, mattis vel, nisi leo, eget blandit nunc tortor eu nibh.
+                    <a class="botao-inline" href="#">[leia mais]</a>
+                </p>
+            </li>
+            <li>
+                <h4>09/02/2009 <span class="separa">|</span> Escolha das Linguagens:</h4>
+
+                <p>Lorem ipsum dolor sit amet. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel,
+                    dapibus id, mattis vel, nisi leo, eget blandit nunc tortor eu nibh.
+                    <a class="botao-inline" href="#">[leia mais]</a>
+                </p>
+            </li>
+        </ul>
+    </li>
+</ul>
+
