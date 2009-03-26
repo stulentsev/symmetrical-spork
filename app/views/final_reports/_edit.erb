@@ -61,10 +61,11 @@
             <%= textarea_edit_in_place @course, :conclusions %>
         </p>
 
-        <p>
+
+        <div id='finalizar'>
             <%= remote_submit_for_object @course,
                                          'Finalizar relatorio',
                                          'final_reports' if @final_report.is_editable %>
-        </p>
+        </div>
 
     <% end %>

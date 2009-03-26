@@ -472,7 +472,7 @@ http://www.arterial.tv
 		background: #FFF url('/images/header.png') no-repeat;
 	}
 
-	#finalizar a {
+	#finalizar a, #finalizar input {
 		position: relative;
 		display: block;
 		width: 383px;
