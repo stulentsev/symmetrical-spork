@@ -16,4 +16,17 @@ module FinalReportHelper
   def bold_label form, field
     "<h4>#{form.label field}</h4>"
   end
+
+  def final_report_item form, resource, field, options = {}
+    item_func = options[:type] == :textarea ? method(:textarea_edit_in_place) : method(:numeric_edit_in_place)
+
+    "
+      <li>
+          #{bold_label form, field}
+          #{item_func.call resource, field, options}
+          <hr/>
+      </li>
+    "
+  end
+
 end
