@@ -29,4 +29,10 @@ module FinalReportHelper
     "
   end
 
+  def final_report_items form, resource, items = []
+    items.inject("") do |output, elem|
+      output << final_report_item(form, resource, elem[0], :type => elem[1])
+    end
+  end
+
 end

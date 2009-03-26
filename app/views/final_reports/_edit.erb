@@ -12,16 +12,18 @@
 
     <% form_for @course, :url => {:controller => :final_reports, :action => :update} do |f| %>
         <ol>
-            <%= final_report_item f, @course, :how_many_finished %>
-            <%= final_report_item f, @course, :how_many_are_employed %>
-            <%= final_report_item f, @course, :resource_application, :type => :textarea %>
-            <%= final_report_item f, @course, :how_many_will_act %>
-            <%= final_report_item f, @course, :how_many_continue_studying %>
-            <%= final_report_item f, @course, :reflections_on_evolution_of_objectives, :type => :textarea %>
-            <%= final_report_item f, @course, :results_expected_not_achieved, :type => :textarea %>
-            <%= final_report_item f, @course, :results_not_expected_achieved, :type => :textarea %>
-            <%= final_report_item f, @course, :internship_experience_report, :type => :textarea %>
-            <%= final_report_item f, @course, :conclusions, :type => :textarea %>
+            <%= final_report_items f, @course,
+                                   [[:how_many_finished, :numeric],
+                                   [:how_many_are_employed, :numeric],
+                                   [:resource_application, :textarea],
+                                   [:how_many_will_act, :numeric],
+                                   [:how_many_continue_studying, :numeric],
+                                   [:reflections_on_evolution_of_objectives, :textarea],
+                                   [:results_expected_not_achieved, :textarea],
+                                   [:results_not_expected_achieved, :textarea],
+                                   [:internship_experience_report, :textarea],
+                                   [:conclusions, :textarea]]
+                                   %>
         </ol>
 
         <div id='finalizar'>
