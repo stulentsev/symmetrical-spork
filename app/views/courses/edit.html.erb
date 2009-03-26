@@ -1,4 +1,13 @@
 <% form_for(@course) do |f| %>
+    <% if @marco_zero.status == 2 %>
+        <h2>Report is finalized. Thanks for cooperation.</h2>
+    <% else %>
+        <%= javascript_tag "
+          document.observe('dom:loaded', function(event) {
+              Editable.setupAll();
+          });" %>
+        <%= javascript_tag "window._token = '#{form_authenticity_token}'" %>
+    <% end %>
 <ul><!-- TODO CONTEUDO ENTRA NESSA UL -->
   <li>
     <h2 class="aberto"><a href="#">Período da Turma</a></h2>
@@ -14,36 +23,28 @@
     <p class="status">status: <span class="em-branco"><strong>em branco</strong></span></p>
     <p class="topo"><a href="#">topo</a></p>
     <ol><!-- INICIO CONTEUDO NUMERADO-->
-      <li>
-        <h4><label for="obj1">Quais são os objetivos a serem alcançados neste período?</label></h4>
-        <p><%= f.text_area :objectives, :rows => 15, :cols => 100 %></p>
-        <p class="right"><%= f.submit "Salvar" %></p>
-        <hr />
-      </li>
-      <li>
-        <h4><label for="obj1">Quais são os resultados esperados?</label></h4>
-        <p><%= f.text_area :results, :rows => 15, :cols => 100 %></p>
-        <p class="right"><%= f.submit "Salvar" %></p>
-        <hr />
-      </li>
+        <%= final_report_items f, @course,
+   [
+                   [:objectives,
+                    :textarea,
+                   'Quais são os objetivos a serem alcançados neste período?'],
 
-      <li>
-        <h4><label for="obj1">Descreva como foi o processo seletivo:</label></h4>
-        <p><%= f.text_area :professors_selection_process, :rows => 15, :cols => 100 %></p>
-        <p class="right"><%= f.submit "Salvar" %></p>
-        <hr />
-      </li>
-      <li>
-        <h4><label for="obj1">Descreva quais comunidades e o perfil das que foram atendidas nesta edição do programa:</label></h4>
-        <p><%= f.text_area :communities, :rows => 15, :cols => 100 %></p>
-        <p class="right"><%= f.submit "Salvar" %></p>
-        <hr />
-      </li>
-      <li>
-        <h4><label for="obj1">Descreva o perfil geral dos jovens selecionados:</label></h4>
-        <p><%= f.text_area :students_selection_process, :rows => 15, :cols => 100 %></p>
-        <p class="right"><%= f.submit "Salvar" %></p>
-      </li>
+                   [:results,
+                    :textarea,
+                    'Quais são os resultados esperados?'],
+
+                   [:professors_selection_process,
+                    :textarea,
+                    'Descreva como foi o processo seletivo:'],
+
+                   [:students_selection_process,
+                    :textarea,
+                    'Descreva o perfil geral dos jovens selecionados:'],
+
+                   [:communities,
+                    :textarea,
+                    'Descreva quais comunidades e o perfil das que foram atendidas nesta edição do programa:']
+   ] %>
     </ol>
   </li>
   <li>
@@ -112,6 +113,6 @@
 
 </ul>
 <div id="finalizar">
-  <a href="#">Finalizar Relatório</a>
+    <%= f.submit 'Finalizar Relatório' if @marco_zero.is_editable %>
 </div>
-<%end%>
+<% end %>

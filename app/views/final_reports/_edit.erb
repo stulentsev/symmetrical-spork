@@ -5,8 +5,8 @@
       document.observe('dom:loaded', function(event) {
           Editable.setupAll();
       });" %>
-<% end %>
     <%= javascript_tag "window._token = '#{form_authenticity_token}'" %>
+<% end %>
 
     <%= render :partial => 'students_grouped_by_language' %>
 
