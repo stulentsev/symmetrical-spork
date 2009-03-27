@@ -34,15 +34,22 @@ module ApplicationHelper
     'Perfil dos Jovens',
     'Observações Finais' ]
 
-    if params[:action] == 'edit'
-      navigation = zero_mark
+    navigation = case params[:action]
+    when 'edit'
+        zero_mark
+    when 'language_choice'
+      language_choice
     else
-       navigation = language_choice
+      []
     end
 
     navigation.inject("") do |memo, item|
       memo << content_tag(:li, content_tag(:a, item, :href => '#'), :class => 'em-branco') + " \n"
     end
 
+  end
+
+  def should_show_fast_navigation
+    ['edit', 'language_choice'].member?(params[:action])
   end
 end
