@@ -109,6 +109,26 @@
   </div>
 </div>
 
+<%= javascript_tag "
+    $$('h2.aberto').each(function(h2){
+        h2.onclick = function()
+        {
+            var is_open = this.readAttribute('class') == 'aberto';
+            if (is_open)
+            {
+                this.siblings().each(function(el){el.hide();});
+                this.writeAttribute('class', 'fechado');
+            }
+            else
+            {
+                this.siblings().each(function(el){el.appear({duration: 0.5});});
+                this.writeAttribute('class', 'aberto');
+            }
+            return false;
+        }
+    });
+
+" %>
 
 </body>
 </html>
