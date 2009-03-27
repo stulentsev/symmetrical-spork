@@ -1,9 +1,26 @@
 <% form_for @user_session, :url => user_session_path do |f| %>
+
   <h4><%= f.label :login %></h4>
   <%if f.error_messages.size > 0 %><p class="atencao">dados incorretos</p><%end%>
-  <p><%= f.text_field :login, :value => 'digite seu e-mail', :class => 'teste' %></p>
-  <p><%= f.password_field :password, :value => 'password' %></p>
+  <p><%= f.text_field :login, :watermark => "digite seu e-mail", :class => "watermark" %></p>
+  <p><%= f.password_field :password, :watermark => "password", :class => "watermark" %></p>
   <p><%= f.check_box :remember_me, :class => "check" %><%= f.label :remember_me, 'Manter-se logado' %></p>
   <p class="submit fix"><%= f.submit "Ok" %></p>
   <p class="lembrar"><a href="#">Esqueceu a senha? Clique aqui. TODO</a></p>
 <% end %>
+<%= javascript_tag "
+    $$('.watermark').each(function(elem){
+        elem.onfocus = function(){
+            if(this.value == elem.readAttribute('watermark'))
+                this.value = '';
+        };
+
+        elem.onblur = function(){
+            if(this.value == '')
+                this.value = elem.readAttribute('watermark');
+        };
+
+        elem.value = elem.readAttribute('watermark');
+    });
+
+" %>

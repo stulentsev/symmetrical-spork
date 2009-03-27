@@ -1,4 +1,4 @@
-<% fields_for :student_profile, profile do |sp| %>
+<% fields_for :student_profile, course.student_profile do |sp| %>
 <ol>
 	<li>
 		<div class="max2">
@@ -16,12 +16,7 @@
 			</h4>
 		<hr />
 	</li>
-	<li>
-		<h4><label for="obj8">Observações:</label></h4>
-		<p>
-			<%= sp.text_area :observations, :rows => 15, :cols => 100 %>
-		</p>
-	</li>
+    <%= final_report_item sp, [course.student_profile], :observations, :type => :textarea %>
 </ol>
 <p class="submit"><%= sp.submit "Salvar" %></p>
 <% end %>

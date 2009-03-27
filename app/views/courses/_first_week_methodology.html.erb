@@ -3,16 +3,13 @@
 :html => {:method => 'put'}
  ) do |f| %>
 <li>
-  <h2 class="aberto"><a href="#">Semana da Acolhida</a></h2>
+  <h2 class="aberto"><a href="#" id='semana-da-acolhida'>Semana da Acolhida</a></h2>
   <p class="status">status: <span class="em-branco"><strong>em branco</strong></span></p>
   <p class="topo"><a href="#">topo</a></p>
   <ol><!-- INICIO CONTEUDO NUMERADO-->
-    <li>
-      <h4><label for="obj1">Descreva a metodologia utilizada nas semanas de acolhida dos jovens:</label></h4>
-      <p><%= f.text_area :description, :cols => 100, :rows =>  15 %></p>
-      <p class="right"><%= f.submit "Salvar" %></p>
-      <hr />
-    </li>
+      <%= final_report_items f, [@course.first_week_methodology],
+                             [[:description, :textarea, 'Descreva a metodologia utilizada nas semanas de acolhida dos jovens:']],
+                             :url => course_first_week_methodology_path(@course) %>
     <li>
       <h4><label for="obj4">Período:</label></h4>
       <div class="max2">
@@ -21,29 +18,13 @@
         <hr />
       </div>
     </li>
-    <li>
-      <h4><label for="obj1">Estratégia Utilizada:</label></h4>
-      <p><%= f.text_area :estrategy, :cols => 100, :rows =>  15 %></p>
-      <p class="right"><%= f.submit "Salvar" %></p>
-      <hr />
-    </li>
-    <li>
-			<h4><label for="obj1">Aspectos Facilitadores:</label></h4>
-			<p><%= f.text_area :aspects, :cols => 100, :rows =>  15 %></p>
-			<p class="right"><%= f.submit "Salvar" %></p>
-			<hr />
-		</li>
-		<li>
-			<h4><label for="obj1">Dificuldades Apresentadas:</label></h4>
-			<p><%= f.text_area :difficulties, :cols => 100, :rows =>  15 %></p>
-			<p class="right"><%= f.submit "Salvar" %></p>
-			<hr />
-		</li>
-		<li>
-		  <h4><label for="obj1">Sugestões de Mudança:</label></h4>
-		  <p><%= f.text_area :sugestion, :cols => 100, :rows =>  15 %></p>
-		  <p class="right"><%= f.submit "Salvar" %></p>
-    </li>
+      <%= final_report_items f, [@course.first_week_methodology],
+                             [[:estrategy, :textarea, 'Estratégia Utilizada:'],
+                              [:aspects, :textarea, 'Aspectos Facilitadores:'],
+                              [:difficulties, :textarea, 'Dificuldades Apresentadas:'],
+                              [:sugestion, :textarea, 'Sugestões de Mudança:'],
+                             ],
+                             :url => course_first_week_methodology_path(@course) %>
   </ol>
 </li>
 <% end %>

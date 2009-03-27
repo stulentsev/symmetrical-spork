@@ -10,7 +10,7 @@
     <% end %>
 <ul><!-- TODO CONTEUDO ENTRA NESSA UL -->
   <li>
-    <h2 class="aberto"><a href="#">Período da Turma</a></h2>
+    <h2 class="aberto"><a href="#" id='periodo-da-turma'>Período da Turma</a></h2>
     <p class="topo"><a href="#">topo</a></p>
     <ol>
       <li>
@@ -19,7 +19,7 @@
     </ol>
   </li>
   <li>
-    <h2 class="aberto"><a href="#">Descritivos</a></h2>
+    <h2 class="aberto"><a href="#" id='descritivos'>Descritivos</a></h2>
     <p class="status">status: <span class="em-branco"><strong>em branco</strong></span></p>
     <p class="topo"><a href="#">topo</a></p>
     <ol><!-- INICIO CONTEUDO NUMERADO-->
@@ -48,22 +48,22 @@
     </ol>
   </li>
   <li>
-    <h2 class="aberto"><a href="#">Perfil Geral dos Jovens</a></h2>
+    <h2 class="aberto"><a href="#" id='perfil-geral-dos-jovens'>Perfil Geral dos Jovens</a></h2>
     <p class="status">status: <span class="em-branco"><strong>em branco</strong></span></p>
     <p class="topo"><a href="#">topo</a></p>
     <div class="form">
-      <%= render :partial => 'student_profile', :locals => {:profile => @course.student_profile} %>
+      <%= render :partial => 'student_profile', :locals => {:course => @course} %>
     </div>
   </li>
   <li>
-    <h2 class="aberto"><a href="#">Equipe do Projeto</a> <a href="#" class="botao-inline">[adicionar]</a></h2>
+    <h2 class="aberto"><a href="#" id='equipe-do-projeto'>Equipe do Projeto</a> <a href="#" class="botao-inline">[adicionar]</a></h2>
     <p class="status">status: <span class="em-branco"><strong>em branco</strong></span></p>
     <p class="topo"><a href="#">topo</a></p>
     <%= render :partial => 'project_team_members/show_for_course',
                         :object => @course %>
   </li>
   <li>
-    <h2 class="aberto"><a href="#">Planejamento</a> <a href="#" class="botao-inline">[adicionar]</a></h2>
+    <h2 class="aberto"><a href="#" id='planejamento'>Planejamento</a> <a href="#" class="botao-inline">[adicionar]</a></h2>
     <p class="status">status: <span class="em-branco"><strong>em branco</strong></span></p>
     <p class="topo"><a href="#">topo</a></p>
     <%= render :partial => 'activities/index' ,
@@ -71,7 +71,7 @@
                         :activity => @activity} %>
   </li>
   <li>
-		<h2 class="aberto"><a href="#">Parceiros Envolvidos</a> <a href="#" class="botao-inline">[adicionar]</a></h2>
+		<h2 class="aberto"><a href="#" id='parceiros-envolvidos'>Parceiros Envolvidos</a> <a href="#" class="botao-inline">[adicionar]</a></h2>
 		<p class="status">status: <span class="em-branco"><strong>em branco</strong></span></p>
 		<p class="topo"><a href="#">topo</a></p>
 		<%= render :partial => 'partners/index' ,
@@ -89,7 +89,7 @@
 
 
 	<li>
-					<h2 class="aberto"><a href="#">Observações Finais==TODO==</a></h2>
+					<h2 class="aberto"><a href="#" id='observações-finais'>Observações Finais==TODO==</a></h2>
 					<p class="status">status: <span class="em-branco"><strong>em branco</strong></span></p>
 					<p class="topo"><a href="#">topo</a></p>
 					<ol>

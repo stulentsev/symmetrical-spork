@@ -29,10 +29,13 @@ module FinalReportHelper
     "
   end
 
-  def final_report_items form, resource, items = []
+  def final_report_items form, resource, items = [], options = {}
     items.inject("") do |output, elem|
       name, type, label = elem
-      output << final_report_item(form, resource, name, :type => type, :label => label)
+      opts = options.dup
+      opts[:type] = type
+      opts[:label] = label
+      output << final_report_item(form, resource, name, opts)
     end
   end
 

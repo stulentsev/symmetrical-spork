@@ -64,6 +64,7 @@ class CourseStudentProfilesController < ApplicationController
         flash[:notice] = 'CourseStudentProfile was successfully updated.'
         format.html { redirect_to(@course_student_profile) }
         format.xml  { head :ok }
+        format.json {render :json => @course_student_profile}
       else
         format.html { render :action => "edit" }
         format.xml  { render :xml => @course_student_profile.errors, :status => :unprocessable_entity }
