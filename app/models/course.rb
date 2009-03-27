@@ -8,8 +8,10 @@ class Course < ActiveRecord::Base
   has_many :students
 
   def after_initialize
-    self.first_week_methodology ||= FirstWeekMethodology.new()
-    self.rotate_methodology ||= RotateMethodology.new()
-    self.student_profile ||=  CourseStudentProfile.new
+    self.student_profile ||=  CourseStudentProfile.create
+    self.first_week_methodology ||= FirstWeekMethodology.create
+    self.rotate_methodology ||= RotateMethodology.create
+    self.save
+
   end
 end

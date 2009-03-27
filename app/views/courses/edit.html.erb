@@ -52,7 +52,7 @@
     <p class="status">status: <span class="em-branco"><strong>em branco</strong></span></p>
     <p class="topo"><a href="#">topo</a></p>
     <div class="form">
-      <%= render :partial => 'student_profile', :locals => {:profile => @course.student_profile} %>
+      <%= render :partial => 'student_profile', :locals => {:course => @course} %>
     </div>
   </li>
   <li>
