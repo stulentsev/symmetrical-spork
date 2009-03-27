@@ -1,65 +1,34 @@
 <% if @final_report.status == 2 %>
     <h2>Report is finalized. Thanks for cooperation.</h2>
 <% else %>
-
+    <%= javascript_tag "
+      document.observe('dom:loaded', function(event) {
+          Editable.setupAll();
+      });" %>
     <%= javascript_tag "window._token = '#{form_authenticity_token}'" %>
+<% end %>
 
     <%= render :partial => 'students_grouped_by_language' %>
 
     <% form_for @course, :url => {:controller => :final_reports, :action => :update} do |f| %>
-        <p>
-            <%= bold_label f, :how_many_finished %>
-            <%= numeric_edit_in_place @course, :how_many_finished %>
-        </p>
+        <ol>
+            <%= final_report_items f, @course,
+                                   [[:how_many_finished, :numeric],
+                                   [:how_many_are_employed, :numeric],
+                                   [:resource_application, :textarea],
+                                   [:how_many_will_act, :numeric],
+                                   [:how_many_continue_studying, :numeric],
+                                   [:reflections_on_evolution_of_objectives, :textarea],
+                                   [:results_expected_not_achieved, :textarea],
+                                   [:results_not_expected_achieved, :textarea],
+                                   [:internship_experience_report, :textarea],
+                                   [:conclusions, :textarea]]
+                                   %>
+        </ol>
 
-        <p>
-            <%= bold_label f, :how_many_are_employed %>
-            <%= numeric_edit_in_place @course, :how_many_are_employed %>
-        </p>
-
-        <p>
-            <%= bold_label f, :resource_application %><br/>
-            <%= textarea_edit_in_place @course, :resource_application %>
-        </p>
-
-        <p>
-            <%= bold_label f, :how_many_will_act %>
-            <%= numeric_edit_in_place @course, :how_many_will_act%>
-        </p>
-
-        <p>
-            <%= bold_label f, :how_many_continue_studying %>
-            <%= numeric_edit_in_place @course, :how_many_continue_studying, :size => 3 %>
-        </p>
-
-        <p>
-            <%= bold_label f, :reflections_on_evolution_of_objectives %><br/>
-            <%= textarea_edit_in_place @course, :reflections_on_evolution_of_objectives %>
-        </p>
-
-        <p>
-            <%= bold_label f, :results_expected_not_achieved %><br/>
-            <%= textarea_edit_in_place @course, :results_expected_not_achieved %>
-        </p>
-
-        <p>
-            <%= bold_label f, :results_not_expected_achieved %><br/>
-            <%= textarea_edit_in_place @course, :results_not_expected_achieved %>
-        </p>
-
-        <p>
-            <%= bold_label f, :internship_experience_report %><br/>
-            <%= textarea_edit_in_place @course, :internship_experience_report %>
-        </p>
-
-        <p>
-            <%= bold_label f, :conclusions %><br/>
-            <%= textarea_edit_in_place @course, :conclusions %>
-        </p>
-
-        <p>
-            <%= remote_submit_for_object @course, 'Finalizar relatorio', 'final_reports' %>
-        </p>
-
+        <div id='finalizar'>
+            <%= remote_submit_for_object @course,
+                                         'Finalizar relatorio',
+                                         'final_reports' if @final_report.is_editable %>
+        </div>
     <% end %>
-<% end %>

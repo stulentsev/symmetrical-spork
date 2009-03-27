@@ -39,6 +39,7 @@ class CoursesController < ApplicationController
     @project_team_member = ProjectTeamMember.new(:course_id => @course.id)
     @activity = Activity.new(:course_id => @course.id)
     @partner = Partner.new(:course_id => @course.id)
+    @marco_zero = current_user.reports_with_deadlines.select {|r| r.report_id == 1}.first
   end
 
   # POST /courses
@@ -66,6 +67,14 @@ class CoursesController < ApplicationController
   # PUT /courses/1.xml
   def update
     @course = Course.find(params[:id])
+    @marco_zero = current_user.reports_with_deadlines.select {|r| r.report_id == 1}.first
+
+    if params[:commit] == 'Finalizar Relatório'
+      @marco_zero.status = 2 # completed
+      @marco_zero.save
+      redirect_to edit_course_url(@course)
+      return
+    end
 
     respond_to do |format|
       if @course.update_attributes(params[:course]) &&

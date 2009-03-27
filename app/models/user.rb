@@ -19,16 +19,13 @@ class User < ActiveRecord::Base
                                       :name => rt.name) # TODO: fill course_id
         self.reports_with_deadlines << rwd
         rwd.save
-        self.save
+        self.save_without_session_maintenance
       end
     end
   end
-
-  private
 
   def random_password(size = 8)
     chars = (('a'..'z').to_a + ('0'..'9').to_a) - %w(i o 0 1 l 0)
     (1..size).collect{|a| chars[rand(chars.size)] }.join
   end
-
 end
