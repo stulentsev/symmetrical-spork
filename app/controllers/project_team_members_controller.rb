@@ -1,6 +1,6 @@
 class ProjectTeamMembersController < ApplicationController
-  before_filter :require_user
-
+  include UsersHelper
+  before_filter :require_user, :get_course
   # GET /project_team_members
   # GET /project_team_members.xml
   def index
@@ -27,8 +27,7 @@ class ProjectTeamMembersController < ApplicationController
   # GET /project_team_members/new
   # GET /project_team_members/new.xml
   def new
-    @saved_project_team_member = session[:saved_project_team_member]
-    @project_team_member = ProjectTeamMember.new(:course_id => @saved_project_team_member.course_id)
+    @project_team_member = ProjectTeamMember.new(course_id => @course)
   end
 
   # GET /project_team_members/1/edit
@@ -40,23 +39,16 @@ class ProjectTeamMembersController < ApplicationController
   # POST /project_team_members.xml
   def create
     @project_team_member = ProjectTeamMember.new(params[:project_team_member])
+    @project_team_member.course = @course
 
     if @project_team_member.valid? && @project_team_member.save
-      user = User.find_by_login @project_team_member.email
-      unless user
-        user = User.new(:login => @project_team_member.email,
-                        :user_type_id => 2 # Educadores
-                       )
-        user.assign_random_password
-        user.save_without_session_maintenance
-      end
+      user = find_or_create_user_by_login(@project_team_member.email, 2)
 
       @project_team_member.user = user
       @project_team_member.save
 
       UserMailer.deliver_new_password_notification(@project_team_member) if @project_team_member.user.password
-      session[:saved_project_team_member] = @project_team_member
-      redirect_to :action => :new
+      render :action => :new
     end
   end
 
@@ -72,5 +64,10 @@ class ProjectTeamMembersController < ApplicationController
   def destroy
     @project_team_member = ProjectTeamMember.find(params[:id])
     @project_team_member.destroy
+  end
+
+  private
+  def get_course
+    @course = Course.find_by_id params[:course_id]
   end
 end

@@ -7,12 +7,11 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :languages
 
-  map.resources :project_team_members
-
   map.resources :course_student_profiles
 
   map.resources :courses,
                 :has_one => [:first_week_methodology, :rotate_methodology],
+                :has_many => [:project_team_members],
                 :member => {:language_choice => :get}
 
   map.resources :courses,

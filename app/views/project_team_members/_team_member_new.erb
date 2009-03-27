@@ -1,6 +1,5 @@
 <div class="form">
-  <% fields_for project_team_member do |f| %>
-    <%= f.hidden_field :course_id%>
+  <% fields_for team_member_new do |f| %>
 		<ol>
 			<li>
 				<div class="max2">
@@ -34,6 +33,6 @@
 				</p>
 			</li>
 		</ol>
-		<p class="submit"><%= remote_submit_for_team_member project_team_member %></p>
+		<p class="submit"><%= remote_submit_for_team_member team_member_new %></p>
 	<%end%>
 </div>

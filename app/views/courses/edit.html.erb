@@ -60,8 +60,7 @@
     <p class="status">status: <span class="em-branco"><strong>em branco</strong></span></p>
     <p class="topo"><a href="#">topo</a></p>
     <%= render :partial => 'project_team_members/show_for_course',
-                        :locals => {:course => @course,
-                        :project_team_member => @project_team_member} %>
+                        :object => @course %>
   </li>
   <li>
     <h2 class="aberto"><a href="#">Planejamento</a> <a href="#" class="botao-inline">[adicionar]</a></h2>

@@ -1,6 +1,5 @@
 <div id='project_team_member_create_edit_form'>
-<%= render :partial => 'project_team_members/team_member_new',
-                    :locals => {:project_team_member => project_team_member} %>
+<%= render :partial => 'project_team_members/team_member_new', :object => ProjectTeamMember.new(:course_id => show_for_course) %>
 </div>
 <ul class="table">
   <li>
@@ -14,7 +13,7 @@
         </tr>
       </thead>
       <tbody>
-        <%= render :partial => 'project_team_members/team_member_row', :collection => course.team_members %>
+        <%= render :partial => 'project_team_members/team_member_row', :collection => show_for_course.team_members %>
       </tbody>
     </table>
   </li>

@@ -1,8 +1,7 @@
-if @saved_project_team_member
-    page.insert_html :bottom, 'project_team_members_table',
+page.insert_html :bottom, 'project_team_members_table',
                      :partial => 'team_member_row',
-                     :locals => {:team_member_row => @saved_project_team_member}
-end
+                     :object => @project_team_member
+
 page.replace_html 'project_team_member_create_edit_form',
                   :partial => 'team_member_new',
-                  :locals => {:project_team_member => @project_team_member}
+                  :object => ProjectTeamMember.new(:course_id => @project_team_member.course_id)
