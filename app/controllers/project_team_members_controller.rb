@@ -1,4 +1,6 @@
 class ProjectTeamMembersController < ApplicationController
+  before_filter :require_user
+
   # GET /project_team_members
   # GET /project_team_members.xml
   def index
@@ -42,11 +44,11 @@ class ProjectTeamMembersController < ApplicationController
     if @project_team_member.valid? && @project_team_member.save
       user = User.find_by_login @project_team_member.email
       unless user
-        user ||= User.new(:login => @project_team_member.email,
-                          :user_type_id => 2 # Educadores
-                         )
+        user = User.new(:login => @project_team_member.email,
+                        :user_type_id => 2 # Educadores
+                       )
         user.assign_random_password
-        user.save
+        user.save_without_session_maintenance
       end
 
       @project_team_member.user = user
