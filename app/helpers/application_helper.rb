@@ -3,7 +3,9 @@ module ApplicationHelper
   def calendar_for(field_id)
     include_calendar_headers_tags
     image_tag("calendar.png", {:id => "#{field_id}_trigger",:class => "calendar-trigger"}) +
-      javascript_tag("Calendar.setup({inputField : '#{field_id}', ifFormat : '%Y-%m-%d', button : '#{field_id}_trigger' });")
+      javascript_tag("Calendar.setup({inputField : '#{field_id}',
+                                      ifFormat : '%Y-%m-%d',
+                                      button : '#{field_id}_trigger' });")
   end
 
   def include_calendar_headers_tags
@@ -20,7 +22,7 @@ module ApplicationHelper
 
   def fast_navigation
     zero_mark = [
-    'Período',
+    'Período da Turma',
     'Descritivos',
     'Perfil Geral dos Jovens',
     'Equipe do Projeto',
@@ -44,7 +46,13 @@ module ApplicationHelper
     end
 
     navigation.inject("") do |memo, item|
-      memo << content_tag(:li, content_tag(:a, item, :href => '#'), :class => 'em-branco') + " \n"
+      anchor_id = item.downcase.gsub(' ', '-')
+      memo << content_tag(:li, content_tag(:a,
+                                           item,
+                                           :href => 'javascript:void(0)',
+                                           :onclick => "$('#{anchor_id}').scrollTo(); // bring element to viewport;
+                                                        window.scrollBy(0, -130); // move it from under header;"),
+                          :class => 'em-branco') + " \n"
     end
 
   end
