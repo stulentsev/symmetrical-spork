@@ -5,7 +5,7 @@
 		<li>
 			<div class="max2">
 				<h4 class="col1"><label for="obj4">Linguagem:</label>
-					<%= f.select :language_id, Language.find(:all).map {|lang| [lang.name, lang.id]} %>
+					<%= languages_ddl f %>
 				</h4>
 				<h4 class="col2"><label for="obj4">Período:</label>
 				<%= f.date_select :period_from %> a <%= f.date_select :period_to %>
