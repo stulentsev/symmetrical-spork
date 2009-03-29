@@ -10,11 +10,8 @@
 					<h4 class="col1"><label for="obj4">Função:</label>
 					  <%= f.text_field :function %> <!-- Educador de Linguagem ou Educador Transversal -->
 					</h4>
-					<h4 class="col2"><label for="obj4">Linguagem:TODO</label>
-						<select id="obj4">
-							<option selected="selected">Selecione</option>
-							<option>{Nome da linguagem aqui}</option>
-						</select>
+					<h4 class="col2"><label for="obj4">Linguagem:</label>
+						<%= languages_ddl f %>
 					</h4>
 				</div>
 				<hr />
