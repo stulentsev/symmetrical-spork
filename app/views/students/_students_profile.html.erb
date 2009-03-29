@@ -1,0 +1,11 @@
+<li>
+  <h2 class="aberto"><a href="#">Perfil dos Jovens</a> <a href="#" class="botao-inline">[adicionar]</a></h2>
+  <p class="status">status: <span class="em-branco"><strong>em branco</strong></span></p>
+  <p class="topo"><a href="#">topo</a></p>
+  <%= render :partial => 'students/new', :object => Student.new(:course_id => students_profile) %>
+
+  <ul class="table">
+    <%=render :partial => 'students/language'%>
+  </ul>
+
+</li>

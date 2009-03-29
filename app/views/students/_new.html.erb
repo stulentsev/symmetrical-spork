@@ -1,0 +1,50 @@
+<div class="form">
+  <% form_remote_for(:course_students, new, :url => course_students_path(:course_id=> new.course_id) ) do |f| %>
+	  <ol>
+		  <li>
+			  <div class="max2">
+				  <h4 class="col1"><label for="obj2">Nome:</label> <%= f.text_field :name, :class => 'nome' %> </h4>
+				  <h4 class="col2"><label for="obj3">Nascimento:</label> <%= f.date_select :birthday %></h4>
+			  </div>
+			  <div class="max2">
+				  <h4 class="col1"><label for="obj4">Escolaridade:</label>
+					  <%= schooling_ddl f %>
+				  </h4>
+				  <h4 class="col2"><label for="obj3">Foto:==TODO==</label> <input type="text" id="obj3" value="foto"></input> <input type="submit" value="Selecionar" /></h4>
+			  </div>
+			  <hr />
+			  <li>
+			  <h4><label for="obj3">Escolha um e-mail para o educando:</label> <%= f.text_field :email, :class => 'email' %> <input type="submit" value="Verificar E-Mail==TODO==" /><small><!--{o e-mail/ login já existe}--> {o e-mail está disponível}</small></h4>
+			  </li>
+			  <hr />
+		  </li>
+		  <li>
+			  <h4><label for="obj5">Linguagem escolhida pós-rodízio:</label>
+			    <%= languages_ddl f%>
+			  </h4>
+			  <hr />
+		  </li>
+		  <li>
+			  <h4><label for="obj6">Grau de conhecimento técnico ao ingressar na escola:</label><small> (informática e/ou linguagens específicas)</small></h4>
+			  <p>
+				  <%= f.text_area :technical_expertise_degree, :row => 15, :cols => 100 %>
+			  </p>
+			  <hr />
+		  </li>
+		  <li>
+			  <h4><label for="obj6">Por que escolheu a Kabum?</label></h4>
+			  <p>
+				  <%= f.text_area :why_oi_kabum, :row => 15, :cols => 100 %>
+			  </p>
+			  <hr />
+		  </li>
+		  <li>
+			  <h4><label for="obj6">Características observadas:</label></h4>
+			  <p>
+				  <%= f.text_area :observed_characteristics, :row => 15, :cols => 100 %>
+			  </p>
+		  </li>
+	  </ol>
+	  <p class="submit"><%= f.submit "Salvar" %></p>
+  <%end%>
+</div>

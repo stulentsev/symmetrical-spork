@@ -1,4 +1,6 @@
 class StudentsController < ApplicationController
+  before_filter :get_course
+
   # GET /students
   # GET /students.xml
   def index
@@ -40,17 +42,12 @@ class StudentsController < ApplicationController
   # POST /students
   # POST /students.xml
   def create
-    @student = Student.new(params[:student])
+    @student = Student.new(params[:course_students])
+    @student.course = @course
 
-    respond_to do |format|
-      if @student.save
-        flash[:notice] = 'Student was successfully created.'
-        format.html { redirect_to(@student) }
-        format.xml  { render :xml => @student, :status => :created, :location => @student }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @student.errors, :status => :unprocessable_entity }
-      end
+    if @student.save
+      flash[:notice] = 'Student was successfully created.'
+    else
     end
   end
 
@@ -81,5 +78,10 @@ class StudentsController < ApplicationController
       format.html { redirect_to(students_url) }
       format.xml  { head :ok }
     end
+  end
+
+  private
+  def get_course
+    @course = Course.find_by_id params[:course_id]
   end
 end

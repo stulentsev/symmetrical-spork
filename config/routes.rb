@@ -1,5 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :students
+  #map.resources :students
 
   map.resources :partners
 
@@ -11,7 +11,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :courses,
                 :has_one => [:first_week_methodology, :rotate_methodology],
-                :has_many => [:project_team_members],
+                :has_many => [:project_team_members, :students],
                 :member => {:language_choice => :get}
 
   map.resources :courses,

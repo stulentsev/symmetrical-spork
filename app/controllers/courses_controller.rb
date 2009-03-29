@@ -105,7 +105,6 @@ class CoursesController < ApplicationController
 
   def language_choice
     @course = Course.find(params[:id])
-    #@first_week_methodology = FirstWeekMethodology.find_or_create_by_course_id(params[:id])
   end
 
   def dashboard
