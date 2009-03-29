@@ -12,7 +12,7 @@
 			</h4>
 		</div>
 			<h4><label for="obj7">Escolaridade:</label>
-			  <%= sp.select :schooling_id, Schooling.find(:all).map {|s| [s.name, s.id]}, { :include_blank => true } %>
+			  <%= schooling_ddl sp %>
 			</h4>
 		<hr />
 	</li>
