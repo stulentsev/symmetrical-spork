@@ -2,8 +2,8 @@
 module ApplicationHelper
   def calendar_for(field_id)
     include_calendar_headers_tags
-    image_tag("calendar.png", {:id => "#{field_id}_trigger",:class => "calendar-trigger"}) +
-      javascript_tag("Calendar.setup({inputField : '#{field_id}',
+    image_tag("calendar.png", {:id => "#{field_id}_trigger", :class => "calendar-trigger"}) +
+            javascript_tag("Calendar.setup({inputField : '#{field_id}',
                                       ifFormat : '%Y-%m-%d',
                                       button : '#{field_id}_trigger' });")
   end
@@ -13,37 +13,53 @@ module ApplicationHelper
       @calendar_headers_tags_included = true
       content_for :header_tags do
         javascript_include_tag('calendar/calendar') +
-          javascript_include_tag("calendar/lang/calendar-#{current_language}.js") +
-          javascript_include_tag('calendar/calendar-setup') +
-          stylesheet_link_tag('calendar')
+        javascript_include_tag("calendar/lang/calendar-#{current_language}.js") +
+        javascript_include_tag('calendar/calendar-setup') +
+        stylesheet_link_tag('calendar')
       end
     end
   end
 
   def fast_navigation
     zero_mark = [
-    'Período da Turma',
-    'Descritivos',
-    'Perfil Geral dos Jovens',
-    'Equipe do Projeto',
-    'Planejamento',
-    'Parceiros Envolvidos',
-    'Observações Finais' ]
+            'Período da Turma',
+            'Descritivos',
+            'Perfil Geral dos Jovens',
+            'Equipe do Projeto',
+            'Planejamento',
+            'Parceiros Envolvidos',
+            'Observações Finais' ]
 
     language_choice = [
-    'Semana da Acolhida',
-    'Período de Rodízio',
-    'Perfil dos Jovens',
-    'Observações Finais' ]
+            'Semana da Acolhida',
+            'Período de Rodízio',
+            'Perfil dos Jovens',
+            'Observações Finais' ]
 
-    navigation = case params[:action]
-    when 'edit'
-        zero_mark
-    when 'language_choice'
-      language_choice
-    else
-      []
-    end
+    coordinator_trimestrial_report = [
+            'Conteúdos desenvolvidos',
+            'Atividades interdisciplinares',
+            'Desempenho da equipe' ]
+
+    navigation =
+            case params[:controller]
+            when 'courses'
+              case params[:action]
+              when 'edit'
+                zero_mark
+              when 'language_choice'
+                language_choice
+              else
+                []
+              end
+            when 'coordinator_trimestrial_reports'
+              case params[:action]
+              when 'edit'
+                coordinator_trimestrial_report
+              else
+                []
+              end
+            end
 
     navigation.inject("") do |memo, item|
       anchor_id = item.downcase.gsub(' ', '-')
