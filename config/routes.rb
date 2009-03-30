@@ -1,5 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
-  #map.resources :students
+  map.resources :password_resets
+
+  map.resources :students
 
   map.resources :partners
 

@@ -6,6 +6,6 @@
   <p><%= f.password_field :password, :watermark => "password", :class => "watermark" %></p>
   <p><%= f.check_box :remember_me, :class => "check" %><%= f.label :remember_me, 'Manter-se logado' %></p>
   <p class="submit fix"><%= f.submit "Ok" %></p>
-  <p class="lembrar"><a href="#">Esqueceu a senha? Clique aqui. TODO</a></p>
+  <p class="lembrar"><%= link_to 'Esqueceu a senha? Clique aqui.', new_password_reset_url %> </p>
 <% end %>
 <%= javascript_tag "initialize_watermark_fields();" %>
