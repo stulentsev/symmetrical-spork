@@ -1,5 +1,5 @@
 <div class="form">
-  <% form_for(:course_students, new, :url => course_students_path(:course_id=> new.course_id), :html => { :multipart => true } ) do |f| %>
+  <% form_for(:course_students, new, :url => formatted_course_students_path(:course_id=> new.course_id, :format => 'js'), :html => { :multipart => true, :target => 'upload_frame'  } ) do |f| %>
 	  <ol>
 		  <li>
 			  <div class="max2">
@@ -48,3 +48,5 @@
 	  <p class="submit"><%= f.submit "Salvar" %></p>
   <%end%>
 </div>
+
+<iframe id='upload_frame' name='upload_frame' style="width:1px;height:1px;border:0px" src="about:blank"></iframe>

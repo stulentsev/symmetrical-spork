@@ -46,7 +46,15 @@ class StudentsController < ApplicationController
     @student.course = @course
 
     if @student.save
-      flash[:notice] = 'Student was successfully created.'
+        responds_to_parent do
+          render :update do |page|
+            page << "if (!$('language_#{@student.language.id}')) {"
+              page.insert_html :top, 'languages', :partial => 'students/language', :object => @student.language, :locals => {:students => nil}
+            page << '}'
+            page.insert_html :bottom, "language_#{@student.language.id}", :partial => 'students/student', :object => @user
+            page.replace_html 'new_student', :partial => 'students/new', :object => Student.new(:course_id => params[:course_id])
+          end
+        end
     else
     end
   end
