@@ -15,32 +15,30 @@
     </p>
     <p>
         <%= f.label :attendance_score %><br/>
-        <%= f.text_field :attendance_score %>
+        <%= performance_field f, :attendance_score %>
     </p>
     <p>
         <%= f.label :punctuality_score %><br/>
-        <%= f.text_field :punctuality_score %>
+        <%= performance_field f, :punctuality_score %>
     </p>
     <p>
         <%= f.label :proactivity_score %><br/>
-        <%= f.text_field :proactivity_score %>
+        <%= performance_field f, :proactivity_score %>
     </p>
     <p>
         <%= f.label :interdisciplinary_working_score %><br/>
-        <%= f.text_field :interdisciplinary_working_score %>
+        <%= performance_field f, :interdisciplinary_working_score %>
     </p>
     <p>
         <%= f.label :student_involvement_score %><br/>
-        <%= f.text_field :student_involvement_score %>
+        <%= performance_field f, :student_involvement_score %>
     </p>
     <p>
         <%= f.label :comment %><br/>
         <%= f.text_area :comment %>
     </p>
-    <p>
-        <%= f.submit "Update" %>
-    </p>
+    <div id="finalizar">
+        <%= f.submit "Finalizar Relatório" %>
+    </div>
 <% end %>
 
-<%= link_to 'Show', @coordinator_trimestrial_report %> |
-<%= link_to 'Back', coordinator_trimestrial_reports_path %>
