@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  method_format: MyText
+  attendance_score: 1
+  punctuality_score: 1
+  proactivity_score: 1
+  interdisciplinary_working_score: 1
+  student_involvement_score: 1
+  comment: MyText
+
+two:
+  method_format: MyText
+  attendance_score: 1
+  punctuality_score: 1
+  proactivity_score: 1
+  interdisciplinary_working_score: 1
+  student_involvement_score: 1
+  comment: MyText

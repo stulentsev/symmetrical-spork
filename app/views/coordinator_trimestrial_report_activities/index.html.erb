@@ -1,0 +1,24 @@
+<h1>Listing coordinator_trimestrial_report_activities</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Date</th>
+    <th>Observations</th>
+  </tr>
+
+<% for coordinator_trimestrial_report_activity in @coordinator_trimestrial_report_activities %>
+  <tr>
+    <td><%=h coordinator_trimestrial_report_activity.name %></td>
+    <td><%=h coordinator_trimestrial_report_activity.date %></td>
+    <td><%=h coordinator_trimestrial_report_activity.observations %></td>
+    <td><%= link_to 'Show', coordinator_trimestrial_report_activity %></td>
+    <td><%= link_to 'Edit', edit_coordinator_trimestrial_report_activity_path(coordinator_trimestrial_report_activity) %></td>
+    <td><%= link_to 'Destroy', coordinator_trimestrial_report_activity, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New coordinator_trimestrial_report_activity', new_coordinator_trimestrial_report_activity_path %>

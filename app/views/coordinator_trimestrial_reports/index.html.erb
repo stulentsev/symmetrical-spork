@@ -1,0 +1,32 @@
+<h1>Listing coordinator_trimestrial_reports</h1>
+
+<table>
+  <tr>
+    <th>Method format</th>
+    <th>Attendance score</th>
+    <th>Punctuality score</th>
+    <th>Proactivity score</th>
+    <th>Interdisciplinary working score</th>
+    <th>Student involvement score</th>
+    <th>Comment</th>
+  </tr>
+
+<% for coordinator_trimestrial_report in @coordinator_trimestrial_reports %>
+  <tr>
+    <td><%=h coordinator_trimestrial_report.method_format %></td>
+    <td><%=h coordinator_trimestrial_report.attendance_score %></td>
+    <td><%=h coordinator_trimestrial_report.punctuality_score %></td>
+    <td><%=h coordinator_trimestrial_report.proactivity_score %></td>
+    <td><%=h coordinator_trimestrial_report.interdisciplinary_working_score %></td>
+    <td><%=h coordinator_trimestrial_report.student_involvement_score %></td>
+    <td><%=h coordinator_trimestrial_report.comment %></td>
+    <td><%= link_to 'Show', coordinator_trimestrial_report %></td>
+    <td><%= link_to 'Edit', edit_coordinator_trimestrial_report_path(coordinator_trimestrial_report) %></td>
+    <td><%= link_to 'Destroy', coordinator_trimestrial_report, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New coordinator_trimestrial_report', new_coordinator_trimestrial_report_path %>
