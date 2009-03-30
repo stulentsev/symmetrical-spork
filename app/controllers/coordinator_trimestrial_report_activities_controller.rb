@@ -10,7 +10,7 @@ class CoordinatorTrimestrialReportActivitiesController < ApplicationController
 
   def update
     @coordinator_trimestrial_report_activity = CoordinatorTrimestrialReportActivity.find(params[:id])
-    @coordinator_trimestrial_report_activity.save
+    @coordinator_trimestrial_report_activity.update_attributes(params[:coordinator_trimestrial_report_activity])
   end
 
   def destroy
