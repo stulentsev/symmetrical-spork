@@ -1,6 +1,6 @@
-<li><h3 class="aberto"><a href="#">Nome da Linguagem</a></h3>
+<li><h3 class="aberto"><a href="#"><%=h language.name%></a></h3>
   <ul class="thumbs">
-    students
+    <%= render :partial => 'students/student', :collection => students %>
   </ul>
 	<hr />
 </li>

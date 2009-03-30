@@ -5,7 +5,10 @@
   <%= render :partial => 'students/new', :object => Student.new(:course_id => students_profile) %>
 
   <ul class="table">
-    <%=render :partial => 'students/language'%>
+    <% students_profile.students.group_by(&:language).each do |lang, students| %>
+    <%=render :partial => 'students/language', :object => lang,
+                        :locals => {:students => students} %>
+    <% end %>
   </ul>
 
 </li>

@@ -1,5 +1,5 @@
 <div class="form">
-  <% form_remote_for(:course_students, new, :url => course_students_path(:course_id=> new.course_id) ) do |f| %>
+  <% form_for(:course_students, new, :url => course_students_path(:course_id=> new.course_id), :html => { :multipart => true } ) do |f| %>
 	  <ol>
 		  <li>
 			  <div class="max2">
@@ -10,7 +10,7 @@
 				  <h4 class="col1"><label for="obj4">Escolaridade:</label>
 					  <%= schooling_ddl f %>
 				  </h4>
-				  <h4 class="col2"><label for="obj3">Foto:==TODO==</label> <input type="text" id="obj3" value="foto"></input> <input type="submit" value="Selecionar" /></h4>
+				  <h4 class="col2"><label for="obj3">Foto:</label> <%= f.file_field :photo, :size => 21 %></h4>
 			  </div>
 			  <hr />
 			  <li>
