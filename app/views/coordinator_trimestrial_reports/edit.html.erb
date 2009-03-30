@@ -11,8 +11,7 @@
         <li>
             <h2 class='aberto'><a href='#' id='conteúdos-desenvolvidos'>Quais conteúdos foram desenvolvidos?</a></h2>
             <ol>
-                <li>Periodo de <%= @coordinator_trimestrial_report.trimester.period_from %> a
-                    <%= @coordinator_trimestrial_report.trimester.period_to %></li>
+                <li><h4>Periodo de <%= f.date_select :period_from %> a <%= f.date_select :period_to %></h4></li>
                 <%= final_report_items f, @coordinator_trimestrial_report,
                                        [[:method_format, :textarea]] %>
             </ol>
