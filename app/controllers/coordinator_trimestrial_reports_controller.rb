@@ -35,6 +35,7 @@ class CoordinatorTrimestrialReportsController < ApplicationController
   # GET /coordinator_trimestrial_reports/1/edit
   def edit
     @coordinator_trimestrial_report = CoordinatorTrimestrialReport.find(params[:id])
+    @activity = CoordinatorTrimestrialReportActivity.new(:coordinator_trimestrial_report_id => params[:id])
   end
 
   # POST /coordinator_trimestrial_reports

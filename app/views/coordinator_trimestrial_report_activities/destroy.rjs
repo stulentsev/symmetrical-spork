@@ -1,0 +1,2 @@
+page.visual_effect :fade,
+                   "trimestrial_report_activity_row_#{@coordinator_trimestrial_report_activity.id}"

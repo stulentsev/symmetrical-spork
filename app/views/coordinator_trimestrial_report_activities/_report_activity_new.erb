@@ -1,0 +1,23 @@
+<h1>Editing coordinator_trimestrial_report_activity</h1>
+
+<% fields_for(report_activity_new) do |f| %>
+  <%= f.error_messages %>
+
+  <%= f.hidden_field :coordinator_trimestrial_report_id %>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :date %><br />
+    <%= f.date_select :date %>
+  </p>
+  <p>
+    <%= f.label :observations %><br />
+    <%= f.text_area :observations %>
+  </p>
+  <p>
+    <%= remote_submit_for_object report_activity_new, 'Salvar' %>
+  </p>
+<% end %>
+

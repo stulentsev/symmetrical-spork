@@ -1,0 +1,16 @@
+<h3>Novo atividade</h3>
+<div id='trimestrial_report_activity_create_edit_form'>
+    <%= render :partial => 'coordinator_trimestrial_report_activities/report_activity_new',
+               :object => @activity %>
+</div>
+
+<h3>Atividades</h3>
+<table id='trimestrial_report_activity_list'>
+    <tr>
+        <th>Atividades</th>
+        <th>Data</th>
+        <th>Observações</th>
+    </tr>
+    <%= render :partial => 'coordinator_trimestrial_report_activities/report_activity_row',
+               :collection => trimestrial_report.activities %>
+</table>

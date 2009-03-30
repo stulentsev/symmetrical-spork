@@ -10,6 +10,10 @@
         <%= f.text_area :method_format %>
     </p>
     <p>
+        <%= render :partial => 'coordinator_trimestrial_report_activities/edit_for_trimestrial_report',
+                   :locals => {:trimestrial_report => @coordinator_trimestrial_report} %>
+    </p>
+    <p>
         <%= f.label :attendance_score %><br/>
         <%= f.text_field :attendance_score %>
     </p>
