@@ -1,42 +1,46 @@
 <h1>Editing coordinator_trimestrial_report</h1>
+<%= javascript_tag "
+  document.observe('dom:loaded', function(event) {
+      Editable.setupAll();
+  });" %>
+<%= javascript_tag "window._token = '#{form_authenticity_token}'" %>
 
 <% form_for(@coordinator_trimestrial_report) do |f| %>
     <%= f.error_messages %>
 
-    <p>Periodo de <%= @coordinator_trimestrial_report.trimester.period_from %> a
-        <%= @coordinator_trimestrial_report.trimester.period_to %></p>
-    <p>
-        <%= f.label :method_format %><br/>
-        <%= f.text_area :method_format %>
-    </p>
-    <p>
+    <ol>
+
+    <li>Periodo de <%= @coordinator_trimestrial_report.trimester.period_from %> a
+        <%= @coordinator_trimestrial_report.trimester.period_to %></li>
+    <%= final_report_items f, @coordinator_trimestrial_report,
+                           [[:method_format, :textarea]] %>
+    <li>
         <%= render :partial => 'coordinator_trimestrial_report_activities/edit_for_trimestrial_report',
                    :locals => {:trimestrial_report => @coordinator_trimestrial_report} %>
-    </p>
-    <p>
+    </li>
+    <li>
         <%= f.label :attendance_score %><br/>
         <%= performance_field f, :attendance_score %>
-    </p>
-    <p>
+    </li>
+    <li>
         <%= f.label :punctuality_score %><br/>
         <%= performance_field f, :punctuality_score %>
-    </p>
-    <p>
+    </li>
+    <li>
         <%= f.label :proactivity_score %><br/>
         <%= performance_field f, :proactivity_score %>
-    </p>
-    <p>
+    </li>
+    <li>
         <%= f.label :interdisciplinary_working_score %><br/>
         <%= performance_field f, :interdisciplinary_working_score %>
-    </p>
-    <p>
+    </li>
+    <li>
         <%= f.label :student_involvement_score %><br/>
         <%= performance_field f, :student_involvement_score %>
-    </p>
-    <p>
-        <%= f.label :comment %><br/>
-        <%= f.text_area :comment %>
-    </p>
+    </li>
+    <%= final_report_items f, @coordinator_trimestrial_report,
+                           [[:comment, :textarea]] %>
+    </ol>
     <div id="finalizar">
         <%= f.submit "Finalizar Relatório" %>
     </div>

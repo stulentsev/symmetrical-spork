@@ -65,6 +65,7 @@ class CoordinatorTrimestrialReportsController < ApplicationController
         flash[:notice] = 'CoordinatorTrimestrialReport was successfully updated.'
         format.html { redirect_to(@coordinator_trimestrial_report) }
         format.xml  { head :ok }
+        format.json {render :json => @coordinator_trimestrial_report}
       else
         format.html { render :action => "edit" }
         format.xml  { render :xml => @coordinator_trimestrial_report.errors, :status => :unprocessable_entity }
