@@ -8,19 +8,4 @@
   <p class="submit fix"><%= f.submit "Ok" %></p>
   <p class="lembrar"><a href="#">Esqueceu a senha? Clique aqui. TODO</a></p>
 <% end %>
-<%= javascript_tag "
-    $$('.watermark').each(function(elem){
-        elem.onfocus = function(){
-            if(this.value == elem.readAttribute('watermark'))
-                this.value = '';
-        };
-
-        elem.onblur = function(){
-            if(this.value == '')
-                this.value = elem.readAttribute('watermark');
-        };
-
-        elem.value = elem.readAttribute('watermark');
-    });
-
-" %>
+<%= javascript_tag "initialize_watermark_fields();" %>

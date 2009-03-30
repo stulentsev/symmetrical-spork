@@ -22,3 +22,20 @@ function initialize_collapsible_headers(css_selector)
         }
     });
 }
+
+function initialize_watermark_fields()
+{
+    $$('.watermark').each(function(elem){
+        elem.onfocus = function(){
+            if(this.value == elem.readAttribute('watermark'))
+                this.value = '';
+        };
+
+        elem.onblur = function(){
+            if(this.value == '')
+                this.value = elem.readAttribute('watermark');
+        };
+
+        elem.value = elem.readAttribute('watermark');
+    });
+}
