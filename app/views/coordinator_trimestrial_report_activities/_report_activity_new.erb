@@ -1,0 +1,23 @@
+<% fields_for(report_activity_new) do |f| %>
+  <%= f.error_messages %>
+
+    <ol>
+        <li>
+            <div class="max2">
+                <h4 class="col1"><label for="obj2">Nome:</label> <%= f.text_field :name %></h4>
+                <h4 class="col2"><label for="obj3">Data:</label> <%= f.date_select :date %> </h4>
+            </div>
+            <div class="max2">
+                <h4 class="col1"><label for="obj4">Observação:</label>
+                  <%= f.text_area :observations %> <!-- Educador de Linguagem ou Educador Transversal -->
+                </h4>
+            </div>
+        </li>
+
+    </ol>
+  <%= f.hidden_field :coordinator_trimestrial_report_id %>
+  <p class='submit'>
+    <%= remote_submit_for_object report_activity_new, 'Salvar' %>
+  </p>
+<% end %>
+

@@ -1,0 +1,3 @@
+page.replace_html 'trimestrial_report_activity_create_edit_form',
+                  :partial => 'coordinator_trimestrial_report_activities/report_activity_new',
+                  :object => @coordinator_trimestrial_report_activity

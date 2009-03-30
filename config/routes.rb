@@ -3,6 +3,12 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :students
 
+  map.resources :coordinator_trimestrial_report_activities
+
+  map.resources :coordinator_trimestrial_reports
+
+  map.resources :trimesters
+
   map.resources :partners
 
   map.resources :activities
@@ -13,7 +19,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :courses,
                 :has_one => [:first_week_methodology, :rotate_methodology],
-                :has_many => [:project_team_members, :students],
+                :has_many => [:project_team_members, :students, :coordinator_trimestrial_reports],
                 :member => {:language_choice => :get}
 
   map.resources :courses,

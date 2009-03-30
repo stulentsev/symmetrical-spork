@@ -46,18 +46,18 @@ http://www.arterial.tv
 
 
 	/* TEXTO */
-	
+
 	html, body {
 		font-size: 10px;
 		font-family: Arial, sans-serif;
 		line-height: 15px;
 	}
-	
+
 	h1 {
 		position: relative;
 		font-size: 20px;
 	}
-	
+
 	h2 {
 		position: relative;
 		font-size: 14px;
@@ -72,22 +72,22 @@ http://www.arterial.tv
 		background-position: 5px 6px;
 		background-repeat: no-repeat;
 	}
-	
+
 	h2 a {
 		padding-left: 29px;
 		font-weight: bold;
 		text-decoration: none;
 		color: #333;
 	}
-	
+
 	h2.aberto {
 		background-image: url('../images/h2_bullet_aberto.png');
 	}
-	
+
 	h2.fechado {
 		background-image: url('../images/h2_bullet_fechado.png');
 	}
-	
+
 	h3 {
 		position: relative;
 		font-size: 16px;
@@ -100,22 +100,22 @@ http://www.arterial.tv
 		background-position: 5px 2px;
 		background-repeat: no-repeat;
 	}
-	
+
 	h3 a {
 		padding-left: 29px;
 		font-weight: bold;
 		text-decoration: none;
 		color: #FFF;
 	}
-	
+
 	h3.aberto {
 		background-image: url('../images/h3_bullet_aberto.png');
 	}
-	
+
 	h3.fechado {
 		background-image: url('../images/h3_bullet_fechado.png');
 	}
-	
+
 	h4,
 	h5 {
 		position: relative;
@@ -124,19 +124,19 @@ http://www.arterial.tv
 		padding: 5px 0;
 		color: #333;
 	}
-	
+
 	h5 {
 		font-size: 12px;
 		line-height: 20px;
 		padding-top: 10px;
 		text-transform: uppercase;
 	}
-	
+
 	h4 label,
 	h5 label {
 		font-weight: bold;
 	}
-	
+
 	p,
 	li,
 	input,
@@ -147,20 +147,20 @@ http://www.arterial.tv
 		font-family: Arial, sans-serif;
 		font-size: 12px;
 	}
-	
+
 	p {
 		padding: 6px 0;
 	}
-	
+
 	strong {
 		font-weight: bold;
 	}
-	
+
 	small {
 		font-size: 10px;
 		font-weight: bold;
 	}
-	
+
 	hr {
 		border: none;
 		height: 1px;
@@ -169,44 +169,44 @@ http://www.arterial.tv
 		margin: 8px 0;
 	}
 
-	
+
 	/* TABELA */
-	
+
 	li {
 		background: #F9F7F6;
 	}
-	
+
 	ul li ol {
 		padding: 8px 0;
 	}
-	
+
 	ul {
 		list-style-type: none;
 	}
-	
+
 	ol {
 		margin: 0 47px;
 	}
 
 
 	/* LINKS */
-	
+
 	a,
 	.botao-inline,
 	h2 .botao-inline {
 		color: #71767D;
 		text-decoration: underline;
 	}
-	
+
 	a:hover,
 	#footer a:hover,
 	#user p a:hover {
 		color: #EC1848;
 	}
 
-	
+
 	/* FORMATACAO */
-	
+
 	.no-display {
 		margin: 0;
 		padding: 0;
@@ -214,26 +214,26 @@ http://www.arterial.tv
 		font-size: 0;
 		overflow: hidden;
 	}
-	
+
 	.right {
 		text-align: right;
 	}
-	
+
 	.separa {
 		padding: 0 6px;
 		font-weight: normal;
 	}
-	
-	
+
+
 	/* ELEMENTOS INLINE */
-	
+
 	.botao-inline {
 		font-size: 10px;
 		font-weight: bold;
 		text-transform: none;
 		padding: 0 2px;
 	}
-	
+
 	.botao-inline.preencher {
 		display: block;
 		width: 115px;
@@ -241,25 +241,25 @@ http://www.arterial.tv
 		background: #FFF;
 		border: 1px solid #EEEAE5;
 	}
-	
+
 	.resposta-inline {
 		padding-left: 2px;
 	}
 
-	
+
 	/* COLUNAS SEM FLOAT! */
-	
+
 	.max2,
 	.max3 {
 		position: relative;
 		display: block;
 	}
-	
+
 	.max2 .col1,
 	.max2 .col2 {
 		width: 49%;
 	}
-	
+
 	.max2 .col2 {
 		position: absolute;
 		top: 0;
@@ -270,17 +270,17 @@ http://www.arterial.tv
 	.max3 .col2 {
 		width: 33%;
 	}
-	
+
 	.max3 .col3 {
 		width: 32%;
 	}
-	
+
 	.max3 .col2 {
 		position: absolute;
 		top: 0;
 		left: 34%;
 	}
-	
+
 	.max3 .col3 {
 		position: absolute;
 		top: 0;
@@ -289,13 +289,13 @@ http://www.arterial.tv
 
 
 	/* COMENTARIOS */
-	
+
 	.comentario,
 	#dash-comentarios li {
 		background: #FFC;
 		padding: 15px 10px;
 	}
-	
+
 	.comentario p {
 		font-size: 14px;
 		line-height: 20px;
@@ -303,31 +303,31 @@ http://www.arterial.tv
 
 
 	/* STAUTS */
-	
+
 	.status {
 		position: absolute;
 		top: 2px;
 		right: 20px;
 		z-index: 30;
 	}
-	
+
 	.preenchido,
 	#dash-status .preenchido a small {
 		color: #39B54A;
 	}
-	
+
 	.pendente,
 	#dash-status .pendente a small {
 		color: #F48132;
 	}
-	
+
 	.em-branco {
 		color: #000;
 	}
-	
+
 
 	/* TOPO */
-	
+
 	.topo {
 		position: absolute;
 		top: 2px;
@@ -335,11 +335,11 @@ http://www.arterial.tv
 		margin: 0;
 		padding: 0;
 	}
-	
+
 	p.topo {
 		line-height: 30px;
 	}
-	
+
 	.topo a {
 		position: relative;
 		display: block;
@@ -352,20 +352,20 @@ http://www.arterial.tv
 		color: #333;
 		background: #FFF url('../images/b_topo.png') no-repeat;
 	}
-	
+
 	.topo a:hover {
 		color: #EC1848;
 	}
-	
-	
+
+
 	/* AVISO */
-	
+
 	.aviso-wrap {
 		padding: 8px 0;
 		border-top: 1px solid #EC1848;
 		border-bottom: 1px solid #EC1848;
 	}
-	
+
 	.aviso {
 		position: relative;
 		padding: 21px 90px;
@@ -374,25 +374,25 @@ http://www.arterial.tv
 		text-transform: uppercase;
 		text-align: center;
 	}
-	
+
 	.aviso-wrap.footer {
 		margin-bottom: 20px;
 	}
-	
+
 	.aviso p {
 		font-size: 14px;
 		line-height: 16px;
 		padding-top: 0;
 		padding-bottom: 0;
 	}
-	
+
 	.aviso small,
 	.aviso small a {
 		font-weight: bold;
 		text-transform: none;
 		color: #000;
 	}
-	
+
 	.aviso small a:hover {
 		color: #EC1848;
 	}
@@ -423,7 +423,7 @@ http://www.arterial.tv
 		left: 0;
 		z-index: 220;
 	}
-	
+
 	.fixed-wrap.overlay {
 		position: fixed;
 		width: 100%;
@@ -431,7 +431,7 @@ http://www.arterial.tv
 		left: 0;
 		z-index: 250;
 	}
-	
+
 	.fixed {
 		position: relative;
 		width: 980px;
@@ -440,7 +440,7 @@ http://www.arterial.tv
 
 
 	/* AREAS */
-	
+
 	#principal {
 		position: relative;
 		display: block;
@@ -450,7 +450,7 @@ http://www.arterial.tv
 		border-right: 1px solid #E0D9D0;
 		background: #FFF;
 	}
-	
+
 	#corpo {
 		position: relative;
 		display: block;
@@ -459,7 +459,7 @@ http://www.arterial.tv
 		width: 772px;
 		min-height: 400px;
 	}
-	
+
 	#header {
 		position: absolute;
 		display: block;
@@ -471,8 +471,8 @@ http://www.arterial.tv
 		overflow: hidden;
 		background: #FFF url('../images/header.png') no-repeat;
 	}
-	
-	#finalizar a {
+
+	#finalizar a, #finalizar input {
 		position: relative;
 		display: block;
 		width: 383px;
@@ -485,7 +485,7 @@ http://www.arterial.tv
 		text-transform: uppercase;
 		text-align: center;
 	}
-	
+
 	#barra {
 		position: absolute;
 		width: 980px;
@@ -498,14 +498,14 @@ http://www.arterial.tv
 
 
 	/* LOGO */
-	
+
 	#logo {
 		position: absolute;
 		top: 0;
 		left: 5px;
 		z-index: 300;
 	}
-	
+
 	#logo a {
 		position: relative;
 		display: block;
@@ -516,8 +516,8 @@ http://www.arterial.tv
 		font-size: 0;
 		overflow: hidden;
 	}
-	
-	
+
+
 	/* USER */
 
 	#user {
@@ -526,14 +526,14 @@ http://www.arterial.tv
 		top: 16px;
 		right: 9px;
 	}
-	
+
 	#user p {
 		display: inline;
 		color: #FFF;
 		background: transparent;
 		font-weight: bold;
 	}
-	
+
 	#user p a {
 		display: inline;
 		padding: 0;
@@ -543,10 +543,10 @@ http://www.arterial.tv
 		text-transform: none;
 		font-weight: normal;
 	}
-	
-	
+
+
 	/* MENU */
-	
+
 	#menu {
 		position: absolute;
 		display: block;
@@ -559,7 +559,7 @@ http://www.arterial.tv
 		width: auto;
 		float: right;
 	}
-	
+
 	#menu li {
 		width: auto;
 		float: left;
@@ -577,24 +577,24 @@ http://www.arterial.tv
 		color: #FFF;
 		background: #71767D;
 	}
-	
+
 	#menu li.selected a,
 	#menu li a:hover {
 		color: #71767D;
 		background: #FFF;
 	}
-	
+
 	#menu li a:hover {
 		color: #EC1848;
 	}
-	
+
 	#menu li.selected a:hover {
 		color: #71767D;
 	}
 
-	
+
 	/* LATERAL */
-	
+
 	#lateral {
 		position: absolute;
 		display: block;
@@ -606,7 +606,7 @@ http://www.arterial.tv
 		background: url('../images/lateral_bottom_bg.png') repeat-x 0 bottom;
 		z-index: 50;
 	}
-	
+
 	#lateral h5.fundo {
 		position: relative;
 		display: block;
@@ -623,14 +623,14 @@ http://www.arterial.tv
 		margin: 0;
 		padding: 20px 0 0 10px;
 	}
-	
+
 	#lateral li {
 		width: auto;
 		float: left;
 		border-bottom: 1px solid #E0D9D0;
 		background: transparent;
 	}
-	
+
 	#lateral li a {
 		position: relative;
 		display: block;
@@ -639,12 +639,12 @@ http://www.arterial.tv
 		color: #333;
 		text-decoration: none;
 	}
-	
+
 	#lateral li.selected a,
 	#lateral li a:hover {
 		background-color: #F9F7F6;
 	}
-	
+
 	#lateral li form {
 		position: relative;
 		display: block;
@@ -652,16 +652,16 @@ http://www.arterial.tv
 		padding: 10px 10px 4px;
 		background: #FFF;
 	}
-	
+
 	#lateral li select,
 	#lateral li input {
 		width: 100%;
 	}
-	
+
 	#lateral .preenchido a {
 		background: #FFF url('../images/status.png') no-repeat 166px 7px;
 	}
-	
+
 	#lateral .pendente a {
 		background: #FFF url('../images/status.png') no-repeat 166px -23px;
 	}
@@ -669,7 +669,7 @@ http://www.arterial.tv
 	#lateral .em-branco a {
 		background: #FFF url('../images/status.png') no-repeat 166px -53px;
 	}
-	
+
 	#lateral .atencao a {
 		background: #FDE7EC url('../images/status.png') no-repeat 166px -83px;
 		color: #EC1848;
@@ -679,9 +679,9 @@ http://www.arterial.tv
 		background-color: #F9F7F6;
 	}
 
-	
+
 	/* FOOTER */
-	
+
 	#footer {
 		position: relative;
 		width: 769px;
@@ -691,7 +691,7 @@ http://www.arterial.tv
 		overflow: hidden;
 		z-index: 600;
 	}
-	
+
 	#footer h5,
 	#footer li,
 	#footer li a {
@@ -700,27 +700,27 @@ http://www.arterial.tv
 		line-height: 21px;
 		text-decoration: none;
 	}
-	
+
 	#footer li {
 		font-size: 11px;
 		padding-left: 22px;
 		background: transparent url('../images/footer_bullet.png') no-repeat 1px center;
 	}
-	
+
 	#footer .col {
 		width: 25%;
 		height: 30px;
 		float: left;
 	}
-	
+
 	#footer .col.max {
 		width: 28%;
 	}
-	
+
 	#footer .col.min {
 		width: 16%;
 	}
-	
+
 	.no-title {
 		padding-top: 20px;
 	}
@@ -743,11 +743,11 @@ http://www.arterial.tv
 
 
 	/* TABELA */
-	
+
 	.table > li:first-child {
 		margin-top: 8px;
 	}
-	
+
 	table {
 		margin: 0 46px 0;
 		padding: 8px 0 13px 0;
@@ -755,68 +755,68 @@ http://www.arterial.tv
 		border-spacing: 1px;
 		empty-cells: show;
 	}
-	
+
 	thead tr {
 		background: #C1B4A2;
 	}
-	
+
 	tbody tr {
 		background: #FFF;
 	}
-	
+
 	thead td {
 		font-size: 16px;
 		font-weight: bold;
 		color: #FFF;
 	}
-	
+
 	td,
 	td .botao-inline {
 		font-size: 10px;
 		line-height: 13px;
 		padding: 4px 6px;
 	}
-	
+
 	.principal {
 		font-size: 12px;
 		font-weight: bold;
 		line-height: 15px;
 		color: #333;
 	}
-	
+
 	.w200 {
 		width: 200px;
 	}
-	
+
 	.w150 {
 			width: 150px;
 		}
-	
+
 	.w75 {
 		width: 75px;
 	}
-	
+
 	.zebra {
 		background: #EEEAE5;
 	}
-	
-	
+
+
 	/* PESSOAS */
-	
+
 	.pessoas > li:first-child {
 		margin-top: 8px;
 	}
-	
+
 	.pessoas {
 		margin: 0 46px 0;
 		padding-bottom: 8px;
 	}
-	
+
 	.pessoas h4,
 	.pessoas p {
 		margin-left: 100px;
 	}
-	
+
 	.foto {
 		position: absolute;
 		display: block;
@@ -834,7 +834,7 @@ http://www.arterial.tv
 
 
 	/* THUMBS */
-	
+
 	.thumbs:after {
 	  content: ".";
 	  display: block;
@@ -843,21 +843,21 @@ http://www.arterial.tv
 	  line-height: 0;
 	  height: 0;
 	}
-	
+
 	.thumbs {
 		position: relative;
 		top: 4px;
 		width: 686px;
 		margin: 10px auto 0;
 	}
-	
+
 	.thumbs li {
 		position: relative;
 		display: block;
 		width: auto;
 		float: left;
 	}
-	
+
 	.thumbs li a {
 		position: relative;
 		display: block;
@@ -872,30 +872,30 @@ http://www.arterial.tv
 		background: #FFF;
 		overflow: hidden;
 	}
-	
+
 	.thumbs li a:hover {
 		color: #FFF;
 		background: #EC1848;
 	}
-	
-	
+
+
 	/* FORM */
-	
+
 	form p {
 		padding-top: 0;
 	}
-	
+
 	textarea {
 		width: 668px;
 		border: 1px solid #EEEAE5;
 		padding: 4px;
 	}
-	
+
 	input {
 		border: 1px solid #EEEAE5;
 		padding: 4px;
 	}
-	
+
 	input.nome {
 		width: 200px;
 	}
@@ -907,11 +907,11 @@ http://www.arterial.tv
 	input.dia {
 		width: 20px;
 	}
-	
+
 	input.ano {
 		width: 30px;
 	}
-	
+
 	input[type="checkbox"],
 	input[type="radio"],
 	input.check {
@@ -921,7 +921,7 @@ http://www.arterial.tv
 		border: none;
 		line-height: 12px;
 	}
-	
+
 	.submit input,
 	input[type="submit"] {
 		font-weight: bold;
@@ -931,38 +931,38 @@ http://www.arterial.tv
 		color: #FFF;
 		background: #C1B4A2 url('../images/submit_bg.gif');
 	}
-	
+
 	.submit input:hover,
 	input[type="submit"]:hover {
 		background: #EC1848;
 		cursor: pointer;
 	}
-	
+
 	.submit {
 		position: relative;
 		top: -8px;
 		padding: 0 47px 8px;
 		text-align: right;
 	}
-	
-	
+
+
 	/* FORM ERRO */
-	
+
 	form .erro {
 		border: 3px solid #EC1848;
 		background: #FDE7EC;
 	}
-	
+
 	textarea.erro {
 		width: 664px;
 	}
-	
+
 	input.erro {
 		border: 3px solid #EC1848;
 		background: #FDE7EC;
 		padding: 2px;
 	}
-	
+
 	.botao-inline.preencher.erro {
 		width: 111px;
 		padding: 8px;
@@ -986,9 +986,9 @@ http://www.arterial.tv
 
 */
 
-	
+
 	/* POP UP */
-	
+
 	#popup .fechar {
 		position: relative;
 		display: block;
@@ -998,7 +998,7 @@ http://www.arterial.tv
 		text-align: right;
 		background: #000;
 	}
-	
+
 	#popup .fechar a {
 		font-size: 14px;
 		color: #FFF;
@@ -1021,7 +1021,7 @@ http://www.arterial.tv
 		background: #FFF;
 		overflow: auto;
 	}
-	
+
 	#popup h2 {
 		margin: 0;
 		padding: 0;
@@ -1030,7 +1030,7 @@ http://www.arterial.tv
 		color: #FFF;
 		background: transparent;
 	}
-	
+
 	#popup .foto {
 		position: relative;
 		display: block;
@@ -1041,24 +1041,24 @@ http://www.arterial.tv
 		float: left;
 		z-index: 400;
 	}
-	
+
 	#popup .nome {
 		margin: 0;
 		padding: 63px 15px 0;
 		background: #71767D url('../images/popup_header.png');
 	}
-	
+
 	#popup .corpo {
 		padding: 15px;
 	}
-	
+
 	.aluno,
 	.linguagem {
 		position: relative;
 		background: #71767D;
 		padding: 0 15px;
 	}
-	
+
 	.aluno p,
 	.aluno a,
 	.linguagem p,
@@ -1073,12 +1073,12 @@ http://www.arterial.tv
 		font-size: 12px;
 		padding: 7px 0 1px;
 	}
-	
+
 	.linguagem p {
 		font-size: 14px;
 		padding-bottom: 7px;
 	}
-	
+
 	.aluno .left,
 	.linguagem .left {
 		width: auto;
@@ -1086,26 +1086,26 @@ http://www.arterial.tv
 		background: #71767D;
 		z-index: 500;
 	}
-	
+
 	.aluno .right,
 	.linguagem .right {
 		width: auto;
 		float: none;
 		text-align: right;
 	}
-	
+
 	.aluno a:hover,
 	.linguagem a:hover {
 		color: #EC1848;
 	}
-	
-	
+
+
 	/* LOG IN */
-	
+
 	body.login #principal {
 		height: 100%;
 	}
-	
+
 	body.login #corpo {
 		top: 0;
 		left: 0;
@@ -1116,7 +1116,7 @@ http://www.arterial.tv
 		min-height: 100%;
 		background: url('../images/login_bg.jpg');
 	}
-	
+
 	body.login #box {
 		position: relative;
 		top: 10px;
@@ -1126,7 +1126,7 @@ http://www.arterial.tv
 		padding: 160px 35px 0;
 		background: url('../images/login_box.png') no-repeat 0 0;
 	}
-	
+
 	body.login p.atencao {
 		position: absolute;
 		top: 6px;
@@ -1134,38 +1134,38 @@ http://www.arterial.tv
 		color: #EC1848;
 		text-align: right;
 	}
-	
+
 	body.login h4 {
 		color: #C1B4A2;
 	}
-	
+
 	body.login form {
 		position: relative;
 		display: block;
 		width: 100%;
 	}
-	
+
 	body.login input {
 		width: 179px;
 	}
-	
+
 	body.login p.submit {
 		width: auto;
 		height: auto;
 		margin: 6px 0;
 		padding: 0;
 	}
-	
+
 	body.login p.submit input {
 		position: relative;
 		top: 2px;
 		width: 40px;
 	}
-	
+
 	body.login p.submit.fix input {
 		top: -25px;
 	}
-	
+
 	body.login input.check {
 		position: relative;
 		left: -3px;
@@ -1173,23 +1173,23 @@ http://www.arterial.tv
 		border: none;
 		line-height: 12px;
 	}
-	
+
 	body.login p.lembrar {
 		position: absolute;
 		top: 120px;
 		width: 187px;
 		text-align: center;
 	}
-	
+
 	body.login a {
 		color: #96846E;
 	}
-	
+
 	body.login a:hover {
 		color: #EC1848;
 	}
-	
-	
+
+
 	/* DASHBOARD */
 
 	body.interna.dashboard li {
@@ -1199,35 +1199,35 @@ http://www.arterial.tv
 	body.interna.dashboard #logo {
 		background: #FFF;
 	}
-	
+
 	body.interna.dashboard #corpo {
 		padding-bottom: 10px;
 	}
-	
+
 	body.interna.dashboard #corpo h2 {
 		margin-top: 0;
 		margin-bottom: 10px;
 		padding-left: 10px;
 	}
-	
+
 	body.interna.dashboard #corpo .max2 {
 		margin-top: 10px;
 	}
-	
+
 	body.interna.dashboard #corpo .col1 {
 		position: relative;
 		top: 0;
 		left: 0;
 		float: left;
 	}
-	
+
 	body.interna.dashboard #corpo .col2 {
 		position: relative;
 		top: 0;
 		left: 0;
 		float: right;
 	}
-	
+
 	#dash:after {
 		content: ".";
 	  display: block;
@@ -1236,7 +1236,7 @@ http://www.arterial.tv
 	  line-height: 0;
 	  height: 0;
 	}
-	
+
 	#dash-status li {
 		position: relative;
 		display: block;
@@ -1246,11 +1246,11 @@ http://www.arterial.tv
 		text-transform: uppercase;
 		float: left;
 	}
-	
+
 	#dash-status li:first-child {
 		border-top: 1px solid #E0D9D0;
 	}
-	
+
 	#dash-status li a,
 	#dash-status li.desabilitado {
 		position: relative;
@@ -1263,26 +1263,26 @@ http://www.arterial.tv
 		font-weight: bold;
 		border-bottom: 1px solid #E0D9D0;
 	}
-	
+
 	#dash-status li.desabilitado {
 		color: #C1B4A2;
 		border-bottom: 1px solid #E0D9D0;
 	}
-	
+
 	#dash-status li a:hover {
 		background-color: #F9F7F6;
 	}
-	
+
 	#dash-status small {
 		position: absolute;
 		right: 35px;
 		text-transform: none;
 	}
-	
+
 	#dash-status .atencao a {
 		color: #EC1848;
 	}
-	
+
 	#dash-status .preenchido a,
 	#dash-status .pendente a,
 	#dash-status .em-branco a,
@@ -1290,28 +1290,28 @@ http://www.arterial.tv
 	#dash-status .desabilitado {
 		background: transparent url('../images/status_dashboard.png') no-repeat right 0;
 	}
-	
+
 	#dash-status .pendente a {
 		background-position: right -36px;
 	}
-	
+
 	#dash-status .em-branco a {
 		background-position: right -72px;
 	}
-	
+
 	#dash-status .atencao a {
 		background-color: #FDE7EC;
 		background-position: right -108px;
 	}
-	
+
 	#dash-status .desabilitado {
 		background-position: right -146px;
 	}
-	
+
 	#dash-comentarios li {
 		padding-top: 10px;
 		padding-bottom: 9px;
 		margin-bottom: 10px;
 	}
-		
+
 }

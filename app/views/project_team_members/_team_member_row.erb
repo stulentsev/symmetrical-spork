@@ -1,7 +1,9 @@
 <% m = team_member_row %>
+<% if m %>
 <tr id='team_member_row_<%= m.id %>'>
-  <td><span class="principal"><%= m.name %></span><br /><%= m.language.name%></td>
+  <td><span class="principal"><%= m.name %></span><br /><%= m.language.name %></td>
   <td><%= m.competencies %> <a href="#" class="botao-inline">[expandir]</a></td>
   <td class="no-print"><a href="#" class="botao-inline">[visualizar]==TODO==</a></td>
   <td class="no-print"><%= link_to_remote '[editar]', :class => 'botao-inline', :url => edit_course_project_team_member_path(m.course_id,m.id), :method => :get %><%= link_to_remote '[deletar]', :class => 'botao-inline', :url => course_project_team_member_path(m.course_id,m.id), :method => :delete %></td>
 </tr>
+<% end %>

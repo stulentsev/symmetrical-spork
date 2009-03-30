@@ -1,0 +1,18 @@
+<p>
+  <b>Course:</b>
+  <%=h @trimester.course_id %>
+</p>
+
+<p>
+  <b>Period from:</b>
+  <%=h @trimester.period_from %>
+</p>
+
+<p>
+  <b>Period to:</b>
+  <%=h @trimester.period_to %>
+</p>
+
+
+<%= link_to 'Edit', edit_trimester_path(@trimester) %> |
+<%= link_to 'Back', trimesters_path %>

@@ -1,0 +1,24 @@
+<h1>Editing trimester</h1>
+
+<% form_for(@trimester) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :course_id %><br />
+    <%= f.text_field :course_id %>
+  </p>
+  <p>
+    <%= f.label :period_from %><br />
+    <%= f.date_select :period_from %>
+  </p>
+  <p>
+    <%= f.label :period_to %><br />
+    <%= f.date_select :period_to %>
+  </p>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @trimester %> |
+<%= link_to 'Back', trimesters_path %>

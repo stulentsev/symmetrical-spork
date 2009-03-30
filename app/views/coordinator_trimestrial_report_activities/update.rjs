@@ -1,0 +1,7 @@
+page.replace_html 'trimestrial_report_activity_create_edit_form',
+                  :partial => 'coordinator_trimestrial_report_activities/report_activity_new',
+                  :object => CoordinatorTrimestrialReportActivity.new(:coordinator_trimestrial_report_id => @coordinator_trimestrial_report_activity.coordinator_trimestrial_report_id)
+
+page.replace "trimestrial_report_activity_row_#{@coordinator_trimestrial_report_activity.id}",
+                 :partial => 'coordinator_trimestrial_report_activities/report_activity_row',
+                 :object => @coordinator_trimestrial_report_activity

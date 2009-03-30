@@ -1,0 +1,21 @@
+<div id='trimestrial_report_activity_create_edit_form'>
+    <%= render :partial => 'coordinator_trimestrial_report_activities/report_activity_new',
+               :object => @activity %>
+</div>
+
+<ul class='table'>
+    <li>
+        <table id='trimestrial_report_activity_list'>
+            <thead>
+            <tr>
+                <td class='w150'>Atividades</td>
+                <td class='w75'>Data</td>
+                <td class='w150'>Observações</td>
+                <td class='w75'>Ações</td>
+            </tr>
+            </thead>
+            <%= render :partial => 'coordinator_trimestrial_report_activities/report_activity_row',
+                       :collection => trimestrial_report.activities %>
+        </table>
+    </li>
+</ul>
