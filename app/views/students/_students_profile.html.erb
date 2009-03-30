@@ -2,9 +2,11 @@
   <h2 class="aberto"><a href="#">Perfil dos Jovens</a> <a href="#" class="botao-inline">[adicionar]</a></h2>
   <p class="status">status: <span class="em-branco"><strong>em branco</strong></span></p>
   <p class="topo"><a href="#">topo</a></p>
+  <div id='new_student'>
   <%= render :partial => 'students/new', :object => Student.new(:course_id => students_profile) %>
+  </div>
 
-  <ul class="table">
+  <ul class="table" id='languages'>
     <% students_profile.students.group_by(&:language).each do |lang, students| %>
     <%=render :partial => 'students/language', :object => lang,
                         :locals => {:students => students} %>

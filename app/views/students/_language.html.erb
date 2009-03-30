@@ -1,5 +1,5 @@
 <li><h3 class="aberto"><a href="#"><%=h language.name%></a></h3>
-  <ul class="thumbs">
+  <ul class="thumbs" id="language_<%=language.id%>">
     <%= render :partial => 'students/student', :collection => students %>
   </ul>
 	<hr />
