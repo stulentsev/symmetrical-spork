@@ -1,4 +1,3 @@
-<h1>Editing coordinator_trimestrial_report</h1>
 <%= javascript_tag "
   document.observe('dom:loaded', function(event) {
       Editable.setupAll();
@@ -8,39 +7,54 @@
 <% form_for(@coordinator_trimestrial_report) do |f| %>
     <%= f.error_messages %>
 
-    <ol>
-
-    <li>Periodo de <%= @coordinator_trimestrial_report.trimester.period_from %> a
-        <%= @coordinator_trimestrial_report.trimester.period_to %></li>
-    <%= final_report_items f, @coordinator_trimestrial_report,
-                           [[:method_format, :textarea]] %>
-    <li>
-        <%= render :partial => 'coordinator_trimestrial_report_activities/edit_for_trimestrial_report',
-                   :locals => {:trimestrial_report => @coordinator_trimestrial_report} %>
-    </li>
-    <li>
-        <%= f.label :attendance_score %><br/>
-        <%= performance_field f, :attendance_score %>
-    </li>
-    <li>
-        <%= f.label :punctuality_score %><br/>
-        <%= performance_field f, :punctuality_score %>
-    </li>
-    <li>
-        <%= f.label :proactivity_score %><br/>
-        <%= performance_field f, :proactivity_score %>
-    </li>
-    <li>
-        <%= f.label :interdisciplinary_working_score %><br/>
-        <%= performance_field f, :interdisciplinary_working_score %>
-    </li>
-    <li>
-        <%= f.label :student_involvement_score %><br/>
-        <%= performance_field f, :student_involvement_score %>
-    </li>
-    <%= final_report_items f, @coordinator_trimestrial_report,
-                           [[:comment, :textarea]] %>
-    </ol>
+    <ul>
+        <li>
+            <h2 class='aberto'><a href='#' id='quais-conteúdos-foram-desenvolvidos?'>Quais conteúdos foram desenvolvidos?</a></h2>
+            <ol>
+                <li>Periodo de <%= @coordinator_trimestrial_report.trimester.period_from %> a
+                    <%= @coordinator_trimestrial_report.trimester.period_to %></li>
+                <%= final_report_items f, @coordinator_trimestrial_report,
+                                       [[:method_format, :textarea]] %>
+            </ol>
+        </li>
+        <li>
+            <h2 class='aberto'><a href='#' id='atividades-interdisciplinares'>Atividades interdisciplinares</a><a href="#" class="botao-inline">[adicionar]</a></h2>
+            <%= render :partial => 'coordinator_trimestrial_report_activities/edit_for_trimestrial_report',
+                       :locals => {:trimestrial_report => @coordinator_trimestrial_report} %>
+        </li>
+        <li>
+            <h2 class='aberto'><a href='#' id='desempenho-da-equipe'>Desempenho da equipe</a></h2>
+            <ol>
+                <li>
+                    <%= f.label :attendance_score %>
+                    <br/>
+                    <%= performance_field f, :attendance_score %>
+                </li>
+                <li>
+                    <%= f.label :punctuality_score %>
+                    <br/>
+                    <%= performance_field f, :punctuality_score %>
+                </li>
+                <li>
+                    <%= f.label :proactivity_score %>
+                    <br/>
+                    <%= performance_field f, :proactivity_score %>
+                </li>
+                <li>
+                    <%= f.label :interdisciplinary_working_score %>
+                    <br/>
+                    <%= performance_field f, :interdisciplinary_working_score %>
+                </li>
+                <li>
+                    <%= f.label :student_involvement_score %>
+                    <br/>
+                    <%= performance_field f, :student_involvement_score %>
+                </li>
+                <%= final_report_items f, @coordinator_trimestrial_report,
+                                       [[:comment, :textarea]] %>
+            </ol>
+        </li>
+    </ul>
     <div id="finalizar">
         <%= f.submit "Finalizar Relatório" %>
     </div>

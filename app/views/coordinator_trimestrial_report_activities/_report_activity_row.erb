@@ -1,6 +1,6 @@
 <tr id='<%= "trimestrial_report_activity_row_#{report_activity_row.id}" %>'>
     <td>
-        <%= h report_activity_row.name %>
+        <span class='principal'><%= h report_activity_row.name %></span>
     </td>
     <td>
         <%= report_activity_row.date %>
@@ -15,7 +15,7 @@
                            :method => :get %>
         <%= link_to_remote '[deletar]',
                            :class => 'botao-inline',
-                           :url => coordinator_trimestrial_report_activity_url(report_activity_row.id), 
+                           :url => coordinator_trimestrial_report_activity_url(report_activity_row.id),
                            :method => :delete %>
     </td>
 </tr>
