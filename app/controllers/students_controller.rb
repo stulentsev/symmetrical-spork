@@ -56,6 +56,11 @@ class StudentsController < ApplicationController
           end
         end
     else
+      responds_to_parent do
+        render :update do |page|
+          page.replace_html 'new_student', :partial => 'students/new', :object => @student
+        end
+      end
     end
   end
 
