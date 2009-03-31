@@ -41,8 +41,15 @@ class ProjectTeamMembersController < ApplicationController
     @project_team_member = ProjectTeamMember.new(params[:project_team_member])
     @project_team_member.course = @course
 
-    if @project_team_member.valid? && @project_team_member.save
+    if @project_team_member.valid?
       user = find_or_create_user_by_login(@project_team_member.email, 2)
+      user.setup_reports_for_course(@course)
+
+      unless user.valid?
+        user.errors.each {|attr, msg| @project_team_member.errors.add(attr, msg)}
+#        render :action => :new
+        return
+      end
 
       @project_team_member.user = user
       @project_team_member.save

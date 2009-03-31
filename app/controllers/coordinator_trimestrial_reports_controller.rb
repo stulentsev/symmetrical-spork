@@ -1,25 +1,15 @@
 class CoordinatorTrimestrialReportsController < ApplicationController
-  def get_rep_with_deadline(num)
-    arr = current_user.reports_with_deadlines.select {|r| (5..10).member?(r.report_id) }
-    arr = arr.sort {|l, r| l.report_id <=> r.report_id}
-    arr[num.to_i - 1]
-  end
+  before_filter :init_state
 
   def edit
-    @coordinator_trimestrial_report = CoordinatorTrimestrialReport.find(params[:id])
-    @rep_with_deadline = get_rep_with_deadline(params[:id])
-    @activity = CoordinatorTrimestrialReportActivity.new(:coordinator_trimestrial_report_id => params[:id])
   end
 
   def update
-    @coordinator_trimestrial_report = CoordinatorTrimestrialReport.find(params[:id])
-    @rep_with_deadline = get_rep_with_deadline(params[:id])
-
     if params[:commit] == 'Finalizar Relatório' &&
             @coordinator_trimestrial_report.update_attributes(params[:coordinator_trimestrial_report])
       @rep_with_deadline.status = 2 # completed
       @rep_with_deadline.save
-      redirect_to edit_course_coordinator_trimestrial_report_url(@coordinator_trimestrial_report)
+      redirect_to edit_course_coordinator_trimestrial_report_url(params[:id])
       return
     end
 
@@ -35,4 +25,18 @@ class CoordinatorTrimestrialReportsController < ApplicationController
       end
     end
   end
+
+private
+  def init_state()
+    @rep_with_deadline = get_rep_with_deadline(params[:id])
+    @coordinator_trimestrial_report = CoordinatorTrimestrialReport.find(@rep_with_deadline.actual_report_id)
+    @activity = CoordinatorTrimestrialReportActivity.new(:coordinator_trimestrial_report_id => params[:id])
+  end
+
+  def get_rep_with_deadline(num)
+    arr = current_user.reports_with_deadlines.select {|r| (5..10).member?(r.report_id) }
+    arr = arr.sort {|l, r| l.report_id <=> r.report_id}
+    arr[num.to_i - 1]
+  end
+
 end

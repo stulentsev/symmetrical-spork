@@ -6,12 +6,12 @@ class Course < ActiveRecord::Base
   has_one :first_week_methodology
   has_one :rotate_methodology
   has_many :students
+  has_many :trimesters
 
   def after_initialize
     self.student_profile ||=  CourseStudentProfile.create
     self.first_week_methodology ||= FirstWeekMethodology.create
     self.rotate_methodology ||= RotateMethodology.create
     self.save
-
   end
 end
