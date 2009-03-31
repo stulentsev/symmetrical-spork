@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  content_description: MyText
+  methods_used: MyText
+  observations: MyText
+  trimester_id: 1
+
+two:
+  content_description: MyText
+  methods_used: MyText
+  observations: MyText
+  trimester_id: 1

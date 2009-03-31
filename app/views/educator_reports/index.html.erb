@@ -1,0 +1,26 @@
+<h1>Listing educator_reports</h1>
+
+<table>
+  <tr>
+    <th>Content description</th>
+    <th>Methods used</th>
+    <th>Observations</th>
+    <th>Trimester</th>
+  </tr>
+
+<% for educator_report in @educator_reports %>
+  <tr>
+    <td><%=h educator_report.content_description %></td>
+    <td><%=h educator_report.methods_used %></td>
+    <td><%=h educator_report.observations %></td>
+    <td><%=h educator_report.trimester_id %></td>
+    <td><%= link_to 'Show', educator_report %></td>
+    <td><%= link_to 'Edit', edit_educator_report_path(educator_report) %></td>
+    <td><%= link_to 'Destroy', educator_report, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New educator_report', new_educator_report_path %>

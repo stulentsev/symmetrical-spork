@@ -1,4 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :student_performances
+
+  map.resources :educator_reports
+
   map.resources :password_resets
 
   map.resources :students

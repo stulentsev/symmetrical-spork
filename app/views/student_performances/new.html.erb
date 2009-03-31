@@ -1,0 +1,31 @@
+<h1>New student_performance</h1>
+
+<% form_for(@student_performance) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :student_id %><br />
+    <%= f.text_field :student_id %>
+  </p>
+  <p>
+    <%= f.label :progress_achieved %><br />
+    <%= f.text_area :progress_achieved %>
+  </p>
+  <p>
+    <%= f.label :tools_learned %><br />
+    <%= f.text_area :tools_learned %>
+  </p>
+  <p>
+    <%= f.label :project_team_member_id %><br />
+    <%= f.text_field :project_team_member_id %>
+  </p>
+  <p>
+    <%= f.label :trimester_id %><br />
+    <%= f.text_field :trimester_id %>
+  </p>
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', student_performances_path %>
