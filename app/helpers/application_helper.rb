@@ -42,24 +42,26 @@ module ApplicationHelper
             'Desempenho da equipe' ]
 
     navigation =
-            case params[:controller]
-            when 'courses'
-              case params[:action]
-              when 'edit'
-                zero_mark
-              when 'language_choice'
-                language_choice
-              else
-                []
-              end
-            when 'coordinator_trimestrial_reports'
-              case params[:action]
-              when 'edit'
-                coordinator_trimestrial_report
-              else
-                []
-              end
-            end
+                case params[:controller]
+                  when 'courses'
+                    case params[:action]
+                      when 'edit'
+                        zero_mark
+                      when 'language_choice'
+                        language_choice
+                    else
+                      []
+                    end
+                  when 'coordinator_trimestrial_reports'
+                    case params[:action]
+                      when 'edit'
+                        coordinator_trimestrial_report
+                    else
+                      []
+                    end
+                else
+                  []
+                end
 
     navigation.inject("") do |memo, item|
       anchor_id = item.downcase.gsub(' ', '-')
