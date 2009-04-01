@@ -10,19 +10,13 @@ class EducatorReportsController < ApplicationController
             @educator_report.update_attributes(params[:educator_report])
       @rep_with_deadline.status = 2 # completed
       @rep_with_deadline.save
-      redirect_to edit_course_educator_report_url(params[:id])
+      redirect_to edit_course_educator_report_url(params[:course_id], params[:id])
       return
     end
 
     respond_to do |format|
       if @educator_report.update_attributes(params[:educator_report])
-        flash[:notice] = 'EducatorReport was successfully updated.'
-        format.html { redirect_to(@educator_report) }
-        format.xml  { head :ok }
         format.json { render :json => @educator_report}
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @educator_report.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -42,7 +36,8 @@ private
     arr[num.to_i - 1]
   end
 
-  def init_state()
+  def init_state
+    debugger
     @rep_with_deadline = get_rep_with_deadline(params[:id])
     @educator_report = EducatorReport.find(@rep_with_deadline.actual_report_id)
   end
