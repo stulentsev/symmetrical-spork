@@ -3,6 +3,9 @@ class EducatorReportsController < ApplicationController
 
 
   def edit
+    @educator = ProjectTeamMember.find_by_course_id_and_user_id(params[:course_id],
+                                                                current_user.id)
+
   end
 
   def update

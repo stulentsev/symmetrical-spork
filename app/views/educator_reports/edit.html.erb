@@ -14,7 +14,10 @@
                                 [:methods_used, :textarea, 'Método / dinâmicas utilizadas']],
                                :url => action_url %>
         <p>
-              STUDENTS AND LANGUAGES
+            <%= render :partial => 'students/language',
+                       :object => @educator.language,
+                       :locals => {:students => @educator.language.students} %>
+
 
         </p>
         <%= final_report_items f, @educator_report,
