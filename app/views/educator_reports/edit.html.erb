@@ -8,22 +8,33 @@
 <% form_for @educator_report, :url => action_url do |f| %>
   <%= f.error_messages %>
 
-    <ol>
-        <%= final_report_items f, @educator_report,
-                               [[:content_description, :textarea, 'Descreva o conteúdo desenvolvido'],
-                                [:methods_used, :textarea, 'Método / dinâmicas utilizadas']],
-                               :url => action_url %>
-        <p>
-            <%= render :partial => 'students/language',
-                       :object => @educator.language,
-                       :locals => {:students => @educator.language.students} %>
-
-
-        </p>
-        <%= final_report_items f, @educator_report,
-                               [[:observations, :textarea, 'Observações do educador']],
-                               :url => action_url %>
-    </ol>
+    <ul>
+        <li>
+            <h2 class='aberto'><a href='#' id='conteúdo-desenvolvido'>Descreva o conteúdo desenvolvido</a></h2>
+            <ol>
+                <%= final_report_items f, @educator_report,
+                                       [[:content_description, :textarea, 'Descreva o conteúdo desenvolvido'],
+                                        [:methods_used, :textarea, 'Método / dinâmicas utilizadas']],
+                                       :url => action_url %>
+            </ol>
+        </li>
+        <li>
+            <h2 class='aberto'><a href='#' id='desempenho-de-educandos'>Descreva o desempenho de cada educando</a></h2>
+            <ol>
+                    <%= render :partial => 'students/language',
+                               :object => @educator.language,
+                               :locals => {:students => @educator.language.students} %>
+            </ol>
+        </li>
+        <li>
+            <h2 class='aberto'><a href='#' id='observações'>Observações</a></h2>
+            <ol>
+                <%= final_report_items f, @educator_report,
+                                       [[:observations, :textarea, 'Observações do educador']],
+                                       :url => action_url %>
+            </ol>
+        </li>
+    </ul>
   <div id='finalizar'>
     <%= f.submit "Finalizar Relatório" if @rep_with_deadline.is_editable %>
   </div>

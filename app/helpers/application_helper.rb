@@ -41,6 +41,11 @@ module ApplicationHelper
             'Atividades interdisciplinares',
             'Desempenho da equipe' ]
 
+    educator_trimestrial_report = [
+            'Conteúdo desenvolvido',
+            'Desempenho de educandos',
+            'Observações' ]
+
     navigation =
             case params[:controller]
             when 'courses'
@@ -56,6 +61,13 @@ module ApplicationHelper
               case params[:action]
               when 'edit'
                 coordinator_trimestrial_report
+              else
+                []
+              end
+            when 'educator_reports'
+              case params[:action]
+              when 'edit'
+                educator_trimestrial_report
               else
                 []
               end
