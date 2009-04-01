@@ -59,6 +59,8 @@ module ApplicationHelper
               else
                 []
               end
+            else
+              []
             end
 
     navigation.inject("") do |memo, item|
