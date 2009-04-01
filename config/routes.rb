@@ -18,20 +18,18 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :course_student_profiles
 
   map.resources :courses,
-                :has_one => [:first_week_methodology, :rotate_methodology],
+                :has_one => [:first_week_methodology,
+                             :rotate_methodology,
+                             :final_report],
                 :has_many => [:project_team_members,
                               :students,
                               :coordinator_trimestrial_reports,
-                              :educator_reports],
+                              :educator_reports,
+                              :student_performances],
                 :member => {:language_choice => :get}
 
   map.resources :courses,
                 :member => [:dashboard]
-
-  map.resources :courses,
-                :has_one => [:final_report]
-
-  #map.resources :fisrt_week_methodologies
 
   map.resource :account, :controller => "users"
   map.resources :users
