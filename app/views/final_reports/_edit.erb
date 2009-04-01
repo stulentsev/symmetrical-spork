@@ -1,34 +1,26 @@
-<% if @final_report.status == 2 %>
-    <h2>Report is finalized. Thanks for cooperation.</h2>
-<% else %>
-    <%= javascript_tag "
-      document.observe('dom:loaded', function(event) {
-          Editable.setupAll();
-      });" %>
-    <%= javascript_tag "window._token = '#{form_authenticity_token}'" %>
+<%= render :partial => 'layouts/inplace_init', :locals => {:rep_with_deadline => @final_report } %>
+
+<%= render :partial => 'students_grouped_by_language' %>
+
+<% form_for @course, :url => {:controller => :final_reports, :action => :update} do |f| %>
+    <ol>
+        <%= final_report_items f, @course,
+                [[:how_many_finished, :numeric],
+                        [:how_many_are_employed, :numeric],
+                        [:resource_application, :textarea],
+                        [:how_many_will_act, :numeric],
+                        [:how_many_continue_studying, :numeric],
+                        [:reflections_on_evolution_of_objectives, :textarea],
+                        [:results_expected_not_achieved, :textarea],
+                        [:results_not_expected_achieved, :textarea],
+                        [:internship_experience_report, :textarea],
+                        [:conclusions, :textarea]]
+        %>
+    </ol>
+
+    <div id='finalizar'>
+        <%= remote_submit_for_object @course,
+                'Finalizar relatorio',
+                'final_reports' if @final_report.is_editable %>
+    </div>
 <% end %>
-
-    <%= render :partial => 'students_grouped_by_language' %>
-
-    <% form_for @course, :url => {:controller => :final_reports, :action => :update} do |f| %>
-        <ol>
-            <%= final_report_items f, @course,
-                                   [[:how_many_finished, :numeric],
-                                   [:how_many_are_employed, :numeric],
-                                   [:resource_application, :textarea],
-                                   [:how_many_will_act, :numeric],
-                                   [:how_many_continue_studying, :numeric],
-                                   [:reflections_on_evolution_of_objectives, :textarea],
-                                   [:results_expected_not_achieved, :textarea],
-                                   [:results_not_expected_achieved, :textarea],
-                                   [:internship_experience_report, :textarea],
-                                   [:conclusions, :textarea]]
-                                   %>
-        </ol>
-
-        <div id='finalizar'>
-            <%= remote_submit_for_object @course,
-                                         'Finalizar relatorio',
-                                         'final_reports' if @final_report.is_editable %>
-        </div>
-    <% end %>

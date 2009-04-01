@@ -1,12 +1,4 @@
-<% if @rep_with_deadline.status == 2 %>
-    <h2>Report is finalized. Thanks for cooperation.</h2>
-<% else %>
-    <%= javascript_tag "
-      document.observe('dom:loaded', function(event) {
-          Editable.setupAll();
-      });" %>
-    <%= javascript_tag "window._token = '#{form_authenticity_token}'" %>
-<% end %>
+<%= render :partial => 'layouts/inplace_init', :locals => {:rep_with_deadline => @rep_with_deadline } %>
 
 <% action_url = url_for(:controller => :coordinator_trimestrial_reports,
                         :action => :update,
