@@ -8,7 +8,13 @@
     <%= javascript_tag "window._token = '#{form_authenticity_token}'" %>
 <% end %>
 
-<% form_for(@coordinator_trimestrial_report) do |f| %>
+<% action_url = url_for(:controller => :coordinator_trimestrial_reports,
+                        :action => :update,
+                        :method => :post,
+                        :course_id => params[:course_id],
+                        :id => params[:id]) %>
+
+<% form_for @coordinator_trimestrial_report, :url => action_url do |f| %>
     <%= f.error_messages %>
 
     <ul>
@@ -17,7 +23,8 @@
             <ol>
                 <li><h4>Periodo de <%= f.date_select :period_from %> a <%= f.date_select :period_to %></h4></li>
                 <%= final_report_items f, @coordinator_trimestrial_report,
-                                       [[:method_format, :textarea]] %>
+                                       [[:method_format, :textarea]],
+                                       :url => action_url %>
             </ol>
         </li>
         <li>
@@ -54,7 +61,8 @@
                     <%= performance_field f, :student_involvement_score %>
                 </li>
                 <%= final_report_items f, @coordinator_trimestrial_report,
-                                       [[:comment, :textarea]] %>
+                                       [[:comment, :textarea]],
+                                       :url => action_url %>
             </ol>
         </li>
     </ul>
