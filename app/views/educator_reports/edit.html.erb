@@ -21,9 +21,17 @@
         <li>
             <h2 class='aberto'><a href='#' id='desempenho-de-educandos'>Descreva o desempenho de cada educando</a></h2>
             <ol>
+                <% if @educator.transversal? %>
+                    <% Language.find(:all).each do |lang| %>
+                         <%= render :partial => 'students/language',
+                                   :object => lang,
+                                   :locals => {:students => lang.students} %>
+                    <% end %>
+                <% else %>
                     <%= render :partial => 'students/language',
                                :object => @educator.language,
                                :locals => {:students => @educator.language.students} %>
+                <% end %>
             </ol>
         </li>
         <li>

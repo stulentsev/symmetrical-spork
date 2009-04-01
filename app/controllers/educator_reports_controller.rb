@@ -40,7 +40,6 @@ private
   end
 
   def init_state
-    debugger
     @rep_with_deadline = get_rep_with_deadline(params[:id])
     @educator_report = EducatorReport.find(@rep_with_deadline.actual_report_id)
   end

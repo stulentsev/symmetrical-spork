@@ -43,12 +43,12 @@ private
       CoordinatorTrimestrialReport.create(:trimester_id => course.trimesters[type_id - 5].id).id
     when 11..16
       EducatorReport.create(:trimester_id => course.trimesters[type_id - 11].id).id
-    when 17.22
+    when 17..22
       EducatorReport.create(:trimester_id => course.trimesters[type_id - 17].id).id
     when 23..25
       throw Exception.new 'Not implemented yet: Student semestrial report'
     else
-      throw Exception.new 'Unexpected report type'
+      throw Exception.new "Unexpected report type: #{type_id}"
     end
   end
 
