@@ -1,6 +1,14 @@
-<li><h3 class="aberto"><a href="#"><%=h language.name%></a></h3>
-  <ul class="thumbs" id="language_<%=language.id%>">
-    <%= render :partial => 'students/student', :collection => students %>
-  </ul>
-	<hr />
+<% # initialize optional arguments of partial
+   href_func ||= nil
+   onclick_func ||= nil %>
+
+<li>
+    <h3 class="aberto"><a href="#"><%= h language.name %></a></h3>
+    <ul class="thumbs" id="language_<%= language.id %>">
+        <%= render :partial => 'students/student',
+                   :collection => students,
+                   :locals => {:href_func => href_func,
+                               :onclick_func => onclick_func} %>
+    </ul>
+    <hr/>
 </li>
