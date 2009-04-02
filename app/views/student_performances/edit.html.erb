@@ -1,32 +1,36 @@
-
 <% form_for(@student_performance) do |f| %>
   <%= f.error_messages %>
 
-    <table>
-        <tr>
-            <td>
-                <h2>Nome: <%= @student_performance.student.name %></h2>
-            </td>
-            <td rowspan=2 style='width: 20%'>
-                <%= image_tag @student_performance.student.photo.url(:profile) %>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <h4>Idade: <%= @student_performance.student.age %></h4>
-            </td>
-        </tr>
-    </table>
+    <div class="foto">
+        <%= image_tag @student.photo.url(:profile) %>
+    </div>
 
-    <hr/>
-    <h3>Linguagem: <%= @student_performance.student.language.name %></h3>
+    <div class="nome">
+        <h2><%=h @student.name%></h2>
+    </div>
 
-    <ol>
-        <%= final_report_items f, @student_performance,
+    <div class="aluno">
+        <p class="left"><%= calculate_age @student.birthday%> anos <span class="separa">|</span> <a href="#"><%=h @student.email%></a> <span class="separa">|</span> aluno</p>
+        <p class="right"><a href="#">imprimir ficha</a></p>
+    </div>
+
+    <div class="linguagem">
+        <p class="left"><%=h @student.language.name%></p>
+        <p class="right">
+            &nbsp;
+            <!--<a href="#">anterior</a> <span class="separa">|</span> <a href="#">próximo</a>-->
+        </p>
+    </div>
+
+    <div class='corpo'>
+        <ol>
+            <%= final_report_items f, @student_performance,
                                [[:progress_achieved, :textarea],
                                 [:tools_learned, :textarea]] %>
 
-    </ol>
+        </ol>
+    </div>
+
 <% end %>
 <%= javascript_tag "
       Editable.setupAll();
