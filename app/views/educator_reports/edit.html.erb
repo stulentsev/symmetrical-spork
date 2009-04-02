@@ -26,12 +26,14 @@
                          <%= render :partial => 'students/language',
                                    :object => lang,
                                    :locals => {:students => lang.students,
+                                               :href_func => method(:student_href_func),
                                                :onclick_func => method(:student_onclick_func)} %>
                     <% end %>
                 <% else %>
                     <%= render :partial => 'students/language',
                                :object => @educator.language,
                                :locals => {:students => @educator.language.students,
+                                           :href_func => method(:student_href_func),
                                            :onclick_func => method(:student_onclick_func)} %>
                 <% end %>
             </ol>
