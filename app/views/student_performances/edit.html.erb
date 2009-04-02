@@ -24,9 +24,14 @@
 
     <div class='corpo'>
         <ol>
-            <%= final_report_items f, @student_performance,
-                               [[:progress_achieved, :textarea],
-                                [:tools_learned, :textarea]] %>
+            <% if @educator.transversal? %>
+                <%= final_report_items f, @student_performance,
+                                   [[:progress_achieved, :textarea, 'Descreva o desempenho']] %>
+            <% else %>
+                <%= final_report_items f, @student_performance,
+                                   [[:progress_achieved, :textarea, 'Como progrediu a aprendizagem do jovem?'],
+                                    [:tools_learned, :textarea, 'Quais as ferramentas que o jovem aprendeu?']] %>
+            <% end %>
 
         </ol>
     </div>
