@@ -6,7 +6,9 @@
 <ul><!-- TODO CONTEUDO ENTRA NESSA UL -->
   <%= render :partial => 'first_week_methodologies/first_week_methodology' %>
   <%= render :partial => 'rotate_methodologies/rotate_methodology' %>
-  <%= render :partial => 'students/students_profile', :object => @course %>
+  <%= render :partial => 'students/students_profile',
+             :object => @course,
+             :locals => {:href_func => lambda{|st| course_student_url(@course.id, st.id)} } %>
 </ul>
 <div id="finalizar">
   <a href="#">Finalizar Relatório</a>

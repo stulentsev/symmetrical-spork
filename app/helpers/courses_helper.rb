@@ -35,4 +35,5 @@ module CoursesHelper
      4 => 'incompleto'
     }[status]
   end
+
 end

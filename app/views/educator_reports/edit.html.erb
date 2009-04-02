@@ -22,19 +22,9 @@
             <h2 class='aberto'><a href='#' id='desempenho-de-educandos'>Descreva o desempenho de cada educando</a></h2>
             <ol>
                 <% if @educator.transversal? %>
-                    <% Language.find(:all).each do |lang| %>
-                         <%= render :partial => 'students/language',
-                                   :object => lang,
-                                   :locals => {:students => lang.students,
-                                               :href_func => method(:student_href_func),
-                                               :onclick_func => method(:student_onclick_func)} %>
-                    <% end %>
+                    <%= Language.find(:all).each {|lang| render_students(lang) } %>
                 <% else %>
-                    <%= render :partial => 'students/language',
-                               :object => @educator.language,
-                               :locals => {:students => @educator.language.students,
-                                           :href_func => method(:student_href_func),
-                                           :onclick_func => method(:student_onclick_func)} %>
+                    <%= render_students(@educator.language) %>
                 <% end %>
             </ol>
         </li>

@@ -18,7 +18,7 @@ class StudentsController < ApplicationController
     @student = Student.find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html {render :layout => 'student'}
       format.xml  { render :xml => @student }
     end
   end
@@ -49,13 +49,18 @@ class StudentsController < ApplicationController
         responds_to_parent do
           render :update do |page|
             page << "if (!$('language_#{@student.language.id}')) {"
-              page.insert_html :top, 'languages', :partial => 'students/language', :object => @student.language, :locals => {:students => nil}
+              page.insert_html :bottom, 'languages', :partial => 'students/language', :object => @student.language, :locals => {:students => nil}
             page << '}'
-            page.insert_html :bottom, "language_#{@student.language.id}", :partial => 'students/student', :object => @user
+            page.insert_html :bottom, "language_#{@student.language.id}", :partial => 'students/student', :object => @student
             page.replace_html 'new_student', :partial => 'students/new', :object => Student.new(:course_id => params[:course_id])
           end
         end
     else
+      responds_to_parent do
+        render :update do |page|
+          page.replace_html 'new_student', :partial => 'students/new', :object => @student
+        end
+      end
     end
   end
 

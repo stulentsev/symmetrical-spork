@@ -1,48 +1,34 @@
-<p>
-  <b>Name:</b>
-  <%=h @student.name %>
-</p>
+<div class="foto">
+	<%= image_tag @student.photo.url(:profile) %>
+</div>
 
-<p>
-  <b>Age:</b>
-  <%=h @student.age %>
-</p>
+<div class="nome">
+	<h2><%=h @student.name%></h2>
+</div>
 
-<p>
-  <b>Application number:</b>
-  <%=h @student.application_number %>
-</p>
+<div class="aluno">
+	<p class="left"><%= calculate_age @student.birthday%> anos <span class="separa">|</span> <a href="#"><%=h @student.email%></a> <span class="separa">|</span> aluno</p>
+	<p class="right"><a href="#">imprimir ficha</a></p>
+</div>
 
-<p>
-  <b>Photo file:</b>
-  <%=h @student.photo_file %>
-</p>
+<div class="linguagem">
+	<p class="left"><%=h @student.language.name%></p>
+	<p class="right"><a href="#">anterior</a> <span class="separa">|</span> <a href="#">próximo</a></p>
+</div>
 
-<p>
-  <b>Schooling:</b>
-  <%=h @student.schooling_id %>
-</p>
-
-<p>
-  <b>Language:</b>
-  <%=h @student.language_id %>
-</p>
-
-<p>
-  <b>Technical expertise degree:</b>
-  <%=h @student.technical_expertise_degree %>
-</p>
-
-<p>
-  <b>Why oi kabum:</b>
-  <%=h @student.why_oi_kabum %>
-</p>
-
-<p>
-  <b>Observed characteristics:</b>
-  <%=h @student.observed_characteristics %>
-</p>
-
-
-<%= link_to 'Edit', edit_student_path(@student) %> |
-<%= link_to 'Back', students_path %>
+<div class="corpo">
+	<h4>Grau de conhecimento técnico ao ingrassar na escola <small>(informática e/ou linguagens específicas)</small>:</h4>
+	<p><%=h @student.technical_expertise_degree%>
+		<a href="#" class="botao-inline">[leia&nbsp;mais]</a>
+	</p>
+	<hr />
+	<h4>Por que escolheu a Kabum?</h4>
+	<p><%=h @student.why_oi_kabum%>
+		<a href="#" class="botao-inline">[leia&nbsp;mais]</a>
+	</p>
+	<hr />
+	<h4>Características observadas:</h4>
+	<p><%=h @student.observed_characteristics%>
+		<a href="#" class="botao-inline">[leia&nbsp;mais]</a>
+	</p>
+</div>

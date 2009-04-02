@@ -1,6 +1,6 @@
 <li>
     <% url = href_func ? href_func.call(student) : '#' %>
-    <% onclick = onclick_func ? onclick_func.call(student) : '' %>
-	<a href="<%= url %>" onclick='<%= onclick %>'><%= image_tag student.photo.url(:thumb) %>
-	<%= h student.name %></a>
+
+<%= link_to ((image_tag(student.photo.url(:thumb)) + student.name),
+          url, :class => "lbOn" ) %>
 </li>
