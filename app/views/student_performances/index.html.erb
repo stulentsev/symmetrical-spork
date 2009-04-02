@@ -1,0 +1,28 @@
+<h1>Listing student_performances</h1>
+
+<table>
+  <tr>
+    <th>Student</th>
+    <th>Progress achieved</th>
+    <th>Tools learned</th>
+    <th>Project team member</th>
+    <th>Trimester</th>
+  </tr>
+
+<% for student_performance in @student_performances %>
+  <tr>
+    <td><%=h student_performance.student_id %></td>
+    <td><%=h student_performance.progress_achieved %></td>
+    <td><%=h student_performance.tools_learned %></td>
+    <td><%=h student_performance.project_team_member_id %></td>
+    <td><%=h student_performance.trimester_id %></td>
+    <td><%= link_to 'Show', student_performance %></td>
+    <td><%= link_to 'Edit', edit_student_performance_path(student_performance) %></td>
+    <td><%= link_to 'Destroy', student_performance, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New student_performance', new_student_performance_path %>

@@ -1,6 +1,7 @@
 <div class="form">
   <% fields_for team_member_new do |f| %>
-		<ol>
+		<%= f.error_messages %>
+        <ol>
 			<li>
 				<div class="max2">
 					<h4 class="col1"><label for="obj2">Nome:</label> <%= f.text_field :name %></h4>

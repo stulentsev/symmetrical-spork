@@ -9,19 +9,21 @@ class User < ActiveRecord::Base
     self.password_confirmation = pwd
   end
 
-  def after_create
-    if self.user_type_id
+  def setup_reports_for_course(course)
+    if self.valid? && self.user_type_id && self.reports_with_deadlines.empty?
       report_templates = Report.find_all_by_user_type_id(self.user_type_id)
       report_templates.each do |rt|
         rwd = ReportsWithDeadline.new(:report_id => rt.id,
                                       :user_id => self.id,
                                       :status => 0,
                                       :name => rt.name) # TODO: fill course_id
+        rwd.actual_report_id = create_actual_report(rt.id, course)
         self.reports_with_deadlines << rwd
         rwd.save
         self.save_without_session_maintenance
       end
     end
+
   end
 
   def random_password(size = 8)
@@ -33,4 +35,21 @@ class User < ActiveRecord::Base
     reset_perishable_token!
     UserMailer.deliver_password_reset_instructions(self)
   end
+
+private
+  def create_actual_report(type_id, course)
+    case type_id
+    when 5..10
+      CoordinatorTrimestrialReport.create(:trimester_id => course.trimesters[type_id - 5].id).id
+    when 11..16
+      EducatorReport.create(:trimester_id => course.trimesters[type_id - 11].id).id
+    when 17.22
+      EducatorReport.create(:trimester_id => course.trimesters[type_id - 17].id).id
+    when 23..25
+      throw Exception.new 'Not implemented yet: Student semestrial report'
+    else
+      throw Exception.new 'Unexpected report type'
+    end
+  end
+
 end

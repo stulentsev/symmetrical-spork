@@ -1,0 +1,28 @@
+<% if @rep_with_deadline.status == 2 %>
+    <h2>Report is finalized. Thanks for cooperation.</h2>
+<% else %>
+    <%= javascript_tag "
+      document.observe('dom:loaded', function(event) {
+          Editable.setupAll();
+      });" %>
+    <%= javascript_tag "window._token = '#{form_authenticity_token}'" %>
+<% end %>
+
+<% form_for(@educator_report) do |f| %>
+  <%= f.error_messages %>
+
+    <ol>
+        <%= final_report_items f, @educador_report,
+                               [[:content_description, :textarea, 'Descreva o conteúdo desenvolvido'],
+                                [:methods_used, :textarea, 'Método / dinâmicas utilizadas']] %>
+        <p>
+              STUDENTS AND LANGUAGES
+
+        </p>
+        <%= final_report_items f, @educador_report,
+                               [[:observations, :textarea, 'Observações do educador']] %>
+    </ol>
+  <p>
+    <%= f.submit "Finalizar Relatório" if @rep_with_deadline.is_editable %>
+  </p>
+<% end %>

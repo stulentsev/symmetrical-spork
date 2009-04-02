@@ -4,6 +4,7 @@ module UsersHelper
     user = User.find_by_login login
       unless user
         user = User.new(:login => login,
+                        :email => login,
                         :user_type_id => user_type # Educadores
                        )
         user.assign_random_password

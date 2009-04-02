@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  student_id: 1
+  progress_achieved: MyText
+  tools_learned: MyText
+  project_team_member_id: 1
+  trimester_id: 1
+
+two:
+  student_id: 1
+  progress_achieved: MyText
+  tools_learned: MyText
+  project_team_member_id: 1
+  trimester_id: 1

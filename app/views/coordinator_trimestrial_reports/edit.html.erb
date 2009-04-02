@@ -1,8 +1,12 @@
-<%= javascript_tag "
-  document.observe('dom:loaded', function(event) {
-      Editable.setupAll();
-  });" %>
-<%= javascript_tag "window._token = '#{form_authenticity_token}'" %>
+<% if @rep_with_deadline.status == 2 %>
+    <h2>Report is finalized. Thanks for cooperation.</h2>
+<% else %>
+    <%= javascript_tag "
+      document.observe('dom:loaded', function(event) {
+          Editable.setupAll();
+      });" %>
+    <%= javascript_tag "window._token = '#{form_authenticity_token}'" %>
+<% end %>
 
 <% form_for(@coordinator_trimestrial_report) do |f| %>
     <%= f.error_messages %>
@@ -55,7 +59,7 @@
         </li>
     </ul>
     <div id="finalizar">
-        <%= f.submit "Finalizar Relatório" %>
+        <%= f.submit "Finalizar Relatório" if @rep_with_deadline.is_editable %>
     </div>
 <% end %>
 
