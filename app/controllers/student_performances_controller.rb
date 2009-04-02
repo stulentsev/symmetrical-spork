@@ -1,5 +1,6 @@
 class StudentPerformancesController < ApplicationController
   before_filter :init_state, :only => [:edit]
+  layout 'students'
 
   def edit
   end

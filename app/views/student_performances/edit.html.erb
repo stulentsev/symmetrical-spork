@@ -7,8 +7,22 @@
 <% form_for(@student_performance) do |f| %>
   <%= f.error_messages %>
 
-    <h2>Nome: <%= @student_performance.student.name %></h2>
-    <h4>Idade: <%= @student_performance.student.age %></h4>
+    <table>
+        <tr>
+            <td>
+                <h2>Nome: <%= @student_performance.student.name %></h2>
+            </td>
+            <td rowspan=2 style='width: 20%'>
+                <%= image_tag @student_performance.student.photo.url(:profile) %>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h4>Idade: <%= @student_performance.student.age %></h4>
+            </td>
+        </tr>
+    </table>
+
     <hr/>
     <h3>Linguagem: <%= @student_performance.student.language.name %></h3>
 
