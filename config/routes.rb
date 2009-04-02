@@ -24,8 +24,7 @@ ActionController::Routing::Routes.draw do |map|
                 :has_many => [:project_team_members,
                               :students,
                               :coordinator_trimestrial_reports,
-                              :educator_reports,
-                              :student_performances],
+                              :educator_reports],
                 :member => {:language_choice => :get}
 
   map.resources :courses,

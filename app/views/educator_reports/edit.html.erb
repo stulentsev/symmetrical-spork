@@ -26,13 +26,13 @@
                          <%= render :partial => 'students/language',
                                    :object => lang,
                                    :locals => {:students => lang.students,
-                                               :onclick_func => lambda {|st| h('alert("This is ' + st.name + '"); return false;')    }} %>
+                                               :onclick_func => method(:student_onclick_func)} %>
                     <% end %>
                 <% else %>
                     <%= render :partial => 'students/language',
                                :object => @educator.language,
                                :locals => {:students => @educator.language.students,
-                                           :onclick_func => lambda {|st| h('alert("This is ' + st.name + '"); return false;')    }} %>
+                                           :onclick_func => method(:student_onclick_func)} %>
                 <% end %>
             </ol>
         </li>
