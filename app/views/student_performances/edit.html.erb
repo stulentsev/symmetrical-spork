@@ -11,13 +11,11 @@
     <h4>Idade: <%= @student_performance.student.age %></h4>
     <hr/>
     <h3>Linguagem: <%= @student_performance.student.language.name %></h3>
+
     <ol>
         <%= final_report_items f, @student_performance,
                                [[:progress_achieved, :textarea],
                                 [:tools_learned, :textarea]] %>
 
     </ol>
-  <p>
-    <%= f.submit "Update" %>
-  </p>
 <% end %>
