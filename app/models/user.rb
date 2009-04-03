@@ -39,16 +39,16 @@ class User < ActiveRecord::Base
 private
   def create_actual_report(type_id, course)
     case type_id
-    when 5..10
+    when 3..8
       CoordinatorTrimestrialReport.create(:trimester_id => course.trimesters[type_id - 5].id).id
-    when 11..16
+    when 10..15
       EducatorReport.create(:trimester_id => course.trimesters[type_id - 11].id).id
-    when 17..22
+    when 16..21
       EducatorReport.create(:trimester_id => course.trimesters[type_id - 17].id).id
     when 23..25
       throw Exception.new 'Not implemented yet: Student semestrial report'
-    else
-      throw Exception.new "Unexpected report type: #{type_id}"
+    #else
+    #  throw Exception.new "Unexpected report type: #{type_id}"
     end
   end
 

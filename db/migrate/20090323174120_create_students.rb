@@ -12,9 +12,9 @@ class CreateStudents < ActiveRecord::Migration
       t.integer   :course_id
       t.date      :birthday
       t.string    :email
-      t.string    :photo_file_name, :string
-      t.string    :photo_content_type, :string
-      t.string    :photo_file_size, :integer
+      t.string    :photo_file_name
+      t.string    :photo_content_type
+      t.string    :photo_file_size
 
       t.timestamps
     end

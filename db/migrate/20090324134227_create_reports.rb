@@ -5,7 +5,6 @@ class CreateReports < ActiveRecord::Migration
       t.integer :report_type
       t.string  :name
       t.string  :link
-      t.integer :actual_report_id
 
       t.timestamps
     end

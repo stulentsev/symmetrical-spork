@@ -9,6 +9,7 @@ class CreateReportsWithDeadlines < ActiveRecord::Migration
                         # 2 - completed, 3 - blank
                         # 4 - incomplete
       t.string  :name # optional
+      t.integer :actual_report_id
 
       t.timestamps
     end
