@@ -53,6 +53,7 @@ class FillSampleData < ActiveRecord::Migration
                                :language_id => 1 + rand(Language.count),
                                :schooling_id => 1 + rand(Schooling.count),
                                :user_id => student_user.id,
+                               :course_id => course.id,
                                :birthday => Date.civil(1982, 1 + rand(12), 1 + rand(28))
                               )
       #student_user.setup_reports_for_course(course)
