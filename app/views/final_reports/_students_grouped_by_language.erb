@@ -13,7 +13,9 @@
         <h3 style='cursor: pointer' onclick='show_students(this)'><%= lang.name %></h3>
         <div class="student_group_div" style="display: none">
             <ul class='thumbs'>
-                <%= render :partial => 'student_line', :collection => students %>
+                <%= render :partial => 'students/student',
+                           :collection => students,
+                           :locals => {:href_func => lambda{|st| course_student_url(@course.id, st.id)}} %>
             </ul>
         </div>
     </div>
