@@ -36,9 +36,9 @@ module CoursesHelper
     }[status]
   end
 
-  def get_markup_for_rwd rwd
+  def get_markup_for_rwd rwd, link_text = nil
     return '' unless rwd
-    link_text = "#{rwd.name}<small>#{get_label_by_report_status rwd.status}</small>"
+    link_text ||= "#{rwd.name}<small>#{get_label_by_report_status rwd.status}</small>"
     html =  if rwd.status != 0
               link_to link_text,
                       eval(rwd.report.link || '')

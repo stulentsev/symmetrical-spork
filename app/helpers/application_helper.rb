@@ -46,34 +46,24 @@ module ApplicationHelper
             'Desempenho de educandos',
             'Observações' ]
 
-    navigation =
-            case params[:controller]
-            when 'courses'
-              case params[:action]
-              when 'edit'
-                zero_mark
-              when 'language_choice'
-                language_choice
-              else
-                []
-              end
-            when 'coordinator_trimestrial_reports'
-              case params[:action]
-              when 'edit'
-                coordinator_trimestrial_report
-              else
-                []
-              end
-            when 'educator_reports'
-              case params[:action]
-              when 'edit'
-                educator_trimestrial_report
-              else
-                []
-              end
-            else
-              []
-            end
+
+    navigation = case params[:controller]
+    when 'courses'
+      case params[:action]
+      when 'edit'
+        zero_mark
+      when 'language_choice'
+        language_choice
+      else
+        []
+      end
+    when 'coordinator_trimestrial_reports', 'educator_reports'
+      trimestrial_report_navigation
+    else
+      []
+    end
+
+    return navigation if !navigation.is_a?(Array)
 
     navigation.inject("") do |memo, item|
       anchor_id = item.downcase.gsub(' ', '-')

@@ -2,7 +2,19 @@
     <li class="col1">
         <h2>Detalhes de Preenchimento</h2>
         <ul id="dash-status">
-            <%= current_user.reports_with_deadlines.map {|rwd| get_markup_for_rwd(rwd)} %>
+            <% link_2_exists = false %>
+            <% current_user.reports_with_deadlines.each do |rwd| %>
+                <%= if rwd.report.report_type == 2 && current_user.user_type_id == 1
+                        if !link_2_exists
+                            link_2_exists = true
+                            get_markup_for_rwd(rwd, 'Relatórios de conteúdo')
+                            #'<li class="pendente"><a href="javascript:void(0)">Relatórios de conteúdo<small>em andamento</small></a></li>'
+                        end
+                else
+                     get_markup_for_rwd(rwd)
+                end
+                    %>
+            <% end %>
         </ul>
     </li>
     <li class="col2">

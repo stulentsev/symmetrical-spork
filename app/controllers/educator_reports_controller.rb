@@ -25,16 +25,7 @@ class EducatorReportsController < ApplicationController
   end
 private
   def get_rep_with_deadline(num)
-    range = case current_user.user_type_id
-    when 2
-      (11..16) # relatorios de educador de linguagem
-    when 3
-      (17..22) # relatorios trimestriais des educadores transversais
-    else
-      throw Exception.new 'Not educator user'
-    end
-
-    arr = current_user.reports_with_deadlines.select {|r| range.member?(r.report_id) }
+    arr = current_user.reports_with_deadlines.select {|r| r.report.report_type == 2 }
     arr = arr.sort {|l, r| l.report_id <=> r.report_id}
     arr[num.to_i - 1]
   end
