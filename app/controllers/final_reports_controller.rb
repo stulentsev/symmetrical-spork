@@ -1,4 +1,5 @@
 class FinalReportsController < ApplicationController
+  before_filter :authorize
 
   def update
     @course = Course.find_by_id(params[:course_id])
@@ -26,5 +27,9 @@ private
       page.replace_html 'course_final_report_div',
                         :partial => 'final_reports/edit'
     end
+  end
+
+  def authorize
+    require_user_role [:coordinator, :gestor]
   end
 end

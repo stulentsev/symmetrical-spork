@@ -1,4 +1,6 @@
 class CoursesController < ApplicationController
+  before_filter :authorize, :except => [:dashboard]
+
   # GET /courses
   # GET /courses.xml
   def index
@@ -110,5 +112,8 @@ class CoursesController < ApplicationController
   def dashboard
     @course = Course.find_by_id(params[:id])
   end
-
+private
+  def authorize
+    require_user_role  [:coordinator, :gestor]
+  end
 end

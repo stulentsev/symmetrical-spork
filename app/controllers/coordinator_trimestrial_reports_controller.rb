@@ -1,5 +1,5 @@
 class CoordinatorTrimestrialReportsController < ApplicationController
-  before_filter :init_state
+  before_filter :init_state, :authorize
 
   def edit
   end
@@ -37,4 +37,7 @@ private
     arr[num.to_i - 1]
   end
 
+  def authorize
+    require_user_role [:coordinator, :gestor]
+  end
 end

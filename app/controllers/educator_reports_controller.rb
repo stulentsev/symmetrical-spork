@@ -1,5 +1,5 @@
 class EducatorReportsController < ApplicationController
-  before_filter :init_state
+  before_filter :init_state, :authorize
 
 
   def edit
@@ -35,4 +35,7 @@ private
     @educator_report = EducatorReport.find(@rep_with_deadline.actual_report_id)
   end
 
+  def authorize
+    require_user_role [:educator_specific, :educator_transversal]
+  end
 end
