@@ -13,7 +13,7 @@ module FinalReportHelper
     edit_in_place(resource, field, options)
   end
 
-  def bold_label form, field, alt_text
+  def bold_label form, field, alt_text = nil
     "<h4>#{form.label field, alt_text}</h4>"
   end
 
@@ -22,7 +22,7 @@ module FinalReportHelper
     alt_text = options.delete(:label)
     "
       <li>
-          #{bold_label form, field, alt_text}
+          #{bold_label(form, field, alt_text) if alt_text != :no_label}
           #{item_func.call resource, field, options}
           <hr/>
       </li>

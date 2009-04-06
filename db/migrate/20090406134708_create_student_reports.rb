@@ -1,7 +1,7 @@
 class CreateStudentReports < ActiveRecord::Migration
   def self.up
     create_table :student_reports do |t|
-      t.text    :s1_what_else_want_to_learn
+      t.text    :s1_what_enjoyed_to_learn
       t.string  :s1_difficulties
       t.text    :s1_difficulties_text
       t.text    :s1_opinion_on_educators

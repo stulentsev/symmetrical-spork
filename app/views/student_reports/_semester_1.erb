@@ -1,29 +1,29 @@
 <ol>
     <%= final_report_items f, @student_report,
-                           [[:s1_what_else_want_to_learn, :textarea]] %>
+                           [[:s1_what_enjoyed_to_learn, :textarea, 'O que mais gostou de aprender?']] %>
 
-</ol>
-<p>
-    <%= f.label :s1_difficulties %><br/>
-    <%= f.text_field :s1_difficulties %>
-</p>
-<%= final_report_items f, @student_report,
-                       [[:s1_difficulties_text, :textarea],
-                               [:s1_opinion_on_educators, :textarea],
-                               [:s1_opinion_on_coordination, :textarea],
-                               [:s1_selfevaluation, :textarea],
-                               [:s1_how_can_improve, :textarea],
-                       ] %>
-<p>
-    <%= f.label :s1_oi_kabum_helped %><br/>
-    <%= f.text_field :s1_oi_kabum_helped %>
-</p>
-<ol>
+    <li>
+        <%= bold_label f, :s1_difficulties, 'Em que teve mais dificuldade?' %>
+        <br/>
+        <%= f.text_field :s1_difficulties %>
+    </li>
     <%= final_report_items f, @student_report,
-                           [[:s1_oi_kabum_helped_text, :textarea],
-                                   [:s1_family_relationship_changed, :textarea],
-                                   [:s1_former_expectations, :textarea],
-                                   [:s1_current_expectations, :textarea],
-                                   [:s1_what_want_from_future, :textarea],
-                                   [:s1_free_thoughts, :textarea]] %>
+                           [[:s1_difficulties_text, :textarea, :no_label],
+                            [:s1_opinion_on_educators, :textarea, 'Opinião sobre os educadores?'],
+                            [:s1_opinion_on_coordination, :textarea, 'Opinião sobre a coordenação?'],
+                            [:s1_selfevaluation, :textarea, 'Como você se auto avalia?'],
+                            [:s1_how_can_improve, :textarea, 'Como pode melhorar?'],
+                           ] %>
+    <li>
+        <%= bold_label f, :s1_oi_kabum_helped, 'A entrada na Kabum ajudou a aprendizagem na escola?' %>
+        <br/>
+        <%= f.text_field :s1_oi_kabum_helped %>
+    </li>
+    <%= final_report_items f, @student_report,
+                           [[:s1_oi_kabum_helped_text, :textarea, 'Justifique'],
+                            [:s1_family_relationship_changed, :textarea, 'A relação com a sua família mudou?'],
+                            [:s1_former_expectations, :textarea, 'Qual era  sua expectativa antes?'],
+                            [:s1_current_expectations, :textarea, 'Como é a sua expectativa agora?'],
+                            [:s1_what_want_from_future, :textarea, 'O que você quer para o futuro?'],
+                            [:s1_free_thoughts, :textarea, 'Escreva o que quiser sobre a Kabum']] %>
 </ol>

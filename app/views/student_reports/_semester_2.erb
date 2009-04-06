@@ -1,11 +1,11 @@
 <ol>
     <%= final_report_items f, @student_report,
-                           [[:s2_what_learned, :textarea],
-                                   [:s2_opinion_on_educators, :textarea],
-                                   [:s2_relationship_with_coordination, :textarea],
-                                   [:s2_selfevaluation, :textarea],
-                                   [:s2_how_can_improve, :textarea],
-                                   [:s2_what_could_be_better, :textarea]
+                           [[:s2_what_learned, :textarea, 'O que aprendeu nesse período?'],
+                            [:s2_opinion_on_educators, :textarea, 'Opinião sobre os educadores?'],
+                            [:s2_relationship_with_coordination, :textarea, 'Relacionamento com a coordenação?'],
+                            [:s2_selfevaluation, :textarea, 'Como você se auto avalia?'],
+                            [:s2_how_can_improve, :textarea, 'Como pode melhorar?'],
+                            [:s2_what_could_be_better, :textarea, 'O que poderia ter side melhor nesse semestre?']
                            ] %>
 
 </ol>
