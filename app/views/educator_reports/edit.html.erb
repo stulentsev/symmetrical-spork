@@ -22,7 +22,7 @@
             <h2 class='aberto'><a href='#' id='desempenho-de-educandos'>Descreva o desempenho de cada educando</a></h2>
             <ol>
                 <% if @educator.transversal? %>
-                    <%= Language.find(:all).each {|lang| render_students(lang) } %>
+                    <%= Language.find(:all).map {|lang| render_students(lang) } %>
                 <% else %>
                     <%= render_students(@educator.language) %>
                 <% end %>
