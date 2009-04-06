@@ -16,7 +16,8 @@ class User < ActiveRecord::Base
         rwd = ReportsWithDeadline.new(:report_id => rt.id,
                                       :user_id => self.id,
                                       :status => 0,
-                                      :name => rt.name) # TODO: fill course_id
+                                      :course_id => course.id,
+                                      :name => rt.name)
         rwd.actual_report_id = create_actual_report(rt.id, course)
         self.reports_with_deadlines << rwd
         rwd.save
