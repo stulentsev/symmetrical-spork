@@ -1,3 +1,10 @@
+<style type='text/css'>
+    li input
+    {
+        margin-left: 20px;
+    }
+</style>
+
 <ol>
     <%= final_report_items f, @student_report,
                            [[:s1_what_enjoyed_to_learn, :textarea, 'O que mais gostou de aprender?']] %>
@@ -5,10 +12,14 @@
     <li>
         <%= bold_label f, :s1_difficulties, 'Em que teve mais dificuldade?' %>
         <br/>
-        <%= f.text_field :s1_difficulties %>
+        <%= f.check_box :language_techniques %>Técnicas de linguagem
+        <%= f.check_box :equipment %>Equipamentos
+        <%= f.check_box :school_didactics %>;Didáctica da escola
+        <%= f.check_box :relationships_with_professors %>Rel professores
+        <%= f.check_box :relationships_with_students %>Rel. colegas
     </li>
     <%= final_report_items f, @student_report,
-                           [[:s1_difficulties_text, :textarea, :no_label],
+                           [[:s1_difficulties_text, :textarea, 'Outros'],
                             [:s1_opinion_on_educators, :textarea, 'Opinião sobre os educadores?'],
                             [:s1_opinion_on_coordination, :textarea, 'Opinião sobre a coordenação?'],
                             [:s1_selfevaluation, :textarea, 'Como você se auto avalia?'],
@@ -17,7 +28,7 @@
     <li>
         <%= bold_label f, :s1_oi_kabum_helped, 'A entrada na Kabum ajudou a aprendizagem na escola?' %>
         <br/>
-        <%= f.text_field :s1_oi_kabum_helped %>
+        <%= f.select :s1_oi_kabum_helped, [['', ''], ['Sim', 1], ['Não', 0]] %>
     </li>
     <%= final_report_items f, @student_report,
                            [[:s1_oi_kabum_helped_text, :textarea, 'Justifique'],
