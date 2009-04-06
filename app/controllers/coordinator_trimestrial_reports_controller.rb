@@ -32,7 +32,7 @@ private
   end
 
   def get_rep_with_deadline(num)
-    arr = current_user.reports_with_deadlines.select {|r| (5..10).member?(r.report_id) }
+    arr = current_user.reports_with_deadlines.select {|r| r.report.report_type == 2 }
     arr = arr.sort {|l, r| l.report_id <=> r.report_id}
     arr[num.to_i - 1]
   end
