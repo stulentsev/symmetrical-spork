@@ -6,7 +6,8 @@ class Course < ActiveRecord::Base
   has_one :first_week_methodology
   has_one :rotate_methodology
   has_many :students
-  has_many :trimesters
+  has_many :trimesters, :class_name => 'Term', :conditions => {:months_long => 3}
+  has_many :semesters, :class_name => 'Term', :conditions => {:months_long => 6}
 
   def after_initialize
     self.student_profile ||=  CourseStudentProfile.create

@@ -7,7 +7,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :coordinator_trimestrial_report_activities
 
-  map.resources :trimesters
+  map.resources :terms
 
   map.resources :partners
 

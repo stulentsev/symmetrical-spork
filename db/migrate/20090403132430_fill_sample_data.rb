@@ -8,9 +8,18 @@ class FillSampleData < ActiveRecord::Migration
 
       # create trimesters for course
       6.times do |num|
-        trim = Trimester.create(:course_id => course.id,
-                                :number => num + 1)
+        trim = Term.create(:course_id => course.id,
+                           :number => num + 1,
+                           :months_long => 3)
         course.trimesters << trim
+        course.save
+      end
+      # create semesters
+      3.times do |num|
+        trim = Term.create(:course_id => course.id,
+                           :number => num + 1,
+                           :months_long => 6)
+        course.semesters << trim
         course.save
       end
 
@@ -58,7 +67,7 @@ class FillSampleData < ActiveRecord::Migration
                                  :course_id => course.id,
                                  :birthday => Date.civil(1982, 1 + rand(12), 1 + rand(28))
                                 )
-        #student_user.setup_reports_for_course(course)
+        student_user.setup_reports_for_course(course)
 
       end
       # Open all reports

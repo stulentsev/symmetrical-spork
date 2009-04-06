@@ -40,13 +40,13 @@ private
   def create_actual_report(type_id, course)
     case type_id
     when 3..8
-      CoordinatorTrimestrialReport.create(:trimester_id => course.trimesters[type_id - 5].id).id
+      CoordinatorTrimestrialReport.create(:trimester_id => course.trimesters[type_id - 3].id).id
     when 10..15
-      EducatorReport.create(:trimester_id => course.trimesters[type_id - 11].id).id
+      EducatorReport.create(:trimester_id => course.trimesters[type_id - 10].id).id
     when 16..21
-      EducatorReport.create(:trimester_id => course.trimesters[type_id - 17].id).id
-    when 23..25
-      throw Exception.new 'Not implemented yet: Student semestrial report'
+      EducatorReport.create(:trimester_id => course.trimesters[type_id - 16].id).id
+    when 22..24
+      StudentReport.create(:semester_id => course.semesters[type_id - 22].id).id
     #else
     #  throw Exception.new "Unexpected report type: #{type_id}"
     end
