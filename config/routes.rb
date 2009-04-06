@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :student_reports
+
   map.resources :student_performances
 
   map.resources :password_resets
@@ -24,7 +26,8 @@ ActionController::Routing::Routes.draw do |map|
                 :has_many => [:project_team_members,
                               :students,
                               :coordinator_trimestrial_reports,
-                              :educator_reports],
+                              :educator_reports,
+                              :student_reports],
                 :member => {:language_choice => :get}
 
   map.resources :courses,

@@ -1,0 +1,112 @@
+<h1>Editing student_report</h1>
+
+<% form_for(@student_report) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :s1_what_else_want_to_learn %><br />
+    <%= f.text_area :s1_what_else_want_to_learn %>
+  </p>
+  <p>
+    <%= f.label :s1_difficulties %><br />
+    <%= f.text_field :s1_difficulties %>
+  </p>
+  <p>
+    <%= f.label :s1_difficulties_text %><br />
+    <%= f.text_area :s1_difficulties_text %>
+  </p>
+  <p>
+    <%= f.label :s1_opinion_on_educators %><br />
+    <%= f.text_area :s1_opinion_on_educators %>
+  </p>
+  <p>
+    <%= f.label :s1_opinion_on_coordination %><br />
+    <%= f.text_area :s1_opinion_on_coordination %>
+  </p>
+  <p>
+    <%= f.label :s1_selfevaluation %><br />
+    <%= f.text_area :s1_selfevaluation %>
+  </p>
+  <p>
+    <%= f.label :s1_how_can_improve %><br />
+    <%= f.text_area :s1_how_can_improve %>
+  </p>
+  <p>
+    <%= f.label :s1_oi_kabum_helped %><br />
+    <%= f.text_field :s1_oi_kabum_helped %>
+  </p>
+  <p>
+    <%= f.label :s1_oi_kabum_helped_text %><br />
+    <%= f.text_area :s1_oi_kabum_helped_text %>
+  </p>
+  <p>
+    <%= f.label :s1_family_relationship_changed %><br />
+    <%= f.text_area :s1_family_relationship_changed %>
+  </p>
+  <p>
+    <%= f.label :s1_former_expectations %><br />
+    <%= f.text_area :s1_former_expectations %>
+  </p>
+  <p>
+    <%= f.label :s1_current_expectations %><br />
+    <%= f.text_area :s1_current_expectations %>
+  </p>
+  <p>
+    <%= f.label :s1_what_want_from_future %><br />
+    <%= f.text_area :s1_what_want_from_future %>
+  </p>
+  <p>
+    <%= f.label :s1_free_thoughts %><br />
+    <%= f.text_area :s1_free_thoughts %>
+  </p>
+  <p>
+    <%= f.label :s2_what_learned %><br />
+    <%= f.text_area :s2_what_learned %>
+  </p>
+  <p>
+    <%= f.label :s2_opinion_on_educators %><br />
+    <%= f.text_area :s2_opinion_on_educators %>
+  </p>
+  <p>
+    <%= f.label :s2_relationship_with_coordination %><br />
+    <%= f.text_area :s2_relationship_with_coordination %>
+  </p>
+  <p>
+    <%= f.label :s2_selfevaluation %><br />
+    <%= f.text_area :s2_selfevaluation %>
+  </p>
+  <p>
+    <%= f.label :s2_how_can_improve %><br />
+    <%= f.text_area :s2_how_can_improve %>
+  </p>
+  <p>
+    <%= f.label :s2_what_could_be_better %><br />
+    <%= f.text_area :s2_what_could_be_better %>
+  </p>
+  <p>
+    <%= f.label :s3_what_learned %><br />
+    <%= f.text_area :s3_what_learned %>
+  </p>
+  <p>
+    <%= f.label :s3_what_kabum_means %><br />
+    <%= f.text_area :s3_what_kabum_means %>
+  </p>
+  <p>
+    <%= f.label :s3_noticed_difference %><br />
+    <%= f.text_area :s3_noticed_difference %>
+  </p>
+  <p>
+    <%= f.label :s3_self_evaluation %><br />
+    <%= f.text_area :s3_self_evaluation %>
+  </p>
+  <p>
+    <%= f.label :s3_whats_next %><br />
+    <%= f.text_area :s3_whats_next %>
+  </p>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @student_report %> |
+<%= link_to 'Back', student_reports_path %>
