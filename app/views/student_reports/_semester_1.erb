@@ -1,0 +1,29 @@
+<ol>
+    <%= final_report_items f, @student_report,
+                           [[:s1_what_else_want_to_learn, :textarea]] %>
+
+</ol>
+<p>
+    <%= f.label :s1_difficulties %><br/>
+    <%= f.text_field :s1_difficulties %>
+</p>
+<%= final_report_items f, @student_report,
+                       [[:s1_difficulties_text, :textarea],
+                               [:s1_opinion_on_educators, :textarea],
+                               [:s1_opinion_on_coordination, :textarea],
+                               [:s1_selfevaluation, :textarea],
+                               [:s1_how_can_improve, :textarea],
+                       ] %>
+<p>
+    <%= f.label :s1_oi_kabum_helped %><br/>
+    <%= f.text_field :s1_oi_kabum_helped %>
+</p>
+<ol>
+    <%= final_report_items f, @student_report,
+                           [[:s1_oi_kabum_helped_text, :textarea],
+                                   [:s1_family_relationship_changed, :textarea],
+                                   [:s1_former_expectations, :textarea],
+                                   [:s1_current_expectations, :textarea],
+                                   [:s1_what_want_from_future, :textarea],
+                                   [:s1_free_thoughts, :textarea]] %>
+</ol>
