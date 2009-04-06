@@ -59,6 +59,7 @@
 
       <div id="menu">
         <h5 class="no-display">Menu Principal</h5>
+        <% if current_user.user_type_id == 1 %>
         <ul>
           <li <%= 'class="selected"' if params[:controller] == 'courses' && params[:action] == 'edit' %> ><%= link_to "Marco Zero", edit_course_path(1) %></li>
           <li <%= 'class="selected"' if params[:action] == 'language_choice' %> ><%= link_to "Escolha das Linguagens", language_choice_course_path(1) %></li>
@@ -66,6 +67,7 @@
           <li <%= 'class="selected"' if params[:controller] == 'final_reports' && params[:action] == 'edit' %>><%= link_to "Relatório Final", edit_course_final_report_path(1) %></li>
           <li><a href="e_relatorio_edu.html">Relatório Educadores</a></li>
         </ul>
+        <% end %>
       </div>
 
       <div id="lateral">
