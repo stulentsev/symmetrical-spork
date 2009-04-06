@@ -59,6 +59,8 @@ module ApplicationHelper
       end
     when 'coordinator_trimestrial_reports', 'educator_reports'
       trimestrial_report_navigation
+    when 'student_reports'
+      semestrial_report_navigation
     else
       []
     end

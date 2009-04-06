@@ -34,6 +34,7 @@ class StudentReportsController < ApplicationController
 
   # GET /student_reports/1/edit
   def edit
+
     @student_report = StudentReport.find(params[:id])
   end
 
@@ -82,4 +83,21 @@ class StudentReportsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+private
+    def get_rep_with_deadline(num)
+      arr = current_user.reports_with_deadlines.select {|r| r.report.report_type == 3 }
+      arr = arr.sort {|l, r| l.report_id <=> r.report_id}
+      arr[num.to_i - 1]
+    end
+
+    def init_state
+      @rep_with_deadline = get_rep_with_deadline(params[:id])
+      @student_report = StudentReport.find(@rep_with_deadline.actual_report_id)
+      @semester_no = params[:id]
+      throw Exception.new("Value out of range.") if ![1, 2, 3].member?(params[:id])
+    end
+
+    def authorize
+      require_user_role [:student]
+    end
 end

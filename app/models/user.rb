@@ -46,7 +46,8 @@ private
     when 16..21
       EducatorReport.create(:trimester_id => course.trimesters[type_id - 16].id).id
     when 22..24
-      StudentReport.create.id
+      @student_report ||= StudentReport.create
+      @student_report.id
     #else
     #  throw Exception.new "Unexpected report type: #{type_id}"
     end
