@@ -8,7 +8,7 @@ class CreateJobRecords < ActiveRecord::Migration
       t.date :period_to
       t.text :description
       t.integer :student_id
-      t.integer :is_current
+      t.integer :is_current, :default => 0
 
       t.timestamps
     end
