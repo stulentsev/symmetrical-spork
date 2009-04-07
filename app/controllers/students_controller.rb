@@ -74,6 +74,7 @@ class StudentsController < ApplicationController
         flash[:notice] = 'Student was successfully updated.'
         format.html { redirect_to(@student) }
         format.xml  { head :ok }
+        format.json { render :json => @student }
       else
         format.html { render :action => "edit" }
         format.xml  { render :xml => @student.errors, :status => :unprocessable_entity }
@@ -83,7 +84,7 @@ class StudentsController < ApplicationController
 
   def professional_profile
     @student = Student.find(params[:id])
-    
+
   end
 
   # DELETE /students/1
