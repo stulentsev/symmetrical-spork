@@ -5,7 +5,7 @@ class StudentReport < ActiveRecord::Base
   end
 
   def difficulties
-    @difficulties ||= YAML::load(self.s1_difficulties)
+    @difficulties ||= YAML::load(self.s1_difficulties || "")
     @difficulties ||= []
   end
   def add_difficulty diff
