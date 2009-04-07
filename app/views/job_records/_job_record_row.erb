@@ -1,0 +1,21 @@
+<li id="student_job_record_row_<%= job_record_row.id %>">
+    <table>
+        <tr>
+            <td>
+                <a href='<%= h job_record_row.company_url %>'><%= h job_record_row.company_name %></a>
+            </td>
+            <td>
+                <%= job_record_row.period_from.mon %> de <%= job_record_row.period_from.year %> a
+                <%= job_record_row.period_to.mon %> de <%= job_record_row.period_to.year %>
+            </td>
+        </tr>
+    </table>
+    <table id="student_job_record_row_details_<%= job_record_row.id %>" style='display: none'>
+        <tr>
+            <td>Funcao: <%= h job_record_row.function %></td>
+        </tr>
+        <tr>
+            <td>Descricao: <br/> <%= h job_record_row.description %></td>
+        </tr>
+    </table>
+</li>
