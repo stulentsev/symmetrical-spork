@@ -11,6 +11,9 @@ class Student < ActiveRecord::Base
 
   validates_presence_of :name, :email, :language_id
   validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
+  #validates_associated :contacts
+
+  after_update :save_contacts
 
   def after_create
     # pre-create some common contact types
@@ -20,4 +23,28 @@ class Student < ActiveRecord::Base
     self.contacts << Contact.create(:contact_type => 'telephone', :contact_name => 'Outro')
     self.save
   end
+
+  def new_contact_attributes= contact_attributes
+    contact_attributes.each do |attrs|
+      contacts.build(attrs)
+    end
+  end
+
+  def existing_contact_attributes= contact_attributes
+    contacts.reject(&:new_record?).each do |contact|
+      attributes = contact_attributes[contact.id.to_s]
+      if attributes
+        contact.attributes = attributes
+      else
+        contacts.delete(contact)
+      end
+    end
+  end
+
+  def save_contacts
+    contacts.each do |contact|
+      contact.save
+    end
+  end
+
 end

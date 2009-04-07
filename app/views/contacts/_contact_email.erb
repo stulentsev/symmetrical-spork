@@ -1,0 +1,10 @@
+<tr>
+    <td>    &nbsp;
+        <%#= contact.contact_name %>
+        <%= f.hidden_field :contact_name %>
+    </td>
+    <td>
+        <%= final_report_items f, contact,
+                               [[:value, :input, nil, '#{field_markup}']] %>
+    </td>
+</tr>

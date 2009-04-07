@@ -1,0 +1,17 @@
+<tr>
+    <td>
+        <%= f.select :contact_name, [['Homepage', 'homepage'],
+                ['Blog', 'blog'],
+                ['MySpace', 'myspace'],
+                ['Facebook', 'facebook'],
+                ['Orkut', 'orkut'],
+                ['Youtube', 'youtube'],
+                ['Outro', 'other']
+        ] %>
+
+    </td>
+    <td>
+        <%= final_report_items f, contact,
+                               [[:value, :input, nil, '#{field_markup}']] %>
+    </td>
+</tr>

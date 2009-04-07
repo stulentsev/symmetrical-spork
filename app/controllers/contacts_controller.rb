@@ -64,6 +64,7 @@ class ContactsController < ApplicationController
         flash[:notice] = 'Contact was successfully updated.'
         format.html { redirect_to(@contact) }
         format.xml  { head :ok }
+        format.json { render :json => @contact }
       else
         format.html { render :action => "edit" }
         format.xml  { render :xml => @contact.errors, :status => :unprocessable_entity }

@@ -36,6 +36,7 @@ class StudentsController < ApplicationController
 
   # GET /students/1/edit
   def edit
+    params[:student][:existing_contact_attributes] ||= {}
     @student = Student.find(params[:id])
   end
 
@@ -67,6 +68,7 @@ class StudentsController < ApplicationController
   # PUT /students/1
   # PUT /students/1.xml
   def update
+    params[:student][:existing_contact_attributes] ||= {}
     @student = Student.find(params[:id])
 
     respond_to do |format|

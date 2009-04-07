@@ -28,21 +28,19 @@ module FinalReportHelper
     end
 
     alt_text = options.delete(:label)
-    "
-      <li>
-          #{bold_label(form, field, alt_text) if alt_text != :no_label}
-          #{item_func.call resource, field, options}
-          <hr/>
-      </li>
-    "
+    label_markup = bold_label(form, field, alt_text) if alt_text != :no_label
+    field_markup = item_func.call resource, field, options
+    template = options.delete(:markup)
+    eval('"' + template + '"')
   end
 
   def final_report_items form, resource, items = [], options = {}
     items.inject("") do |output, elem|
-      name, type, label = elem
+      name, type, label, markup = elem
       opts = options.dup
       opts[:type] = type
       opts[:label] = label
+      opts[:markup] = markup || '<li>#{label_markup}#{field_markup}<hr/></li>'
       output << final_report_item(form, resource, name, opts)
     end
   end
