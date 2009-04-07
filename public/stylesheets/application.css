@@ -3,3 +3,24 @@
 img.cmd {
     border: 0px;
 }
+
+
+/* some hacks for grid.css */
+input {
+    border: 1px solid black;
+    padding: 4px;
+}
+
+#finalizar input {
+    position: relative;
+    display: block;
+    width: 383px;
+    height: 50px;
+    margin: 20px auto;
+    font: bold 20px/50px Arial, sans-serif;
+    color: #FFF;
+    background: #EC1848 url('../images/b_final.png') no-repeat;
+    text-decoration: none;
+    text-transform: uppercase;
+    text-align: center;
+}
