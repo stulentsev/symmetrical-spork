@@ -20,7 +20,7 @@ class CreateStudents < ActiveRecord::Migration
       t.string    :address2
       t.string    :building_no
       t.string    :compl
-      t.string    :estado
+      t.string    :state
       t.string    :uf
       t.string    :cep
       t.text      :custom_message
