@@ -1,16 +1,26 @@
-<li id="student_job_record_row_<%= job_record_row.id %>">
-    <table>
+<li id="student_profile_job_record_row_<%= job_record_row.id %>">
+    <table width="100%">
         <tr>
-            <td>
+            <td >
                 <a href='<%= h job_record_row.company_url %>'><%= h job_record_row.company_name %></a>
             </td>
-            <td>
+            <td width="155px">
                 <%= job_record_row.period_from.mon %> de <%= job_record_row.period_from.year %> a
                 <%= job_record_row.period_to.mon %> de <%= job_record_row.period_to.year %>
             </td>
+            <td width="130px">
+                <%= link_to_remote '[editar]',
+                                   :class => 'botao-inline',
+                                   :url => edit_job_record_url(job_record_row.id),
+                                   :method => :get %>
+                <%= link_to_remote '[deletar]',
+                                   :class => 'botao-inline',
+                                   :url => job_record_url(job_record_row.id),
+                                   :method => :delete %>
+            </td>
         </tr>
     </table>
-    <table id="student_job_record_row_details_<%= job_record_row.id %>" style='display: none'>
+    <table id="student_profile_job_record_row_details_<%= job_record_row.id %>" style='display: none'>
         <tr>
             <td>Funcao: <%= h job_record_row.function %></td>
         </tr>
