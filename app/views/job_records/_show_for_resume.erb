@@ -5,8 +5,12 @@
             <%= render :partial => 'job_records/job_record_new', :object => @job_record %>
         </div>
     </li>
-    <div id='student_profile_job_record_list'>
-        <%= render :partial => 'job_records/job_record_row', :collection => student.job_records %>
-    </div>
+    <li>
+        <ol>
+            <div id='student_profile_job_record_list'>
+                <%= render :partial => 'job_records/job_record_row', :collection => student.job_records %>
+            </div>
+        </ol>
+    </li>
 
 </ul>
