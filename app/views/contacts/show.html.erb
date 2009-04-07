@@ -1,0 +1,23 @@
+<p>
+  <b>Student:</b>
+  <%=h @contact.student_id %>
+</p>
+
+<p>
+  <b>Contact type:</b>
+  <%=h @contact.contact_type %>
+</p>
+
+<p>
+  <b>Contact name:</b>
+  <%=h @contact.contact_name %>
+</p>
+
+<p>
+  <b>Value:</b>
+  <%=h @contact.value %>
+</p>
+
+
+<%= link_to 'Edit', edit_contact_path(@contact) %> |
+<%= link_to 'Back', contacts_path %>

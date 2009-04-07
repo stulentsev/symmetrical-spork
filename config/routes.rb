@@ -1,11 +1,18 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :student_professional_profiles
+
+  map.resources :contacts
+
+  map.resources :job_records
+
   map.resources :student_reports
 
   map.resources :student_performances
 
   map.resources :password_resets
 
-  map.resources :students
+  map.resources :students,
+                :has_one => [:professional_profile]
 
   map.resources :coordinator_trimestrial_report_activities
 

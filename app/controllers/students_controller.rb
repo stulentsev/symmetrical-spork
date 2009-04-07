@@ -81,6 +81,11 @@ class StudentsController < ApplicationController
     end
   end
 
+  def professional_profile
+    @student = Student.find(params[:id])
+    
+  end
+
   # DELETE /students/1
   # DELETE /students/1.xml
   def destroy

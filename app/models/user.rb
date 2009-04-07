@@ -37,6 +37,17 @@ class User < ActiveRecord::Base
     UserMailer.deliver_password_reset_instructions(self)
   end
 
+  def domain_id
+    case self.user_type_id
+    when 1 # coordinator
+      self.id
+    when 2, 3
+      ProjectTeamMember.find_by_user_id(self.id).id
+    when 4
+      Student.find_by_user_id(self.id).id
+    end
+  end
+
 private
   def create_actual_report(type_id, course)
     case type_id

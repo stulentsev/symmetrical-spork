@@ -1,0 +1,43 @@
+<p>
+  <b>Company name:</b>
+  <%=h @job_record.company_name %>
+</p>
+
+<p>
+  <b>Company url:</b>
+  <%=h @job_record.company_url %>
+</p>
+
+<p>
+  <b>Function:</b>
+  <%=h @job_record.function %>
+</p>
+
+<p>
+  <b>Period from:</b>
+  <%=h @job_record.period_from %>
+</p>
+
+<p>
+  <b>Period to:</b>
+  <%=h @job_record.period_to %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @job_record.description %>
+</p>
+
+<p>
+  <b>Student:</b>
+  <%=h @job_record.student_id %>
+</p>
+
+<p>
+  <b>Is current:</b>
+  <%=h @job_record.is_current %>
+</p>
+
+
+<%= link_to 'Edit', edit_job_record_path(@job_record) %> |
+<%= link_to 'Back', job_records_path %>
