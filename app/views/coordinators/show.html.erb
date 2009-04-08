@@ -1,0 +1,33 @@
+<p>
+  <b>Name:</b>
+  <%=h @coordinator.name %>
+</p>
+
+<p>
+  <b>City:</b>
+  <%=h @coordinator.city %>
+</p>
+
+<p>
+  <b>Photo file name:</b>
+  <%=h @coordinator.photo_file_name %>
+</p>
+
+<p>
+  <b>Photo content type:</b>
+  <%=h @coordinator.photo_content_type %>
+</p>
+
+<p>
+  <b>Photo file size:</b>
+  <%=h @coordinator.photo_file_size %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%=h @coordinator.user_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_coordinator_path(@coordinator) %> |
+<%= link_to 'Back', coordinators_path %>

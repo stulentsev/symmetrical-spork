@@ -4,7 +4,9 @@ class FillSampleData < ActiveRecord::Migration
     if config.environment == 'development'
       # create course
       course = Course.create(:period_from => Date.today,
-                             :period_to => 18.months.from_now)
+                             :period_to => 18.months.from_now,
+                             :school_id => 3 # Rio de Janeiro
+                            )
 
       # create trimesters for course
       6.times do |num|
@@ -23,19 +25,42 @@ class FillSampleData < ActiveRecord::Migration
         course.save
       end
 
+      # create gestor
+      gestor = User.create( :user_type_id => 5, # gestor
+                            :login => 'gestor',
+                            :email => 'gestor.gestorich@oikabum.com',
+                            :password => 'gestor',
+                            :password_confirmation => 'gestor')
+
       # create coordinators
-      sergei = User.create( :user_type_id => 1, # coordinator
+      sergei_user = User.create( :user_type_id => 1, # coordinator
                             :login => 'sergei',
                             :email => 'sergei.tulentsev@gmail.com',
                             :password => 'sergei',
                             :password_confirmation => 'sergei')
-      murad = User.create(:user_type_id => 1, # coordinator
+      sergei_coord = Coordinator.create(:name => 'Sergei Tulentsev',
+                                        :city => 'Rio de Janeiro',
+                                        :user_id => sergei_user.id)
+      sergei_user.setup_reports_for_course(course)
+
+      murad_user = User.create(:user_type_id => 1, # coordinator
                           :login => 'murad',
                           :email => 'marcelo.murad@gmail.com',
                           :password => 'murad123',
                           :password_confirmation => 'murad123')
-      sergei.setup_reports_for_course(course)
-      murad.setup_reports_for_course(course)
+      murad_coord = Coordinator.create(:name => 'Marcelo Mustafa Murad',
+                                       :city => 'Rio de Janeiro',
+                                       :user_id => murad_user.id)
+      murad_user.setup_reports_for_course(course)
+
+      # set coordinators for schools
+      school = School.find(3) # Rio de Janeiro
+      school.coordinator = sergei_coord
+      school.save
+
+      school = School.find(1) # Belo Horiznote
+      school.coordinator = murad_coord
+      school.save
 
       # create educadores
       4.times {|num| create_language_educator(num + 1, course)}

@@ -1,0 +1,34 @@
+<ul>
+    <% for school in @schools %>
+        <div><strong><%= h school.name %></strong></div>
+        <div>
+                <table>
+                    <% if school.coordinator %>
+                    <tr>
+                        <td style="width: 70px; height: 70px; border: 1px solid black">
+                            Photo will be here
+                        </td>
+                        <td style="width: 300px">
+                            <strong>Nome:</strong> <%= school.coordinator.name %>
+                            <br/>
+                            <strong>Cidade:</strong> <%= school.coordinator.city %>
+                        </td>
+                        <td style="width: 70px">
+                            <a href='#'>Deletar</a>
+                        </td>
+                    </tr>
+                    <% else %>
+                            <tr>
+                                <td style="width: 70px; height: 70px">&nbsp;</td>
+                                <td style="width: 300px">
+                                    Nao tem coordenador
+                                </td>
+                                <td style="width: 70px">
+                                    <a href='#'>Criar</a>
+                                </td>
+                            </tr>
+                    <% end %>
+                </table>
+        </div>
+    <% end %>
+</ul>

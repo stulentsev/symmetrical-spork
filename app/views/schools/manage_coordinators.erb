@@ -1,0 +1,36 @@
+<ul>
+    <% for school in @schools %>
+        <div><%= h school.name %></div>
+        <div>
+            <% if school.coordinator %>
+                <table>
+                    <tr>
+                        <td>
+                            Nome: <%= school.coordinator.name %>
+                            <br/>
+                            Cidade: <%= school.name %>
+                        </td>
+                        <td>
+                            <a href='#'>Deletar</a>
+                        </td>
+                    </tr>
+                </table>
+            <% else %>
+                <table>
+                    <tr>
+                        <td>
+                            <a href='#'>Criar</a>
+                        </td>
+                    </tr>
+                </table>
+            <% end %>
+        </div>
+        <tr>
+            <td><%= h school.name %></td>
+            <td><%= h school.coordinator_user_id %></td>
+            <td><%= link_to 'Show', school %></td>
+            <td><%= link_to 'Edit', edit_school_path(school) %></td>
+            <td><%= link_to 'Destroy', school, :confirm => 'Are you sure?', :method => :delete %></td>
+        </tr>
+    <% end %>
+</ul>

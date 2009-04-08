@@ -39,11 +39,11 @@ class User < ActiveRecord::Base
 
   def domain_id
     case self.user_type_id
-    when 1 # coordinator
+    when 1, 5 # coordinator and gestor
       self.id
-    when 2, 3
+    when 2, 3 # educadores
       ProjectTeamMember.find_by_user_id(self.id).id
-    when 4
+    when 4    # educando
       Student.find_by_user_id(self.id).id
     end
   end
