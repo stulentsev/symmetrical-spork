@@ -3,8 +3,8 @@ class Student < ActiveRecord::Base
   belongs_to  :schooling
   belongs_to  :user
   belongs_to  :course
-  has_one     :current_job, :class_name => 'JobRecord', :conditions => {:is_current => 1}
-  has_many    :job_records, :class_name => 'JobRecord', :conditions => {:is_current => 0}
+  #has_one     :current_job, :class_name => 'JobRecord', :conditions => {:is_current => 1}
+  has_many    :job_records#, :class_name => 'JobRecord', :conditions => {:is_current => 0}
   has_many    :contacts
 
   has_attached_file :photo, :styles => { :thumb => "78x78#", :profile => "117x117#" }

@@ -24,3 +24,7 @@ input {
     text-transform: uppercase;
     text-align: center;
 }
+
+li.current_job, li.current_job td {
+    background-color: darksalmon;
+}

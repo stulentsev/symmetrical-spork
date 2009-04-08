@@ -4,6 +4,11 @@
 
     <ol>
         <li>
+            <%= f.label :company_name %><br />
+            <%= f.radio_button :is_current, 1, :checked => job_record_new.is_current == 1 %> Sim &nbsp;&nbsp;&nbsp;
+            <%= f.radio_button :is_current, 0, :checked => job_record_new.is_current == 0 %> Não
+        </li>
+        <li>
           <%= f.label :company_name %><br />
           <%= f.text_field :company_name %>
         </li>
