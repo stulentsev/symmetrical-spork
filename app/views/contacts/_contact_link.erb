@@ -11,7 +11,11 @@
 
     </td>
     <td>
-        <%= final_report_items f, contact,
-                               [[:value, :input, nil, '#{field_markup}']] %>
+        <%= if contact.new_record?
+                f.text_field :value
+            else
+                final_report_items f, contact,
+                               [[:value, :input, nil, '#{field_markup}']]
+            end %>
     </td>
 </tr>

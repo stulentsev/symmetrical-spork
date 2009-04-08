@@ -1,10 +1,11 @@
 <% new_or_existing = contact.new_record? ? 'new' : 'existing' %>
 <% prefix = "student[#{new_or_existing}_contact_attributes][]" %>
 
-<% fields_for prefix, contact do |f| -%>
-
+<% fields_for prefix, contact do |f| %>
     <%= f.hidden_field :student_id %>
     <%= f.hidden_field :contact_type %>
-    <% partial_name = "contacts/contact_#{type}" %>
-    <%= render :partial => partial_name, :locals => {:contact => contact, :f => f} %>
+
+    <%= render :partial => "contacts/contact_#{type}",
+               :locals => {:contact => contact,
+                           :f => f} %>
 <% end %>

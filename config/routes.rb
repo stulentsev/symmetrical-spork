@@ -1,7 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :student_professional_profiles
 
-  map.resources :contacts
+  map.resources :contacts,
+                :member => [:add_new]
 
   map.resources :job_records
 
