@@ -32,7 +32,7 @@ module FinalReportHelper
     label_markup = bold_label(form, field, alt_text) if alt_text != :no_label
     field_markup = item_func.call resource, field, options
 
-    eval('"' + template + '"')
+    eval('"' + template.to_s + '"')
   end
 
   def final_report_items form, resource, items = [], options = {}
