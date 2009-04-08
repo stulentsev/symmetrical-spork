@@ -1,40 +1,9 @@
 <% fields_for @student do |f| %>
 
-    <!-- Telephones -->
-    <table>
-        <tr>
-            <td>Telefone</td>
-            <td>
-                <table id='contacts_telephone_list'>
-                    <%= render_contacts 'telephone' %>
-                </table>
-            </td>
-            <td style='vertical-align: bottom'>
-                <%= add_new_contact_link  'telephone' %>
-            </td>
-        </tr>
-        <tr>
-            <td>E-mail</td>
-            <td>
-                <table id='contacts_email_list'>
-                    <%= render_contacts  'email' %>
-                </table>
-            </td>
-            <td style='vertical-align: bottom'>
-                <%= add_new_contact_link  'email' %>
-            </td>
-        </tr>
-        <tr>
-            <td>Links</td>
-            <td>
-                <table id='contacts_link_list'>
-                    <%= render_contacts 'link' %>
-                </table>
-            </td>
-            <td style='vertical-align: bottom'>
-                <%= add_new_contact_link 'link' %>
-            </td>
-        </tr>
-    </table>
-
+    SOME CONTACTS HERE <br/>
+<%= link_to_remote 'Editar',
+                   :url => {:controller => 'students',
+                            :action => 'edit_contacts',
+                            :id => @student.id},
+                   :method => :get %>
 <% end %>

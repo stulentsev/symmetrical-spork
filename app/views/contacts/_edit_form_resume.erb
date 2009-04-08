@@ -39,5 +39,9 @@
             </td>
         </tr>
     </table>
-    <%= remote_submit_for_object @student, 'Salvar' %>
+    <%= submit_to_remote 'student', 'Salvar',
+                       :url => {:controller => 'students',
+                                :action => 'save_contacts',
+                                :id => @student.id},
+                       :method => :post  %>
 <% end %>

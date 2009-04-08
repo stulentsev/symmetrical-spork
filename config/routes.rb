@@ -13,7 +13,9 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :password_resets
 
   map.resources :students,
-                :has_one => [:professional_profile]
+                :has_one => [:professional_profile],
+                :member => {:edit_contacts => :get,
+                            :save_contacts => :put}
 
   map.resources :coordinator_trimestrial_report_activities
 

@@ -101,6 +101,18 @@ class StudentsController < ApplicationController
     end
   end
 
+  def edit_contacts
+    @student = Student.find(params[:id])
+  end
+
+  def save_contacts
+    params[:student][:existing_contact_attributes] ||= {}
+    @student = Student.find(params[:id])
+    if !@student.update_attributes(params[:student])
+      render :action => 'edit_contacts'
+    end
+  end
+
   private
   def get_course
     @course = Course.find_by_id params[:course_id]
