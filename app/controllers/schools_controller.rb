@@ -86,4 +86,19 @@ class SchoolsController < ApplicationController
   def manage_coordinators
     @schools = School.find(:all)
   end
+
+  def assign_coordinator
+    @school = School.find_by_id(params[:id])
+  end
+
+  def remove_coordinator
+    @school = School.find_by_id(params[:id])
+    Rails.logger.info "Still in common part"
+    if request.post?
+      Rails.logger.info "Already in post part"
+      @school.coordinator_user_id = nil
+      @school.save!
+      redirect_to :action => :index
+    end
+  end
 end

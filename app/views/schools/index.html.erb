@@ -14,7 +14,9 @@
                             <strong>Cidade:</strong> <%= school.coordinator.city %>
                         </td>
                         <td style="width: 70px">
-                            <a href='#'>Deletar</a>
+                            <%= link_to 'Deletar',
+                                        remove_coordinator_school_url(school),
+                                        :method => :get %>
                         </td>
                     </tr>
                     <% else %>
