@@ -7,8 +7,12 @@
         <%= if contact.new_record?
                 f.text_field :value
             else
-                final_report_items f, contact,
-                               [[:value, :input, nil, '#{field_markup}']]
+                if read_only
+                    contact.value
+                else
+                    final_report_items f, contact,
+                                   [[:value, :input, nil, '#{field_markup}']]
+                end
             end %>
     </td>
 </tr>

@@ -12,11 +12,16 @@ module ContactsHelper
                            :target_element => target_element)
   end
 
-  def render_contacts type
+  def render_contacts type, read_only = false
     @student.contacts.select{|c| c.contact_type == type}.
             map {|c| render :partial => 'contacts/contact_row',
                             :locals => {:contact => c,
-                                        :type => type}}.
+                                        :type => type,
+                                        :read_only => read_only}}.
             join
+  end
+
+  def render_ro_contacts type
+    render_contacts type, true
   end
 end

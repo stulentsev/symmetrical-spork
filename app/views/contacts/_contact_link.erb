@@ -1,21 +1,30 @@
 <tr>
     <td>
-        <%= f.select :contact_name, [['Homepage', 'homepage'],
-                ['Blog', 'blog'],
-                ['MySpace', 'myspace'],
-                ['Facebook', 'facebook'],
-                ['Orkut', 'orkut'],
-                ['Youtube', 'youtube'],
-                ['Outro', 'other']
-        ] %>
+        <%= if read_only
+                contact.contact_name
+            else
+                f.select :contact_name, [['Homepage', 'homepage'],
+                    ['Blog', 'blog'],
+                    ['MySpace', 'myspace'],
+                    ['Facebook', 'facebook'],
+                    ['Orkut', 'orkut'],
+                    ['Youtube', 'youtube'],
+                    ['Outro', 'other']
+                    ]
+
+            end %>
 
     </td>
     <td>
         <%= if contact.new_record?
                 f.text_field :value
             else
-                final_report_items f, contact,
-                               [[:value, :input, nil, '#{field_markup}']]
+                if read_only
+                    content_tag :a, contact.value, :href => contact.value
+                else
+                    final_report_items f, contact,
+                                   [[:value, :input, nil, '#{field_markup}']]
+                end
             end %>
     </td>
 </tr>
