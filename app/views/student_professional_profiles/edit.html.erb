@@ -1,0 +1,55 @@
+<%= javascript_tag "
+  document.observe('dom:loaded', function(event) {
+      Editable.setupAll();
+  });" %>
+<%= javascript_tag "window._token = '#{form_authenticity_token}'" %>
+
+<% form_for @student do |f| %>
+    <%= f.error_messages %>
+
+    <ul>
+        <li>
+            <h2 class='aberto'><a href='#' id='dados-pessoais'>Dados pessoais</a></h2>
+            <ol>
+                <%= final_report_items f, @student,
+                                       [
+                                        [:name, :input, 'Nome completo'],
+                                        [:address1, :input, 'Endereço'],
+                                        [:address2, :input, :no_label],
+                                        [:building_no, :input, '№'],
+                                        [:compl, :input, 'compl'],
+                                        [:state, :input, 'Estado'],
+                                        [:uf, :input, 'UF'],
+                                        [:cep, :input, 'CEP']
+                                       ] %>
+                <li>
+                    <h4 class="col2"><label for="obj3">Foto:</label> <%= f.file_field :photo, :size => 21 %></h4>
+                </li>
+
+            </ol>
+        </li>
+        <li>
+            <h2 class='aberto'><a href='#' id='contatos'>Contatos</a></h2>
+            <%= render :partial => 'contacts/show_for_resume' %>
+        </li>
+        <!--<li>-->
+            <!--<h2 class='aberto'><a href='#' id='trabalho-atual'>Trabalho atual</a></h2>-->
+            <!--<%#= render :partial => 'job_records/current_for_resume' %>-->
+        <!--</li>-->
+        <li>
+            <h2 class='aberto'><a href='#' id='trabalhos'>Trabalhos anteriores</a></h2>
+            <%= render :partial => 'job_records/show_for_resume' %>
+        </li>
+        <li>
+            <h2 class='aberto'><a href='#' id='recado'>Recado</a></h2>
+            <ol>
+                <%= final_report_items f, @student,
+                                       [
+                                        [:custom_message, :textarea, 'Deixe seu recado']
+                                       ] %>
+            </ol>
+        </li>
+    </ul>
+    <%= f.submit 'Salvar' %>
+
+<% end %>

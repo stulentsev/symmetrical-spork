@@ -36,6 +36,7 @@ class StudentsController < ApplicationController
 
   # GET /students/1/edit
   def edit
+    params[:student][:existing_contact_attributes] ||= {}
     @student = Student.find(params[:id])
   end
 
@@ -67,6 +68,7 @@ class StudentsController < ApplicationController
   # PUT /students/1
   # PUT /students/1.xml
   def update
+    params[:student][:existing_contact_attributes] ||= {}
     @student = Student.find(params[:id])
 
     respond_to do |format|
@@ -74,11 +76,17 @@ class StudentsController < ApplicationController
         flash[:notice] = 'Student was successfully updated.'
         format.html { redirect_to(@student) }
         format.xml  { head :ok }
+        format.json { render :json => @student }
       else
         format.html { render :action => "edit" }
         format.xml  { render :xml => @student.errors, :status => :unprocessable_entity }
       end
     end
+  end
+
+  def professional_profile
+    @student = Student.find(params[:id])
+
   end
 
   # DELETE /students/1
@@ -90,6 +98,18 @@ class StudentsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(students_url) }
       format.xml  { head :ok }
+    end
+  end
+
+  def edit_contacts
+    @student = Student.find(params[:id])
+  end
+
+  def save_contacts
+    params[:student][:existing_contact_attributes] ||= {}
+    @student = Student.find(params[:id])
+    if !@student.update_attributes(params[:student])
+      render :action => 'edit_contacts'
     end
   end
 

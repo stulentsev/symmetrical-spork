@@ -1,8 +1,8 @@
-class TrimestersController < ApplicationController
+class TermsController < ApplicationController
   # GET /trimesters
   # GET /trimesters.xml
   def index
-    @trimesters = Trimester.find(:all)
+    @trimesters = Term.find(:all)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,7 +13,7 @@ class TrimestersController < ApplicationController
   # GET /trimesters/1
   # GET /trimesters/1.xml
   def show
-    @trimester = Trimester.find(params[:id])
+    @trimester = Term.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -24,7 +24,7 @@ class TrimestersController < ApplicationController
   # GET /trimesters/new
   # GET /trimesters/new.xml
   def new
-    @trimester = Trimester.new
+    @trimester = Term.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -34,13 +34,13 @@ class TrimestersController < ApplicationController
 
   # GET /trimesters/1/edit
   def edit
-    @trimester = Trimester.find(params[:id])
+    @trimester = Term.find(params[:id])
   end
 
   # POST /trimesters
   # POST /trimesters.xml
   def create
-    @trimester = Trimester.new(params[:trimester])
+    @trimester = Term.new(params[:trimester])
 
     respond_to do |format|
       if @trimester.save
@@ -57,7 +57,7 @@ class TrimestersController < ApplicationController
   # PUT /trimesters/1
   # PUT /trimesters/1.xml
   def update
-    @trimester = Trimester.find(params[:id])
+    @trimester = Term.find(params[:id])
 
     respond_to do |format|
       if @trimester.update_attributes(params[:trimester])
@@ -74,7 +74,7 @@ class TrimestersController < ApplicationController
   # DELETE /trimesters/1
   # DELETE /trimesters/1.xml
   def destroy
-    @trimester = Trimester.find(params[:id])
+    @trimester = Term.find(params[:id])
     @trimester.destroy
 
     respond_to do |format|

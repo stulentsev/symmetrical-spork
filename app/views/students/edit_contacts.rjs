@@ -1,0 +1,2 @@
+page.replace_html 'student_profile_contacts_div',
+                  :partial => 'contacts/edit_form_resume'

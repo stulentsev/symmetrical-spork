@@ -1,0 +1,2 @@
+module StudentProfessionalProfilesHelper
+end

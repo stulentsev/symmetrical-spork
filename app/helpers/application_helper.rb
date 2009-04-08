@@ -46,6 +46,12 @@ module ApplicationHelper
             'Desempenho de educandos',
             'Observações' ]
 
+    professional_profile = [
+            'Dados pessoais',
+            'Contatos',
+            'Trabalhos',
+            'Recado']
+
 
     navigation = case params[:controller]
     when 'courses'
@@ -59,6 +65,10 @@ module ApplicationHelper
       end
     when 'coordinator_trimestrial_reports', 'educator_reports'
       trimestrial_report_navigation
+    when 'student_reports'
+      semestrial_report_navigation
+    when 'student_professional_profiles'
+      professional_profile
     else
       []
     end

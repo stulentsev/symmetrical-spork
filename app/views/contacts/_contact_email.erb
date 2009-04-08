@@ -1,0 +1,18 @@
+<tr>
+    <td>    &nbsp;
+        <%#= contact.contact_name %>
+        <%= f.hidden_field :contact_name %>
+    </td>
+    <td>
+        <%= if contact.new_record?
+                f.text_field :value
+            else
+                if read_only
+                    content_tag :a, contact.value, :href => "mailto:#{contact.value}"
+                else
+                    final_report_items f, contact,
+                                   [[:value, :input, nil, '#{field_markup}']]
+                end
+            end %>
+    </td>
+</tr>

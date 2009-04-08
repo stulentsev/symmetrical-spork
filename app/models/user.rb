@@ -16,7 +16,8 @@ class User < ActiveRecord::Base
         rwd = ReportsWithDeadline.new(:report_id => rt.id,
                                       :user_id => self.id,
                                       :status => 0,
-                                      :name => rt.name) # TODO: fill course_id
+                                      :course_id => course.id,
+                                      :name => rt.name)
         rwd.actual_report_id = create_actual_report(rt.id, course)
         self.reports_with_deadlines << rwd
         rwd.save
@@ -36,17 +37,29 @@ class User < ActiveRecord::Base
     UserMailer.deliver_password_reset_instructions(self)
   end
 
+  def domain_id
+    case self.user_type_id
+    when 1 # coordinator
+      self.id
+    when 2, 3
+      ProjectTeamMember.find_by_user_id(self.id).id
+    when 4
+      Student.find_by_user_id(self.id).id
+    end
+  end
+
 private
   def create_actual_report(type_id, course)
     case type_id
     when 3..8
-      CoordinatorTrimestrialReport.create(:trimester_id => course.trimesters[type_id - 5].id).id
+      CoordinatorTrimestrialReport.create(:trimester_id => course.trimesters[type_id - 3].id).id
     when 10..15
-      EducatorReport.create(:trimester_id => course.trimesters[type_id - 11].id).id
+      EducatorReport.create(:trimester_id => course.trimesters[type_id - 10].id).id
     when 16..21
-      EducatorReport.create(:trimester_id => course.trimesters[type_id - 17].id).id
-    when 23..25
-      throw Exception.new 'Not implemented yet: Student semestrial report'
+      EducatorReport.create(:trimester_id => course.trimesters[type_id - 16].id).id
+    when 22..24
+      @student_report ||= StudentReport.create
+      @student_report.id
     #else
     #  throw Exception.new "Unexpected report type: #{type_id}"
     end

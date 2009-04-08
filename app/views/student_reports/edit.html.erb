@@ -1,0 +1,13 @@
+<%= render :partial => 'layouts/inplace_init', :locals => {:rep_with_deadline => @rep_with_deadline } %>
+
+<% form_for(@student_report) do |f| %>
+    <%= f.error_messages %>
+    <%= hidden_field_tag :term_no, params[:id] %>
+    <%= hidden_field_tag :course_id, params[:course_id] %>
+
+    <% partial_name = "semester_#{params[:id]}" %>
+    <%= render :partial => partial_name, :locals => {:f => f} %>
+    <div id='finalizar'>
+        <%= f.submit "Finalizar Relatório" if @rep_with_deadline.is_editable %>
+    </div>
+<% end %>
