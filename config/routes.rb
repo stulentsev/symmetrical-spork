@@ -1,4 +1,9 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :coordinators
+
+  map.resources :schools,
+                :member => [:assign_coordinator, :remove_coordinator]
+
   map.resources :student_professional_profiles
 
   map.resources :contacts,

@@ -9,6 +9,7 @@ class CreateCourses < ActiveRecord::Migration
       t.text :students_selection_process
       t.text :communities
       t.integer :student_profile_id
+      t.integer :school_id
 
       t.timestamps
     end
