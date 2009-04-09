@@ -83,10 +83,6 @@ class SchoolsController < ApplicationController
     end
   end
 
-  def manage_coordinators
-    @schools = School.find(:all)
-  end
-
   def assign_coordinator
     @school = School.find_by_id(params[:id])
     @coordinator = Coordinator.new
