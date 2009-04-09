@@ -6,10 +6,10 @@ img.cmd {
 
 
 /* some hacks for grid.css */
-input {
+/*input {
     border: 1px solid black;
     padding: 4px;
-}
+} */
 
 #finalizar input {
     position: relative;
