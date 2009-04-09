@@ -1,0 +1,19 @@
+<h2>Assign coordinator for <%= @school.name %></h2>
+
+<table>
+    <tr>
+        <td>
+            <h3>Select from existing</h3>
+            <% form_for @school do |f| %>
+                <% coordinators = Coordinator.find(:all).map{|c| [c.name, c.id]} %>
+                <%= f.select :coordinator_user_id, coordinators %>
+                <%= f.submit 'Assign' %>
+            <% end %>
+        </td>
+        <td>
+            <h3>Create new</h3>
+
+        </td>
+    </tr>
+</table>
+

@@ -26,7 +26,9 @@
                                     Nao tem coordenador
                                 </td>
                                 <td style="width: 70px">
-                                    <a href='#'>Criar</a>
+                                    <%= link_to 'Criar',
+                                                assign_coordinator_school_url(school),
+                                                :method => :get %>
                                 </td>
                             </tr>
                     <% end %>
