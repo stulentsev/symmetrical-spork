@@ -12,7 +12,36 @@
         </td>
         <td>
             <h3>Create new</h3>
+            <% form_for :coordinator,
+                        @coordinator,
+                        :url => assign_coordinator_school_url(@school) do |f| %>
+              <%= f.error_messages %>
 
+              <p>
+                <%= f.label :name %><br />
+                <%= f.text_field :name %>
+              </p>
+              <p>
+                <%= f.label :city %><br />
+                <%= f.text_field :city %>
+              </p>
+              <% fields_for @coordinator_user do |cu| %>
+                    <%= cu.label :login %><br />
+                    <%= cu.text_field :login %><br />
+                    <br />
+                    <%= cu.label :email %><br />
+                    <%= cu.text_field :email %><br />
+                    <br />
+                    <%= cu.label :password, cu.object.new_record? ? nil : "Change password" %><br />
+                    <%= cu.password_field :password %><br />
+                    <br />
+                    <%= cu.label :password_confirmation %><br />
+                    <%= cu.password_field :password_confirmation %><br />
+              <% end %>
+              <p>
+                <%= f.submit "Create and assign" %>
+              </p>
+            <% end %>
         </td>
     </tr>
 </table>

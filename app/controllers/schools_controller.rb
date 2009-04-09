@@ -89,6 +89,24 @@ class SchoolsController < ApplicationController
 
   def assign_coordinator
     @school = School.find_by_id(params[:id])
+    @coordinator = Coordinator.new
+    @coordinator_user = User.new
+
+    if request.post?
+      @coordinator.attributes = params[:coordinator]
+
+      coordinator_user = User.new(params[:user])
+      coordinator_user.user_type_id = 1 # coordinators
+      coordinator_user.save_without_session_maintenance
+
+      @coordinator.user = coordinator_user
+      @coordinator.save!
+
+      @school.coordinator_user_id = @coordinator.id
+      @school.save!
+
+      redirect_to :action => :index
+    end
   end
 
   def remove_coordinator
