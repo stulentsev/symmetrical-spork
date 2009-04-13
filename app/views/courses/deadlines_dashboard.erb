@@ -15,7 +15,7 @@
                     <% end %>
                 </td>
                 <td>
-                    <input type='button' value='Adicionar novo periodo + '/>
+                    <%= link_to "Adicionar novo periodo + ", new_course_url %>
                 </td>
             </tr>
         </table>
@@ -63,6 +63,31 @@
     </li>
     <li>
         <h2 class='aberto'><a href='#'>Datas a preencher</a></h2>
+
+        <ul>
+
+            <% @courses.map{ |c| c.reports_with_deadlines }.
+                        flatten.
+                        group_by{ |rwd| rwd.user.user_type_id }.
+                        each do |user_type_id, rwds| %>
+                <li>
+                    <h3 class='aberto'><a href='#'><%= rwds[0].user.user_type_name.pluralize %></a></h3>
+                    <table>
+                    <% rwds.group_by(&:report_id).each do |rep_id, rwds| %>
+                        <% rwd = rwds[0] %>
+                        <tr>
+                            <td>
+                                <strong><%= rwd.name %></strong>
+                            </td>
+                            <td>
+                                <%= link_to image_tag('plus_symbol.png', :style => "width: 32px; height: 32px"), '#' %>
+                            </td>
+                        </tr>
+                    <% end %>
+                    </table>
+                </li>
+            <% end %>
+        </ul>
     </li>
 </ul>
 

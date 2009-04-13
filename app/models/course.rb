@@ -11,7 +11,7 @@ class Course < ActiveRecord::Base
   belongs_to :school
   has_many :reports_with_deadlines
 
-  def after_initialize
+  def after_create
     self.student_profile ||=  CourseStudentProfile.create
     self.first_week_methodology ||= FirstWeekMethodology.create
     self.rotate_methodology ||= RotateMethodology.create

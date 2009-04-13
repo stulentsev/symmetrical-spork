@@ -27,7 +27,6 @@ class CoursesController < ApplicationController
   # GET /courses/new.xml
   def new
     @course = Course.new
-    @project_team_member = ProjectTeamMember.new(:course_id => @course.id)
 
     respond_to do |format|
       format.html # new.html.erb
@@ -51,17 +50,10 @@ class CoursesController < ApplicationController
     profile = CourseStudentProfile.create(params[:student_profile])
     @course.student_profile = profile
 
-    @course.save
-
-    respond_to do |format|
-      if @course.save
-        flash[:notice] = 'Course was successfully created.'
-        format.html { redirect_to(@course) }
-        format.xml  { render :xml => @course, :status => :created, :location => @course }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @course.errors, :status => :unprocessable_entity }
-      end
+    if @course.save
+      redirect_to :action => 'deadlines_dashboard', :id => @course.id
+    else
+      render :action => 'new'
     end
   end
 
@@ -116,7 +108,7 @@ class CoursesController < ApplicationController
   def deadlines_dashboard
     @course = Course.find_by_id(params[:id])
     @courses = Course.find(:all,
-                           :conditions => ['period_from < ? and period_to > ?',
+                           :conditions => ['period_from <= ? and period_to >= ?',
                                             Date.today,
                                             Date.today])
   end
