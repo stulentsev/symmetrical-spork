@@ -43,10 +43,11 @@
                     <h2 class='aberto'><a href='#'>Avisos</a></h2>
                     <ul>
             <% @courses.each do |c| %>
-                <li><h3><%= c.school.name %></h3></li>            
+                <li><h3><%= c.school.name %></h3></li>
                 <% c.reports_with_deadlines.
                             select{|rwd| rwd.status == 2}.
                             sort{|lhs, rhs| rhs.updated_at <=> lhs.updated_at}.
+                            first(5).
                             each do |rwd| %>
                       <li>
                           <strong><%= rwd.user.user_type_name %></strong> preencheu
