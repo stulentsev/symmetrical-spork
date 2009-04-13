@@ -1,0 +1,55 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  s1_what_else_want_to_learn: MyText
+  s1_difficulties: MyString
+  s1_difficulties_text: MyText
+  s1_opinion_on_educators: MyText
+  s1_opinion_on_coordination: MyText
+  s1_selfevaluation: MyText
+  s1_how_can_improve: MyText
+  s1_oi_kabum_helped: 1
+  s1_oi_kabum_helped_text: MyText
+  s1_family_relationship_changed: MyText
+  s1_former_expectations: MyText
+  s1_current_expectations: MyText
+  s1_what_want_from_future: MyText
+  s1_free_thoughts: MyText
+  s2_what_learned: MyText
+  s2_opinion_on_educators: MyText
+  s2_relationship_with_coordination: MyText
+  s2_selfevaluation: MyText
+  s2_how_can_improve: MyText
+  s2_what_could_be_better: MyText
+  s3_what_learned: MyText
+  s3_what_kabum_means: MyText
+  s3_noticed_difference: MyText
+  s3_self_evaluation: MyText
+  s3_whats_next: MyText
+
+two:
+  s1_what_else_want_to_learn: MyText
+  s1_difficulties: MyString
+  s1_difficulties_text: MyText
+  s1_opinion_on_educators: MyText
+  s1_opinion_on_coordination: MyText
+  s1_selfevaluation: MyText
+  s1_how_can_improve: MyText
+  s1_oi_kabum_helped: 1
+  s1_oi_kabum_helped_text: MyText
+  s1_family_relationship_changed: MyText
+  s1_former_expectations: MyText
+  s1_current_expectations: MyText
+  s1_what_want_from_future: MyText
+  s1_free_thoughts: MyText
+  s2_what_learned: MyText
+  s2_opinion_on_educators: MyText
+  s2_relationship_with_coordination: MyText
+  s2_selfevaluation: MyText
+  s2_how_can_improve: MyText
+  s2_what_could_be_better: MyText
+  s3_what_learned: MyText
+  s3_what_kabum_means: MyText
+  s3_noticed_difference: MyText
+  s3_self_evaluation: MyText
+  s3_whats_next: MyText

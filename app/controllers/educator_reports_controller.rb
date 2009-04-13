@@ -1,10 +1,10 @@
 class EducatorReportsController < ApplicationController
-  before_filter :init_state
+  before_filter :init_state, :authorize
 
 
   def edit
     @educator = ProjectTeamMember.find_by_course_id_and_user_id(params[:course_id],
-                                                                current_user.id)
+                                                                get_user_with_reports.id)
 
   end
 
@@ -24,17 +24,18 @@ class EducatorReportsController < ApplicationController
     end
   end
 private
-  def get_rep_with_deadline(num)
-    range = case current_user.user_type_id
-    when 2
-      (11..16) # relatorios de educador de linguagem
-    when 3
-      (17..22) # relatorios trimestriais des educadores transversais
+  def get_user_with_reports
+    # TODO: replace with better permission check
+    # TODO: (coordinator can access data only from its school)
+    if current_user.gestor? && params[:domain_user_id]
+      ProjectTeamMember.find_by_id(params[:domain_user_id]).user
     else
-      throw Exception.new 'Not educator user'
+      current_user
     end
+  end
 
-    arr = current_user.reports_with_deadlines.select {|r| range.member?(r.report_id) }
+  def get_rep_with_deadline(num)
+    arr = get_user_with_reports.reports_with_deadlines.select {|r| r.report.report_type == 2 }
     arr = arr.sort {|l, r| l.report_id <=> r.report_id}
     arr[num.to_i - 1]
   end
@@ -44,4 +45,7 @@ private
     @educator_report = EducatorReport.find(@rep_with_deadline.actual_report_id)
   end
 
+  def authorize
+    require_user_role [:educator_specific, :educator_transversal]
+  end
 end

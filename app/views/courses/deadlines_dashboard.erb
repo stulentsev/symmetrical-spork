@@ -1,0 +1,97 @@
+<ul>
+    <li>
+        <h2>Periodo</h2>
+
+        <table>
+            <tr>
+                <td>
+                    Periodo atual
+                </td>
+                <td>
+                    <% @courses.each do |c| %>
+                        <%= c.period_from.strftime('%Y-%m') %> a <%= c.period_to.strftime('%Y-%m') %>
+                        <%= c.school.name %>
+                        <br/>
+                    <% end %>
+                </td>
+                <td>
+                    <%= link_to "Adicionar novo periodo + ", new_course_url %>
+                </td>
+            </tr>
+        </table>
+    </li>
+    <li>
+        <h2 class='aberto'><a href='#'>Prazos</a></h2>
+        <table>
+            <% @courses.each do |c| %>
+                <% c.reports_with_deadlines.select{|rwd| rwd.deadline != nil && rwd.status != 2}.each do |rwd| %>
+                    <tr>
+                        <td>
+                            <%= rwd.deadline %>
+                        </td>
+                        <td>
+                            <%= rwd.name %>
+                        </td>
+                        <td>
+                            <%= c.school.name %>
+                        </td>
+                    </tr>
+                <% end %>
+            <% end %>
+        </table>
+    </li>
+    <li>
+        <h2 class='aberto'><a href='#'>Avisos</a></h2>
+        <ul>
+            <% @courses.each do |c| %>
+                <li><h3><%= c.school.name %></h3></li>
+                <% c.reports_with_deadlines.
+                        select{|rwd| rwd.status == 2}.
+                        sort{|lhs, rhs| rhs.updated_at <=> lhs.updated_at}.
+                        first(10).
+                        each do |rwd| %>
+                    <li>
+                        <strong><%= rwd.user.user_type_name %></strong> preencheu
+                        <strong><%= rwd.name %></strong>
+                        at <%= rwd.updated_at.strftime('%m/%d/%Y') %>
+                        <a href='<%= eval(rwd.report.link) + '?domain_user_id=' + rwd.user.domain_user.id.to_s %>'>VER</a>
+                    </li>
+                <% end %>
+            <% end %>
+        </ul>
+
+    </li>
+    <li>
+        <h2 class='aberto'><a href='#'>Datas a preencher</a></h2>
+
+        <ul>
+
+            <% @courses.map{ |c| c.reports_with_deadlines }.
+                        flatten.
+                        group_by{ |rwd| rwd.user.user_type_id }.
+                        each do |user_type_id, rwds| %>
+                <li>
+                    <h3 class='aberto'><a href='#'><%= rwds[0].user.user_type_name.pluralize %></a></h3>
+                    <table>
+                    <% rwds.group_by(&:report_id).each do |rep_id, rwds| %>
+                        <% rwd = rwds[0] %>
+                        <tr>
+                            <td>
+                                <strong><%= rwd.name %></strong>
+                            </td>
+                            <td>
+                                <%= link_to image_tag('plus_symbol.png', :style => "width: 32px; height: 32px"), '#' %>
+                            </td>
+                        </tr>
+                    <% end %>
+                    </table>
+                </li>
+            <% end %>
+        </ul>
+    </li>
+</ul>
+
+
+
+
+

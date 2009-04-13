@@ -1,3 +1,8 @@
+<% content_for :aviso do %>
+    <%= render :partial => 'layouts/aviso',
+               :locals => {:rwd => @rep_with_deadline} %>
+<% end %>
+
 <%= render :partial => 'layouts/inplace_init', :locals => {:rep_with_deadline => @rep_with_deadline } %>
 <% action_url = url_for(:controller => :educator_reports,
                         :action => :update,
@@ -22,7 +27,7 @@
             <h2 class='aberto'><a href='#' id='desempenho-de-educandos'>Descreva o desempenho de cada educando</a></h2>
             <ol>
                 <% if @educator.transversal? %>
-                    <%= Language.find(:all).each {|lang| render_students(lang) } %>
+                    <%= Language.find(:all).map {|lang| render_students(lang) } %>
                 <% else %>
                     <%= render_students(@educator.language) %>
                 <% end %>

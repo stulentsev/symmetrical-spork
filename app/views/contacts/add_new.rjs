@@ -1,0 +1,4 @@
+page.insert_html :bottom, params[:target_element],
+               :partial => 'contacts/contact_row',
+               :locals => {:contact => @contact,
+                           :type => params[:contact_type]}

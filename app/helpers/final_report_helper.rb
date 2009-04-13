@@ -13,28 +13,35 @@ module FinalReportHelper
     edit_in_place(resource, field, options)
   end
 
-  def bold_label form, field, alt_text
+  def bold_label form, field, alt_text = nil
     "<h4>#{form.label field, alt_text}</h4>"
   end
 
   def final_report_item form, resource, field, options = {}
-    item_func = options.delete(:type) == :textarea ? method(:textarea_edit_in_place) : method(:numeric_edit_in_place)
+    item_func = case options.delete(:type)
+    when :textarea
+      method(:textarea_edit_in_place)
+    when :numeric
+      method(:numeric_edit_in_place)
+    else
+      method(:edit_in_place)
+    end
+
     alt_text = options.delete(:label)
-    "
-      <li>
-          #{bold_label form, field, alt_text}
-          #{item_func.call resource, field, options}
-          <hr/>
-      </li>
-    "
+    template = options.delete(:markup)
+    label_markup = bold_label(form, field, alt_text) if alt_text != :no_label
+    field_markup = item_func.call resource, field, options
+
+    eval('"' + template.to_s + '"')
   end
 
   def final_report_items form, resource, items = [], options = {}
     items.inject("") do |output, elem|
-      name, type, label = elem
+      name, type, label, markup = elem
       opts = options.dup
       opts[:type] = type
       opts[:label] = label
+      opts[:markup] = markup || '<li>#{label_markup}#{field_markup}<hr/></li>'
       output << final_report_item(form, resource, name, opts)
     end
   end

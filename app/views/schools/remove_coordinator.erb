@@ -1,0 +1,21 @@
+<table>
+    <tr>
+        <td style="width: 70px; height: 70px; border: 1px solid black">
+            Photo will be here
+        </td>
+        <td style="width: 300px">
+            <strong>Nome:</strong> <%= @school.coordinator.name %>
+            <br/>
+            <strong>Cidade:</strong> <%= @school.coordinator.city %>
+        </td>
+    </tr>
+</table>
+
+<div class='aviso'>
+    <span>Atenção! Deseja realmente deletar esse usuario?</span>
+    <%= link_to 'Cancelar', schools_url %>
+    <%= button_to 'Deletar',
+                :url => remove_coordinator_school_url(@school)
+                 %>
+
+</div>

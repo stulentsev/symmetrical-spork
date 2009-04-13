@@ -1,0 +1,21 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  company_name: MyString
+  company_url: MyString
+  function: MyString
+  period_from: 2009-04-07
+  period_to: 2009-04-07
+  description: MyText
+  student_id: 1
+  is_current: 1
+
+two:
+  company_name: MyString
+  company_url: MyString
+  function: MyString
+  period_from: 2009-04-07
+  period_to: 2009-04-07
+  description: MyText
+  student_id: 1
+  is_current: 1

@@ -1,0 +1,7 @@
+page.replace_html 'student_profile_job_record_create_edit_form',
+                  :partial => 'job_records/job_record_new',
+                  :object => JobRecord.new(:student_id => @job_record.student_id)
+
+page.replace "student_profile_job_record_row_#{@job_record.id}",
+                 :partial => 'job_records/job_record_row',
+                 :object => @job_record

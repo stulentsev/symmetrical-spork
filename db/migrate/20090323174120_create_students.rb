@@ -16,6 +16,15 @@ class CreateStudents < ActiveRecord::Migration
       t.string    :photo_content_type
       t.string    :photo_file_size
 
+      t.string    :address1
+      t.string    :address2
+      t.string    :building_no
+      t.string    :compl
+      t.string    :state
+      t.string    :uf
+      t.string    :cep
+      t.text      :custom_message
+
       t.timestamps
     end
   end

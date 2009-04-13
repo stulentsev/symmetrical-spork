@@ -1,0 +1,13 @@
+<% new_or_existing = contact.new_record? ? 'new' : 'existing' %>
+<% prefix = "student[#{new_or_existing}_contact_attributes][]" %>
+<% read_only ||= false %>
+
+<% fields_for prefix, contact do |f| %>
+    <%= f.hidden_field :student_id %>
+    <%= f.hidden_field :contact_type %>
+
+    <%= render :partial => "contacts/contact_#{type}",
+               :locals => {:contact => contact,
+                           :f => f,
+                           :read_only => read_only} %>
+<% end %>

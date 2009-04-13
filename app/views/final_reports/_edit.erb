@@ -1,3 +1,8 @@
+<% content_for :aviso do %>
+    <%= render :partial => 'layouts/aviso',
+               :locals => {:rwd => @final_report} %>
+<% end %>
+
 <%= render :partial => 'layouts/inplace_init', :locals => {:rep_with_deadline => @final_report } %>
 
 <%= render :partial => 'students_grouped_by_language' %>

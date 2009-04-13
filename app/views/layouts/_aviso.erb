@@ -1,0 +1,15 @@
+<% rwd ||= nil %>
+
+<% if rwd && rwd.deadline && rwd.name && !rwd.finalized? %>
+    <div class="aviso-wrap"><!-- AVISO -->
+        <div class="aviso">
+            <p><strong>Importante: Deadline para preenchimento<br/> de <%= rwd.name %> até o dia
+                <%= rwd.deadline.strftime('%d/%m/%Y') %></strong></p>
+
+            <p>
+                <small>caso já tenha preenchido, finalize o processo no <a href="#">botão correspondente</a>.
+                </small>
+            </p>
+        </div>
+    </div>
+<% end %>

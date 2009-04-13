@@ -25,7 +25,7 @@ private
   def init_state
     @student = Student.find(params[:id])
     @educator = ProjectTeamMember.find(params[:educator_id])
-    @trimester = Trimester.find(params[:trimester_id])
+    @trimester = Term.find(params[:trimester_id])
 
     @student_performance = StudentPerformance.find(:first, :conditions => {:student_id => @student.id,
                                                                            :project_team_member_id => @educator.id,

@@ -1,0 +1,38 @@
+<% fields_for job_record_new do |f| %>
+    <%= f.error_messages %>
+    <%= f.hidden_field :student_id %>
+
+    <ol>
+        <li>
+            <%= f.label :company_name %><br />
+            <%= f.radio_button :is_current, 1, :checked => job_record_new.is_current == 1 %> Sim &nbsp;&nbsp;&nbsp;
+            <%= f.radio_button :is_current, 0, :checked => job_record_new.is_current == 0 %> Não
+        </li>
+        <li>
+          <%= f.label :company_name %><br />
+          <%= f.text_field :company_name %>
+        </li>
+        <li>
+          <%= f.label :company_url %><br />
+          <%= f.text_field :company_url %>
+        </li>
+        <li>
+          <%= f.label :function %><br />
+          <%= f.text_field :function %>
+        </li>
+        <li>
+          <%= f.label :period_from %><br />
+          <%= f.date_select :period_from %>
+        </li>
+        <li>
+          <%= f.label :period_to %><br />
+          <%= f.date_select :period_to %>
+        </li>
+        <li>
+          <%= f.label :description %><br />
+          <%= f.text_area :description %>
+        </li>
+    </ol>
+
+    <%= remote_submit_for_object job_record_new, 'Salvar' %>
+<% end %>

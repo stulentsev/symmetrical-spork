@@ -1,0 +1,40 @@
+<style type='text/css'>
+    li input
+    {
+        margin-left: 20px;
+    }
+</style>
+
+<ol>
+    <%= final_report_items f, @student_report,
+                           [[:s1_what_enjoyed_to_learn, :textarea, 'O que mais gostou de aprender?']] %>
+
+    <li>
+        <%= bold_label f, :s1_difficulties, 'Em que teve mais dificuldade?' %>
+        <br/>
+        <%= f.check_box :language_techniques %>Técnicas de linguagem
+        <%= f.check_box :equipment %>Equipamentos
+        <%= f.check_box :school_didactics %>;Didáctica da escola
+        <%= f.check_box :relationships_with_professors %>Rel professores
+        <%= f.check_box :relationships_with_students %>Rel. colegas
+    </li>
+    <%= final_report_items f, @student_report,
+                           [[:s1_difficulties_text, :textarea, 'Outros'],
+                            [:s1_opinion_on_educators, :textarea, 'Opinião sobre os educadores?'],
+                            [:s1_opinion_on_coordination, :textarea, 'Opinião sobre a coordenação?'],
+                            [:s1_selfevaluation, :textarea, 'Como você se auto avalia?'],
+                            [:s1_how_can_improve, :textarea, 'Como pode melhorar?'],
+                           ] %>
+    <li>
+        <%= bold_label f, :s1_oi_kabum_helped, 'A entrada na Kabum ajudou a aprendizagem na escola?' %>
+        <br/>
+        <%= f.select :s1_oi_kabum_helped, [['', ''], ['Sim', 1], ['Não', 0]] %>
+    </li>
+    <%= final_report_items f, @student_report,
+                           [[:s1_oi_kabum_helped_text, :textarea, 'Justifique'],
+                            [:s1_family_relationship_changed, :textarea, 'A relação com a sua família mudou?'],
+                            [:s1_former_expectations, :textarea, 'Qual era  sua expectativa antes?'],
+                            [:s1_current_expectations, :textarea, 'Como é a sua expectativa agora?'],
+                            [:s1_what_want_from_future, :textarea, 'O que você quer para o futuro?'],
+                            [:s1_free_thoughts, :textarea, 'Escreva o que quiser sobre a Kabum']] %>
+</ol>

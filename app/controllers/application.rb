@@ -16,6 +16,7 @@ class ApplicationController < ActionController::Base
   filter_parameter_logging :password, :password_confirmation
   helper_method :current_user_session, :current_user
 
+
   private
     def current_user_session
       return @current_user_session if defined?(@current_user_session)
@@ -54,5 +55,16 @@ class ApplicationController < ActionController::Base
       session[:return_to] = nil
     end
 
+    def require_user_role(roles = [])
+      roles = [roles] if !roles.is_a?(Array)
+      user_type_ids = {:coordinator => 1,
+                       :educator_specific => 2,
+                       :educator_transversal => 3,
+                       :student => 4,
+                       :gestor => 5
+                      }.select {|k, v| roles.member?(k)}.map{|k, v| v}
+      throw Exception.new("Authorization error!") if !current_user.gestor? &&
+              !user_type_ids.member?(current_user.user_type_id)
+    end
 
 end

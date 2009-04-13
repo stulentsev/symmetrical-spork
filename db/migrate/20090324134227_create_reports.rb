@@ -10,59 +10,39 @@ class CreateReports < ActiveRecord::Migration
     end
 
     # ooordenadores
-    Report.create(:user_type_id => 1, :name => 'Marco Zero',
+    Report.create(:user_type_id => 1, :name => 'Marco Zero', :report_type => 1,
                   :link => 'edit_course_path(params[:course_id] || params[:id])')
-    Report.create(:user_type_id => 1, :name => 'Escolha das linguagens',
+    Report.create(:user_type_id => 1, :name => 'Escolha das linguagens', :report_type => 1,
                   :link => 'language_choice_course_path(params[:course_id] || params[:id])')
 
-    Report.create(:user_type_id => 1, :name => 'Relatório – 1º Trimestre',
-                  :link => 'edit_course_coordinator_trimestrial_report_url(params[:id], 1)')
-    Report.create(:user_type_id => 1, :name => 'Relatório – 2º Trimestre',
-                  :link => 'edit_course_coordinator_trimestrial_report_url(params[:id], 2)')
-    Report.create(:user_type_id => 1, :name => 'Relatório – 3º Trimestre',
-                  :link => 'edit_course_coordinator_trimestrial_report_url(params[:id], 3)')
-    Report.create(:user_type_id => 1, :name => 'Relatório – 4º Trimestre',
-                  :link => 'edit_course_coordinator_trimestrial_report_url(params[:id], 4)')
-    Report.create(:user_type_id => 1, :name => 'Relatório – 5º Trimestre',
-                  :link => 'edit_course_coordinator_trimestrial_report_url(params[:id], 5)')
-    Report.create(:user_type_id => 1, :name => 'Relatório – 6º Trimestre',
-                  :link => 'edit_course_coordinator_trimestrial_report_url(params[:id], 6)')
+    6.times do |num|
+      Report.create(:user_type_id => 1, :name => "Relatório – #{num + 1}º Trimestre", :report_type => 2,
+                    :link => "edit_course_coordinator_trimestrial_report_url(params[:course_id] || params[:id], #{num + 1})")
+    end
 
-    Report.create(:user_type_id => 1, :name => 'Relatório final',
+    Report.create(:user_type_id => 1, :name => 'Relatório final', :report_type => 1,
                   :link => 'edit_course_final_report_path(params[:course_id] || params[:id])')
 
     # educadores de linguagens
-    Report.create(:user_type_id => 2, :name => 'Relatório – 1º Trimestre',
-                  :link => 'edit_course_educator_report_url(params[:id], 1)')
-    Report.create(:user_type_id => 2, :name => 'Relatório – 2º Trimestre',
-                  :link => 'edit_course_educator_report_url(params[:id], 2)')
-    Report.create(:user_type_id => 2, :name => 'Relatório – 3º Trimestre',
-                  :link => 'edit_course_educator_report_url(params[:id], 3)')
-    Report.create(:user_type_id => 2, :name => 'Relatório – 4º Trimestre',
-                  :link => 'edit_course_educator_report_url(params[:id], 4)')
-    Report.create(:user_type_id => 2, :name => 'Relatório – 5º Trimestre',
-                  :link => 'edit_course_educator_report_url(params[:id], 5)')
-    Report.create(:user_type_id => 2, :name => 'Relatório – 6º Trimestre',
-                  :link => 'edit_course_educator_report_url(params[:id], 6)')
+    6.times do |num|
+      Report.create(:user_type_id => 2, :name => "Relatório – #{num + 1}º Trimestre", :report_type => 2,
+                    :link => "edit_course_educator_report_url(params[:course_id] || params[:id], #{num + 1})")
+    end
 
     # educadores transversais
-    Report.create(:user_type_id => 3, :name => 'Relatório – 1º Trimestre',
-                  :link => 'edit_course_educator_report_url(params[:id], 1)')
-    Report.create(:user_type_id => 3, :name => 'Relatório – 2º Trimestre',
-                  :link => 'edit_course_educator_report_url(params[:id], 2)')
-    Report.create(:user_type_id => 3, :name => 'Relatório – 3º Trimestre',
-                  :link => 'edit_course_educator_report_url(params[:id], 3)')
-    Report.create(:user_type_id => 3, :name => 'Relatório – 4º Trimestre',
-                  :link => 'edit_course_educator_report_url(params[:id], 4)')
-    Report.create(:user_type_id => 3, :name => 'Relatório – 5º Trimestre',
-                  :link => 'edit_course_educator_report_url(params[:id], 5)')
-    Report.create(:user_type_id => 3, :name => 'Relatório – 6º Trimestre',
-                  :link => 'edit_course_educator_report_url(params[:id], 6)')
+    6.times do |num|
+      Report.create(:user_type_id => 3, :name => "Relatório – #{num + 1}º Trimestre", :report_type => 2,
+                    :link => "edit_course_educator_report_url(params[:course_id] || params[:id], #{num + 1})")
+    end
 
     # educandos
-    Report.create(:user_type_id => 4, :name => 'Relatório – 1º Semestre')
-    Report.create(:user_type_id => 4, :name => 'Relatório – 2º Semestre')
-    Report.create(:user_type_id => 4, :name => 'Relatório – 3º Semestre')
+    3.times do |num|
+      Report.create(:user_type_id => 4,
+                    :name => "Relatório – #{num + 1}º Semestre",
+                    :report_type => 3,
+                    :link => "edit_course_student_report_url(params[:course_id] || params[:id], #{num + 1})")
+
+    end
 
     # gestor
     # no reports with deadlines for gestores
