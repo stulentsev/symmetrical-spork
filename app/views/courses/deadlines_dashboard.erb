@@ -1,0 +1,70 @@
+<ul>
+    <li>
+        <h2>Periodo</h2>
+
+        <table>
+            <tr>
+                <td>
+                    Periodo atual
+                </td>
+                <td>
+                    <% @courses.each do |c| %>
+                        <%= c.period_from.strftime('%Y-%m') %> a <%= c.period_to.strftime('%Y-%m') %>
+                        <%= c.school.name %><br/>
+                    <% end %>
+                </td>
+                <td>
+                    <input type='button' value='Adicionar novo periodo + ' />
+                </td>
+            </tr>
+        </table>
+    </li>
+    <li>
+        <h2 class='aberto'><a href='#'>Prazos</a></h2>
+        <table>
+            <% @courses.each do |c| %>
+                <% c.reports_with_deadlines.select{|rwd| rwd.deadline != nil && rwd.status != 2}.each do |rwd| %>
+                    <tr>
+                        <td>
+                            <%= rwd.deadline %>
+                        </td>
+                        <td>
+                            <%= rwd.name %>
+                        </td>
+                        <td>
+                            <%= c.school.name %>
+                        </td>
+                    </tr>
+                <% end %>
+            <% end %>
+        </table>
+    </li>
+    <li>
+                    <h2 class='aberto'><a href='#'>Avisos</a></h2>
+                    <ul>
+            <% @courses.each do |c| %>
+                <li><h3><%= c.school.name %></h3></li>            
+                <% c.reports_with_deadlines.
+                            select{|rwd| rwd.status == 2}.
+                            sort{|lhs, rhs| rhs.updated_at <=> lhs.updated_at}.
+                            each do |rwd| %>
+                      <li>
+                          <strong><%= rwd.user.user_type_name %></strong> preencheu
+                          <strong><%= rwd.name %></strong>
+                          at <%= rwd.updated_at.strftime('%m/%d/%Y') %>
+                          <a href='#'>VER</a>
+                      </li>
+                <% end %>
+            <% end %>
+                        </ul>
+
+    </li>
+    <li>
+        <h2 class='aberto'><a href='#'>Datas a preencher</a></h2>
+    </li>
+</ul>
+
+
+
+
+

@@ -74,7 +74,7 @@
                 <% if current_user.user_type_id == 4 %>
                     <ul>
                         <li <%= 'class="selected"' if params[:controller] == 'student_reports' && params[:action] == 'edit' %> ><%= link_to "Relatório Semestrial", edit_course_student_report_url(1, 1) %></li>
-                        <li <%= 'class="selected"' if params[:action] == 'students' && params[:action] == 'professional_profile' %> ><%= link_to "Perfil profissional", edit_student_professional_profile_url(current_user.domain_id) %></li>
+                        <li <%= 'class="selected"' if params[:action] == 'students' && params[:action] == 'professional_profile' %> ><%= link_to "Perfil profissional", edit_student_professional_profile_url(current_user.domain_user.id) %></li>
                     </ul>
                 <% end %>
                 <% if current_user.user_type_id == 5 %>

@@ -112,6 +112,14 @@ class CoursesController < ApplicationController
   def dashboard
     @course = Course.find_by_id(params[:id])
   end
+
+  def deadlines_dashboard
+    @course = Course.find_by_id(params[:id])
+    @courses = Course.find(:all,
+                           :conditions => ['period_from < ? and period_to > ?',
+                                            Date.today,
+                                            Date.today])
+  end
 private
   def authorize
     require_user_role  [:coordinator, :gestor]

@@ -46,7 +46,7 @@ ActionController::Routing::Routes.draw do |map|
                 :member => {:language_choice => :get}
 
   map.resources :courses,
-                :member => [:dashboard]
+                :member => [:dashboard, :deadlines_dashboard]
 
   map.resource :account, :controller => "users"
   map.resources :users

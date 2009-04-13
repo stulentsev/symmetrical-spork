@@ -9,6 +9,7 @@ class Course < ActiveRecord::Base
   has_many :trimesters, :class_name => 'Term', :conditions => {:months_long => 3}
   has_many :semesters, :class_name => 'Term', :conditions => {:months_long => 6}
   belongs_to :school
+  has_many :reports_with_deadlines
 
   def after_initialize
     self.student_profile ||=  CourseStudentProfile.create
