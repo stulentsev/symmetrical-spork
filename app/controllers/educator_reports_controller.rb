@@ -4,7 +4,7 @@ class EducatorReportsController < ApplicationController
 
   def edit
     @educator = ProjectTeamMember.find_by_course_id_and_user_id(params[:course_id],
-                                                                current_user.id)
+                                                                get_user_with_reports.id)
 
   end
 
@@ -24,8 +24,18 @@ class EducatorReportsController < ApplicationController
     end
   end
 private
+  def get_user_with_reports
+    # TODO: replace with better permission check
+    # TODO: (coordinator can access data only from its school)
+    if current_user.gestor? && params[:domain_user_id]
+      ProjectTeamMember.find_by_id(params[:domain_user_id]).user
+    else
+      current_user
+    end
+  end
+
   def get_rep_with_deadline(num)
-    arr = current_user.reports_with_deadlines.select {|r| r.report.report_type == 2 }
+    arr = get_user_with_reports.reports_with_deadlines.select {|r| r.report.report_type == 2 }
     arr = arr.sort {|l, r| l.report_id <=> r.report_id}
     arr[num.to_i - 1]
   end

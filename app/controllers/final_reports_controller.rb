@@ -4,7 +4,7 @@ class FinalReportsController < ApplicationController
   def update
     @course = Course.find_by_id(params[:course_id])
 
-    @final_report = current_user.reports_with_deadlines.select {|r| r.report_id == 4}.first
+    @final_report = get_user_with_reports.reports_with_deadlines.select {|r| r.report_id == 4}.first
     @final_report.status = 2 # completed
     @final_report.save
 
@@ -16,7 +16,7 @@ class FinalReportsController < ApplicationController
 
   def edit
     @course = Course.find_by_id(params[:course_id])
-    @final_report = current_user.reports_with_deadlines.select {|r| r.report_id == 4}.first
+    @final_report = get_user_with_reports.reports_with_deadlines.select {|r| r.report_id == 4}.first
     #update_page
   end
 
@@ -30,6 +30,16 @@ private
   end
 
   def authorize
-    require_user_role [:coordinator, :gestor]
+    require_user_role [:coordinator]
+  end
+
+  def get_user_with_reports
+    # TODO: replace with better permission check
+    # TODO: (coordinator can access data only from its school)
+    if current_user.gestor? && params[:domain_user_id]
+      Coordinator.find_by_id(params[:domain_user_id]).user
+    else
+      current_user
+    end
   end
 end

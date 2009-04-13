@@ -31,8 +31,19 @@ private
     @activity = CoordinatorTrimestrialReportActivity.new(:coordinator_trimestrial_report_id => params[:id])
   end
 
+  def get_user_with_reports
+    # TODO: replace with better permission check
+    # TODO: (coordinator can access data only from its school)
+    if current_user.gestor? && params[:domain_user_id]
+      Coordinator.find_by_id(params[:domain_user_id]).user
+    else
+      current_user
+    end
+  end
+
+
   def get_rep_with_deadline(num)
-    arr = current_user.reports_with_deadlines.select {|r| r.report.report_type == 2 }
+    arr = get_user_with_reports.reports_with_deadlines.select {|r| r.report.report_type == 2 }
     arr = arr.sort {|l, r| l.report_id <=> r.report_id}
     arr[num.to_i - 1]
   end

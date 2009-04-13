@@ -41,7 +41,7 @@ class CoursesController < ApplicationController
     @project_team_member = ProjectTeamMember.new(:course_id => @course.id)
     @activity = Activity.new(:course_id => @course.id)
     @partner = Partner.new(:course_id => @course.id)
-    @marco_zero = current_user.reports_with_deadlines.select {|r| r.report_id == 1}.first
+    @marco_zero = get_user_with_reports.reports_with_deadlines.select {|r| r.report_id == 1}.first
   end
 
   # POST /courses
@@ -69,7 +69,7 @@ class CoursesController < ApplicationController
   # PUT /courses/1.xml
   def update
     @course = Course.find(params[:id])
-    @marco_zero = current_user.reports_with_deadlines.select {|r| r.report_id == 1}.first
+    @marco_zero = get_user_with_reports.reports_with_deadlines.select {|r| r.report_id == 1}.first
 
     if params[:commit] == 'Finalizar Relatório'
       @marco_zero.status = 2 # completed
@@ -122,6 +122,17 @@ class CoursesController < ApplicationController
   end
 private
   def authorize
-    require_user_role  [:coordinator, :gestor]
+    require_user_role  [:coordinator]
   end
+
+  def get_user_with_reports
+    # TODO: replace with better permission check
+    # TODO: (coordinator can access data only from its school)
+    if current_user.gestor? && params[:domain_user_id]
+      Coordinator.find_by_id(params[:domain_user_id]).user
+    else
+      current_user
+    end
+  end
+
 end

@@ -63,7 +63,8 @@ class ApplicationController < ActionController::Base
                        :student => 4,
                        :gestor => 5
                       }.select {|k, v| roles.member?(k)}.map{|k, v| v}
-      throw Exception.new("Authorization error!") if !user_type_ids.member?(current_user.user_type_id)
+      throw Exception.new("Authorization error!") if !current_user.gestor? &&
+              !user_type_ids.member?(current_user.user_type_id)
     end
 
 end
