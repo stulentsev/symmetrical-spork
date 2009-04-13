@@ -6,4 +6,8 @@ class ReportsWithDeadline < ActiveRecord::Base
   def is_editable
     self.status != 2 && self.status != 0
   end
+
+  def finalized?
+    self.status == 2
+  end
 end

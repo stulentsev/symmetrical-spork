@@ -1,3 +1,8 @@
+<% content_for :aviso do %>
+    <%= render :partial => 'layouts/aviso',
+               :locals => {:rwd => @marco_zero} %>
+<% end %>
+
 <%= render :partial => 'layouts/inplace_init', :locals => {:rep_with_deadline => @marco_zero } %>
 
 <% form_for(@course) do |f| %>
