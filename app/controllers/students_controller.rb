@@ -58,6 +58,7 @@ class StudentsController < ApplicationController
             page << '}'
             page.insert_html :bottom, "language_#{@student.language.id}", :partial => 'students/student', :object => @student, :locals => {:url => course_student_url(@course.id, @student.id)}
             page.replace_html 'new_student', :partial => 'students/new', :object => Student.new(:course_id => params[:course_id])
+            page << "initialize();"
           end
         end
     else
