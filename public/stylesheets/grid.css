@@ -945,6 +945,29 @@ http://www.arterial.tv
 		text-align: right;
 	}
 
+	.button input,
+	input[type="button"] {
+		font-weight: bold;
+		text-transform: uppercase;
+		border: 1px solid #C1B4A2;
+		padding: 2px;
+		color: #FFF;
+		background: #C1B4A2 url('../images/submit_bg.gif');
+	}
+
+	.button input:hover,
+	input[type="button"]:hover {
+		background: #EC1848;
+		cursor: pointer;
+	}
+
+	.button {
+		position: relative;
+		top: -8px;
+		padding: 0 47px 8px;
+		text-align: right;
+	}
+
 
 	/* FORM ERRO */
 
@@ -1315,3 +1338,4 @@ http://www.arterial.tv
 	}
 
 }
+

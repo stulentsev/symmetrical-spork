@@ -16,13 +16,13 @@ class FillSampleData < ActiveRecord::Migration
 
       # create coordinators
       sergei = User.create( :user_type_id => 1, # coordinator
-                            :login => 'sergei',
+                            :login => 'sergei.tulentsev@gmail.com',
                             :email => 'sergei.tulentsev@gmail.com',
                             :password => 'sergei',
                             :password_confirmation => 'sergei')
       murad = User.create(:user_type_id => 1, # coordinator
-                          :login => 'murad',
-                          :email => 'marcelo.murad@gmail.com',
+                          :login => 'murad@livingnet.com.br',
+                          :email => 'murad@livingnet.com.br',
                           :password => 'murad123',
                           :password_confirmation => 'murad123')
       sergei.setup_reports_for_course(course)
@@ -85,3 +85,4 @@ private
     specific_user.setup_reports_for_course(course)
   end
 end
+

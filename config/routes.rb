@@ -31,7 +31,7 @@ ActionController::Routing::Routes.draw do |map|
                 :member => [:dashboard]
 
   map.resource :account, :controller => "users"
-  map.resources :users
+  map.resources :users, :collection => {:verify_email => :post}
 
   map.resource :user_session
   map.root :controller => "user_sessions", :action => "new"
@@ -78,3 +78,4 @@ ActionController::Routing::Routes.draw do |map|
   #map.connect ':controller/:action/:id'
   #map.connect ':controller/:action/:id.:format'
 end
+
