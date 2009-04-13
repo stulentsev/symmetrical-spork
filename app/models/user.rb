@@ -57,6 +57,23 @@ class User < ActiveRecord::Base
      4 => 'Educando',
      5 => 'Gestor'}[self.user_type_id]
   end
+
+  def coordinator?
+    user_type_id == 1
+  end
+
+  def educator?
+    user_type_id == 2 || user_type_id == 3
+  end
+
+  def student?
+    user_type_id == 4
+  end
+
+  def gestor?
+    user_type_id == 5
+  end
+
 private
   def create_actual_report(type_id, course)
     case type_id
