@@ -52,6 +52,13 @@ module ApplicationHelper
             'Trabalhos',
             'Recado']
 
+    final_report = [
+            'Dados Pós-Curso',
+            'Reflexão de Objetivos',
+            'Reflexão de Resultados',
+            'Relatório Vivência-Estágio',
+            'Observações Finais']
+
 
     navigation = case params[:controller]
     when 'courses'
@@ -69,6 +76,8 @@ module ApplicationHelper
       semestrial_report_navigation
     when 'student_professional_profiles'
       professional_profile
+    when 'final_reports'
+      final_report
     else
       []
     end
