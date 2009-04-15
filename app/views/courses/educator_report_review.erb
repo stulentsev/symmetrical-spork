@@ -1,1 +1,36 @@
-Here goes educator report.
+<% action_url = url_for(:controller => :educator_reports,
+                        :action => :update,
+                        :method => :post,
+                        :course_id => params[:id],
+                        :id => params[:id]) %>
+<% form_for @educator_report, :url => action_url do |f| %>
+<ul>
+    <li>
+        <h2 class='aberto'><a href='#' id='desenvolvimento'>Desenvolvimento</a></h2>
+        <ol>
+            <%= final_report_items f, @educator_report,
+                                   [[:content_description, :textarea, 'Descreva o conteúdo desenvolvido'],
+                                    [:methods_used, :textarea, 'Método / dinâmicas utilizadas']],
+                                   :url => action_url %>
+        </ol>
+    </li>
+    <li>
+        <h2 class='aberto'><a href='#' id='desempenho-de-educandos'>Descreva o desempenho de cada educando</a></h2>
+        <ol>
+            <% @educator.student_performances.each do |sp| %>
+                <%= render :partial => 'student_performances/performance_for_educator_report',
+                               :object => sp %>
+            <% end %>
+        </ol>
+    </li>
+    <li>
+        <h2 class='aberto'><a href='#' id='observações'>Observações</a></h2>
+        <ol>
+            <%= final_report_items f, @educator_report,
+                                   [[:observations, :textarea, 'Observações do educador']],
+                                   :url => action_url %>
+        </ol>
+    </li>l
+</ul>
+
+<% end %>
