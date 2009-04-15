@@ -57,9 +57,9 @@
                     <ul>
                         <li <%= 'class="selected"' if params[:controller] == 'courses' && params[:action] == 'edit' %> ><%= link_to "Marco Zero", edit_course_path(1) %></li>
                         <li <%= 'class="selected"' if params[:action] == 'language_choice' %> ><%= link_to "Escolha das Linguagens", language_choice_course_path(1) %></li>
-                        <li><a href="c_relatorio_01.html">Relatórios de Conteúdo</a></li>
+                        <li <%= 'class="selected"' if params[:controller] == 'coordinator_trimestrial_reports' %>><%= link_to 'Relatórios de Conteúdo', edit_course_coordinator_trimestrial_report_url(1, 1) %></li>
                         <li <%= 'class="selected"' if params[:controller] == 'final_reports' && params[:action] == 'edit' %>><%= link_to "Relatório Final", edit_course_final_report_path(1) %></li>
-                        <li><a href="e_relatorio_edu.html">Relatório Educadores</a></li>
+                        <li <%= 'class="selected"' if params[:controller] == 'courses' && params[:action] == 'educator_report' %>><%= link_to 'Relatório Educadores', educator_report_review_course_url(1) %></li>
                     </ul>
                 <% end %>
                 <% if current_user.user_type_id == 4 %>

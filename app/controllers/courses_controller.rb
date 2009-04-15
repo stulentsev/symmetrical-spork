@@ -112,6 +112,11 @@ class CoursesController < ApplicationController
                                             Date.today,
                                             Date.today])
   end
+
+  def educator_report_review
+    @course = Course.find_by_id(params[:id])
+
+  end
 private
   def authorize
     require_user_role  [:coordinator]

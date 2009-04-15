@@ -43,7 +43,8 @@ ActionController::Routing::Routes.draw do |map|
                               :coordinator_trimestrial_reports,
                               :educator_reports,
                               :student_reports],
-                :member => {:language_choice => :get}
+                :member => {:language_choice => :get,
+                            :educator_report_review => :get}
 
   map.resources :courses,
                 :member => [:dashboard, :deadlines_dashboard]
