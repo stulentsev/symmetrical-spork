@@ -28,38 +28,38 @@ class FillSampleData < ActiveRecord::Migration
       # create gestor
       gestor = User.create( :user_type_id => 5, # gestor
                             :login => 'gestor',
-                            :email => 'gestor.gestorich@oikabum.com',
+                            :email => 'gestor@oikabum.com',
                             :password => 'gestor',
                             :password_confirmation => 'gestor')
 
       # create coordinators
-      sergei_user = User.create( :user_type_id => 1, # coordinator
-                            :login => 'sergei',
-                            :email => 'sergei.tulentsev@gmail.com',
-                            :password => 'sergei',
-                            :password_confirmation => 'sergei')
-      sergei_coord = Coordinator.create(:name => 'Sergei Tulentsev',
+      rio_user = User.create( :user_type_id => 1, # coordinator
+                            :login => 'rio_cord',
+                            :email => 'rio_cord@oikabum.com',
+                            :password => 'rio_cord',
+                            :password_confirmation => 'rio_cord')
+      rio_coord= Coordinator.create(:name => 'Rio Coordenador',
                                         :city => 'Rio de Janeiro',
-                                        :user_id => sergei_user.id)
-      sergei_user.setup_reports_for_course(course)
+                                        :user_id => rio_user.id)
+      rio_user.setup_reports_for_course(course)
 
-      murad_user = User.create(:user_type_id => 1, # coordinator
-                          :login => 'murad',
-                          :email => 'marcelo.murad@gmail.com',
-                          :password => 'murad123',
-                          :password_confirmation => 'murad123')
-      murad_coord = Coordinator.create(:name => 'Marcelo Mustafa Murad',
-                                       :city => 'Rio de Janeiro',
-                                       :user_id => murad_user.id)
-      murad_user.setup_reports_for_course(course)
+      belo_user = User.create(:user_type_id => 1, # coordinator
+                          :login => 'belo_cord',
+                          :email => 'belo_cord@oikabum.com',
+                          :password => 'belo_cord',
+                          :password_confirmation => 'belo_cord')
+      belo_coord = Coordinator.create(:name => 'Belo Horiznote Coordenador',
+                                       :city => 'Belo Horiznote',
+                                       :user_id => belo_user.id)
+      belo_user.setup_reports_for_course(course)
 
       # set coordinators for schools
       school = School.find(3) # Rio de Janeiro
-      school.coordinator = sergei_coord
+      school.coordinator = rio_coord
       school.save
 
       school = School.find(1) # Belo Horiznote
-      school.coordinator = murad_coord
+      school.coordinator = belo_coord
       school.save
 
       # create educadores
@@ -67,25 +67,25 @@ class FillSampleData < ActiveRecord::Migration
 
       transversal_user = User.create(:user_type_id => 3, # educador transversal
                           :login => 'transversal',
-                          :email => 'transversal@mylo.com',
+                          :email => 'transversal@oikabum.com',
                           :password => 'transversal',
                           :password_confirmation => 'transversal')
       transversal = ProjectTeamMember.create(:course_id => course.id,
                                           :user_id => transversal_user.id,
-                                          :language_id => 1, # to pass validation
-                                          :name => "Andrew Romashkin (educador transversal para teste)",
-                                          :email => 'transversal@mylo.com')
+                                          :language_id => 0, # to pass validation
+                                          :name => "Educador Transversal",
+                                          :email => 'transversal@oikabum.com')
       transversal_user.setup_reports_for_course(course)
 
       # create students
       50.times do |number|
         student_user = User.create( :user_type_id => 4, # educando
                                     :login => "student#{number}",
-                                    :email => "student#{number}@mylo.com",
+                                    :email => "student#{number}@oikabum.com",
                                     :password => "student#{number}",
                                     :password_confirmation => "student#{number}")
         student = Student.create(:name => "Learnable organism \##{number}",
-                                 :email => "student#{number}@mylo.com",
+                                 :email => "student#{number}@oikabum.com",
                                  :language_id => 1 + rand(Language.count),
                                  :schooling_id => 1 + rand(Schooling.count),
                                  :user_id => student_user.id,
@@ -106,16 +106,16 @@ class FillSampleData < ActiveRecord::Migration
 
 private
   def self.create_language_educator(number, course)
-    specific_user = User.create(:user_type_id => 2, # educador especifical
-                        :login => "specific#{number}",
-                        :email => "specific#{number}@mylo.com",
-                        :password => "specific#{number}",
-                        :password_confirmation => "specific#{number}")
+    specific_user = User.create(:user_type_id => 2, # educador especifico
+                        :login => "especifico#{number}",
+                        :email => "especifico#{number}@oikabum.com",
+                        :password => "especifico#{number}",
+                        :password_confirmation => "especifico#{number}")
     specific = ProjectTeamMember.create(:course_id => course.id,
                                         :user_id => specific_user.id,
                                         :language_id => number,
-                                        :name => "Mark Swift #{number} (educador especifical para teste)",
-                                        :email => "specific#{number}@mylo.com")
+                                        :name => "Educador Especifico",
+                                        :email => "especific#{number}@oikabum.com")
     specific_user.setup_reports_for_course(course)
   end
 end
