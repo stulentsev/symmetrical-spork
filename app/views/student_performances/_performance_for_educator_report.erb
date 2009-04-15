@@ -1,7 +1,7 @@
 <li>
     <% url = url_for(performance_for_educator_report) %>
     <% fields_for performance_for_educator_report do |f| %>
-        <p>
+        <p id='student_<%= performance_for_educator_report.student.id %>'>
             <%= link_to((image_tag(performance_for_educator_report.student.photo.url(:thumb)) +
                     performance_for_educator_report.student.name),
               url, :class => "lbOn" ) %>

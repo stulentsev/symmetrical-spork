@@ -44,7 +44,8 @@ ActionController::Routing::Routes.draw do |map|
                               :educator_reports,
                               :student_reports],
                 :member => {:language_choice => :get,
-                            :educator_report_review => :get}
+                            :educator_report_review => :get,
+                            :get_languages => :post}
 
   map.resources :courses,
                 :member => [:dashboard, :deadlines_dashboard]

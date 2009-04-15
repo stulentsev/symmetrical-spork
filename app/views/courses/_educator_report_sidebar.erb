@@ -1,0 +1,64 @@
+<%= javascript_tag '
+function verRelatorio()
+{
+    var elems = ["language_type_id", "language_id", "trimester_id"];
+    var loc = window.location;
+    var queryString = loc.pathname + "?";
+    for(var i = 0; i < elems.length; i++)
+    {
+        elem = elems[i];
+        if(i > 0) queryString += "&";
+        queryString += elem + "=" + $("navigation_"+elem).value;
+    }
+    window.location.href = queryString;
+}
+
+function scrollToElem(elem_id)
+{
+    $(elem_id).scrollTo();
+    window.scrollBy(0, -130);
+}
+' %>
+<p>
+    <% form_remote_tag :url => {:controller => :courses,
+                       :action => :get_languages,
+                       :method => :get} do |f| %>
+    <%= select_tag 'navigation_language_type_id',
+                   options_for_select([['Tipo de Linguagem', 0],
+                                       ['Linguagem Específica', 1],
+                                       ['Linguagem Transversal', 2]],
+                                      params[:language_type_id].to_i),
+                   :onchange => 'this.form.onsubmit()' %>
+
+    <% end %>
+</p>
+<p>
+    <%= languages_select_box params[:language_type_id] %>
+</p>
+<p>
+    <%= select_tag 'navigation_trimester_id',
+                   options_for_select([['Selecione Trimestre', 0],
+                                       ['Primeiro Trimestre', 1],
+                                       ['Segundo Trimestre', 2],
+                                       ['Terceiro Trimestre', 3],
+                                       ['Quarto Trimestre', 4],
+                                       ['Quinto Trimestre', 5],
+                                       ['Sexto Trimestre', 6]],
+                                      params[:trimester_id].to_i) %>
+</p>
+<p>
+    <%= link_to_function 'Ver relatorio', 'verRelatorio()' %>
+</p>
+
+
+<h4>Navegacao rapida</h4>
+<ul>
+    <li><a href='javascript:void(0)' onclick="scrollToElem('desenvolvimento')">Desenvolvimento</a></li>
+    <li><select onclick='scrollToElem(this.value)'>
+        <%= options_for_select students.map{|st| [st.name, 'student_' + st.id.to_s]} %>
+    </select></li>
+    <li><a href='javascript:void(0)' onclick="scrollToElem('observações-finais')">Observações Finais</a></li>
+
+</ul>
+
+

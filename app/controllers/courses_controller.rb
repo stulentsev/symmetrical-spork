@@ -123,6 +123,12 @@ class CoursesController < ApplicationController
     @educator = @rep_with_deadline.user.domain_user
 
   end
+
+  def get_languages
+    render :update do |page|
+      page.replace 'navigation_language_id', languages_select_box(params[:navigation_language_type_id])
+    end
+  end
 private
   def authorize
     require_user_role  [:coordinator]

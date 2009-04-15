@@ -20,7 +20,7 @@ module ApplicationHelper
     end
   end
 
-  def fast_navigation
+  def fast_navigation navigation = nil
     zero_mark = [
             'Período da Turma',
             'Descritivos',
@@ -60,13 +60,15 @@ module ApplicationHelper
             'Observações Finais']
 
 
-    navigation = case params[:controller]
+    navigation ||= case params[:controller]
     when 'courses'
       case params[:action]
       when 'edit'
         zero_mark
       when 'language_choice'
         language_choice
+      when 'educator_report_review'
+        educator_report_review_navigation
       else
         []
       end
