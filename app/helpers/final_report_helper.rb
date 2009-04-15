@@ -1,4 +1,16 @@
 module FinalReportHelper
+
+  def readonly_item(resource, field, options = {})
+    options[:tag] ||= :span
+
+    text = resource.send(field)
+    if !text || text.is_a?(String) && text.empty?
+      text = 'Não está preenchido.'
+    end
+
+    content_tag(options.delete(:tag), text, options)
+  end
+
   def numeric_edit_in_place(resource, field, options = {})
     options[:size] ||= 3
 
@@ -23,6 +35,8 @@ module FinalReportHelper
       method(:textarea_edit_in_place)
     when :numeric
       method(:numeric_edit_in_place)
+    when :readonly
+      method(:readonly_item)
     else
       method(:edit_in_place)
     end
