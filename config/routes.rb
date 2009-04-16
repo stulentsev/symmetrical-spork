@@ -1,4 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :deadlines,
+                :member => [:get_reports_for_user]
+
   map.resources :coordinators
 
   map.resources :schools,
@@ -16,6 +19,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :student_performances
 
   map.resources :password_resets
+
+  map.resources :reports_with_deadlines
 
   map.resources :students,
                 :has_one => [:professional_profile],
@@ -42,7 +47,8 @@ ActionController::Routing::Routes.draw do |map|
                               :students,
                               :coordinator_trimestrial_reports,
                               :educator_reports,
-                              :student_reports],
+                              :student_reports,
+                              :deadlines],
                 :member => {:language_choice => :get}
 
   map.resources :courses,
