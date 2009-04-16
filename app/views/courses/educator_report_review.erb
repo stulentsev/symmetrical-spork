@@ -11,7 +11,7 @@
                         :action => :update,
                         :method => :post,
                         :course_id => params[:id],
-                        :id => params[:id]) %>
+                        :id => @educator_report.id) %>
 <% form_for @educator_report, :url => action_url do |f| %>
 <ul>
     <li>

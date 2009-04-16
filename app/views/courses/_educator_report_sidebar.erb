@@ -6,9 +6,13 @@ function verRelatorio()
     var queryString = loc.pathname + "?";
     for(var i = 0; i < elems.length; i++)
     {
-        elem = elems[i];
-        if(i > 0) queryString += "&";
-        queryString += elem + "=" + $("navigation_"+elem).value;
+        var elem = elems[i];
+        var val = $("navigation_"+elem).value;
+        if(val != "0")
+        {
+            if(i > 0) queryString += "&";
+            queryString += elem + "=" + val;
+        }
     }
     window.location.href = queryString;
 }
@@ -25,6 +29,7 @@ function scrollToElem(elem_id)
         <% form_remote_tag :url => {:controller => :courses,
                                     :action => :get_languages,
                                     :method => :get} do |f| %>
+            <p>
             <%= select_tag 'navigation_language_type_id',
                            options_for_select([['Tipo de Linguagem', 0],
                                    ['Linguagem Específica', 1],
@@ -32,16 +37,19 @@ function scrollToElem(elem_id)
                                               params[:language_type_id].to_i),
                            :onchange => 'this.form.onsubmit()',
                            :class => 'navigation_ddl' %>
-
+               </p>
         <% end %>
     </li>
     <li>
         <form>
+            <p>
             <%= languages_select_box params[:language_type_id] %>
+            </p>
         </form>
     </li>
     <li>
         <form>
+            <p>
             <%= select_tag 'navigation_trimester_id',
                            options_for_select([['Selecione Trimestre', 0],
                                    ['Primeiro Trimestre', 1],
@@ -52,6 +60,7 @@ function scrollToElem(elem_id)
                                    ['Sexto Trimestre', 6]],
                                               params[:trimester_id].to_i),
                            :class => 'navigation_ddl' %>
+            </p>
         </form>
     </li>
     <li>
@@ -59,24 +68,18 @@ function scrollToElem(elem_id)
             <%= button_to_function 'Ver relatorio', 'verRelatorio()' %>
         </form>
     </li>
-</ul>
-<br/>
-<h5 class='secundario'>Navegacao rapida</h5>
-<ul>
     <li>
-        <ul>
-            <li><a href='javascript:void(0)' onclick="scrollToElem('desenvolvimento')">Desenvolvimento</a></li>
-            <li>
-                <form>
-                    <select class='navigation_ddl' onclick='scrollToElem(this.value)'>
-                        <option>Escolha o educando</option>
-                        <%= options_for_select students.map{|st| [st.name, 'student_' + st.id.to_s]} %>
-                    </select>
-                </form>
-            </li>
-            <li><a href='javascript:void(0)' onclick="scrollToElem('observações-finais')">Observações Finais</a></li>
-
-        </ul>
-
+        <h5 class='secundario'>Navegacao rapida</h5>
+        <a href='javascript:void(0)' onclick="scrollToElem('desenvolvimento')">Desenvolvimento</a></li>
+    <li>
+        <form>
+            <select class='navigation_ddl' onclick='scrollToElem(this.value)'>
+                <option>Escolha o educando</option>
+                <%= options_for_select students.map{|st| [st.name, 'student_' + st.id.to_s]} if students %>
+            </select>
+        </form>
     </li>
+    <li><a href='javascript:void(0)' onclick="scrollToElem('observações-finais')">Observações Finais</a></li>
+
 </ul>
+

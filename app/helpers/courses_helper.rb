@@ -49,10 +49,11 @@ module CoursesHelper
   end
 
   def educator_report_review_navigation
+    students = @educator.student_performances.
+            select{|sp| sp.trimester.number.to_s == params[:trimester_id]}.
+            map{|sp| sp.student} if @educator
     render :partial => 'courses/educator_report_sidebar',
-           :locals => {:students => @educator.student_performances.
-                                              select{|sp| sp.trimester.number.to_s == params[:trimester_id]}.
-                                              map{|sp| sp.student} }
+           :locals => {:students => students  }
   end
 
   def languages_select_box language_type

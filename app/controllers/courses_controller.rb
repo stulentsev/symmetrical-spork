@@ -115,11 +115,17 @@ class CoursesController < ApplicationController
 
   def educator_report_review
     @course = Course.find_by_id(params[:id])
-    # TODO: select educator report based on form parameters
-    @rep_with_deadline = @course.reports_with_deadlines.select {|r| r.report.report_type == 2 &&
-                                                                    (r.report.user_type_id == 2 ||
-                                                                    r.report.user_type_id == 3) }.first
-    @educator_report = EducatorReport.find(@rep_with_deadline.actual_report_id)
+    rwds_for_educator_reports = @course.reports_with_deadlines.
+                                 select{|rwd| rwd.report.report_type == 2 &&
+                                            (rwd.report.user_type_id == 2 ||
+                                            rwd.report.user_type_id == 3) }
+    @educator_report = rwds_for_educator_reports.
+                                 select{|rwd| rwd.user.domain_user.language.id == params[:language_id].to_i}.
+                                 map{|rwd| EducatorReport.find(rwd.actual_report_id)}.
+                                 select{|er| er.trimester.number == params[:trimester_id].to_i}.
+                                 first
+    return unless @educator_report
+    @rep_with_deadline = rwds_for_educator_reports.select{|rwd| rwd.actual_report_id == @educator_report.id}.first
     @educator = @rep_with_deadline.user.domain_user
 
   end
