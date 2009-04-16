@@ -1,36 +1,41 @@
-
-<% form_for @report_with_deadline do |f| %>
+<% form_for @report_with_deadline,
+            :url => {:controller => :deadlines,
+                     :action => :create} do |f| %>
     <%= f.hidden_field :course_id %>
-<ul>
-    <li>
-        Periodo a <br/>
-        <%= f.date_select :deadline %>
-    </li>
-    <li>
-        Usuario <br/>
-        <%= select_tag :user_type_id, options_for_select(UserType.find(:all).
-                                             select{|ut| ut.name != 'Gestor'}.
-                                             map{|ut| [ut.name, ut.id]}) %>
-        <%= observe_field :user_type_id, :url => { :controller => :deadlines,
-                                                   :action => :get_reports_for_user,
-                                                   :id => 0 },
-             :update => :reports_container,
-             :method => :get
-             %>
-    </li>
+    <ul>
+        <li>
+            Periodo a <br/>
+            <%= f.date_select :deadline %>
+        </li>
+        <li>
+            Usuario <br/>
+            <%= select_tag :user_type_id, options_for_select(UserType.find(:all).
+                    select{|ut| ut.name != 'Gestor'}.
+                    map{|ut| [ut.name, ut.id]}) %>
+            <%= observe_field :user_type_id, :url => { :controller => :deadlines,
+                                                       :action => :get_reports_for_user,
+                                                       :id => 0 },
+                              :update => :reports_container,
+                              :method => :get
+            %>
+        </li>
 
-    <li id='reports_container'>
-        <%= render :partial => 'deadlines/report_select_box',
-                   :locals => {:reports => Report.find(:all,
-                                                       :conditions => {:user_type_id => 1}) } %>
-    </li>
+        <li id='reports_container'>
+            <%= render :partial => 'deadlines/report_select_box',
+                       :locals => {:reports => Report.find(:all,
+                                                           :conditions => {:user_type_id => params[:user_type_id] || 1}) } %>
+        </li>
 
 
-    <li>
-    <% School.find(:all).each do |s| %>
-            <%= radio_button_tag :school_id, s.id %> <%= s.name %> &nbsp;&nbsp;&nbsp;
-    <% end %>
-    </li>
-</ul>
+        <li>
+            <% School.find(:all).each do |s| %>
+                <%= radio_button_tag :school_id, s.id %> <%= s.name %> &nbsp;&nbsp;&nbsp;
+            <% end %>
+        </li>
+        <li>
+            <%= link_to 'Limpar', new_course_deadline_url(@course.id) %>
+            <%= f.submit 'Salvar' %>
+        </li>
+    </ul>
 
 <% end %>

@@ -1,2 +1,4 @@
 Relatorio <br/>
-<%= select_tag :report_with_deadline_report_id, options_for_select(reports.map{|r| [r.name, r.id]}) %>
+<%= select_tag :report_with_deadline_report_id,
+               options_for_select(reports.map{|r| [r.name, r.id]}),
+               :name => 'reports_with_deadline[report_id]' %>

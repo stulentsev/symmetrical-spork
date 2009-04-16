@@ -50,6 +50,6 @@ private
     end
 
     def authorize
-      require_user_role [:student, :gestor]
+      require_user_role [:student]
     end
 end
