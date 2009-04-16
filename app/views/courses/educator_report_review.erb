@@ -4,7 +4,9 @@
   });" %>
 <%= javascript_tag "window._token = '#{form_authenticity_token}'" %>
 
-
+<% if !params[:language_type_id] || !params[:language_id] || !params[:trimester_id] %>
+    <h1>Escolha a linguagem e trimestre</h1>
+<% else %>
 <% action_url = url_for(:controller => :educator_reports,
                         :action => :update,
                         :method => :post,
@@ -24,7 +26,7 @@
     <li>
         <h2 class='aberto'><a href='#' id='desempenho-de-educandos'>Descreva o desempenho de cada educando</a></h2>
         <ol>
-            <% @educator.student_performances.each do |sp| %>
+            <% @educator.student_performances.select{|sp| sp.trimester.number.to_s == params[:trimester_id]}.each do |sp| %>
                 <%= render :partial => 'student_performances/performance_for_educator_report',
                                :object => sp %>
             <% end %>
@@ -46,4 +48,5 @@
         <%= f.submit "Finalizar Relatório" %>
     </div>
 
+<% end %>
 <% end %>

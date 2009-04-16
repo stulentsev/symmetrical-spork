@@ -85,8 +85,9 @@ module ApplicationHelper
     end
 
     return navigation if !navigation.is_a?(Array)
+    str = "<h5 class='fundo'>#{'Navegação Rápida' if should_show_fast_navigation} </h5><ul>"
 
-    navigation.inject("") do |memo, item|
+    str = navigation.inject(str) do |memo, item|
       anchor_id = item.downcase.gsub(' ', '-')
       memo << content_tag(:li, content_tag(:a,
                                            item,
@@ -95,6 +96,8 @@ module ApplicationHelper
                                                         window.scrollBy(0, -130); // move it from under header;"),
                           :class => 'em-branco') + " \n"
     end
+
+    str << "</ul"
 
   end
 

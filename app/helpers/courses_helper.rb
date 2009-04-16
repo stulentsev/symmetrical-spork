@@ -63,7 +63,9 @@ module CoursesHelper
              map{|l| [l.name, l.id]}.
              each {|opt| options << opt}
 
-    select_tag 'navigation_language_id', options_for_select(options,
-                                                 params[:language_id].to_i)
+    select_tag 'navigation_language_id',
+               options_for_select(options,
+                                  params[:language_id].to_i),
+               :class => 'navigation_ddl'
   end
 end
