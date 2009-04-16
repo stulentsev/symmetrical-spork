@@ -2,6 +2,11 @@ class StudentPerformancesController < ApplicationController
   before_filter :init_state, :only => [:edit]
   layout 'student'
 
+  def show
+    @student_performance = StudentPerformance.find_by_id(params[:id])
+    @student = @student_performance.student
+  end
+
   def edit
   end
 

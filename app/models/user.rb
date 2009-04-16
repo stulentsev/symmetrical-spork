@@ -74,6 +74,10 @@ class User < ActiveRecord::Base
     user_type_id == 5
   end
 
+  def self.email_exists?(email)
+    !(User.find_all_by_email email).size.zero?
+  end
+
 private
   def create_actual_report(type_id, course)
     case type_id
@@ -92,3 +96,4 @@ private
   end
 
 end
+

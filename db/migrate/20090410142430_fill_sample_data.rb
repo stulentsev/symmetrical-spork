@@ -119,3 +119,4 @@ private
     specific_user.setup_reports_for_course(course)
   end
 end
+

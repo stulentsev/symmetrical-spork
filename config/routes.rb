@@ -48,14 +48,16 @@ ActionController::Routing::Routes.draw do |map|
                               :coordinator_trimestrial_reports,
                               :educator_reports,
                               :student_reports,
-                              :deadlines],
-                :member => {:language_choice => :get}
+							  :deadlines],
+                :member => {:language_choice => :get,
+                            :educator_report_review => :get,
+                            :get_languages => :post}
 
   map.resources :courses,
                 :member => [:dashboard, :deadlines_dashboard]
 
   map.resource :account, :controller => "users"
-  map.resources :users
+  map.resources :users, :collection => {:verify_email => :post}
 
   map.resource :user_session
   map.root :controller => "user_sessions", :action => "new"
@@ -102,3 +104,4 @@ ActionController::Routing::Routes.draw do |map|
   #map.connect ':controller/:action/:id'
   #map.connect ':controller/:action/:id.:format'
 end
+

@@ -1,0 +1,17 @@
+<li>
+    <% url = url_for(performance_for_educator_report) %>
+    <% fields_for performance_for_educator_report do |f| %>
+        <p id='student_<%= performance_for_educator_report.student.id %>'>
+            <%= link_to((image_tag(performance_for_educator_report.student.photo.url(:thumb)) +
+                    performance_for_educator_report.student.name),
+              url, :class => "lbOn" ) %>
+        </p>
+        <p>
+            <ol>
+                <%= final_report_items f, performance_for_educator_report,
+                                   [[:progress_achieved, :readonly, 'Como progrediu a aprendizagem do jovem?'],
+                                    [:tools_learned, :readonly, 'Quais as ferramentas que o jovem aprendeu?']] %>
+            </ol>
+        </p>
+    <% end %>
+</li>

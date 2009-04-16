@@ -34,4 +34,17 @@ class UsersController < ApplicationController
     end
   end
 
+  def verify_email
+    if User.email_exists? params[:email]
+      render :update do |page|
+        page.replace_html 'msg_email', '{o e-mail/ login já existe}'
+      end
+    else
+      render :update do |page|
+        page.replace_html 'msg_email', '{o e-mail está disponível}'
+      end
+    end
+  end
+
 end
+

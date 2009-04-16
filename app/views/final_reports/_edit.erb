@@ -8,24 +8,52 @@
 <%= render :partial => 'students_grouped_by_language' %>
 
 <% form_for @course, :url => {:controller => :final_reports, :action => :update} do |f| %>
-    <ol>
-        <%= final_report_items f, @course,
-                [[:how_many_finished, :numeric],
-                        [:how_many_are_employed, :numeric],
-                        [:resource_application, :textarea],
-                        [:how_many_will_act, :numeric],
-                        [:how_many_continue_studying, :numeric],
-                        [:reflections_on_evolution_of_objectives, :textarea],
-                        [:results_expected_not_achieved, :textarea],
-                        [:results_not_expected_achieved, :textarea],
-                        [:internship_experience_report, :textarea],
-                        [:conclusions, :textarea]]
-        %>
-    </ol>
+    <ul>
+        <li>
+            <h2 class='aberto'><a href='#' id='dados-pós-curso'>Dados Pós-Curso</a></h2>
+            <ol>
+                <%= final_report_items f, @course,
+                                       [[:how_many_finished, :numeric],
+                                        [:how_many_are_employed, :numeric],
+                                        [:resource_application, :textarea],
+                                        [:how_many_will_act, :numeric],
+                                        [:how_many_continue_studying, :numeric]] %>
+            </ol>
+        </li>
+        <li>
+            <h2 class='aberto'><a href='#' id='reflexão-de-objetivos'>Reflexão de Objetivos</a></h2>
+            <ol>
+                <%= final_report_items f, @course,
+                                       [[:reflections_on_evolution_of_objectives, :textarea]] %>
+            </ol>
+        </li>
+        <li>
+            <h2 class='aberto'><a href='#' id='reflexão-de-resultados'>Reflexão de Resultados</a></h2>
+            <ol>
+                <%= final_report_items f, @course,
+                                       [[:results_expected_not_achieved, :textarea],
+                                        [:results_not_expected_achieved, :textarea]] %>
+            </ol>
+        </li>
+        <li>
+            <h2 class='aberto'><a href='#' id='relatório-vivência-estágio'>Relatório Vivência-Estágio</a></h2>
+            <ol>
+                <%= final_report_items f, @course,
+                                       [[:internship_experience_report, :textarea]] %>
+            </ol>
+        </li>
+        <li>
+            <h2 class='aberto'><a href='#' id='observações-finais'>Observações Finais</a></h2>
+            <ol>
+                <%= final_report_items f, @course,
+                                       [[:results_not_expected_achieved, :textarea]] %>
+            </ol>
+        </li>
+    </ul>
 
     <div id='finalizar'>
         <%= remote_submit_for_object @course,
-                'Finalizar relatorio',
-                'final_reports' if @final_report.is_editable %>
+                                     'Finalizar relatorio',
+                                     'final_reports' if @final_report.is_editable %>
     </div>
 <% end %>

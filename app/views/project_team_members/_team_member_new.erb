@@ -5,7 +5,7 @@
 			<li>
 				<div class="max2">
 					<h4 class="col1"><label for="obj2">Nome:</label> <%= f.text_field :name %></h4>
-					<h4 class="col2"><label for="obj3">E-mail:</label> <%= f.text_field :email %> <small>(será o login do sistema)</small></h4>
+					<h4 class="col2"><label for="obj3">E-mail:</label> <%= f.text_field :email, :size => 20 %> <small>(será o login do sistema)</small></h4>
 				</div>
 				<div class="max2">
 					<h4 class="col1"><label for="obj4">Função:</label>
@@ -34,3 +34,4 @@
 		<p class="submit"><%= remote_submit_for_team_member team_member_new %></p>
 	<%end%>
 </div>
+

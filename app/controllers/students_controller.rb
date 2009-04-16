@@ -1,4 +1,5 @@
 class StudentsController < ApplicationController
+  include UsersHelper
   before_filter :get_course
 
   # GET /students
@@ -47,13 +48,17 @@ class StudentsController < ApplicationController
     @student.course = @course
 
     if @student.save
+        user = find_or_create_user_by_login(@student.email, 4)
+        @student.user = user
+        UserMailer.deliver_new_password_notification(@student) if @student.user.password
         responds_to_parent do
           render :update do |page|
             page << "if (!$('language_#{@student.language.id}')) {"
               page.insert_html :bottom, 'languages', :partial => 'students/language', :object => @student.language, :locals => {:students => nil}
             page << '}'
-            page.insert_html :bottom, "language_#{@student.language.id}", :partial => 'students/student', :object => @student
+            page.insert_html :bottom, "language_#{@student.language.id}", :partial => 'students/student', :object => @student, :locals => {:url => course_student_url(@course.id, @student.id)}
             page.replace_html 'new_student', :partial => 'students/new', :object => Student.new(:course_id => params[:course_id])
+            page << "initialize();"
           end
         end
     else
@@ -118,3 +123,4 @@ class StudentsController < ApplicationController
     @course = Course.find_by_id params[:course_id]
   end
 end
+

@@ -1,6 +1,7 @@
 <li>
-    <% url = href_func ? href_func.call(student) : '#' %>
+    <% url ||= href_func ? href_func.call(student) : '#' %>
 
 <%= link_to((image_tag(student.photo.url(:thumb)) + student.name),
           url, :class => "lbOn" ) %>
 </li>
+

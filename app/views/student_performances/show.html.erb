@@ -1,28 +1,39 @@
-<p>
-  <b>Student:</b>
-  <%=h @student_performance.student_id %>
-</p>
+<% form_for(@student_performance) do |f| %>
+  <%= f.error_messages %>
 
-<p>
-  <b>Progress achieved:</b>
-  <%=h @student_performance.progress_achieved %>
-</p>
+    <div class="foto">
+        <%= image_tag @student.photo.url(:profile) %>
+    </div>
 
-<p>
-  <b>Tools learned:</b>
-  <%=h @student_performance.tools_learned %>
-</p>
+    <div class="nome">
+        <h2><%=h @student.name%></h2>
+    </div>
 
-<p>
-  <b>Project team member:</b>
-  <%=h @student_performance.project_team_member_id %>
-</p>
+    <div class="aluno">
+        <p class="left"><%= calculate_age @student.birthday%> anos <span class="separa">|</span> <a href="#"><%=h @student.email%></a> <span class="separa">|</span> aluno</p>
+        <p class="right"><a href="#">imprimir ficha</a></p>
+    </div>
 
-<p>
-  <b>Trimester:</b>
-  <%=h @student_performance.trimester_id %>
-</p>
+    <div class="linguagem">
+        <p class="left"><%=h @student.language.name%></p>
+        <p class="right">
+            &nbsp;
+            <!--<a href="#">anterior</a> <span class="separa">|</span> <a href="#">próximo</a>-->
+        </p>
+    </div>
 
+    <div class='corpo'>
+        <ol>
+            <% if @student_performance.project_team_member.transversal? %>
+                <%= final_report_items f, @student_performance,
+                                   [[:progress_achieved, :textarea, 'Descreva o desempenho']] %>
+            <% else %>
+                <%= final_report_items f, @student_performance,
+                                   [[:progress_achieved, :textarea, 'Como progrediu a aprendizagem do jovem?'],
+                                    [:tools_learned, :textarea, 'Quais as ferramentas que o jovem aprendeu?']] %>
+            <% end %>
 
-<%= link_to 'Edit', edit_student_performance_path(@student_performance) %> |
-<%= link_to 'Back', student_performances_path %>
+        </ol>
+    </div>
+
+<% end %>

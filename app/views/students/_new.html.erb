@@ -4,7 +4,7 @@
 		  <li>
 			  <div class="max2">
 				  <h4 class="col1"><label for="obj2">Nome:</label> <%= f.text_field :name, :class => 'nome' %> </h4>
-				  <h4 class="col2"><label for="obj3">Nascimento:</label> <%= f.date_select :birthday %></h4>
+				  <h4 class="col2"><label for="obj3">Nascimento:</label> <%= f.date_select :birthday, :start_year => Time.now.year - 20, :end_year => Time.now.year - 1, :order => [:day, :month, :year] %></h4>
 			  </div>
 			  <div class="max2">
 				  <h4 class="col1"><label for="obj4">Escolaridade:</label>
@@ -14,7 +14,13 @@
 			  </div>
 			  <hr />
 			  <li>
-			  <h4><label for="obj3">Escolha um e-mail para o educando:</label> <%= f.text_field :email, :class => 'email' %> <input type="submit" value="Verificar E-Mail==TODO==" /><small><!--{o e-mail/ login já existe}--> {o e-mail está disponível}</small></h4>
+			  <h4><label for="obj3">Escolha um e-mail para o educando:</label>
+			  <%= f.text_field :email, :class => 'email' %>
+         <%= button_to_remote 'Verificar E-Mail',
+         :url => verify_email_users_path,
+         :with => " 'email=' + $('course_students_email').value",
+         :loading => "$('msg_email').innerHTML='' " %>
+        <small id='msg_email'></small></h4>
 			  </li>
 			  <hr />
 		  </li>
@@ -50,3 +56,4 @@
 </div>
 
 <iframe id='upload_frame' name='upload_frame' style="width:1px;height:1px;border:0px" src="about:blank"></iframe>
+

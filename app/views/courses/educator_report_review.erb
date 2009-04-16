@@ -1,0 +1,52 @@
+<%= javascript_tag "
+  document.observe('dom:loaded', function(event) {
+      Editable.setupAll();
+  });" %>
+<%= javascript_tag "window._token = '#{form_authenticity_token}'" %>
+
+<% if !params[:language_type_id] || !params[:language_id] || !params[:trimester_id] %>
+    <h1>Escolha a linguagem e trimestre</h1>
+<% else %>
+<% action_url = url_for(:controller => :educator_reports,
+                        :action => :update,
+                        :method => :post,
+                        :course_id => params[:id],
+                        :id => @educator_report.id) %>
+<% form_for @educator_report, :url => action_url do |f| %>
+<ul>
+    <li>
+        <h2 class='aberto'><a href='#' id='desenvolvimento'>Desenvolvimento</a></h2>
+        <ol>
+            <%= final_report_items f, @educator_report,
+                                   [[:content_description, :readonly, 'Descreva o conteúdo desenvolvido'],
+                                    [:methods_used, :readonly, 'Método / dinâmicas utilizadas']],
+                                   :url => action_url %>
+        </ol>
+    </li>
+    <li>
+        <h2 class='aberto'><a href='#' id='desempenho-de-educandos'>Descreva o desempenho de cada educando</a></h2>
+        <ol>
+            <% @educator.student_performances.select{|sp| sp.trimester.number.to_s == params[:trimester_id]}.each do |sp| %>
+                <%= render :partial => 'student_performances/performance_for_educator_report',
+                               :object => sp %>
+            <% end %>
+        </ol>
+    </li>
+    <li>
+        <h2 class='aberto'><a href='#' id='observações-finais'>Observações</a></h2>
+        <ol>
+            <%= final_report_items f, @educator_report,
+                                   [[:observations, :readonly, 'Observações do educador']],
+                                   :url => action_url %>
+            <%= final_report_items f, @educator_report,
+                                   [[:coordinator_comment, :textarea, 'Comentário do coordenador']],
+                                   :url => action_url %>
+        </ol>
+    </li>
+</ul>
+    <div id='finalizar'>
+        <%= f.submit "Finalizar Relatório" %>
+    </div>
+
+<% end %>
+<% end %>

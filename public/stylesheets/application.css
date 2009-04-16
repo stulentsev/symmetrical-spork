@@ -28,3 +28,7 @@ img.cmd {
 li.current_job, li.current_job td {
     background-color: darksalmon;
 }
+
+.navigation_ddl {
+    width: 180px;
+}

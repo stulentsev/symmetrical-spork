@@ -20,7 +20,7 @@ module ApplicationHelper
     end
   end
 
-  def fast_navigation
+  def fast_navigation navigation = nil
     zero_mark = [
             'Período da Turma',
             'Descritivos',
@@ -52,14 +52,23 @@ module ApplicationHelper
             'Trabalhos',
             'Recado']
 
+    final_report = [
+            'Dados Pós-Curso',
+            'Reflexão de Objetivos',
+            'Reflexão de Resultados',
+            'Relatório Vivência-Estágio',
+            'Observações Finais']
 
-    navigation = case params[:controller]
+
+    navigation ||= case params[:controller]
     when 'courses'
       case params[:action]
       when 'edit'
         zero_mark
       when 'language_choice'
         language_choice
+      when 'educator_report_review'
+        educator_report_review_navigation
       else
         []
       end
@@ -69,13 +78,16 @@ module ApplicationHelper
       semestrial_report_navigation
     when 'student_professional_profiles'
       professional_profile
+    when 'final_reports'
+      final_report
     else
       []
     end
 
     return navigation if !navigation.is_a?(Array)
+    str = "<h5 class='fundo'>#{'Navegação Rápida' if should_show_fast_navigation} </h5><ul>"
 
-    navigation.inject("") do |memo, item|
+    str = navigation.inject(str) do |memo, item|
       anchor_id = item.downcase.gsub(' ', '-')
       memo << content_tag(:li, content_tag(:a,
                                            item,
@@ -84,6 +96,8 @@ module ApplicationHelper
                                                         window.scrollBy(0, -130); // move it from under header;"),
                           :class => 'em-branco') + " \n"
     end
+
+    str << "</ul"
 
   end
 

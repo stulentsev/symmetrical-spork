@@ -46,6 +46,6 @@ private
   end
 
   def authorize
-    require_user_role [:educator_specific, :educator_transversal]
+    require_user_role [:educator_specific, :educator_transversal, :coordinator]
   end
 end

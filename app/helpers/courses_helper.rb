@@ -48,4 +48,25 @@ module CoursesHelper
     return  "<li class='#{get_css_class_by_report_status(rwd.status)}'>#{html}</li>"
   end
 
+  def educator_report_review_navigation
+    students = @educator.student_performances.
+            select{|sp| sp.trimester.number.to_s == params[:trimester_id]}.
+            map{|sp| sp.student} if @educator
+    render :partial => 'courses/educator_report_sidebar',
+           :locals => {:students => students  }
+  end
+
+  def languages_select_box language_type
+    # 1 - specific
+    # 2 - transversal
+    options = [['Selecione a Linguagem', 0]]
+    Language.find(:all, :conditions => {:kind => language_type}).
+             map{|l| [l.name, l.id]}.
+             each {|opt| options << opt}
+
+    select_tag 'navigation_language_id',
+               options_for_select(options,
+                                  params[:language_id].to_i),
+               :class => 'navigation_ddl'
+  end
 end

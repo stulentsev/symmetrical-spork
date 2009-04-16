@@ -7,7 +7,7 @@
 </div>
 
 <div class="aluno">
-	<p class="left"><%= calculate_age @student.birthday%> anos <span class="separa">|</span> <a href="#"><%=h @student.email%></a> <span class="separa">|</span> aluno</p>
+	<p class="left"><%= calculate_age(@student.birthday)%> anos <span class="separa">|</span> <a href="#"><%=h @student.email%></a> <span class="separa">|</span> aluno</p>
 	<p class="right"><a href="#">imprimir ficha</a></p>
 </div>
 
@@ -32,3 +32,4 @@
 		<a href="#" class="botao-inline">[leia&nbsp;mais]</a>
 	</p>
 </div>
+
