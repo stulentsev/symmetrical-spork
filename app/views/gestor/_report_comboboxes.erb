@@ -1,0 +1,33 @@
+Selecionar relatorios <br/>
+<% reports ||= [] %>
+<%= javascript_tag "
+        function selectItems()
+        {
+            alert('fuck');
+        }
+        function deselectItems()
+        {
+            alert('UNfuck');
+        }
+" %>
+<table>
+    <tr>
+        <td>
+            <%= select_tag :available_reports,
+                           options_for_select(reports.map{|r| [r.name, r.id]},
+                                              params[:report_id].to_i),
+                           :multiple => true,
+                           :style => 'width:200px; height: 210px' %>
+
+        </td>
+        <td style='vertical-align:middle'>
+            <input type='button' value='&gt;' onclick='selectItems()' />
+            <br/>
+            <br/>
+            <input type='button' value='&lt;' onclick='deselectItems()' />
+        </td>
+        <td>
+            <select id='selected_reports' multiple='true' style='width:200px; height: 210px'></select>
+        </td>
+    </tr>
+</table>
