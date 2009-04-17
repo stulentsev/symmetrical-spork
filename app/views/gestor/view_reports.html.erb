@@ -1,17 +1,29 @@
 
-<% form_tag view_reports_gestor_url(1)  do |f| %>
+<%= javascript_tag "
+    function form_onsubmit(frm)
+    {
+        var box  = $('selected_reports[]');
+        for(var i = 0; i < box.options.length; i++)
+        {
+            box.options[i].selected = true;
+        }
+    }
+" %>
+
+<% form_tag view_reports_gestor_url(1),
+            :onsubmit => 'form_onsubmit(this)'  do |f| %>
 
     <ul>
         <li>
             Periodo
-            de <%= date_select 'balch',
+            de <%= date_select 'period',
                                       :period_from,
                                       :default => begin
                                           Date.parse(params[:period_from])
                                       rescue
                                           3.months.ago
                                       end %>   <br/>
-           a <%= date_select 'balch',
+           a <%= date_select 'period',
                              :period_to,
                              :default => begin
                                   Date.parse(params[:period_to])
@@ -50,7 +62,7 @@
         </li>
         <li>
             <div style='text-align:right'>
-                <input type='button' value='Buscar'/>
+                <%= submit_tag 'Buscar' %>
             </div>
         </li>
     </ul>

@@ -18,12 +18,12 @@ Selecionar relatorios <br/>
 
         function selectItems()
         {
-            moveSelectedElements('available_reports', 'selected_reports');
+            moveSelectedElements('available_reports', 'selected_reports[]');
         }
 
         function deselectItems()
         {
-            moveSelectedElements('selected_reports', 'available_reports');
+            moveSelectedElements('selected_reports[]', 'available_reports');
         }
 " %>
 <table>
@@ -43,7 +43,8 @@ Selecionar relatorios <br/>
             <input type='button' value='&lt;' onclick='deselectItems()' />
         </td>
         <td>
-            <select id='selected_reports' multiple='true' style='width:200px; height: 210px'></select>
+            <select id='selected_reports[]' name='selected_reports[]'
+                    multiple='true' style='width:200px; height: 210px'></select>
         </td>
     </tr>
 </table>
