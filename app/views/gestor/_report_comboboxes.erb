@@ -1,13 +1,29 @@
 Selecionar relatorios <br/>
 <% reports ||= [] %>
 <%= javascript_tag "
+        function moveSelectedElements(from, to)
+        {
+            var sourceBox = $(from);
+            var targetBox = $(to);
+            for(var i = 0; i < sourceBox.options.length; i++)
+            {
+                var opt = sourceBox.options[i];
+                if(opt.selected)
+                {
+                    targetBox.insert(opt);
+                    i--;
+                }
+            }
+        }
+
         function selectItems()
         {
-            alert('move');
+            moveSelectedElements('available_reports', 'selected_reports');
         }
+
         function deselectItems()
         {
-            alert('move back');
+            moveSelectedElements('selected_reports', 'available_reports');
         }
 " %>
 <table>
@@ -31,3 +47,6 @@ Selecionar relatorios <br/>
         </td>
     </tr>
 </table>
+<%= javascript_tag "
+   $('available_reports').activate();
+"%>

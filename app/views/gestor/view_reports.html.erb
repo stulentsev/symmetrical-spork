@@ -32,7 +32,9 @@
 
         </li>
         <li id='reports_container'>
-            <%= render :partial => 'gestor/report_comboboxes' %>
+            <%= render :partial => 'gestor/report_comboboxes',
+                       :locals => {:reports => Report.find(:all,
+                                               :conditions => {:user_type_id => params[:user_type_id] || 1})} %>
         </li>
         <li>
             <% School.find(:all).each do |s| %>
