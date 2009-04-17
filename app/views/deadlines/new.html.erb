@@ -10,8 +10,9 @@
         <li>
             Usuario <br/>
             <%= select_tag :user_type_id, options_for_select(UserType.find(:all).
-                    select{|ut| ut.name != 'Gestor'}.
-                    map{|ut| [ut.name, ut.id]}) %>
+                                                                        select{|ut| ut.name != 'Gestor'}.
+                                                                        map{|ut| [ut.name, ut.id]},
+                                                             params[:user_type_id].to_i) %>
             <%= observe_field :user_type_id, :url => { :controller => :deadlines,
                                                        :action => :get_reports_for_user,
                                                        :id => 0 },
@@ -29,7 +30,8 @@
 
         <li>
             <% School.find(:all).each do |s| %>
-                <%= radio_button_tag :school_id, s.id %> <%= s.name %> &nbsp;&nbsp;&nbsp;
+                <%= radio_button_tag :school_id, s.id, s.id.to_s == params[:school_id] %>
+                <%= s.name %> &nbsp;&nbsp;&nbsp;
             <% end %>
         </li>
         <li>

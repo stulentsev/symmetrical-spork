@@ -1,9 +1,9 @@
 <div style='text-align:center'><%= link_to 'Adicionar prazo', new_course_deadline_url(@course.id) %></div>
-<ul id="dash" class="max2">
+<ul id="dash" class="max2-disable">
     <li class="col1">
         <table>
             <tr>
-                <td colspan='3'>Prazos nao cumpridos</td>
+                <td colspan='3'><h3>Prazos nao cumpridos</h3></td>
             </tr>
             <tr>
                 <td>Rio de Janeiro</td>
@@ -16,7 +16,7 @@
                 <td>23/02/2010</td>
             </tr>
             <tr>
-                <td colspan='3'>Proximas datas</td>
+                <td colspan='3'><h3>Proximas datas</h3></td>
             </tr>
             <tr>
                 <td>Rio de Janeiro</td>
@@ -36,21 +36,30 @@
         </table>
     </li>
     <li class='col2'>
+
         <table>
-        <% @courses.each do |c| %>
-            <tr><td><h3><%= c.school.name %></h3></td></tr>
-            <% c.reports_with_deadlines.
-                    select{|rwd| rwd.status == 1}.
-                    sort{|lhs, rhs| rhs.updated_at <=> lhs.updated_at}.
-                    first(10).
-                    each do |rwd| %>
-                <tr> <td>
-                    <strong><%= rwd.name %></strong>
-                    <a href='<%= eval(rwd.report.link) + '?domain_user_id=' + rwd.user.domain_user.id.to_s %>'>VER</a>
-                </td></tr>
+            <% Report.find(:all).group_by(&:user_type).each do |user_type, reports| %>
+                <tr>
+                    <td colspan='2'><h3><%= user_type.name %></h3></td>
+                </tr>
+                <% reports.each do |r| %>
+                    <tr>
+                        <td><%= r.name %> </td>
+
+                        <td style="width: 17px">
+                            <% rwd = @course.reports_with_deadlines.select{|rwd| rwd.report_id == r.id}.first %>
+                            <%= if rwd.deadline
+                                rwd.deadline
+                            else
+                                link_to image_tag('plus_symbol.png', :style => "width: 20px; height: 20px"),
+                                        new_course_deadline_url(@course.id) + "?user_type_id=#{user_type.id}&report_id=#{r.id}&school_id=#{@course.school.id}"
+                            end %>
+                        </td>
+                    </tr>
+                <% end %>
             <% end %>
-        <% end %>
-            </table>
+
+        </table>
 
     </li>
-    </ul>
+</ul>
