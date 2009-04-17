@@ -5,7 +5,7 @@ class DeadlinesController < ApplicationController
     @course = Course.find_by_id(params[:course_id])
     @courses = Course.find(:all,
                            :conditions => ["period_to >= ?", Date.today])
-    @deadlines =  @course.reports_with_deadlines
+    @deadlines =  @courses.map{|c| c.reports_with_deadlines }.flatten
   end
 
   def new

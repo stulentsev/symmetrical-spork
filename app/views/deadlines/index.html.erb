@@ -5,34 +5,27 @@
             <tr>
                 <td colspan='3'><h3>Prazos nao cumpridos</h3></td>
             </tr>
-            <tr>
-                <td>Rio de Janeiro</td>
-                <td>Coordenador</td>
-                <td>23/02/2010</td>
-            </tr>
-            <tr>
-                <td>Rio de Janeiro</td>
-                <td>Coordenador</td>
-                <td>23/02/2010</td>
-            </tr>
+            <% @deadlines.select{|rwd| rwd.deadline && rwd.deadline < Date.today}.
+                    group_by(&:report_id).each do |report_id, rwds| %>
+                <% rwd = rwds.first %>
+                <tr>
+                    <td><%= rwd.course.school.name %></td>
+                    <td><%= rwd.user.user_type_name + ' - ' + rwd.report.name %></td>
+                    <td style='color: red'><%= rwd.deadline %></td>
+                </tr>
+            <% end %>
             <tr>
                 <td colspan='3'><h3>Proximas datas</h3></td>
             </tr>
-            <tr>
-                <td>Rio de Janeiro</td>
-                <td>Coordenador</td>
-                <td>23/02/2010</td>
-            </tr>
-            <tr>
-                <td>Rio de Janeiro</td>
-                <td>Coordenador</td>
-                <td>23/02/2010</td>
-            </tr>
-            <tr>
-                <td>Rio de Janeiro</td>
-                <td>Coordenador</td>
-                <td>23/02/2010</td>
-            </tr>
+            <% @deadlines.select{|rwd| rwd.deadline && rwd.deadline > Date.today && rwd.deadline < 2.weeks.from_now.to_datetime}.
+                            group_by(&:report_id).each do |report_id, rwds| %>
+                <% rwd = rwds.first %>
+                <tr>
+                    <td><%= rwd.course.school.name %></td>
+                    <td><%= rwd.user.user_type_name + ' - ' + rwd.report.name %></td>
+                    <td><%= rwd.deadline %></td>
+                </tr>
+            <% end %>
         </table>
     </li>
     <li class='col2'>
