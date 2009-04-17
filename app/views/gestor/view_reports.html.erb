@@ -29,6 +29,12 @@
                                                                         select{|ut| ut.name != 'Gestor'}.
                                                                         map{|ut| [ut.name, ut.id]},
                                                              params[:user_type_id].to_i) %>
+            <%= observe_field :user_type_id, :url => { :controller => :gestor,
+                                                       :action => :get_reports_for_user,
+                                                       :id => 0 },
+                              :update => :reports_container,
+                              :method => :get
+            %>
 
         </li>
         <li id='reports_container'>

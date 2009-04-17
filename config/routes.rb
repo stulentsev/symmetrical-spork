@@ -1,6 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :gestor,
-                :member => [:view_reports]
+                :member => [:view_reports, :get_reports_for_user]
 
   map.resources :deadlines,
                 :member => [:get_reports_for_user]
