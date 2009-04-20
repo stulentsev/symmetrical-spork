@@ -1,0 +1,44 @@
+
+<% form_tag monitor_students_gestor_url(1) do |f| %>
+
+    <ul>
+        <li>
+            Periodo
+            de <%= date_select 'period',
+                                      :period_from,
+                                      :default => begin
+                                          Date.parse(params[:period_from])
+                                      rescue
+                                          3.months.ago
+                                      end %>   <br/>
+           a <%= date_select 'period',
+                             :period_to,
+                             :default => begin
+                                  Date.parse(params[:period_to])
+                             rescue
+                                 3.months.from_now
+                             end %>
+        </li>
+        <li>
+            Incluir periodo atual na pesquisa
+            <%= check_box 'balch', :include_current_period %>
+        </li>
+        <li>
+            <% School.find(:all).each do |s| %>
+                <%= check_box 'balch', 'school_' + s.id.to_s %>
+                <%= s.name %> &nbsp;&nbsp;&nbsp;
+            <% end %>
+        </li>
+        <li>
+            Linguagem: <br/>
+            <%= select_tag 'language_id',
+                           options_for_select(Language.find(:all).map{|l| [l.name, l.id]}) %>
+        </li>
+        <li>
+            <div style='text-align:right'>
+                <%= submit_tag 'Buscar' %>
+            </div>
+        </li>
+    </ul>
+
+<% end %>
