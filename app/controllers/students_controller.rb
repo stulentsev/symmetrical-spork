@@ -118,9 +118,14 @@ class StudentsController < ApplicationController
     end
   end
 
+  def beautiful_profile
+    @student = Student.find_by_id(params[:id])
+    render :action => :beautiful_profile,
+           :layout => 'student'
+  end
+
   private
   def get_course
     @course = Course.find_by_id params[:course_id]
   end
 end
-

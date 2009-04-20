@@ -31,7 +31,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :students,
                 :has_one => [:professional_profile],
                 :member => {:edit_contacts => :get,
-                            :save_contacts => :put}
+                            :save_contacts => :put,
+                            :beautiful_profile => :get}
 
   map.resources :coordinator_trimestrial_report_activities
 

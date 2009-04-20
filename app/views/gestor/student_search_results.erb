@@ -26,7 +26,7 @@
                         <%#= h sts.inspect %>
                         <%= render :partial => 'students/student',
                                    :collection => sts,
-                                   :locals => {:href_func => lambda{|st| course_student_url(st.course.id, st.id)}} %>
+                                   :locals => {:href_func => lambda{|st| beautiful_profile_student_url(st.id)}} %>
                     </ul>
                     </li>
                 <% end %>
