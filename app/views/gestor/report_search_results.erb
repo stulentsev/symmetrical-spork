@@ -1,0 +1,44 @@
+<h2>Resultado da busca</h2>
+
+<table>
+    <tr>
+        <td>
+            <ul>
+                <% @report_search_results.each do |name, rwds| %>
+                    <%# next if rwds.length == 0 %>
+                    <li><h3><%= content_tag :a,
+                                             name,
+                                        :href => 'javascript:void(0)',
+                                        :onclick => "$('#{get_school_row_id(name)}').scrollTo(); // bring element to viewport;
+                                                     window.scrollBy(0,-130); // move it from under header;"
+                                         %></h3></li>
+                <% end %>
+            </ul>
+        </td>
+        <td>
+            <table>
+                <% @report_search_results.each do |name, rwds| %>
+                    <%# next if rwds.length == 0 %>
+                    <tr id='<%= get_school_row_id(name) %>'>
+                        <td colspan='2'>
+                            <h3><%= name %></h3>
+                        </td>
+                    </tr>
+                    <% rwds.each do |rwd| %>
+                        <tr>
+                            <td>
+                                <%= rwd.course.period_from.strftime('%m-%Y') %> -
+                                <%= rwd.course.period_to.strftime('%m-%Y') %>
+                            </td>
+                            <td>
+                                <%= link_to rwd.name,
+                                            eval(rwd.report.link) + "?domain_user_id=#{rwd.user.domain_user.id}" %>
+                            </td>
+                        </tr>
+
+                    <% end %>
+                <% end %>
+            </table>
+                </td>
+    </tr>
+</table>
