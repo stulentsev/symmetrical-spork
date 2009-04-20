@@ -1,3 +1,4 @@
+<% if job_record_row %>
 <li id="student_profile_job_record_row_<%= job_record_row.id %>"
     class='<%= job_record_row.is_current == 1 ? "current_job" : "previous_job" %>'>
     <table width="100%">
@@ -30,3 +31,4 @@
         </tr>
     </table>
 </li>
+<% end %>

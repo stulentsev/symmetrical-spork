@@ -1,3 +1,8 @@
 <div id="student_profile_contacts_div">
     <%= render :partial => 'contacts/view_form_resume' %>
+    <%= link_to_remote 'Editar',
+                       :url => {:controller => 'students',
+                                :action => 'edit_contacts',
+                                :id => @student.id},
+                       :method => :get %>
 </div>

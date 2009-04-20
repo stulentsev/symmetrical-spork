@@ -17,18 +17,21 @@
 </div>
 
 <div class="corpo">
-	<h4>Grau de conhecimento técnico ao ingrassar na escola <small>(informática e/ou linguagens específicas)</small>:</h4>
-	<p><%=h @student.technical_expertise_degree%>
-		<a href="#" class="botao-inline">[leia&nbsp;mais]</a>
+	<h4>Endereco</h4>
+	<p><%= h formatted_address(@student) %></p>
+
+	<h4>Contatos</h4>
+	<p>
+            <%= render :partial => 'contacts/view_form_resume' %>
 	</p>
-	<hr />
-	<h4>Por que escolheu a Kabum?</h4>
-	<p><%=h @student.why_oi_kabum%>
-		<a href="#" class="botao-inline">[leia&nbsp;mais]</a>
+
+	<h4>Trabalho atual</h4>
+	<p>
+                <%= render :partial => 'job_records/job_record_row', :object => @student.current_job %>
 	</p>
-	<hr />
-	<h4>Características observadas:</h4>
-	<p><%=h @student.observed_characteristics%>
-		<a href="#" class="botao-inline">[leia&nbsp;mais]</a>
+
+	<h4>Trabalhos anteriores</h4>
+	<p>
+                <%= render :partial => 'job_records/job_record_row', :collection => @student.past_jobs %>
 	</p>
 </div>
