@@ -21,8 +21,9 @@ class GestorController < ApplicationController
                 s.courses.map{|c| c.id}.join(', '),
                 temp_course.period_from,
                 temp_course.period_to]
-        if params[:include_current_period] == '1'
-          conditions[0] << " or deadline > ? and deadline < ?"
+        if params[:balch][:include_current_period] == '1' && s.current_course
+          conditions[0] << " or course_id = ? and deadline > ? and deadline < ?"
+          conditions << s.current_course.id
           conditions << s.current_course.period_from
           conditions << s.current_course.period_to
         end
