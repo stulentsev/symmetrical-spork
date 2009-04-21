@@ -7,5 +7,7 @@ module StudentsHelper
     (Date.today - birthday).to_i / 365
   end
 
+  def formatted_address stud
+    "#{stud.address1} #{stud.address2} #{stud.building_no} #{stud.compl} #{stud.state} #{stud.uf} #{stud.cep}"
+  end
 end
-

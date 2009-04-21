@@ -20,6 +20,7 @@ Modified : February 1, 2006
 	border:0px solid #000;
 	background:#FDFCE9;
 	text-align:left;
+	padding-right: 35px;
 }
 #lightbox[id]{
 	position:fixed;

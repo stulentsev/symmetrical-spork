@@ -1,0 +1,37 @@
+<div class="foto">
+	<%= image_tag @student.photo.url(:profile) %>
+</div>
+
+<div class="nome">
+	<h2><%=h @student.name%></h2>
+</div>
+
+<div class="aluno">
+	<p class="left"><%= calculate_age(@student.birthday)%> anos <span class="separa">|</span> <a href="#"><%=h @student.email%></a> <span class="separa">|</span> aluno</p>
+	<p class="right"><a href="#">imprimir ficha</a></p>
+</div>
+
+<div class="linguagem">
+	<p class="left"><%=h @student.language.name%></p>
+	<p class="right"><a href="#">anterior</a> <span class="separa">|</span> <a href="#">próximo</a></p>
+</div>
+
+<div class="corpo">
+	<h4>Endereco</h4>
+	<p><%= h formatted_address(@student) %></p>
+
+	<h4>Contatos</h4>
+	<p>
+            <%= render :partial => 'contacts/view_form_resume' %>
+	</p>
+
+	<h4>Trabalho atual</h4>
+	<p>
+                <%= render :partial => 'job_records/job_record_row', :object => @student.current_job %>
+	</p>
+
+	<h4>Trabalhos anteriores</h4>
+	<p>
+                <%= render :partial => 'job_records/job_record_row', :collection => @student.past_jobs %>
+	</p>
+</div>

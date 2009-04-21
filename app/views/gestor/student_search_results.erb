@@ -1,0 +1,36 @@
+<h2>Resultado da busca</h2>
+
+<table>
+    <tr>
+        <td>
+            <ul>
+                <% @student_search_results.each do |name, sts| %>
+                    <%# next if sts.length == 0 %>
+                    <li><h3><%= content_tag :a,
+                                             name,
+                                        :href => 'javascript:void(0)',
+                                        :onclick => "$('#{get_school_row_id(name)}').scrollTo(); // bring element to viewport;
+                                                     window.scrollBy(0,-130); // move it from under header;"
+                                         %></h3></li>
+                <% end %>
+            </ul>
+        </td>
+        <td>
+            <ul>
+                <% @student_search_results.each do |name, sts| %>
+                    <%# next if sts.length == 0 %>
+                    <li id='<%= get_school_row_id(name) %>'>
+                            <h3><%= name %></h3></li>
+                    <li>
+                    <ul class='thumbs'>
+                        <%#= h sts.inspect %>
+                        <%= render :partial => 'students/student',
+                                   :collection => sts,
+                                   :locals => {:href_func => lambda{|st| beautiful_profile_student_url(st.id)}} %>
+                    </ul>
+                    </li>
+                <% end %>
+            </ul>
+                </td>
+    </tr>
+</table>

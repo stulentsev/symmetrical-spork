@@ -1,6 +1,9 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :gestor,
-                :member => [:view_reports, :get_reports_for_user]
+                :member => [:view_reports,
+			    :report_search_results,
+			    :get_reports_for_user,
+			    :monitor_students]
 
   map.resources :deadlines,
                 :member => [:get_reports_for_user]
@@ -28,7 +31,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :students,
                 :has_one => [:professional_profile],
                 :member => {:edit_contacts => :get,
-                            :save_contacts => :put}
+                            :save_contacts => :put,
+                            :beautiful_profile => :get}
 
   map.resources :coordinator_trimestrial_report_activities
 
@@ -107,4 +111,3 @@ ActionController::Routing::Routes.draw do |map|
   #map.connect ':controller/:action/:id'
   #map.connect ':controller/:action/:id.:format'
 end
-

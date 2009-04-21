@@ -116,6 +116,7 @@ lightbox.prototype = {
 	displayLightbox: function(display){
 		$('overlay').style.display = display;
 		$('lightbox').style.display = display;
+		$('lightbox').style.overflow = 'auto';
 		if(display != 'none') this.loadInfo();
 	},
 
