@@ -38,8 +38,18 @@ class ProjectTeamMembersController < ApplicationController
     @project_team_member.destroy
   end
 
+  def show
+    @project_team_member = ProjectTeamMember.find(params[:id])
+
+    respond_to do |format|
+      format.html {render :layout => 'profile'}
+      format.xml  { render :xml => @project_team_member }
+    end
+  end
+
   private
   def get_course
     @course = Course.find_by_id params[:course_id]
   end
 end
+
