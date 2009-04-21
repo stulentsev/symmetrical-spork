@@ -78,6 +78,12 @@ class GestorController < ApplicationController
     end
   end
 
+  def generate_reports
+    if request.post?
+
+    end
+  end
+
   def get_reports_for_user
     user_id = params.select {|k, v| v == nil && k.to_i.to_s == k}.first
     reports = Report.find(:all,
