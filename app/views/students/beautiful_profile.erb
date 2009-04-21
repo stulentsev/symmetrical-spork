@@ -18,7 +18,7 @@
 
 <div class="corpo">
 	<h4>Endereco</h4>
-	<p><%= h formatted_address(@student) %></p>
+	<p><%= h(formatted_address(@student)) %></p>
 
 	<h4>Contatos</h4>
 	<p>
@@ -27,11 +27,15 @@
 
 	<h4>Trabalho atual</h4>
 	<p>
-                <%= render :partial => 'job_records/job_record_row', :object => @student.current_job %>
+                <%= render :partial => 'job_records/job_record_row',
+                           :object => @student.current_job,
+                           :locals => {:read_only => true} %>
 	</p>
 
 	<h4>Trabalhos anteriores</h4>
 	<p>
-                <%= render :partial => 'job_records/job_record_row', :collection => @student.past_jobs %>
+                <%= render :partial => 'job_records/job_record_row',
+                           :collection => @student.past_jobs,
+                           :locals => {:read_only => true} %>
 	</p>
 </div>
