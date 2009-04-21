@@ -1,0 +1,26 @@
+<div class="nome">
+	<h2><%=h @project_team_member.name%></h2>
+</div>
+
+<div class="aluno">
+	<p class="left"><a href="#"><%=h @project_team_member.email%></a> <span class="separa">|</span> <%= @project_team_member.user.user_type.name %></p>
+	<p class="right"><a href="#">imprimir ficha</a></p>
+</div>
+
+<div class="linguagem">
+	<p class="left"><%=h @project_team_member.language.name%></p>
+	<p class="right"><a href="#">anterior</a> <span class="separa">|</span> <a href="#">próximo</a></p>
+</div>
+
+<div class="corpo">
+	<h4>Competências a serem desenvolvidas:</h4>
+	<p><%=simple_format(@project_team_member.competencies) %>
+		<a href="#" class="botao-inline">[leia&nbsp;mais]</a>
+	</p>
+	<hr />
+	<h4>Currículo resumido</h4>
+	<p><%=simple_format(@project_team_member.curriculum_summary) %>
+		<a href="#" class="botao-inline">[leia&nbsp;mais]</a>
+	</p>
+</div>
+

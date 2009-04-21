@@ -4,3 +4,5 @@ page.replace "team_member_row_#{params[:id]}",
 page.replace_html 'project_team_member_create_edit_form',
                   :partial => 'team_member_new',
                   :object => ProjectTeamMember.new(:course_id => @project_team_member.course_id)
+page.call("initialize")
+

@@ -19,7 +19,7 @@ class StudentsController < ApplicationController
     @student = Student.find(params[:id])
 
     respond_to do |format|
-      format.html {render :layout => 'student'}
+      format.html {render :layout => 'profile'}
       format.xml  { render :xml => @student }
     end
   end
@@ -121,7 +121,7 @@ class StudentsController < ApplicationController
   def beautiful_profile
     @student = Student.find_by_id(params[:id])
     render :action => :beautiful_profile,
-           :layout => 'student'
+           :layout => 'profile'
   end
 
   private
@@ -129,3 +129,4 @@ class StudentsController < ApplicationController
     @course = Course.find_by_id params[:course_id]
   end
 end
+
