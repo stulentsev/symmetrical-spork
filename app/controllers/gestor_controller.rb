@@ -80,7 +80,66 @@ class GestorController < ApplicationController
 
   def generate_reports
     if request.post?
+      temp_course = Course.new(params[:period])
+      @student_search_results = {}
+      School.find(:all).each do |s|
+        @student_search_results[s.name] = []
+        if (params[:balch]["school_#{s.id}"] == '1')
+          conditions = ["course_id in (?) and (
+                        courses.period_from > ? and courses.period_from < ? or
+                        courses.period_to > ? and courses.period_to < ? or
+                        courses.period_from < ? and courses.period_to > ? or
+                        courses.period_from > ? and courses.period_to < ?
+                         )",
+                  s.courses.map{|c| c.id}.join(', '),
+                  temp_course.period_from,
+                  temp_course.period_to,
+                  temp_course.period_from,
+                  temp_course.period_to,
+                  temp_course.period_from,
+                  temp_course.period_to,
+                  temp_course.period_from,
+                  temp_course.period_to
+                  ]
 
+          if params[:balch][:include_current_period] == '1' && s.current_course
+            conditions[0] << " or course_id = ? "
+            conditions << s.current_course.id
+          end
+          Student.find(:all,
+                       :joins=>"JOIN courses ON students.course_id=courses.id",
+                       :select=>"students.*",
+                       :conditions => conditions).
+                  each{|st| @student_search_results[s.name] << st}
+        end
+      end
+
+      @results = {}
+      @student_search_results.each do |name, studs|
+        @results[name] ||= {}
+
+        @results[name][:include_percentage_sex] = {:masculino => 42, :feminino => 42}
+        @results[name][:include_percentage_schooling] = {:fundamental_incompleto => 42,
+                                                         :fundamental_completo => 42,
+                                                         :medio_incompleto => 42,
+                                                         :medio_completo => 42}
+        @results[name][:include_average_age] = 42
+
+        @results[name][:include_how_many_finished] = 42
+        @results[name][:include_how_many_are_employed] = 42
+        @results[name][:include_how_many_will_act] = 42
+        @results[name][:include_how_many_keep_studying] = 42
+        @results[name][:include_difficulties] = {:language_techniques => 42,
+                                                 :equipment => 42,
+                                                 :school_didactics => 42,
+                                                 :relationships_with_professors => 42,
+                                                 :relationships_with_students => 42
+                                                 }
+        @results[name][:include_if_kabum_helped] = {:yes => 58, :no => 42}
+
+      end
+
+      render :action => :generate_report_results
     end
   end
 

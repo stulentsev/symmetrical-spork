@@ -1,0 +1,83 @@
+<h2>Resultado da busca</h2>
+
+<style type='text/css'>
+    td.value {
+        background-color: green;
+        border-bottom: 1px solid black;
+        border-left: 1px solid black;
+        border-top: 1px solid black;
+    }
+    td.empty {
+        border-bottom: 1px solid black;
+        border-right: 1px solid black;
+        border-top: 1px solid black;
+    }
+
+</style>
+
+<table>
+    <tr>
+        <td>
+            <ul>
+                <% @results.each do |name, _| %>
+                    <%# next if sts.length == 0 %>
+                    <li><h3><%= content_tag :a,
+                                             name,
+                                        :href => 'javascript:void(0)',
+                                        :onclick => "$('#{get_school_row_id(name)}').scrollTo(); // bring element to viewport;
+                                                     window.scrollBy(0,-130); // move it from under header;"
+                                         %></h3></li>
+                <% end %>
+            </ul>
+        </td>
+        <td>
+            <ul>
+                <% @results.each do |name, stats| %>
+                    <%# next if sts.length == 0 %>
+                    <li id='<%= get_school_row_id(name) %>'>
+                            <h3><%= name %></h3></li>
+                    <li>
+                    <ul >
+                        <li>
+                            <h4>Porcentagem de sexos</h4>
+                            <%= generate_bar_table stats[:include_percentage_sex] %>
+                        </li>
+                        <li>
+                            <h4>Porcentagem de escolaridade</h4>
+                            <%= generate_bar_table stats[:include_percentage_schooling] %>
+                        </li>
+                        <li>
+                            <h4>Media de idade</h4>
+                            <%= generate_single_value stats[:include_average_age], 'anos' %>
+                        </li>
+                        <li>
+                            <h4>Quantos alunos concluiram</h4>
+                            <%= generate_single_value stats[:include_how_many_finished] %>
+                        </li>
+                        <li>
+                            <h4>Quantos alunos estao inseridos</h4>
+                            <%= generate_single_value stats[:include_how_many_are_employed] %>
+                        </li>
+                        <li>
+                            <h4>Quantos vao atuar no Nucleo</h4>
+                            <%= generate_single_value stats[:include_how_many_will_act] %>
+                        </li>
+                        <li>
+                            <h4>Quantos estao com estudos continuados</h4>
+                            <%= generate_single_value stats[:include_how_many_keep_studying] %>
+                        </li>
+                        <li>
+                            <h4>Quantos as dificuldades apresentados</h4>
+                            <%= generate_bar_table stats[:include_difficulties] %>
+                        </li>
+                        <li>
+                            <h4>Se a Oi Kabum ajudou na aprendizagem na escola</h4>
+                            <%= generate_bar_table stats[:include_if_kabum_helped] %>
+                        </li>
+                    </ul>
+                    </li>
+                <% end %>
+            </ul>
+                </td>
+    </tr>
+</table>
