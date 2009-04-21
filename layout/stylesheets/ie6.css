@@ -1,0 +1,46 @@
+/*
+
+OI EXTRANET
+
+CSS por Leonardo Favre
+http://www.leofavre.com
+
+DESIGN por Arterial
+http://www.arterial.tv
+
+*/
+
+
+
+
+
+@media screen {
+
+/* IGNORA FIXED POSITION */
+
+	.fixed-wrap {
+		position: absolute;
+		width: auto;
+	}
+
+	.fixed-wrap.overlay {
+		position: absolute;
+		width: auto;
+		top: 0;
+		left: 0;
+	}
+
+	.fixed {
+		position: relative;
+		width: auto;
+		margin: 0;
+	}
+
+
+/* REPOSICIONA BOTAO QUE LEVA AO TOPO */
+
+	p.topo {
+		left: -198px;
+	}
+	
+}
