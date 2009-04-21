@@ -1,3 +1,5 @@
 page.replace_html 'project_team_member_create_edit_form',
                   :partial => 'team_member_new',
                   :object => @project_team_member
+page.call("initialize")
+
