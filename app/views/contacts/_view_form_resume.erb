@@ -1,28 +1,34 @@
+<% read_only ||= false %>
 <% fields_for @student do |f| %>
 
-<table>
-    <tr>
-        <th>Telefones</th>
-        <th>E-mails</th>
-        <th>Sites</th>
-    </tr>
-    <tr>
-        <td>
-            <table>
-                <%= render_ro_contacts 'telephone' %>
-            </table>
-        </td>
-        <td>
-            <table>
-                <%= render_ro_contacts 'email' %>
-            </table>
-        </td>
-        <td>
-            <table>
-                <%= render_ro_contacts 'link' %>
-            </table>
-        </td>
-    </tr>
-</table>
+    <table>
+        <tr>
+            <th>Telefones</th>
+            <th>E-mails</th>
+            <th>Sites</th>
+        </tr>
+        <tr>
+            <td>
+                <table>
+                    <%= render_ro_contacts 'telephone' %>
+                </table>
+            </td>
+            <td>
+                <table>
+                    <%= render_ro_contacts 'email' %>
+                </table>
+            </td>
+            <td>
+                <table>
+                    <%= render_ro_contacts 'link' %>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <%= link_to_remote 'Editar',
+                       :url => {:controller => 'students',
+                                :action => 'edit_contacts',
+                                :id => @student.id},
+                       :method => :get if !read_only %>
 
 <% end %>

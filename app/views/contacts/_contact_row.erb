@@ -6,8 +6,9 @@
     <%= f.hidden_field :student_id %>
     <%= f.hidden_field :contact_type %>
 
-    <%= render :partial => "contacts/contact_#{type}",
+    <%= render :partial => "contacts/contact_#{contact.contact_type}",
                :locals => {:contact => contact,
                            :f => f,
                            :read_only => read_only} %>
 <% end %>
+<%= javascript_tag "Editable.setupAll();" if !read_only %>

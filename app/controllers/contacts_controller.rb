@@ -45,7 +45,7 @@ class ContactsController < ApplicationController
   end
 
   def add_new
-    @contact = Contact.new( :contact_type => params[:contact_type],
+    @contact = Contact.create( :contact_type => params[:contact_type],
                             :contact_name => params[:contact_name],
                             :student_id => params[:student_id] )
   end
