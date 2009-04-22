@@ -20,4 +20,13 @@ module GestorHelper
         #{value} #{suffix}
     </td></tr></table>"
   end
+
+  def generate_yearly_table yearly_stats, data_name, markup_generator
+    results = "<table style='margin-left:0px'>"
+    yearly_stats.each do |course, stats|
+      results << "<tr><td>#{course.period_from.strftime('%m-%Y')}&nbsp;-&nbsp;#{course.period_to.strftime('%m-%Y')}</td></tr>
+                  <tr><td>#{markup_generator.call(stats[data_name])}</td></tr>"
+    end
+    results << "</table>"
+  end
 end

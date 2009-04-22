@@ -122,21 +122,23 @@ class GestorController < ApplicationController
                 }
         next if studs.length == 0
 
-        @results[name].delete(:void)
-        student = studs[0]
+        studs.group_by(&:course).each do |course, studs|
+          @results[name][course] ||= {}
 
-        @results[name][:include_percentage_sex] = calculate_sex_percentage studs
-        @results[name][:include_percentage_schooling] = calculate_schooling_percentage studs
-        @results[name][:include_average_age] = calculate_average_age studs
+          @results[name].delete(:void)
 
-        @results[name][:include_how_many_finished] = student.course.how_many_finished
-        @results[name][:include_how_many_are_employed] = student.course.how_many_are_employed
-        @results[name][:include_how_many_will_act] = student.course.how_many_will_act
-        @results[name][:include_how_many_keep_studying] = student.course.how_many_continue_studying
+          @results[name][course][:include_percentage_sex] = calculate_sex_percentage studs
+          @results[name][course][:include_percentage_schooling] = calculate_schooling_percentage studs
+          @results[name][course][:include_average_age] = calculate_average_age studs
 
-        @results[name][:include_difficulties] = calculate_difficulties_percentage studs
-        @results[name][:include_if_kabum_helped] = calculate_oi_kabum_help studs
+          @results[name][course][:include_how_many_finished] = course.how_many_finished
+          @results[name][course][:include_how_many_are_employed] = course.how_many_are_employed
+          @results[name][course][:include_how_many_will_act] = course.how_many_will_act
+          @results[name][course][:include_how_many_keep_studying] = course.how_many_continue_studying
 
+          @results[name][course][:include_difficulties] = calculate_difficulties_percentage studs
+          @results[name][course][:include_if_kabum_helped] = calculate_oi_kabum_help studs
+        end
       end
 
       render :action => :generate_report_results

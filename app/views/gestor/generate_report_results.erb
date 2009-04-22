@@ -19,60 +19,79 @@
     <tr>
         <td>
             <ul>
-                <% @results.each do |name, _| %>
+                <% @results.each do |name, yearly_stats| %>
+                    <% next if yearly_stats[:void] %>
                     <%# next if sts.length == 0 %>
                     <li><h3><%= content_tag :a,
                                              name,
-                                        :href => 'javascript:void(0)',
-                                        :onclick => "$('#{get_school_row_id(name)}').scrollTo(); // bring element to viewport;
-                                                     window.scrollBy(0,-130); // move it from under header;"
+                :href => 'javascript:void(0)',
+                :onclick => "$('#{get_school_row_id(name)}').scrollTo(); // bring element to viewport;
+                             window.scrollBy(0,-130); // move it from under header;"
                                          %></h3></li>
                 <% end %>
             </ul>
         </td>
         <td>
             <ul>
-                <% @results.each do |name, stats| %>
-                    <% next if stats[:void] %>
+                <% @results.each do |name, yearly_stats| %>
+                    <% next if yearly_stats[:void] %>
                     <li id='<%= get_school_row_id(name) %>'>
                             <h3><%= name %></h3></li>
                     <li>
                     <ul >
                         <li>
                             <h4>Porcentagem de sexos</h4>
-                            <%= generate_bar_table stats[:include_percentage_sex] %>
+                            <%= generate_yearly_table yearly_stats,
+                                                      :include_percentage_sex,
+                                                      method(:generate_bar_table) %>
                         </li>
                         <li>
                             <h4>Porcentagem de escolaridade</h4>
-                            <%= generate_bar_table stats[:include_percentage_schooling] %>
+                            <%= generate_yearly_table yearly_stats,
+                                                      :include_percentage_schooling,
+                                                      method(:generate_bar_table) %>
                         </li>
                         <li>
                             <h4>Media de idade</h4>
-                            <%= generate_single_value stats[:include_average_age], 'anos' %>
+                            <%= generate_yearly_table yearly_stats,
+                                                      :include_average_age,
+                                                      method(:generate_single_value) %>
                         </li>
                         <li>
                             <h4>Quantos alunos concluiram</h4>
-                            <%= generate_single_value stats[:include_how_many_finished] %>
+                            <%= generate_yearly_table yearly_stats,
+                                                      :include_how_many_finished,
+                                                      method(:generate_single_value) %>
                         </li>
                         <li>
                             <h4>Quantos alunos estao inseridos</h4>
-                            <%= generate_single_value stats[:include_how_many_are_employed] %>
+                            <%= generate_yearly_table yearly_stats,
+                                                      :include_how_many_are_employed,
+                                                      method(:generate_single_value) %>
                         </li>
                         <li>
                             <h4>Quantos vao atuar no Nucleo</h4>
-                            <%= generate_single_value stats[:include_how_many_will_act] %>
+                            <%= generate_yearly_table yearly_stats,
+                                                      :include_how_many_will_act,
+                                                      method(:generate_single_value) %>
                         </li>
                         <li>
                             <h4>Quantos estao com estudos continuados</h4>
-                            <%= generate_single_value stats[:include_how_many_keep_studying] %>
+                            <%= generate_yearly_table yearly_stats,
+                                                      :include_how_many_keep_studying,
+                                                      method(:generate_single_value) %>
                         </li>
                         <li>
                             <h4>Quantos as dificuldades apresentados</h4>
-                            <%= generate_bar_table stats[:include_difficulties] %>
+                            <%= generate_yearly_table yearly_stats,
+                                                      :include_difficulties,
+                                                      method(:generate_bar_table) %>
                         </li>
                         <li>
                             <h4>Se a Oi Kabum ajudou na aprendizagem na escola</h4>
-                            <%= generate_bar_table stats[:include_if_kabum_helped] %>
+                            <%= generate_yearly_table yearly_stats,
+                                                      :include_if_kabum_helped,
+                                                      method(:generate_bar_table) %>
                         </li>
                     </ul>
                     </li>
