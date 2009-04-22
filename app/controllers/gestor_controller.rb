@@ -78,6 +78,7 @@ class GestorController < ApplicationController
     end
   end
 
+
   def generate_reports
     if request.post?
       temp_course = Course.new(params[:period])
@@ -116,26 +117,25 @@ class GestorController < ApplicationController
 
       @results = {}
       @student_search_results.each do |name, studs|
-        @results[name] ||= {}
+        @results[name] ||= {
+                :void => true
+                }
+        next if studs.length == 0
 
-        @results[name][:include_percentage_sex] = {:masculino => 42, :feminino => 42}
-        @results[name][:include_percentage_schooling] = {:fundamental_incompleto => 42,
-                                                         :fundamental_completo => 42,
-                                                         :medio_incompleto => 42,
-                                                         :medio_completo => 42}
-        @results[name][:include_average_age] = 42
+        @results[name].delete(:void)
+        student = studs[0]
 
-        @results[name][:include_how_many_finished] = 42
-        @results[name][:include_how_many_are_employed] = 42
-        @results[name][:include_how_many_will_act] = 42
-        @results[name][:include_how_many_keep_studying] = 42
-        @results[name][:include_difficulties] = {:language_techniques => 42,
-                                                 :equipment => 42,
-                                                 :school_didactics => 42,
-                                                 :relationships_with_professors => 42,
-                                                 :relationships_with_students => 42
-                                                 }
-        @results[name][:include_if_kabum_helped] = {:yes => 58, :no => 42}
+        @results[name][:include_percentage_sex] = calculate_sex_percentage studs
+        @results[name][:include_percentage_schooling] = calculate_schooling_percentage studs
+        @results[name][:include_average_age] = calculate_average_age studs
+
+        @results[name][:include_how_many_finished] = student.course.how_many_finished
+        @results[name][:include_how_many_are_employed] = student.course.how_many_are_employed
+        @results[name][:include_how_many_will_act] = student.course.how_many_will_act
+        @results[name][:include_how_many_keep_studying] = student.course.how_many_continue_studying
+
+        @results[name][:include_difficulties] = calculate_difficulties_percentage studs
+        @results[name][:include_if_kabum_helped] = calculate_oi_kabum_help studs
 
       end
 
@@ -150,6 +150,71 @@ class GestorController < ApplicationController
 
     render :partial => 'gestor/report_comboboxes',
            :locals => {:reports => reports}
+  end
+
+  private
+  def calculate_average_age studs
+    studs.inject(0){|sum, stud| sum += ((Date.today - stud.birthday).to_i / 365)} / studs.length
+  end
+  def calculate_sex_percentage studs
+    {:masculino => 'n/a', :feminino => 'n/a'}
+  end
+
+  def calculate_schooling_percentage studs
+    results = [0, 0, 0, 0]
+    studs.each do |st|
+      if st.schooling_id
+        results[st.schooling_id - 1] += 1
+      end
+    end
+    {:fundamental_incompleto => results[0] * 100 / studs.length,
+     :fundamental_completo => results[1] * 100 / studs.length,
+     :medio_incompleto => results[2] * 100 / studs.length,
+     :medio_completo => results[3] * 100 / studs.length}
+  end
+
+  def calculate_difficulties_percentage studs
+    results = [0, 0, 0, 0, 0]
+    studs.each do |st|
+      rep = st.semestrial_report
+      if rep.language_techniques
+        results[0] += 1
+      end
+      if rep.equipment
+        results[0] += 1
+      end
+      if rep.school_didactics
+        results[0] += 1
+      end
+      if rep.relationships_with_professors
+        results[0] += 1
+      end
+      if rep.relationships_with_students
+        results[0] += 1
+      end
+    end
+
+    {:language_techniques => results[0] * 100 / studs.length,
+     :equipment => results[1] * 100 / studs.length,
+     :school_didactics => results[2] * 100 / studs.length,
+     :relationships_with_professors => results[3] * 100 / studs.length,
+     :relationships_with_students => results[4] * 100 / studs.length
+    }
+  end
+
+  def calculate_oi_kabum_help studs
+    yeses = 0
+    nos = 0
+    studs.each do |st|
+      rep = st.semestrial_report
+      case rep.s1_oi_kabum_helped
+      when 0
+        nos += 1
+      when 1
+        yeses += 1
+      end
+    end
+    {:yes => yeses * 100 / studs.length, :no => nos * 100 / studs.length}
   end
 
 end

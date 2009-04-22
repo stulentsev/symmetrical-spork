@@ -33,7 +33,7 @@
         <td>
             <ul>
                 <% @results.each do |name, stats| %>
-                    <%# next if sts.length == 0 %>
+                    <% next if stats[:void] %>
                     <li id='<%= get_school_row_id(name) %>'>
                             <h3><%= name %></h3></li>
                     <li>

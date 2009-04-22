@@ -47,4 +47,10 @@ class Student < ActiveRecord::Base
       contact.save
     end
   end
+
+  def semestrial_report
+    self.user.reports_with_deadlines.
+              select{|rwd| rwd.report.report_type == 3}.
+              map{|rwd| StudentReport.find(rwd.actual_report_id)}.first
+  end
 end

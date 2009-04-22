@@ -4,11 +4,13 @@ module GestorHelper
   end
 
   def generate_bar_table values
-    result = '<table cellpadding=0 cellspacing=0">'
+    result = '<table>'
     values.each do |name, value|
-      result += "<tr><td>#{name}</td><td class='value' style='width: #{value}px'>&nbsp;</td>
-                    <td class='empty' style='width: #{100 - value.to_i}px'>&nbsp;</td>
-                    <td>#{value}%</tr>"
+      result += "<tr><td>#{name}</td>
+                     <td><table cellpadding=0 cellspacing=0 style='margin-left: 0px'>
+                        <td class='value' style='width: #{value}px'></td>
+                    <td class='empty' style='width: #{100 - value.to_i}px'></td>
+                    <td>#{value}#{'%' if value.to_i > 0}</tr></table></td>"
     end
     result += '</table>'
   end
