@@ -127,6 +127,7 @@ class GestorController < ApplicationController
 
           @results[name].delete(:void)
 
+          #add_piece_of_information(@results[name][course], :include_percentage_sex, calculate_sex_percentage(studs))
           @results[name][course][:include_percentage_sex] = calculate_sex_percentage studs
           @results[name][course][:include_percentage_schooling] = calculate_schooling_percentage studs
           @results[name][course][:include_average_age] = calculate_average_age studs
@@ -217,6 +218,10 @@ class GestorController < ApplicationController
       end
     end
     {:yes => yeses * 100 / studs.length, :no => nos * 100 / studs.length}
+  end
+
+  def add_piece_of_information data_name, where_to_put, data
+    where_to_put[data_name] = data if params[:data_name] == '1'
   end
 
 end

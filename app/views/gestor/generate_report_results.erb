@@ -39,60 +39,42 @@
                             <h3><%= name %></h3></li>
                     <li>
                     <ul >
-                        <li>
-                            <h4>Porcentagem de sexos</h4>
                             <%= generate_yearly_table yearly_stats,
                                                       :include_percentage_sex,
-                                                      method(:generate_bar_table) %>
-                        </li>
-                        <li>
-                            <h4>Porcentagem de escolaridade</h4>
+                                                      method(:generate_bar_table),
+                                                      'Porcentagem de sexos' %>
                             <%= generate_yearly_table yearly_stats,
                                                       :include_percentage_schooling,
-                                                      method(:generate_bar_table) %>
-                        </li>
-                        <li>
-                            <h4>Media de idade</h4>
+                                                      method(:generate_bar_table),
+                                                      'Porcentagem de escolaridade' %>
                             <%= generate_yearly_table yearly_stats,
                                                       :include_average_age,
-                                                      method(:generate_single_value) %>
-                        </li>
-                        <li>
-                            <h4>Quantos alunos concluiram</h4>
+                                                      method(:generate_single_value),
+                                                      'Media de idade' %>
                             <%= generate_yearly_table yearly_stats,
                                                       :include_how_many_finished,
-                                                      method(:generate_single_value) %>
-                        </li>
-                        <li>
-                            <h4>Quantos alunos estao inseridos</h4>
+                                                      method(:generate_single_value),
+                                                      'Quantos alunos concluiram' %>
                             <%= generate_yearly_table yearly_stats,
                                                       :include_how_many_are_employed,
-                                                      method(:generate_single_value) %>
-                        </li>
-                        <li>
-                            <h4>Quantos vao atuar no Nucleo</h4>
+                                                      method(:generate_single_value),
+                                                      'Quantos alunos estao inseridos' %>
                             <%= generate_yearly_table yearly_stats,
                                                       :include_how_many_will_act,
-                                                      method(:generate_single_value) %>
-                        </li>
-                        <li>
-                            <h4>Quantos estao com estudos continuados</h4>
+                                                      method(:generate_single_value),
+                                                      'Quantos vao atuar no Nucleo' %>
                             <%= generate_yearly_table yearly_stats,
                                                       :include_how_many_keep_studying,
-                                                      method(:generate_single_value) %>
-                        </li>
-                        <li>
-                            <h4>Quantos as dificuldades apresentados</h4>
+                                                      method(:generate_single_value),
+                                                      'Quantos estao com estudos continuados' %>
                             <%= generate_yearly_table yearly_stats,
                                                       :include_difficulties,
-                                                      method(:generate_bar_table) %>
-                        </li>
-                        <li>
-                            <h4>Se a Oi Kabum ajudou na aprendizagem na escola</h4>
+                                                      method(:generate_bar_table),
+                                                      'Quantos as dificuldades apresentados' %>
                             <%= generate_yearly_table yearly_stats,
                                                       :include_if_kabum_helped,
-                                                      method(:generate_bar_table) %>
-                        </li>
+                                                      method(:generate_bar_table),
+                                                      'Se a Oi Kabum ajudou na aprendizagem na escola' %>
                     </ul>
                     </li>
                 <% end %>
